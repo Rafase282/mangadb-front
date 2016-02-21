@@ -106,3 +106,11 @@ a {
   background: rgba(200, 54, 54, 0);
   color: #c83636;
 }
+
+.well {
+  background-color: Teal
+}
+
+.thumbnail {
+  width: 150px;
+}

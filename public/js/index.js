@@ -44,11 +44,25 @@ function valLogin() {
     "dataType": "json",
     "headers": {
       "Authorization": "Basic " + userKey
-    },
-    success: function(data) {
-      console.log(data);
     }
   };
 
-  $.ajax(settings);
+  $.ajax(settings).done(function(data) {
+    data.map(function(manga) {
+      var title = '<div class="well manga"><h1>' + window.s.titleize(manga.title) + '</h1>';
+      var photo = '<img class="thumbnail" src="http://www.readmanga.today/uploads/posters/the-god-of-high-school.jpg"</img>';
+      var author = '<span id="author"> <strong>Author:</strong> ' + window.s.titleize(manga.author) + '</span><br>';
+      var status = '<span id="status"> <strong>Status:</strong> ' + window.s.humanize(manga.seriesStatus) + '</span><br>';
+      var userStats = '<span id="userStats"> <strong>My Status:</strong> ' + window.s.humanize(manga.userStatus) + '</span><br>';
+      var chapter = '<span id="chapter"> <strong>Current Chapter:</strong> <a href="' + manga.url + '" target="_blank">' + manga.chapter + '</a></span><br>';
+      var type = '<span id="type"> <strong>Type:</strong> ' + window.s.humanize(manga.type) + '</span><br>';
+      var direction = '<span id="direction"> <strong>Reading Direction:</strong> ' + window.s.titleize(manga.direction) + '</span><br>';
+      var altName = '<span id="altName"> <strong>Other Names:</strong> ' + window.s.titleize(window.s.toSentence(manga.altName, ", ", ", ")) + '</span><br>';
+      var categories = '<span id="categories"> <strong>Categories:</strong> ' + window.s.titleize(window.s.toSentence(manga.categories, ", ", ", ")) + '</span><br>';
+      var plot = '<p id="plot"> <strong>Plot:</strong> ' + window.s.humanize(manga.plot) + '</p><br>';
+      var done = '</div>';
+      var html = title + photo + status + userStats + author + chapter + type + direction + altName + categories + plot + done;
+      $(".main").append(html);
+    });
+  });
 }

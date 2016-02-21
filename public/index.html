@@ -85,34 +85,28 @@ Remove this if you use the .htaccess -->
   
   <section>
     <h2>Register</h2>
-<form name="signUp" accept-charset="UTF-8"
-enctype="application/x-www-form-urlencoded" autocomplete="off" onsubmit="return validateForm()">
+<form name="signUp" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off">
   First name:
-  <input type="text" name="firstname">
-  Last name:
+  <input type="text" name="firstname"> Last name:
   <input type="text" name="lastname">
-  <br>
-  Username:
-  <input type="text" name="username">
-  E-Mail:
-  <input type"email" name="email"><br>
-  Password:
-  <input type="password" name="password">
-  Retype Password:
+  <br> Username:
+  <input type="text" name="username"> E-Mail:
+  <input type "email" name="email"><br> Password:
+  <input type="password" name="password"> Retype Password:
   <input type="password" name="password2">
-  <input type="submit" value="Register">
+  <input type="submit" value="Register" onclick="validateForm()">
 </form>
 <br>
 <br>
 <h2>Login</h2>
-<form name="login" accept-charset="UTF-8"
-enctype="application/x-www-form-urlencoded" autocomplete="off" onsubmit="return valLogin()">
+<form name="login" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off">
   Username:
-  <input type="text" name="username">
-  Password:
-  <input type="password" name="password">
-  <input type="submit" value="Login">
+  <input type="text" name="username" value="user"> Password:
+  <input type="password" name="password" value="user">
 </form>
+<input type="submit" value="Login" onclick="valLogin()">
+<section class="main" id="here">
+</section>
   </section>
 
   <!-- Footer -->
@@ -140,6 +134,7 @@ enctype="application/x-www-form-urlencoded" autocomplete="off" onsubmit="return 
   </footer>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.2.3/underscore.string.min.js'></script>
   <script src="public/js/index.js"></script>
 
 </body>
