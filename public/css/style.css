@@ -1,0 +1,108 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.main:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(../images/kaneki.jpg);
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: -1;
+  background-size: 100% 100%;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: -1;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.main {
+  padding-top: 25px;
+  margin-top: 200px;
+}
+
+.main h1 {
+  margin-top: 0;
+}
+
+footer {
+  background-color: #222222;
+  color: LightGray;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 10px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.navbar {
+  position: relative;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.fa-bolt {
+  color: Yellow;
+}
+
+.fa-globe {
+  color: Green;
+}
+
+.fa-twitter {
+  color: LightSkyBlue;
+}
+
+a {
+  color: #c83636;
+}
+
+.jumbotron {
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 25px;
+}
+
+#push {
+  padding-bottom: 25px;
+}
+
+.opacity {
+  background: rgba(0, 0, 25, 0.7);
+  color: LightGray;
+}
+
+.transparent {
+  background: rgba(200, 54, 54, 0);
+  color: #c83636;
+}

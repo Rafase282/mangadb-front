@@ -1,0 +1,33 @@
+{
+  "name": "mangacollection",
+  "version": "1.0.0",
+  "description": "App to track your manga collection online.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rafase282/mangadb-front.git"
+  },
+  "keywords": [
+    "Manga",
+    "Collection",
+    "Comics",
+    "R282"
+  ],
+  "author": "Rafael Rodriguez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rafase282/mangadb-front/issues"
+  },
+  "homepage": "https://github.com/Rafase282/mangadb-front#readme",
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "node-sass": "^3.4.2"
+  }
+}
