@@ -50,7 +50,7 @@ function valLogin() {
   $.ajax(settings).done(function(data) {
     data.map(function(manga) {
       var title = '<div class="well manga"><h1>' + window.s.titleize(manga.title) + '</h1>';
-      var photo = '<img class="thumbnail" src="http://www.readmanga.today/uploads/posters/the-god-of-high-school.jpg"</img>';
+      var photo = '<img class="thumbnail" src="' + manga.title + '"</img>';
       var author = '<span id="author"> <strong>Author:</strong> ' + window.s.titleize(manga.author) + '</span><br>';
       var status = '<span id="status"> <strong>Status:</strong> ' + window.s.humanize(manga.seriesStatus) + '</span><br>';
       var userStats = '<span id="userStats"> <strong>My Status:</strong> ' + window.s.humanize(manga.userStatus) + '</span><br>';
