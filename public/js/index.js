@@ -33,19 +33,40 @@ function validateForm() {
 }
 
 function valLogin() {
-  var username = username = document.forms["login"]["username"].value;
+  var username  = document.forms["login"]["username"].value;
   var password = document.forms["login"]["password"].value;
-  var userKey = window.btoa(username + ":" + password);
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://mangadb-r282.herokuapp.com/api/mangas/" + username,
-    "method": "GET",
-    "dataType": "json",
+    "url": "https://mangadb-r282.herokuapp.com/api/auth",
+    "method": "POST",
     "headers": {
-      "Authorization": "Basic " + userKey
+      "content-type": "application/x-www-form-urlencoded"
+    },
+    "data": {
+      "username": username,
+      "password": password
     }
+
   };
+
+  $.ajax(settings).done(function(data) {
+    window.localStorage.setItem('token', data.token);
+  });
+}
+
+function getManga() {
+  var token = window.localStorage.getItem("token");
+  var username  = document.forms["login"]["username"].value;
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://mangadb-rafase282.c9users.io/api/mangas/" + username,
+    "method": "GET",
+    "headers": {
+      "x-access-token": token
+    }
+  }
 
   $.ajax(settings).done(function(data) {
     data.map(function(manga) {
@@ -65,4 +86,10 @@ function valLogin() {
       $(".main").append(html);
     });
   });
+}
+
+function logOut(){
+  window.localStorage.removeItem("token");
+  $(".main").empty();
+  
 }
