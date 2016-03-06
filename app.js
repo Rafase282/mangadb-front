@@ -4,9 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var compass = require('compass');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var forgot = require('./routes/forgot');
 
 var app = express();
 
@@ -28,10 +30,12 @@ app.use(require('node-sass-middleware')({
   indentedSyntax: true,
   sourceMap: true
 }));
+app.use(compass({ cwd: __dirname + 'public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/forgot', forgot);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -18,6 +18,28 @@ html
     link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='stylesheets/style.css')
   body
+      // Navigation bar, collapses and everything
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') #{user}
+        #myNavbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='/') Home
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/signup')
+                span.glyphicon.glyphicon-user
+                |  Sign Up
+            li
+              a(href='/login')
+                span#btn-hide.glyphicon.glyphicon-log-in
+                |  Login
     block content
         // Footer
     footer
@@ -27,13 +49,13 @@ html
           i.fa.fa-envelope.fa-fw
         a(href='https://github.com/Rafase282', target='_blank')
           i.fa.fa-github.fa-fw
-        a(href='https://www.linkedin.com/in/rafase282', target='_blank')
+        a(href='https://www.linkedin.com/in/rafase282', target='_blank') 
           i.fa.fa-linkedin
-        a(href='http://codepen.io/Rafase282', target='_blank')
+        a(href='http://codepen.io/Rafase282', target='_blank') 
           i.fa.fa-codepen
-        a(href='https://rafase282.wordpress.com/', target='_blank')
+        a(href='https://rafase282.wordpress.com/', target='_blank') 
           i.fa.fa-wordpress
-        a(href='http://www.freecodecamp.com/rafase282', target='_blank')
+        a(href='http://www.freecodecamp.com/rafase282', target='_blank') 
           | (
           i.fa.fa-fire.fa-fw
           | )
