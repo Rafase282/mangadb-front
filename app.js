@@ -5,12 +5,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compass = require('compass');
+var flash = require('express-flash');
+var session = require('express-session')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var forgot = require('./routes/forgot');
 
 var app = express();
+app.use(session({
+  secret: 'session secret key',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(flash());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +28,9 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, '/public'),
@@ -30,7 +40,9 @@ app.use(require('node-sass-middleware')({
   indentedSyntax: true,
   sourceMap: true
 }));
-app.use(compass({ cwd: __dirname + 'public' }));
+app.use(compass({
+  cwd: __dirname + 'public'
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

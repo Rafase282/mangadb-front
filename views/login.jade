@@ -1,0 +1,26 @@
+extends layout
+block content
+      // The form stuff
+      .form.main
+        ul.tab-group
+          li.tab
+            a(href='#login') Log In
+        .tab-content
+          #login
+            h1 Welcome Back!
+            form(action='/login', method='POST', name='login', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+              .field-wrap
+                label
+                  | Username
+                  span.req *
+                input(type='text', name='username', required='', autocomplete='off')
+              .field-wrap
+                label
+                  | Password
+                  span.req *
+                input(type='password', name='password', required='', autocomplete='off')
+              p.forgot
+                a(href='/forgot') Forgot Password?
+              button.button.button-block(type='submit') Log In
+        // tab-content
+      // /form

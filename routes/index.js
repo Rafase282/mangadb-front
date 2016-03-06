@@ -5,35 +5,53 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'MangaDB',
-        user: 'MangaDB',
+        user: req.user,
         userurl: '/'
     });
 });
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {
-    res.render('forms', {
+    res.render('login', {
         title: 'MangaDB: Log In',
-        user: 'MangaDB',
+        user: req.user,
         userurl: '/'
     });
 });
 
 /* GET register page. */
 router.get('/signup', function(req, res, next) {
-    res.render('forms', {
+    res.render('signup', {
         title: 'MangaDB: Register',
-        user: 'MangaDB',
+        user: req.user,
         userurl: '/'
     });
 });
 
-/* GET reset password page. */
+/* GET forgotpassword page. */
 router.get('/forgot', function(req, res, next) {
-    res.render('forms', {
-        title: 'MangaDB: Reset Password',
-        user: 'MangaDB',
+    res.render('forgot', {
+        title: 'MangaDB: Forgot Password',
+        user: req.user,
         userurl: '/login'
+    });
+});
+
+/* GET reset password page. */
+router.get('/reset', function(req, res, next) {
+    res.render('reset', {
+        title: 'MangaDB: Reset Password',
+        user: req.user,
+        userurl: '/login'
+    });
+});
+
+/* GET home page after loggin out. */
+router.get('/logout', function(req, res, next) {
+    res.render('index', {
+        title: 'MangaDB',
+        user: req.user,
+        userurl: '/'
     });
 });
 

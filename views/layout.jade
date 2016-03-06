@@ -11,7 +11,7 @@ html
     meta(name='author', content='Rafase282')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     // Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references
-    link(rel='shortcut icon', href='/favicon.ico')
+    link(rel='shortcut icon', href='/images/favicon.ico')
     link(rel='apple-touch-icon', href='/apple-touch-icon.png')
     link(rel='stylesheet', href='stylesheets/normalize.css')
     link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
@@ -26,20 +26,27 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') #{user}
+          if user
+            a.navbar-brand(href='/') #{user}
+          else
+            a.navbar-brand(href='/') MangaDB
         #myNavbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li.active
               a(href='/') Home
           ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/signup')
-                span.glyphicon.glyphicon-user
-                |  Sign Up
-            li
-              a(href='/login')
-                span#btn-hide.glyphicon.glyphicon-log-in
-                |  Login
+            if user
+              li
+                a(href='/logout') Logout
+            else
+              li
+                a(href='/signup')
+                  span.glyphicon.glyphicon-user
+                  |  Sign Up
+              li
+                a(href='/login')
+                  span#btn-hide.glyphicon.glyphicon-log-in
+                  |  Login
     block content
         // Footer
     footer
