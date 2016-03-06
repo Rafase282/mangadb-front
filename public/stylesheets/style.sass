@@ -1,0 +1,308 @@
+@import compass/css3
+
+$body-bg: #c1bdba
+$form-bg: #13232f
+$white: white
+
+$main: #c83636
+$main-light: lighten($main, 5%)
+$main-dark: darken($main, 5%)
+
+$gray-light: #a0b3b0
+$gray: #dddddd
+
+$thin: 300
+$normal: 400
+$bold: 600
+$br: 4px
+$size: 100%
+$text-color: lightgrey
+$font-stack: "Titillium Web", sans-serif
+
+html
+  height: 100%
+  box-sizing: border-box
+
+*,
+*:before,
+*:after
+  box-sizing: inherit
+
+body
+  position: relative
+  margin: 0
+  padding-bottom: 6rem
+  min-height: 100%
+  font-family: "Helvetica Neue", Arial, sans-serif
+
+.main:after
+  content: ""
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+  background-image: url(http://images8.alphacoders.com/545/545905.jpg)
+  /* url(../images/kaneki.jpg);
+  width: 100%
+  height: 100%
+  opacity: 0.5
+  z-index: -1
+  background-size: 100% 100%
+  background-position: center
+  background-attachment: fixed
+  background-repeat: no-repeat
+  opacity: 0.8
+  z-index: -1
+  content: ""
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+
+.main
+  padding-top: 25px
+  margin-top: 200px
+
+.main h1
+  margin-top: 0
+
+footer
+  background-color: #222222
+  color: LightGray
+  position: absolute
+  text-align: center
+  width: 100%
+  right: 0
+  bottom: 0
+  left: 0
+  padding-top: 10px
+  font-family: "Helvetica Neue", Arial, sans-serif
+
+.navbar
+  position: relative
+
+.center-text
+  text-align: center
+
+.fa-bolt
+  color: Yellow
+
+.fa-globe
+  color: Green
+
+.fa-twitter
+  color: LightSkyBlue
+
+a
+  color: #c83636
+
+.jumbotron
+  position: relative
+  padding-top: 5px
+  padding-bottom: 25px
+
+#push
+  padding-bottom: 25px
+
+.opacity
+  background: rgba(0, 0, 25, 0.7)
+  color: LightGray
+
+.transparent
+  background: rgba(200, 54, 54, 0)
+  color: #c83636
+
+#otherPages
+  margin: 5% 2%
+
+#manga-area
+  margin: 15px 10px
+
+/* TABLE STYLE
+
+.manga-panel
+  background-color: Gray
+  opacity: 0.9
+  margin: 5%
+
+.thumbnail
+  width: 150px
+
+.tg
+  border-collapse: collapse
+  border-spacing: 0
+  border-color: #ccc
+  border: none
+
+.tg td
+  font-family: Arial, sans-serif
+  font-size: 14px
+  padding: 10px 5px
+  border-style: solid
+  border-width: 0px
+  overflow: hidden
+  word-break: normal
+  border-color: #ccc
+  color: #333
+  background-color: #fff
+
+.tg th
+  font-family: Arial, sans-serif
+  font-size: 14px
+  font-weight: normal
+  padding: 10px 5px
+  border-style: solid
+  border-width: 0px
+  overflow: hidden
+  word-break: normal
+  border-color: #ccc
+  color: #333
+  background-color: #f0f0f0
+
+.tg .tg-yw4l
+  vertical-align: top
+
+@media screen and (max-width: 767px)
+  .tg
+    width: auto !important
+  .tg col
+    width: auto !important
+  .tg-wrap
+    overflow-x: auto
+    -webkit-overflow-scrolling: touch
+
+/* FORMS STYLES
+
+a
+  text-decoration: none
+  color: $main
+  transition: .5s ease
+  &:hover
+    color: $main-dark
+
+.form
+  background: rgba($form-bg, 0.9)
+  padding: 40px
+  max-width: 600px
+  margin: 10% auto
+  border-radius: $br
+  box-shadow: 0 4px 10px 4px rgba($form-bg, 0.3)
+
+.tab-group
+  list-style: none
+  padding: 0
+  margin: 0 0 40px 0
+  &:after
+    content: ""
+    display: table
+    clear: both
+  li a
+    display: block
+    text-decoration: none
+    padding: 15px
+    background: rgba($gray-light, 0.25)
+    color: $gray-light
+    font-size: 20px
+    float: left
+    width: 50%
+    text-align: center
+    cursor: pointer
+    transition: .5s ease
+    &:hover
+      background: $main-dark
+      color: $white
+  .active a
+    background: $main
+    color: $white
+
+.tab-content > div:last-child
+  display: none
+
+h1
+  text-align: center
+  color: $white
+  font-weight: $thin
+  margin: 0 0 40px
+
+label
+  position: absolute
+  transform: translateY(6px)
+  left: 13px
+  color: rgba($white, 0.5)
+  transition: all 0.25s ease
+  -webkit-backface-visibility: hidden
+  pointer-events: none
+  font-size: 22px
+  .req
+    margin: 2px
+    color: $main
+
+label.active
+  transform: translateY(50px)
+  left: 2px
+  font-size: 14px
+  .req
+    opacity: 0
+
+label.highlight
+  color: $white
+
+input, textarea
+  font-size: 22px
+  display: block
+  width: 100%
+  height: 100%
+  padding: 5px 10px
+  background: none
+  background-image: none
+  border: 1px solid $gray-light
+  color: $white
+  border-radius: 0
+  transition: border-color .25s ease, box-shadow .25s ease
+  &:focus
+    outline: 0
+    border-color: $main
+
+textarea
+  border: 2px solid $gray-light
+  resize: vertical
+
+.field-wrap
+  position: relative
+  margin-bottom: 40px
+
+.top-row
+  &:after
+    content: ""
+    display: table
+    clear: both
+  > div
+    float: left
+    width: 48%
+    margin-right: 4%
+    &:last-child
+      margin: 0
+
+.button
+  border: 0
+  outline: none
+  border-radius: 0
+  padding: 15px 0
+  font-size: 2rem
+  font-weight: $bold
+  text-transform: uppercase
+  letter-spacing: .1em
+  background: $main
+  color: $white
+  transition: all 0.5s ease
+  -webkit-appearance: none
+  &:hover, &:focus
+    background: $main-dark
+
+.button-block
+  display: block
+  width: 100%
+
+.forgot
+  margin-top: -20px
+  text-align: right

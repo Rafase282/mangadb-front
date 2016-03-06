@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('mangadb:server');
+var debug = require('debug')('workspace:server');
 var http = require('http');
 
 /**
