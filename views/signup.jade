@@ -5,6 +5,8 @@ block content
         ul.tab-group
           li.tab.active
             a(href='#signup') Sign Up
+          li.tab
+            a(href='#login') Log In
         .tab-content
           #signup
             h1 Sign Up for Free
@@ -43,5 +45,21 @@ block content
                     span.req *
                   input(type='password', name='password2', required='', autocomplete='off')
               button.button.button-block(type='submit') Get Started
+          #login
+            h1 Welcome Back!
+            form(action='/login', method='POST', name='login', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+              .field-wrap
+                label
+                  | Username
+                  span.req *
+                input(type='text', name='username', required='', autocomplete='off')
+              .field-wrap
+                label
+                  | Password
+                  span.req *
+                input(type='password', name='password', required='', autocomplete='off')
+              p.forgot
+                a(href='/forgot') Forgot Password?
+              button.button.button-block(type='submit') Log In
         // tab-content
       // /form
