@@ -3,7 +3,7 @@
 var s = require("underscore.string");
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./storage');
+  var localStorage = new LocalStorage('./storage');
 }
 
 // Retrieves the token from local storage and returns it.

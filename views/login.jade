@@ -1,26 +1,14 @@
 extends layout
 block content
-      // The form stuff
       .form.main
-        ul.tab-group
-          li.tab
-            a(href='#login') Log In
-        .tab-content
-          #login
             h1 Welcome Back!
-            form(action='/login', method='POST', name='login', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
-              .field-wrap
-                label
-                  | Username
-                  span.req *
-                input(type='text', name='username', required='', autocomplete='off')
-              .field-wrap
-                label
-                  | Password
-                  span.req *
-                input(type='password', name='password', required='', autocomplete='off')
-              p.forgot
-                a(href='/forgot') Forgot Password?
-              button.button.button-block(type='submit') Log In
-        // tab-content
-      // /form
+            form(role='form', action='/login', method='POST', name='login', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+              .form-group.input-group
+                span#basic-addon1.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='Username', aria-describedby='basic-addon1')
+              .form-group.input-group
+                span#basic-addon2.input-group-addon
+                  span.glyphicon.glyphicon-lock
+                input.form-control(type='password', placeholder='Password', aria-describedby='basic-addon2', autocomplete='off')
+              button.btn.btn-danger.button.button-block(type='button') Log In

@@ -2,64 +2,27 @@ extends layout
 block content
       // The form stuff
       .form.main
-        ul.tab-group
-          li.tab.active
-            a(href='#signup') Sign Up
-          li.tab
-            a(href='#login') Log In
-        .tab-content
-          #signup
-            h1 Sign Up for Free
-            form(action='/signup', method='POST', name='signUp', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
-              .top-row
-                .field-wrap
-                  label
-                    | First Name
-                    span.req *
-                  input(type='text', name='firstname', required='', autocomplete='off')
-                .field-wrap
-                  label
-                    | Last Name
-                    span.req *
-                  input(type='text', name='lastname', required='', autocomplete='off')
-              .top-row
-                .field-wrap
-                  label
-                    | Username
-                    span.req *
-                  input(type='text', name='username', required='', autocomplete='off')
-                .field-wrap
-                  label
-                    | Email Address
-                    span.req *
-                  input(type='email', name='email', required='', autocomplete='off')
-              .top-row
-                .field-wrap
-                  label
-                    | Set A Password
-                    span.req *
-                  input(type='password', name='password', required='', autocomplete='off')
-                .field-wrap
-                  label
-                    | Re-type A Password
-                    span.req *
-                  input(type='password', name='password2', required='', autocomplete='off')
-              button.button.button-block(type='submit') Get Started
-          #login
-            h1 Welcome Back!
-            form(action='/login', method='POST', name='login', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
-              .field-wrap
-                label
-                  | Username
-                  span.req *
-                input(type='text', name='username', required='', autocomplete='off')
-              .field-wrap
-                label
-                  | Password
-                  span.req *
-                input(type='password', name='password', required='', autocomplete='off')
-              p.forgot
-                a(href='/forgot') Forgot Password?
-              button.button.button-block(type='submit') Log In
-        // tab-content
-      // /form
+        h1 Register for Free
+        form(role='form', action='/signup', method='POST', name='signup', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+          .form-group.input-group
+            span#basic-addon1.input-group-addon
+              span.glyphicon.glyphicon-tags
+            input.form-control(type='text', placeholder='First Name', aria-describedby='basic-addon1')
+            span#basic-addon1.input-group-addon
+              span.glyphicon.glyphicon-tags
+            input.form-control(type='text', placeholder='Last Name', aria-describedby='basic-addon1')
+          .form-group.input-group
+            span#basic-addon1.input-group-addon
+              span.glyphicon.glyphicon-user
+            input.form-control(type='text', placeholder='Username', aria-describedby='basic-addon1')
+            span#basic-addon1.input-group-addon
+              span.glyphicon.glyphicon-envelope
+            input.form-control(type='text', placeholder='E-Mail', aria-describedby='basic-addon1')
+          .form-group.input-group
+            span#basic-addon2.input-group-addon
+              span.glyphicon.glyphicon-lock
+            input.form-control(type='password', placeholder='Password', aria-describedby='basic-addon2', autocomplete='off')
+            span#basic-addon2.input-group-addon
+              span.glyphicon.glyphicon-lock
+            input.form-control(type='password', placeholder='Comfirm Password', aria-describedby='basic-addon2', autocomplete='off')
+          button.btn.btn-danger.button.button-block(type='button') Register
