@@ -45,9 +45,39 @@ app.use(compass({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/forgot', forgot);
+var router = express.Router();
+app.use('/', router);
+
+// Get the home page
+router.route('/')
+  .get(routes.getHome);
+  
+// Get login form
+router.route('/login')
+  .get(routes.getLogIn);
+  
+// Get the home page after loggign out
+router.route('/logout')
+  .get(routes.getLogOut);
+  
+// Get the forgotten password page
+router.route('/forgot')
+  .get(routes.getForgot);
+  
+// Get the reset password page
+router.route('/reset')
+  .get(routes.getReset);
+  
+// Get the registration page
+router.route('/signup')
+  .get(routes.getSignUp);
+
+// Get the registration page
+router.route('/user/:user')
+  .get(users.getUserProfile);
+
+//app.use('/user', users);
+//app.use('/forgot', forgot);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

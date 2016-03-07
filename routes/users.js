@@ -1,6 +1,4 @@
-var express = require('express');
 var s = require("underscore.string");
-var router = express.Router();
 
 // HELPER FUNCTIONS
 
@@ -44,7 +42,8 @@ function mangaInfo(manga) {
 }
 
 /* GET home page. */
-router.get('/user/:user', function(req, res, next) {
+exports.getUserProfile = function(req, res) {
+    /*
     var request = require("request");
     var token = window.localStorage.getItem("token");
     var username = window.localStorage.getItem("MangaReader");
@@ -66,11 +65,10 @@ router.get('/user/:user', function(req, res, next) {
             $(".mangas").append(html);
         });
     });
-    res.render('reset', {
+    */
+    res.render('profile', {
         title: req.params.user,
         user: req.params.user,
-        userurl: '/user/' + req.params.user
+        userurl: '/' + req.params.user
     });
-});
-
-module.exports = router;
+};
