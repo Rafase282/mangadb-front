@@ -1,5 +1,4 @@
 extends layout
-
 .container
   if messages.error
     .alert.alert-danger
@@ -11,10 +10,14 @@ extends layout
     .alert.alert-success
       div= messages.success
   block content
-      form(method='POST')
-        legend Forgot Password
-        .form-group
-          label(for='email') Email
-          input.form-control(type='text', name='email', autofocus)
-        button.btn.btn-primary(type='submit') Reset Password
+      .form
+        h1 Password Recovery
+        form(role='form', method='POST', name='forgot', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+          .field-wrap
+            .form-group.input-group
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-envelope
+              input.form-control(type='text', name='email', placeholder='Enter your E-mail address', aria-describedby='basic-addon1')
+          .field-wrap
+          button.btn.btn-danger.button.button-block(type='button') Reset Password
     

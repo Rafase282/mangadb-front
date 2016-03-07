@@ -1,13 +1,16 @@
 extends layout
-
 block content
-  form(method='POST')
-    legend Reset Password
-    .form-group
-      label(for='password') New Password
-      input.form-control(type='password', name='password', value='', placeholder='New password', autofocus=true)
-    .form-group
-      label(for='confirm') Confirm Password
-      input.form-control(type='password', name='confirm', value='', placeholder='Confirm password')
-    .form-group
-      button.btn.btn-primary(type='submit') Update Password
+      .form
+        h1 Password Reset
+        form(role='form', method='POST', name='reset', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+          .field-wrap
+            .form-group.input-group
+              span#basic-addon2.input-group-addon
+                span.glyphicon.glyphicon-lock
+              input.form-control(type='password', name='password', placeholder='Password *', aria-describedby='basic-addon2', autocomplete='off')
+          .field-wrap
+            .form-group.input-group    
+              span#basic-addon2.input-group-addon
+                span.glyphicon.glyphicon-lock
+              input.form-control(type='password', name='password2', placeholder='Comfirm Password *', aria-describedby='basic-addon2', ,='', autocomplete='off')
+          button.button.button-block.btn.btn-danger(type='button') Update Password
