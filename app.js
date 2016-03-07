@@ -1,3 +1,4 @@
+'use strict';
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -10,7 +11,7 @@ var session = require('express-session')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var forgot = require('./routes/forgot');
+var password = require('./routes/password');
 
 var app = express();
 app.use(session({
@@ -62,11 +63,11 @@ router.route('/logout')
   
 // Get the forgotten password page
 router.route('/forgot')
-  .get(routes.getForgot);
+  .get(password.getForgot);
   
 // Get the reset password page
 router.route('/reset')
-  .get(routes.getReset);
+  .get(password.getReset);
   
 // Get the registration page
 router.route('/signup')

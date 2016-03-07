@@ -1,3 +1,6 @@
+'use strict';
+var funHelper = require('./helpers');
+
 /* GET home page. */
 exports.getHome = function(req, res) {
     res.render('index', {
@@ -22,24 +25,6 @@ exports.getSignUp = function(req, res) {
         title: 'MangaDB: Register',
         user: req.user,
         userurl: '/'
-    });
-};
-
-/* GET forgotpassword page. */
-exports.getForgot = function(req, res) {
-    res.render('forgot', {
-        title: 'MangaDB: Forgot Password',
-        user: req.user,
-        userurl: '/login'
-    });
-};
-
-/* GET reset password page. */
-exports.getReset = function(req, res) {
-    res.render('reset', {
-        title: 'MangaDB: Reset Password',
-        user: req.user,
-        userurl: '/login'
     });
 };
 

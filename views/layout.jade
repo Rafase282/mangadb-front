@@ -27,7 +27,7 @@ html
             span.icon-bar
             span.icon-bar
           if user
-            a.navbar-brand(href='/') #{user}
+            a.navbar-brand(href='/user/:user') #{user}
           else
             a.navbar-brand(href='/') MangaDB
         #myNavbar.collapse.navbar-collapse
