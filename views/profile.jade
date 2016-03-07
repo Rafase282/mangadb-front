@@ -1,17 +1,16 @@
 extends layout
 block content
   body
-    br
-    br
-    br
-    br
-    input(type='submit', value='Log Out', onclick='logOut()')
-    input(type='submit', value='Clear', onclick='clean()')
-    br
-    br
-    |  Manga Name:
-    input#manga(type='text', name='manga', value='Terra Formars')
-    input(type='submit', value='List Manga', onclick='getManga()')
-    input(type='submit', value='Find by Title', onclick='findManga()')
-    input(type='submit', value='Chapter +1', onclick='oneUp()')
+    .form.main
+      br
+      br
+      input(type='submit', value='Log Out', onclick='logOut()')
+      input(type='submit', value='Clear', onclick='clean()')
+      br
+      br
+      |  Manga Name:
+      input#manga(type='text', name='manga', value='Terra Formars')
+      input(type='submit', value='List Manga', onclick='getManga()')
+      input(type='submit', value='Find by Title', onclick='findManga()')
+      input(type='submit', value='Chapter +1', onclick='oneUp()')
     section#manga-area.mangas
