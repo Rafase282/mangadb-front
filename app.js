@@ -7,14 +7,16 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var flash = require('express-flash');
 var session = require('express-session')
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var password = require('./routes/password');
+require('dotenv').config({
+  silent: true
+});
 
 var app = express();
 app.use(session({
-  secret: 'session secret key',
+  secret: process.env.secret,
   resave: true,
   saveUninitialized: true
 }));
@@ -29,7 +31,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 app.use(cookieParser());
 app.use(require('node-sass-middleware')({
@@ -46,13 +48,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 var router = express.Router();
 app.use('/', router);
 
+var sess;
+
 // Get the home page
 router.route('/')
   .get(routes.getHome);
   
 // Get login form
 router.route('/login')
-  .get(routes.getLogIn);
+  .get(routes.getLogIn)
+  .post(users.getToken);
   
 // Get the home page after loggign out
 router.route('/logout')
