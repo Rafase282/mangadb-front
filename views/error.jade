@@ -1,6 +1,8 @@
 extends layout
-
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .err
+    h1(style="color:red;")= message
+      h2(style="text-align:center; color:red;")= error.status
+    .form
+      p(style="text-align:center; color:red;") There is nothign to see here, go back while you can, there are ghouls around this area.
+    

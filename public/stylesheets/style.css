@@ -14,6 +14,29 @@ body {
   min-height: 100%;
   font-family: "Helvetica Neue", Arial, sans-serif; }
 
+.err:after {
+  background-image: url(../images/kaneki1.jpg);
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: -1;
+  background-size: 100% 100%;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: -1;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
 .main:after {
   content: "";
   display: block;
@@ -21,7 +44,6 @@ body {
   top: 0;
   left: 0;
   background-image: url(../images/kaneki.jpg);
-  /* url(../images/kaneki.jpg); */
   width: 100%;
   height: 100%;
   opacity: 0.5;

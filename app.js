@@ -5,7 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var compass = require('compass');
 var flash = require('express-flash');
 var session = require('express-session')
 
@@ -41,9 +40,7 @@ app.use(require('node-sass-middleware')({
   indentedSyntax: true,
   sourceMap: true
 }));
-app.use(compass({
-  cwd: __dirname + 'public'
-}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 var router = express.Router();
@@ -77,9 +74,6 @@ router.route('/signup')
 router.route('/user/:user')
   .get(users.getUserProfile);
 
-//app.use('/user', users);
-//app.use('/forgot', forgot);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -110,6 +104,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
