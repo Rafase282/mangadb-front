@@ -8,10 +8,13 @@ exports.getUserProfile = function(req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
+    sess.api = process.env.API;
     res.render('profile', {
         title: sess.title,
         user: sess.user,
-        url: sess.url
+        url: sess.url,
+        token: sess.token,
+        api: sess.api
     });
 };
 
@@ -37,7 +40,7 @@ exports.getToken = function getToken(req, res) {
         if (error) throw new Error(error);
         console.log(body);
         sess.token = JSON.parse(body).token;
-        res.setHeader("x-access-token", sess.token);
+        //res.setHeader("x-access-token", sess.token);
         //funHelper.setToken('token', sess.token);
         //funHelper.setToken('MangaReader', sess.user);
         res.redirect('/user/' + username);
