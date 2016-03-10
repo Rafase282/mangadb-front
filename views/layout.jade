@@ -33,7 +33,7 @@ html
         #myNavbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li.active
-              a(href='#{url}') Home
+              a(href='/') Home
           ul.nav.navbar-nav.navbar-right
             if user
               li
@@ -73,3 +73,4 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js', data-no-instant='')
     script(data-no-instant='').
       InstantClick.init();
+    script(src='../javascripts/index.js')

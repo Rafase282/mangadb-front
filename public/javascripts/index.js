@@ -1,3 +1,4 @@
+var funHelper = require('../../routes/helpers');
 // Register new user.
 function regUser() {
     var username = document.forms["signUp"]["username"].value;
@@ -10,7 +11,7 @@ function regUser() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": base_url + "/api/users",
+        "url": process.env.API + "/users",
         "method": "POST",
         "headers": {
             "content-type": "application/x-www-form-urlencoded"
@@ -42,7 +43,7 @@ function logIn() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": base_url + "/api/auth",
+        "url": process.env.API + "/api/auth",
         "method": "POST",
         "headers": {
             "content-type": "application/x-www-form-urlencoded"
@@ -69,7 +70,7 @@ function getManga() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": base_url + "/api/mangas/" + username,
+        "url": process.env.API + "/api/mangas/" + username,
         "method": "GET",
         "headers": {
             "x-access-token": token

@@ -5,19 +5,22 @@ var sess;
 
 /* GET home page. */
 exports.getUserProfile = function(req, res) {
-    sess=req.session;
+    sess = req.session;
+    sess.url = '/user/' + sess.username;
+    sess.title = 'MangaDB: ' + sess.user;
     res.render('profile', {
-        title: 'MangaDB: ' + sess.user,
+        title: sess.title,
         user: sess.user,
-        userurl: '/user/' + sess.username
+        url: sess.url
     });
 };
 
 exports.getToken = function getToken(req, res) {
-    sess=req.session;
-    var username = sess.username = req.body.username;
+    sess = req.session;
+    var username = req.body.username;
     var password = req.body.password;
     sess.user = s.titleize(username);
+    sess.username = username;
     var options = {
         method: 'POST',
         url: process.env.API + '/auth',
@@ -32,9 +35,33 @@ exports.getToken = function getToken(req, res) {
 
     request(options, function(error, response, body) {
         if (error) throw new Error(error);
-        body = JSON.parse(body);
-        funHelper.setToken('token', body.token);
-        funHelper.setToken('MangaReader', sess.user);
+        console.log(body);
+        sess.token = JSON.parse(body).token;
+        res.setHeader("x-access-token", sess.token);
+        //funHelper.setToken('token', sess.token);
+        //funHelper.setToken('MangaReader', sess.user);
         res.redirect('/user/' + username);
     });
+};
+
+exports.getMangas = function getMangas(req, res) {
+    sess = req.session;
+    var options = {
+        method: 'GET',
+        url: process.env.API + '/mangas/' + sess.user,
+        headers: {
+            'x-access-token': sess.token
+        }
+    };
+
+    request(options, function(error, response, body) {
+        if (error) throw new Error(error);
+
+        funHelper.clean();
+        body.map(function(manga) {
+            var html = funHelper.mangaInfo(manga);
+            $(".mangas").append(html);
+        });
+    });
+
 };

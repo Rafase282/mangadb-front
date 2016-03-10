@@ -42,8 +42,6 @@ exports.getLogOut = function(req, res) {
     sess.url = '/';
     sess.title = 'MangaDB';
     sess.user = null;
-    res.render('index', {
-        title: sess.title,
-        url: sess.url
-    });
+    sess.token = null;
+    res.redirect(sess.url);
 };
