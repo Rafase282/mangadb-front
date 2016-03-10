@@ -6,38 +6,44 @@ var sess;
 exports.getHome = function(req, res) {
     sess=req.session;
     res.render('index', {
-        title: 'MangaDB',
+        title: sess.title,
         user: sess.user,
-        userurl: '/'
+        url: sess.url || '/'
     });
 };
 
 /* GET login page. */
 exports.getLogIn = function(req, res) {
     sess=req.session;
+    sess.url = '/';
+    sess.user = null;
+    sess.title = 'MangaDB: Log In';
     res.render('login', {
-        title: 'MangaDB: Log In',
-        user: req.body.user,
-        userurl: '/'
+        title: sess.title,
+        url: sess.url
     });
 };
 
 /* GET register page. */
 exports.getSignUp = function(req, res) {
     sess=req.session;
+    sess.url = '/';
+    sess.user = null;
+    sess.title = 'MangaDB: Register';
     res.render('signup', {
-        title: 'MangaDB: Register',
-        user: req.user,
-        userurl: '/'
+        title: sess.title,
+        url: sess.url
     });
 };
 
 /* GET home page after loggin out. */
 exports.getLogOut = function(req, res) {
     sess=req.session;
+    sess.url = '/';
+    sess.title = 'MangaDB';
+    sess.user = null;
     res.render('index', {
-        title: 'MangaDB',
-        user: sess.user,
-        userurl: '/'
+        title: sess.title,
+        url: sess.url
     });
 };

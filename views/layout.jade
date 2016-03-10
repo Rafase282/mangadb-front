@@ -27,13 +27,13 @@ html
             span.icon-bar
             span.icon-bar
           if user
-            a.navbar-brand(href='/user/#{user}') #{user}
+            a.navbar-brand(href='#{url}') #{user}
           else
             a.navbar-brand MangaDB
         #myNavbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li.active
-              a(href='#{userurl}') Home
+              a(href='#{url}') Home
           ul.nav.navbar-nav.navbar-right
             if user
               li
