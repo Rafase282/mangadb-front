@@ -33,7 +33,6 @@ function mangaInfo(manga) {
 function getManga() {
     //var token = window.localStorage.getItem("token");
     //var username = window.localStorage.getItem("MangaReader");
-    console.log(api, user);
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -109,5 +108,50 @@ function findManga() {
         clean();
         var html = mangaInfo(manga);
         $(".mangas").append(html);
+    });
+}
+
+// Create new Mana
+
+function createManga() {
+    var title;
+    var author;
+    var url;
+    var userStatus;
+    var type;
+    var categories;
+    var chapter;
+    var seriesStatus;
+    var plot;
+    var altName;
+    var direction;
+    var thumbnail;
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": api + "/mangas/" + user,
+        "method": "POST",
+        "headers": {
+            "x-access-token": token,
+            "content-type": "application/x-www-form-urlencoded"
+        },
+        "data": {
+            "title": "The God of High School",
+            "author": "PARK Yong Je",
+            "url": "http://www.readmanga.today/the-god-of-high-school",
+            "userStatus": "reading",
+            "type": "Japanese",
+            "categories": "Action, Adventure, Comedy, Martial Arts, Shounen",
+            "chapter": "249",
+            "seriesStatus": "Ongoing",
+            "plot": "While an island half-disappearing from the face of the earth, a mysterious organization is sending out invitations for a tournament to every skilled fighter in the world. “If you win you can have ANYTHING you want”They’re recruiting only the best to fight the best and claim the title of The God of high school!",
+            "altName": "God of Highschool, GoH",
+            "direction": "Right to Left",
+            "thumbnail": "http://www.readmanga.today/uploads/posters/the-god-of-high-school.jpg"
+        }
+    };
+
+    $.ajax(settings).done(function(response) {
+        console.log(response);
     });
 }
