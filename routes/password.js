@@ -24,3 +24,19 @@ exports.getReset = function(req, res) {
         url: sess.url
     });
 };
+
+/* HANDLE PASSWORD RECOVERY */
+exports.postForgot = function(req, res) {
+    sess=req.session;
+    sess.url = '/';
+    sess.user = null;
+    sess.title = 'MangaDB: Reset Password';
+};
+
+/* HANDLE RESET ACTIONS */
+exports.postReset = function(req, res) {
+    sess=req.session;
+    sess.url = '/';
+    sess.user = null;
+    sess.title = 'MangaDB: Reset Password';
+};
