@@ -1,6 +1,43 @@
 extends layout
 block content
   body
+    section
+      .container-fluid
+        .row
+          .col-sm-4.col-xs-1
+          .col-sm-4.col-xs-1
+            ul.nav.nav-tabs
+              li.active
+                a(data-toggle='tab', href='#all') All Mangas
+              li
+                a(data-toggle='tab', href='#current') Currently Reading
+              li
+                a(data-toggle='tab', href='#done') Done Reading
+              li
+                a(data-toggle='tab', href='#willread') Will Read
+            .tab-content
+              form.search-form(action='')
+                .form-group.has-feedback
+                  label.sr-only(for='search') Search
+                  input#search.form-control(type='text', name='search', placeholder='search')
+                  span.glyphicon.glyphicon-search.form-control-feedback
+              #all.tab-pane.fade.in.active
+                h3 All Mangas
+                div
+                  ul.list
+              #current.tab-pane.fade
+                h3 Currently Reading
+                div
+                  ul.list2
+              #done.tab-pane.fade
+                h3 Done Reading
+                div
+                  ul.list3
+              #willread.tab-pane.fade
+                h3 Will Read
+                div
+                  ul.list4
+              .col-sm-4.col-xs-1
     .form.main
       h1 Welcome #{user}
       br
