@@ -10,6 +10,9 @@ var session = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var password = require('./routes/password');
+var funHelper = require('./routes/helpers');
+var mangas = require('./routes/mangas');
+var admin = require('./routes/admin');
 require('dotenv').config({
   silent: true
 });
@@ -56,27 +59,47 @@ router.route('/')
 // Get login form
 router.route('/login')
   .get(routes.getLogIn)
-  .post(users.getToken);
+  .post(routes.getToken);
   
 // Get the home page after loggign out
 router.route('/logout')
-  .get(routes.getLogOut);
+  .get(routes.LogOut);
   
 // Get the forgotten password page
 router.route('/forgot')
-  .get(password.getForgot);
+  .get(password.getForgot)
+  .post(password.postForgot);
   
 // Get the reset password page
 router.route('/reset')
-  .get(password.getReset);
+  .get(password.getReset)
+  .post(password.postReset);
   
 // Get the registration page
 router.route('/signup')
-  .get(routes.getSignUp);
+  .get(routes.getSignUp)
+  .post(users.createUser);
 
-// Get the registration page
+// User area
 router.route('/user/:user')
-  .get(users.getUserProfile);
+  .get(funHelper.isAuthenticated, users.getUserProfile)  // Get user profile with all mangas
+  .post(funHelper.isAuthenticated, users.otherActions)   // Other required actions
+  .put(funHelper.isAuthenticated, users.updateUser)     // Update User Info
+  .delete(funHelper.isAuthenticated, users.deleteUser); // Delete Account
+  
+// User area
+router.route('/user/:user/manga')
+  .post(funHelper.isAuthenticated, mangas.createManga)    // Create new manga
+  .put(funHelper.isAuthenticated, mangas.updateManga)     // Update Manga
+  .delete(funHelper.isAuthenticated, mangas.deleteManga); // Delete manga
+  
+  
+// Admin area
+router.route('/admin')
+  .get(funHelper.isAuthenticated, admin.getUsersProfiles) // Get list of users
+  .put(funHelper.isAuthenticated, users.updateUser)       // Update User
+  .post(funHelper.isAuthenticated, users.deleteUser)      // Delete user
+  .delete(funHelper.isAuthenticated, admin.deleteUsers);  // Delete Users
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

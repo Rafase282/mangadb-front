@@ -1,5 +1,5 @@
-/* This file handles all user interactions
- * from creating a new user to deleting it
+/* This file handles all manga interactions
+ * from creating a new manga to deleting it
  * and anythign in between.
  */
 
@@ -8,51 +8,46 @@ var request = require("request");
 var funHelper = require('./helpers');
 var sess;
 
-/* GET USER PROFILE */
-exports.getUserProfile = function(req, res) {
-    sess = req.session;
-    sess.url = '/user/' + sess.username;
-    sess.title = 'MangaDB: ' + sess.user;
-    sess.api = process.env.API;
-    res.render('profile', funHelper.jadeObj(sess));
-};
-
-/* CREATE NEW USER */
-exports.createUser = function(req, res) {
+/* GET ALL MANGAS FOR CURRENT USER */
+exports.getMangas = function(req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
     var options = {
-        method: 'POST',
-        url: sess.api + '/users',
+        method: 'GET',
+        url: process.env.API + '/mangas/' + sess.user,
         headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-        },
-        form: funHelper.userObj(req)
+            'x-access-token': sess.token
+        }
     };
 
     request(options, function(error, response, body) {
         if (error) throw new Error(error);
 
-        console.log(body);
+        funHelper.clean();
+        body.map(function(manga) {
+            var html = funHelper.mangaInfo(manga);
+            $(".mangas").append(html);
+        });
     });
+
 };
 
-/* UPDATE USER INFO */
-exports.updateUser = function(req, res) {
+/* UPDATE MANGA */
+exports.updateManga = function(req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
     var options = {
         method: 'PUT',
-        url: sess.api + '/users/' + sess.username,
+        url: sess.api + '/mangas/' + sess.username + '/' + req.body.title,
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
             'x-access-token': sess.token
         },
-        form: funHelper.userObj(req)
+        form: funHelper.mangaObj(req)
     };
 
     request(options, function(error, response, body) {
@@ -63,16 +58,17 @@ exports.updateUser = function(req, res) {
 
 };
 
-/* DELETE USER ACCOUNT */
-exports.deleteUser = function(req, res) {
+/* DELETE MANGA */
+exports.deleteManga = function(req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
     var options = {
         method: 'DELETE',
-        url: sess.api + '/users/' + sess.username,
+        url: sess.api + '/mangas/' + sess.username + '/' + req.body.title,
         headers: {
+            'content-type': 'application/x-www-form-urlencoded',
             'x-access-token': sess.token
         }
     };
@@ -83,11 +79,25 @@ exports.deleteUser = function(req, res) {
         console.log(body);
     });
 
-
 };
 
-/* OTHER ACTIONS NEEDED */
-exports.otherActions = function(req, res) {
+/* CREATE MANGA */
+exports.createManga = function(req, res) {
     sess = req.session;
+    var options = {
+        method: 'POST',
+        url: sess.api + '/mangas/' + sess.username,
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'x-access-token': sess.token
+        },
+        form: funHelper.mangaObj(req)
+    };
+
+    request(options, function(error, response, body) {
+        if (error) throw new Error(error);
+
+        console.log(body);
+    });
 
 };
