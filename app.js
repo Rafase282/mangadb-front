@@ -18,7 +18,8 @@ var app = express();
 app.use(session({
   secret: process.env.secret,
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: { maxAge: 3600000 }
 }));
 app.use(flash());
 
@@ -47,8 +48,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var router = express.Router();
 app.use('/', router);
-
-var sess;
 
 // Get the home page
 router.route('/')
