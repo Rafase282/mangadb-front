@@ -1,10 +1,9 @@
 extends layout
 block content
   body
-    section
+    section.area
       .container-fluid
         .row
-          .col-sm-4.col-xs-1
           .col-sm-4.col-xs-1
             ul.nav.nav-tabs
               li.active
@@ -22,23 +21,22 @@ block content
                   input#search.form-control(type='text', name='search', placeholder='search')
                   span.glyphicon.glyphicon-search.form-control-feedback
               #all.tab-pane.fade.in.active
-                h3 All Mangas
+                h3.center-text All Mangas
                 div
                   ul.list
               #current.tab-pane.fade
-                h3 Currently Reading
+                h3.center-text Currently Reading
                 div
                   ul.list2
               #done.tab-pane.fade
-                h3 Done Reading
+                h3.center-text Done Reading
                 div
                   ul.list3
               #willread.tab-pane.fade
-                h3 Will Read
+                h3.center-text Will Read
                 div
                   ul.list4
-              .col-sm-4.col-xs-1
-    .form.main
+    .area.main
       h1 Welcome #{user}
       br
       br
