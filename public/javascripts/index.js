@@ -1,3 +1,4 @@
+var mangaArray;
 // Retrieves the token from local storage and returns it.
 function getPrevManga() {
     return JSON.parse(window.localStorage.getItem("prevManga"));
@@ -10,7 +11,7 @@ function clean() {
 
 // Retires the manga information and turns it into html and returns it
 function mangaInfo(manga) {
-    var title = '<h1>' + window.s.titleize(manga.title) + '</h1>';
+    var title = '<h1 class="mangaTitle">' + window.s.titleize(manga.title) + '</h1>';
     var photo = '<img class="thumbnail" src="' + manga.thumbnail + '"</img>';
     var author = '<span id="author"> <strong>Author:</strong> ' + window.s.titleize(manga.author) + '</span>';
     var status = '<span id="status"> <strong>Status:</strong> ' + window.s.humanize(manga.seriesStatus) + '</span>';
@@ -78,21 +79,49 @@ function oneUp() {
 
 // Finds manga by title
 function findManga() {
-  var manga = encodeURI(document.getElementById('manga').value.toLowerCase());
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": api + "/mangas/" + user + "/" + manga,
-    "method": "GET",
-    "headers": {
-      "x-access-token": token
-    }
-  };
+    var manga = encodeURI(document.getElementById('manga').value.toLowerCase());
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": api + "/mangas/" + user + "/" + manga,
+        "method": "GET",
+        "headers": {
+            "x-access-token": token
+        }
+    };
 
-  $.ajax(settings).done(function(manga) {
-    window.localStorage.setItem('prevManga', JSON.stringify(manga));
-    clean();
-    var html = mangaInfo(manga);
-    $(".list").append(html);
-  });
+    $.ajax(settings).done(function(manga) {
+        window.localStorage.setItem('prevManga', JSON.stringify(manga));
+        clean();
+        var html = mangaInfo(manga);
+        $(".list").append(html);
+    });
 }
+
+// CODE FOR THE SEARCH BAR
+function search() {
+    if ($('#search').val().length > 0) {
+        // Display matching names by hiding anything that is not what we want from the  class= "user"
+        var reg = new RegExp($('#search').val(), 'ig');
+        $('.mangaTitle').css('display', 'none');
+
+        for (var a in AccInfo) {
+            if (reg.test(AccInfo[a].name)) {
+                $('.' + AccInfo[a].name).css('display', 'block');
+            }
+        }
+    }
+    else if ($('#search').val().length < 1) {
+        // display everything again
+        $('.mangaTitle').css('display', 'block');
+    }
+
+    $('#search').unbind('keyup');
+    $('#search').keyup(function() {
+        search();
+    });
+}
+
+$('#search').keyup(function() {
+    search();
+});
