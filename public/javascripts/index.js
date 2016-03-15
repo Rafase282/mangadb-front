@@ -19,20 +19,59 @@ function mangaInfo(manga) {
     var panelClass = 'panel-' + window.s.slugify(manga.title);
 
     var title = '<h1>' + window.s.titleize(manga.title) + '</h1>';
-    var photo = '<img class="thumbnail" src="' + manga.thumbnail + '"</img>';
-    var author = '<span id="author"> <strong>Author:</strong> ' + window.s.titleize(manga.author) + '</span>';
-    var status = '<span id="status"> <strong>Status:</strong> ' + window.s.humanize(manga.seriesStatus) + '</span>';
-    var userStats = '<span id="userStats"> <strong>My Status:</strong> ' + window.s.humanize(manga.userStatus) + '</span>';
-    var chapter = '<span id="chapter"> <strong>Current Chapter:</strong> <a class="C' + window.s.slugify(manga.title) + '" href="' + manga.url + '" target="_blank">' + manga.chapter + '</a></span><br>';
-    var type = '<span id="type"> <strong>Type:</strong> ' + window.s.humanize(manga.type) + '</span>';
-    var direction = '<span id="direction"> <strong>Reading Direction:</strong> ' + window.s.titleize(manga.direction) + '</span>';
-    var altName = '<span id="altName"> <strong>Other Names:</strong> ' + window.s.titleize(window.s.toSentence(manga.altName, ", ", ", ")) + '</span>';
-    var categories = '<span id="categories"> <strong>Categories:</strong> ' + window.s.titleize(window.s.toSentence(manga.categories, ", ", ", ")) + '</span>';
-    var plot = '<p id="plot"> <strong>Plot:</strong> ' + window.s.humanize(manga.plot) + '</p>';
-    var addOne = '<input type="submit" class="' + inputClass + '" data-title="' + manga.title + '" data-chapter="' + manga.chapter + '" value="Chapter 1+" onclick="oneUp()"/>';
-    var del = '<input type="submit" value="Delete Manga" onclick="window.location.href="/delete""/>';
-    var update = '<input type="submit" value="Update Manga" onclick="window.location.href="/update""/>';
-    var html = '<div class="manga-panel ' + panelClass + ' tg-wrap"><table><tr><th colspan="3">' + title + '</th></tr><tr><td rowspan="4">' + photo + '</td><td>' + status + '</td><td>' + userStats + '</td></tr><tr><td>' + author + '</td><td>' + direction + '</td></tr><tr><td>' + chapter + '</td><td>' + type + '</td></tr><tr><td>' + categories + '</td><td>' + altName + '</td></tr><tr><td colspan="3">' + plot + '<br>' + addOne + del + update + '</td></tr></table></div>';
+
+    var photo = '<img class="thumbnail" src="' + manga.thumbnail +
+        '"</img>';
+
+    var author = '<span id="author"> <strong>Author:</strong> ' +
+        window.s.titleize(manga.author) + '</span>';
+
+    var status = '<span id="status"> <strong>Status:</strong> ' +
+        window.s.humanize(manga.seriesStatus) + '</span>';
+
+    var userStats = '<span id="userStats"> <strong>My Status:</strong> ' +
+        window.s.humanize(manga.userStatus) + '</span>';
+
+    var chapter = '<span id="chapter"> <strong>Current Chapter:</strong>' +
+        '<a class="C' + window.s.slugify(manga.title) + '" href="' +
+        manga.url + '" target="_blank">' + manga.chapter + '</a></span><br>';
+
+    var type = '<span id="type"> <strong>Type:</strong> ' +
+        window.s.humanize(manga.type) + '</span>';
+
+    var direction = '<span id="direction"><strong>Reading Direction:</strong> '
+        + window.s.titleize(manga.direction) + '</span>';
+
+    var altName = '<span id="altName"> <strong>Other Names:</strong> ' +
+        window.s.titleize(window.s.toSentence(manga.altName, ", ", ", ")) +
+        '</span>';
+
+    var categories = '<span id="categories"> <strong>Categories:</strong> ' +
+        window.s.titleize(window.s.toSentence(manga.categories, ", ", ", ")) +
+        '</span>';
+
+    var plot = '<p id="plot"> <strong>Plot:</strong> ' +
+        window.s.humanize(manga.plot) + '</p>';
+
+    var addOne = '<input type="submit" class="' + inputClass +
+        '" data-title="' + manga.title + '" data-chapter="' + manga.chapter +
+        '" value="Chapter 1+" onclick="oneUp()"/>';
+
+    var del = '<input type="submit" value="Delete Manga"' +
+        ' onclick="window.location.href="/delete""/>';
+
+    var update = '<input type="submit" value="Update Manga"' +
+        ' onclick="window.location.href="/update""/>';
+
+    var html = '<div class="manga-panel ' + panelClass +
+        ' tg-wrap"><table><tr><th colspan="3">' + title +
+        '</th></tr><tr><td rowspan="4">' + photo + '</td><td>' + status +
+        '</td><td>' + userStats + '</td></tr><tr><td>' + author +
+        '</td><td>' + direction + '</td></tr><tr><td>' + chapter +
+        '</td><td>' + type + '</td></tr><tr><td>' + categories +
+        '</td><td>' + altName + '</td></tr><tr><td colspan="3">' + plot +
+        '<br>' + addOne + del + update + '</td></tr></table></div>';
+
     return html;
 }
 
@@ -134,7 +173,8 @@ function search() {
 
         for (var manga in mangaArray) {
             if (reg.test(mangaArray[manga].title)) {
-                $('.panel-' + window.s.slugify(mangaArray[manga].title)).css('display', 'block');
+                $('.panel-' + window.s.slugify(mangaArray[manga].title))
+                    .css('display', 'block');
             }
         }
     }
