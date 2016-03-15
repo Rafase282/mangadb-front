@@ -1,8 +1,4 @@
-var mangaArray = [];
-// Retrieves the token from local storage and returns it.
-function getPrevManga() {
-    return JSON.parse(window.localStorage.getItem("prevManga"));
-}
+var mangaArray = {};
 
 // Removes manga from display
 function clean() {
@@ -16,15 +12,17 @@ function mangaInfo(manga) {
     var author = '<span id="author"> <strong>Author:</strong> ' + window.s.titleize(manga.author) + '</span>';
     var status = '<span id="status"> <strong>Status:</strong> ' + window.s.humanize(manga.seriesStatus) + '</span>';
     var userStats = '<span id="userStats"> <strong>My Status:</strong> ' + window.s.humanize(manga.userStatus) + '</span>';
-    var chapter = '<span id="chapter"> <strong>Current Chapter:</strong> <a href="' + manga.url + '" target="_blank">' + manga.chapter + '</a></span><br>';
+    var chapter = '<span id="chapter"> <strong>Current Chapter:</strong> <a class="C' + window.s.slugify(manga.title) + '" href="' + manga.url + '" target="_blank">' + manga.chapter + '</a></span><br>';
     var type = '<span id="type"> <strong>Type:</strong> ' + window.s.humanize(manga.type) + '</span>';
     var direction = '<span id="direction"> <strong>Reading Direction:</strong> ' + window.s.titleize(manga.direction) + '</span>';
     var altName = '<span id="altName"> <strong>Other Names:</strong> ' + window.s.titleize(window.s.toSentence(manga.altName, ", ", ", ")) + '</span>';
     var categories = '<span id="categories"> <strong>Categories:</strong> ' + window.s.titleize(window.s.toSentence(manga.categories, ", ", ", ")) + '</span>';
     var plot = '<p id="plot"> <strong>Plot:</strong> ' + window.s.humanize(manga.plot) + '</p>';
-    var html = '<div class="manga-panel ' + window.s.slugify(manga.title) + ' tg-wrap"><table><tr><th colspan="3">' + title + '</th></tr><tr><td rowspan="4">' + photo + '</td><td>' + status + '</td><td>' + userStats + '</td></tr><tr><td>' + author + '</td><td>' + direction + '</td></tr><tr><td>' + chapter + '</td><td>' + type + '</td></tr><tr><td>' + categories + '</td><td>' + altName + '</td></tr><tr><td colspan="3">' + plot + '</td></tr></table></div>';
+    var addOne = '<input type="submit" class="M' + window.s.slugify(manga.title) + '" data-title="' + manga.title + '" data-chapter="' + manga.chapter + '" value="Chapter 1+" onclick="oneUp()"/>';
+    var del = '<input type="submit" value="Delete Manga" onclick="window.location.href="/delete""/>';
+    var update = '<input type="submit" value="Update Manga" onclick="window.location.href="/update""/>';
+    var html = '<div class="manga-panel ' + window.s.slugify(manga.title) + ' tg-wrap"><table><tr><th colspan="3">' + title + '</th></tr><tr><td rowspan="4">' + photo + '</td><td>' + status + '</td><td>' + userStats + '</td></tr><tr><td>' + author + '</td><td>' + direction + '</td></tr><tr><td>' + chapter + '</td><td>' + type + '</td></tr><tr><td>' + categories + '</td><td>' + altName + '</td></tr><tr><td colspan="3">' + plot + '<br>' + addOne + del + update + '</td></tr></table></div>';
     return html;
-
 }
 
 function createManga(title, author, url, userStatus, type, categories, chapter, seriesStatus, plot, altName, direction, thumbnail) {
@@ -45,7 +43,7 @@ function createManga(title, author, url, userStatus, type, categories, chapter, 
 // FORM FUNCTIONS
 
 // Displays all mangas for current user.
-$(document).ready(function() {
+function getMangas() {
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -60,7 +58,7 @@ $(document).ready(function() {
         clean();
         data.map(function(manga) {
             var newManga = new createManga(manga.title, manga.author, manga.url, manga.userStatus, manga.type, manga.categories, manga.chapter, manga.seriesStatus, manga.plot, manga.altName, manga.direction, manga.thumbnail)
-            mangaArray.push(newManga);
+            mangaArray[manga.title] = newManga;
             var html = mangaInfo(newManga);
             if (newManga.userStatus === 'reading') {
                 $(".list2").append(html);
@@ -72,54 +70,38 @@ $(document).ready(function() {
                 $(".list4").append(html);
             }
             $(".list").append(html);
-
         });
     });
-});
+};
+
+$(document).ready(getMangas);
 
 // Updates manga, currenlty increase manga chapter by one.
 function oneUp() {
-    var manga = encodeURI(document.getElementById('manga').value.toLowerCase());
-    var prevManga = getPrevManga();
+    var manga = document.getElementsByClassName('M' + window.s.slugify(manga.dataset.title));
+    var newChapter = +manga.dataset.chapter + 1;
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": api + "/mangas/" + user + "/" + manga,
+        "url": api + "/mangas/" + user.toLowerCase() + "/" + encodeURIComponent(manga.dataset.title),
         "method": "PUT",
         "headers": {
             "x-access-token": token,
             "content-type": "application/x-www-form-urlencoded"
         },
         "data": {
-            "chapter": prevManga.chapter + 1
+            "chapter": newChapter
         }
     };
 
     $.ajax(settings).done(function(response) {
-        clean();
-        window.localStorage.setItem('prevManga', manga);
-        findManga();
-    });
-}
-
-// Finds manga by title
-function findManga() {
-    var manga = encodeURI(document.getElementById('manga').value.toLowerCase());
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": api + "/mangas/" + user + "/" + manga,
-        "method": "GET",
-        "headers": {
-            "x-access-token": token
-        }
-    };
-
-    $.ajax(settings).done(function(manga) {
-        window.localStorage.setItem('prevManga', JSON.stringify(manga));
-        clean();
-        var html = mangaInfo(manga);
-        $(".list").append(html);
+        // Update chapter number in place
+        console.log(manga.dataset.title)
+        mangaArray[manga.dataset.title].chapter = newChapter;
+        var classTitle = '.C' + window.s.slugify(manga.dataset.title);
+        console.log(classTitle);
+        $(classTitle).text(mangaArray[manga.dataset.title].chapter);
+        console.log(mangaArray[manga.dataset.title].chapter);
     });
 }
 
