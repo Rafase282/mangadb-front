@@ -4,16 +4,16 @@ block content
     section.area
       .container-fluid
         .row
-          .col-sm-4.col-xs-1
+          .col-xs-12
             ul.nav.nav-tabs
-              li.active
-                a(data-toggle='tab', href='#all') All Mangas
-              li
-                a(data-toggle='tab', href='#current') Currently Reading
-              li
-                a(data-toggle='tab', href='#done') Done Reading
-              li
-                a(data-toggle='tab', href='#willread') Will Read
+              li.col-xs-12.col-sm-6.col-md-3.active
+                a.center-text(data-toggle='tab', href='#all') All Mangas
+              li.col-xs-12.col-sm-6.col-md-3
+                a.center-text(data-toggle='tab', href='#current') Currently Reading
+              li.col-xs-12.col-sm-6.col-md-3
+                a.center-text(data-toggle='tab', href='#done') Done Reading
+              li.col-xs-12.col-sm-6.col-md-3
+                a.center-text(data-toggle='tab', href='#willread') Will Read
             .tab-content
               form.search-form(action='')
                 .form-group.has-feedback
@@ -52,4 +52,4 @@ block content
       input(type='submit', value='Update Manga', onclick="window.location.href='/update'")
       input(type='submit', value='Delete Manga', onclick="window.location.href='/delete'")
       input(type='submit', value='Delete Account', onclick="window.location.href='/user/#{user}/delete'")
-    section#manga-area.mangas
+    section#push

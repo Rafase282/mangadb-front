@@ -62,7 +62,7 @@ body {
 
 .main {
   padding-top: 25px;
-  margin-top: 200px; }
+  margin-top: 20px; }
 
 .main h1 {
   margin-top: 0; }
@@ -103,7 +103,7 @@ a {
   padding-bottom: 25px; }
 
 #push {
-  padding-bottom: 25px; }
+  padding-bottom: 50px; }
 
 .opacity {
   background: rgba(0, 0, 25, 0.7);
@@ -118,7 +118,8 @@ a {
   background: rgba(19, 35, 47, 0.9);
   padding: 20px;
   max-width: 80%;
-  margin: 2% auto;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
   color: white; }
@@ -206,7 +207,7 @@ a {
     color: #a0b3b0;
     font-size: 20px;
     float: left;
-    width: 50%;
+    width: 100%;
     text-align: center;
     cursor: pointer;
     transition: .5s ease; }
@@ -311,7 +312,8 @@ textarea {
 
 /* TABS STYLES */
 .list {
-  list-style: none; }
+  list-style: none;
+  padding: 0; }
 
 .list div {
   display: list-item; }

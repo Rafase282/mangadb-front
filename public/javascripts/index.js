@@ -46,7 +46,7 @@ $(document).ready(function() {
         clean();
         data.map(function(manga) {
             var html = mangaInfo(manga);
-            $(".mangas").append(html);
+            $(".list").append(html);
         });
     });
 });
