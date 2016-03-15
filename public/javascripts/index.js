@@ -1,4 +1,4 @@
-var mangaArray;
+var mangaArray = [];
 // Retrieves the token from local storage and returns it.
 function getPrevManga() {
     return JSON.parse(window.localStorage.getItem("prevManga"));
@@ -11,7 +11,7 @@ function clean() {
 
 // Retires the manga information and turns it into html and returns it
 function mangaInfo(manga) {
-    var title = '<h1 class="mangaTitle">' + window.s.titleize(manga.title) + '</h1>';
+    var title = '<h1>' + window.s.titleize(manga.title) + '</h1>';
     var photo = '<img class="thumbnail" src="' + manga.thumbnail + '"</img>';
     var author = '<span id="author"> <strong>Author:</strong> ' + window.s.titleize(manga.author) + '</span>';
     var status = '<span id="status"> <strong>Status:</strong> ' + window.s.humanize(manga.seriesStatus) + '</span>';
@@ -22,17 +22,30 @@ function mangaInfo(manga) {
     var altName = '<span id="altName"> <strong>Other Names:</strong> ' + window.s.titleize(window.s.toSentence(manga.altName, ", ", ", ")) + '</span>';
     var categories = '<span id="categories"> <strong>Categories:</strong> ' + window.s.titleize(window.s.toSentence(manga.categories, ", ", ", ")) + '</span>';
     var plot = '<p id="plot"> <strong>Plot:</strong> ' + window.s.humanize(manga.plot) + '</p>';
-    var html = '<div class="manga-panel tg-wrap"><table><tr><th colspan="3">' + title + '</th></tr><tr><td rowspan="4">' + photo + '</td><td>' + status + '</td><td>' + userStats + '</td></tr><tr><td>' + author + '</td><td>' + direction + '</td></tr><tr><td>' + chapter + '</td><td>' + type + '</td></tr><tr><td>' + categories + '</td><td>' + altName + '</td></tr><tr><td colspan="3">' + plot + '</td></tr></table></div>';
+    var html = '<div class="manga-panel ' + window.s.slugify(manga.title) + ' tg-wrap"><table><tr><th colspan="3">' + title + '</th></tr><tr><td rowspan="4">' + photo + '</td><td>' + status + '</td><td>' + userStats + '</td></tr><tr><td>' + author + '</td><td>' + direction + '</td></tr><tr><td>' + chapter + '</td><td>' + type + '</td></tr><tr><td>' + categories + '</td><td>' + altName + '</td></tr><tr><td colspan="3">' + plot + '</td></tr></table></div>';
     return html;
 
 }
+
+function createManga(title, author, url, userStatus, type, categories, chapter, seriesStatus, plot, altName, direction, thumbnail) {
+    this.title = title,
+        this.author = author,
+        this.url = url,
+        this.userStatus = userStatus,
+        this.type = type,
+        this.categories = categories,
+        this.chapter = chapter,
+        this.seriesStatus = seriesStatus,
+        this.plot = plot,
+        this.altName = altName,
+        this.direction = direction,
+        this.thumbnail = thumbnail
+};
 
 // FORM FUNCTIONS
 
 // Displays all mangas for current user.
 $(document).ready(function() {
-    //var token = window.localStorage.getItem("token");
-    //var username = window.localStorage.getItem("MangaReader");
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -46,8 +59,20 @@ $(document).ready(function() {
     $.ajax(settings).done(function(data) {
         clean();
         data.map(function(manga) {
-            var html = mangaInfo(manga);
+            var newManga = new createManga(manga.title, manga.author, manga.url, manga.userStatus, manga.type, manga.categories, manga.chapter, manga.seriesStatus, manga.plot, manga.altName, manga.direction, manga.thumbnail)
+            mangaArray.push(newManga);
+            var html = mangaInfo(newManga);
+            if (newManga.userStatus === 'reading') {
+                $(".list2").append(html);
+            }
+            else if (newManga.userStatus === 'finished') {
+                $(".list3").append(html);
+            }
+            else if (newManga.userStatus === 'will read') {
+                $(".list4").append(html);
+            }
             $(".list").append(html);
+
         });
     });
 });
@@ -103,17 +128,17 @@ function search() {
     if ($('#search').val().length > 0) {
         // Display matching names by hiding anything that is not what we want from the  class= "user"
         var reg = new RegExp($('#search').val(), 'ig');
-        $('.mangaTitle').css('display', 'none');
+        $('.manga-panel').css('display', 'none');
 
-        for (var a in AccInfo) {
-            if (reg.test(AccInfo[a].name)) {
-                $('.' + AccInfo[a].name).css('display', 'block');
+        for (var manga in mangaArray) {
+            if (reg.test(mangaArray[manga].title)) {
+                $('.' + window.s.slugify(mangaArray[manga].title)).css('display', 'block');
             }
         }
     }
     else if ($('#search').val().length < 1) {
         // display everything again
-        $('.mangaTitle').css('display', 'block');
+        $('.manga-panel').css('display', 'block');
     }
 
     $('#search').unbind('keyup');
