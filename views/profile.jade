@@ -15,10 +15,10 @@ block content
               li.col-xs-12.col-sm-6.col-md-3
                 a.center-text(data-toggle='tab', href='#willread') Will Read
             .tab-content
-              form.search-form(action='')
+              form.search-form.clearfix(action='')
                 .form-group.has-feedback
                   label.sr-only(for='search') Search
-                  input#search.form-control(type='text', name='search', placeholder='search')
+                  input#search.form-control(type='text', name='search', placeholder='Search for your Manga')
                   span.glyphicon.glyphicon-search.form-control-feedback
               #all.tab-pane.fade.in.active
                 h3.center-text All Mangas
@@ -45,7 +45,6 @@ block content
       br
       |  Manga Name:
       input#manga(type='text', name='manga', value='Terra Formars')
-      input(type='submit', value='List All Mangas', onclick='getManga()')
       input(type='submit', value='Find Manga by Title', onclick='findManga()')
       input(type='submit', value='Increase Chapter', onclick='oneUp()')
       input(type='submit', value='Create New Manga', onclick="window.location.href='/new'")

@@ -5,7 +5,7 @@ function getPrevManga() {
 
 // Removes manga from display
 function clean() {
-    $(".mangas").empty();
+    $(".list").empty();
 }
 
 // Retires the manga information and turns it into html and returns it
@@ -74,4 +74,25 @@ function oneUp() {
         window.localStorage.setItem('prevManga', manga);
         findManga();
     });
+}
+
+// Finds manga by title
+function findManga() {
+  var manga = encodeURI(document.getElementById('manga').value.toLowerCase());
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": api + "/mangas/" + user + "/" + manga,
+    "method": "GET",
+    "headers": {
+      "x-access-token": token
+    }
+  };
+
+  $.ajax(settings).done(function(manga) {
+    window.localStorage.setItem('prevManga', JSON.stringify(manga));
+    clean();
+    var html = mangaInfo(manga);
+    $(".list").append(html);
+  });
 }

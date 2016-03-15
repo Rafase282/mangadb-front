@@ -192,7 +192,7 @@ a {
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); }
 
 .tab-group {
-  list-style: none;
+  list-style: nonez;
   padding: 0;
   margin: 0 0 40px 0; }
   .tab-group:after {
@@ -207,7 +207,7 @@ a {
     color: #a0b3b0;
     font-size: 20px;
     float: left;
-    width: 100%;
+    width: 80%;
     text-align: center;
     cursor: pointer;
     transition: .5s ease; }
@@ -329,7 +329,8 @@ section a {
   background-color: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
   border-radius: 25px;
-  border: 1px solid #ccc; }
+  border: 1px solid #ccc;
+  margin: 8px 0 0 0; }
 
 .search-form .form-group input.form-control {
   padding-right: 20px;
