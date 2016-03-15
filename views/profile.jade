@@ -40,12 +40,6 @@ block content
       h1 Welcome #{user}
       br
       br
-      input(type='submit', value='Clear', onclick='clean()')
-      br
-      br
-      |  Manga Name:
-      input#manga(type='text', name='manga', value='Terra Formars')
-      input(type='submit', value='Find Manga by Title', onclick='findManga()')
       input(type='submit', value='Create New Manga', onclick="window.location.href='/new'")
       input(type='submit', value='Delete Account', onclick="window.location.href='/user/#{user}/delete'")
     section#push
