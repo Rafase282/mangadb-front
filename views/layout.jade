@@ -3,18 +3,14 @@ html
   head
     meta(charset='UTF-8')
     title #{title}
-    //
-      Always force latest IE rendering engine (even in intranet) & Chrome Frame
-      Remove this if you use the .htaccess
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     meta(name='description', content='Save your Manga info')
     meta(name='author', content='Rafase282')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    // Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references
     link(rel='shortcut icon', href='favicon.ico')
     link(rel='apple-touch-icon', href='favicon.ico')
-    link(rel='stylesheet', href='../stylesheets/normalize.css')
-    link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css')
+    link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
     link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='../stylesheets/style.css')
     script(type='text/javascript').
@@ -22,7 +18,6 @@ html
       var user = '#{user}';
       var api = '#{api}';
   body
-      // Navigation bar, collapses and everything
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         .navbar-header
@@ -54,7 +49,6 @@ html
                   span#btn-hide.glyphicon.glyphicon-log-in
                   |  Login
     block content
-        // Footer
     footer
       p Copyright © Rafael J. Rodriguez 2016. All Rights Reserved
       p
@@ -72,8 +66,6 @@ html
           | (
           i.fa.fa-fire.fa-fw
           | )
-    script(src='')
-    script(src='')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.2.3/underscore.string.min.js')
