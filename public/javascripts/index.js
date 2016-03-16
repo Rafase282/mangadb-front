@@ -17,7 +17,7 @@ function clean() {
 function mangaInfo(manga) {
     var inputClass = 'input-' + window.s.slugify(manga.title);
     var panelClass = 'panel-' + window.s.slugify(manga.title);
-    var data = [inputClass, manga.title, manga.chapter];
+    var data = [inputClass, manga.title];
 
     var title = '<h1>' + window.s.titleize(manga.title) + '</h1>';
 
@@ -149,15 +149,17 @@ $(document).ready(getMangas);
  * Sends a PUT to the API with the new chapter number.
  */
 function oneUp(info) {
-    var manga = info.split(',');
-    //var manga = document.getElementsByClassName(className);
-    var newChapter = +manga[2] + 1;
+    var manga = info.split(',');  // Split string into array
+    var mangaClass = '.' + manga[0] + ':first';  // Select the first element
+    var mangaTitle = manga[1];
+    var chapter = +$(mangaClass).text();  // Get value as int
+    var newChapter = chapter + 1;  // increment chapter
 
     var settings = {
         "async": true,
         "crossDomain": true,
         "url": api + "/mangas/" + user + "/" +
-            encodeURIComponent(manga[1]),
+            encodeURIComponent(mangaTitle),
         "method": "PUT",
         "headers": {
             "x-access-token": token,
@@ -170,9 +172,8 @@ function oneUp(info) {
 
     $.ajax(settings).done(function (response) {
         // Update chapter number in place
-        mangaArray[manga[1]].chapter = newChapter;
-        var classTitle = '.' + manga[0];
-        $(classTitle).text(mangaArray[manga[1]].chapter);
+        mangaArray[mangaTitle].chapter = newChapter;
+        $(mangaClass).text(newChapter);
     });
 }
 
