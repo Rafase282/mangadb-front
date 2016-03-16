@@ -17,6 +17,7 @@ function clean() {
 function mangaInfo(manga) {
     var inputClass = 'input-' + window.s.slugify(manga.title);
     var panelClass = 'panel-' + window.s.slugify(manga.title);
+    var data = [inputClass, manga.title, manga.chapter];
 
     var title = '<h1>' + window.s.titleize(manga.title) + '</h1>';
 
@@ -32,8 +33,8 @@ function mangaInfo(manga) {
     var userStats = '<span id="userStats"> <strong>My Status:</strong> ' +
         window.s.humanize(manga.userStatus) + '</span>';
 
-    var chapter = '<span id="chapter"> <strong>Current Chapter:</strong>' +
-        '<a class="C' + window.s.slugify(manga.title) + '" href="' +
+    var chapter = '<span id="chapter"> <strong>Current Chapter: </strong>' +
+        '<a class="' + inputClass + '" href="' +
         manga.url + '" target="_blank">' + manga.chapter + '</a></span><br>';
 
     var type = '<span id="type"> <strong>Type:</strong> ' +
@@ -52,9 +53,10 @@ function mangaInfo(manga) {
 
     var plot = '<p id="plot"> <strong>Plot:</strong> ' +
         window.s.humanize(manga.plot) + '</p>';
-    var jose = [inputClass.toString(), manga.title.toString(), manga.chapter.toString()];
-    var addOne = '<button type="button" class="btn btn-default" onclick="oneUp(\'' + inputClass + '\')">' + 'Increase Chapter 1+</button>';
-    console.log(addOne)
+        
+    var addOne = '<button type="button" class="btn btn-default" onclick="oneUp(\'' + data + '\')">' +
+        'Increase Chapter 1+</button>';
+
     var del = '<button type="button" class="btn btn-default">Delete</button>';
 
     var upd = '<button type="button" class="btn btn-default">Update</button>';
@@ -146,16 +148,16 @@ $(document).ready(getMangas);
 /* Increment chapter number
  * Sends a PUT to the API with the new chapter number.
  */
-function oneUp(manga) {
-    console.log(manga);
+function oneUp(info) {
+    var manga = info.split(',');
     //var manga = document.getElementsByClassName(className);
-    var newChapter = +manga.dataset.chapter + 1;
+    var newChapter = +manga[2] + 1;
 
     var settings = {
         "async": true,
         "crossDomain": true,
         "url": api + "/mangas/" + user + "/" +
-            encodeURIComponent(manga.dataset.title),
+            encodeURIComponent(manga[1]),
         "method": "PUT",
         "headers": {
             "x-access-token": token,
@@ -168,9 +170,9 @@ function oneUp(manga) {
 
     $.ajax(settings).done(function (response) {
         // Update chapter number in place
-        mangaArray[manga.dataset.title].chapter = newChapter;
-        var classTitle = '.' + className;
-        $(classTitle).text(mangaArray[manga.dataset.title].chapter);
+        mangaArray[manga[1]].chapter = newChapter;
+        var classTitle = '.' + manga[0];
+        $(classTitle).text(mangaArray[manga[1]].chapter);
     });
 }
 
