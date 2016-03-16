@@ -52,10 +52,9 @@ function mangaInfo(manga) {
 
     var plot = '<p id="plot"> <strong>Plot:</strong> ' +
         window.s.humanize(manga.plot) + '</p>';
-
-    var addOne = '<button type="button" class="btn btn-default">' +
-        'Increase Chapter 1+</button>';
-
+    var jose = [inputClass.toString(), manga.title.toString(), manga.chapter.toString()];
+    var addOne = '<button type="button" class="btn btn-default" onclick="oneUp(\'' + inputClass + '\')">' + 'Increase Chapter 1+</button>';
+    console.log(addOne)
     var del = '<button type="button" class="btn btn-default">Delete</button>';
 
     var upd = '<button type="button" class="btn btn-default">Update</button>';
@@ -147,9 +146,9 @@ $(document).ready(getMangas);
 /* Increment chapter number
  * Sends a PUT to the API with the new chapter number.
  */
-function oneUp(className) {
-    console.log(className)
-    var manga = document.getElementsByClassName(className);
+function oneUp(manga) {
+    console.log(manga);
+    //var manga = document.getElementsByClassName(className);
     var newChapter = +manga.dataset.chapter + 1;
 
     var settings = {
