@@ -8,4 +8,5 @@ The Front-End for the MangaDB app
 - [X] Figure way to hash username and password and use it for a session.
 - [X] Figure out how to keep a session.
 - [ ] Change the way the manga is displayed.
-- [ ] Add buttons inside the manga info for manga action.
+- [X] Add buttons inside the manga info for manga action.
+- [ ] Improve authentication middleware so the user can't go to restricted pages.
