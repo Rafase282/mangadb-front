@@ -1,4 +1,5 @@
-var mangaArray = {};
+'use strict';
+var userMangas = {};
 
 /* Clear mangas from view
  * Removes manga from all views and lists.
@@ -85,17 +86,17 @@ function mangaInfo(manga) {
 function createManga(title, author, url, userStatus, type, categories, chapter,
     seriesStatus, plot, altName, direction, thumbnail) {
     this.title = title,
-        this.author = author,
-        this.url = url,
-        this.userStatus = userStatus,
-        this.type = type,
-        this.categories = categories,
-        this.chapter = chapter,
-        this.seriesStatus = seriesStatus,
-        this.plot = plot,
-        this.altName = altName,
-        this.direction = direction,
-        this.thumbnail = thumbnail
+    this.author = author,
+    this.url = url,
+    this.userStatus = userStatus,
+    this.type = type,
+    this.categories = categories,
+    this.chapter = chapter,
+    this.seriesStatus = seriesStatus,
+    this.plot = plot,
+    this.altName = altName,
+    this.direction = direction,
+    this.thumbnail = thumbnail
 };
 
 /* Get list of all user's mangas
@@ -122,7 +123,7 @@ function getMangas() {
                 manga.seriesStatus, manga.plot, manga.altName, manga.direction,
                 manga.thumbnail);
 
-            mangaArray[manga.title] = newManga;
+            userMangas[manga.title] = newManga;
             var html = mangaInfo(newManga);
 
             if (newManga.userStatus === 'reading') {
@@ -152,8 +153,8 @@ function oneUp(info) {
     var manga = info.split(','); // Split string into array
     var mangaClass = '.' + manga[0] + ':first'; // Select the first element
     var mangaTitle = manga[1];
-    var chapter = +$(mangaClass).text(); // Get value as int
-    var newChapter = chapter + 1; // increment chapter
+    var currentChapter = +$(mangaClass).text(); // Get value as int
+    var newChapter = currentChapter + 1; // increment chapter
 
     var settings = {
         "async": true,
@@ -172,7 +173,7 @@ function oneUp(info) {
 
     $.ajax(settings).done(function (response) {
         // Update chapter number in place
-        mangaArray[mangaTitle].chapter = newChapter;
+        userMangas[mangaTitle].chapter = newChapter;
         $(mangaClass).text(newChapter);
     });
 }
@@ -185,9 +186,9 @@ function search() {
         var reg = new RegExp($('#search').val(), 'ig');
         $('.manga-panel').css('display', 'none');
 
-        for (var manga in mangaArray) {
-            if (reg.test(mangaArray[manga].title)) {
-                $('.panel-' + window.s.slugify(mangaArray[manga].title))
+        for (var manga in userMangas) {
+            if (reg.test(userMangas[manga].title)) {
+                $('.panel-' + window.s.slugify(userMangas[manga].title))
                     .css('display', 'block');
             }
         }
@@ -198,14 +199,10 @@ function search() {
     }
 
     $('#search').unbind('keyup');
-    $('#search').keyup(function () {
-        search();
-    });
+    $('#search').keyup(search);
 }
 
 /* Start Search
  * When a key is released call the function.
  */
-$('#search').keyup(function () {
-    search();
-});
+$('#search').keyup(search);

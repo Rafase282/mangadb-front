@@ -9,7 +9,7 @@ var funHelper = require('./helpers');
 var sess;
 
 /* GET USER PROFILE */
-exports.getUserProfile = function(req, res) {
+exports.getUserProfile = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -18,7 +18,7 @@ exports.getUserProfile = function(req, res) {
 };
 
 /* CREATE NEW USER */
-exports.createUser = function(req, res) {
+exports.createUser = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -32,7 +32,7 @@ exports.createUser = function(req, res) {
         form: funHelper.userObj(req)
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);
@@ -40,7 +40,7 @@ exports.createUser = function(req, res) {
 };
 
 /* UPDATE USER INFO */
-exports.updateUser = function(req, res) {
+exports.updateUser = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -55,7 +55,7 @@ exports.updateUser = function(req, res) {
         form: funHelper.userObj(req)
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);
@@ -64,7 +64,7 @@ exports.updateUser = function(req, res) {
 };
 
 /* DELETE USER ACCOUNT */
-exports.deleteUser = function(req, res) {
+exports.deleteUser = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -77,7 +77,7 @@ exports.deleteUser = function(req, res) {
         }
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);
@@ -87,7 +87,7 @@ exports.deleteUser = function(req, res) {
 };
 
 /* OTHER ACTIONS NEEDED */
-exports.otherActions = function(req, res) {
+exports.otherActions = function (req, res) {
     sess = req.session;
 
 };

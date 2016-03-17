@@ -2,8 +2,8 @@
 var sess;
 
 /* GET forgotpassword page. */
-exports.getForgot = function(req, res) {
-    sess=req.session;
+exports.getForgot = function (req, res) {
+    sess = req.session;
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Forgot Password';
@@ -14,8 +14,8 @@ exports.getForgot = function(req, res) {
 };
 
 /* GET reset password page. */
-exports.getReset = function(req, res) {
-    sess=req.session;
+exports.getReset = function (req, res) {
+    sess = req.session;
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Reset Password';
@@ -26,16 +26,16 @@ exports.getReset = function(req, res) {
 };
 
 /* HANDLE PASSWORD RECOVERY */
-exports.postForgot = function(req, res) {
-    sess=req.session;
+exports.postForgot = function (req, res) {
+    sess = req.session;
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Reset Password';
 };
 
 /* HANDLE RESET ACTIONS */
-exports.postReset = function(req, res) {
-    sess=req.session;
+exports.postReset = function (req, res) {
+    sess = req.session;
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Reset Password';

@@ -8,34 +8,8 @@ var request = require("request");
 var funHelper = require('./helpers');
 var sess;
 
-/* GET ALL MANGAS FOR CURRENT USER */
-exports.getMangas = function(req, res) {
-    sess = req.session;
-    sess.url = '/user/' + sess.username;
-    sess.title = 'MangaDB: ' + sess.user;
-    sess.api = process.env.API;
-    var options = {
-        method: 'GET',
-        url: process.env.API + '/mangas/' + sess.user,
-        headers: {
-            'x-access-token': sess.token
-        }
-    };
-
-    request(options, function(error, response, body) {
-        if (error) throw new Error(error);
-
-        funHelper.clean();
-        body.map(function(manga) {
-            var html = funHelper.mangaInfo(manga);
-            $(".mangas").append(html);
-        });
-    });
-
-};
-
 /* UPDATE MANGA */
-exports.updateManga = function(req, res) {
+exports.updateManga = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -50,7 +24,7 @@ exports.updateManga = function(req, res) {
         form: funHelper.mangaObj(req)
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);
@@ -59,7 +33,7 @@ exports.updateManga = function(req, res) {
 };
 
 /* DELETE MANGA */
-exports.deleteManga = function(req, res) {
+exports.deleteManga = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -73,7 +47,7 @@ exports.deleteManga = function(req, res) {
         }
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);
@@ -82,7 +56,7 @@ exports.deleteManga = function(req, res) {
 };
 
 /* CREATE MANGA */
-exports.createManga = function(req, res) {
+exports.createManga = function (req, res) {
     sess = req.session;
     var options = {
         method: 'POST',
@@ -94,7 +68,7 @@ exports.createManga = function(req, res) {
         form: funHelper.mangaObj(req)
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);

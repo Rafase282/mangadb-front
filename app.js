@@ -22,7 +22,9 @@ app.use(session({
   secret: process.env.secret,
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: 3600000 }
+  cookie: {
+    maxAge: 3600000
+  }
 }));
 app.use(flash());
 
@@ -55,26 +57,26 @@ app.use('/', router);
 // Get the home page
 router.route('/')
   .get(routes.getHome);
-  
+
 // Get login form
 router.route('/login')
   .get(routes.getLogIn)
   .post(routes.getToken);
-  
+
 // Get the home page after loggign out
 router.route('/logout')
   .get(routes.LogOut);
-  
+
 // Get the forgotten password page
 router.route('/forgot')
   .get(password.getForgot)
   .post(password.postForgot);
-  
+
 // Get the reset password page
 router.route('/reset')
   .get(password.getReset)
   .post(password.postReset);
-  
+
 // Get the registration page
 router.route('/signup')
   .get(routes.getSignUp)
@@ -82,27 +84,27 @@ router.route('/signup')
 
 // User area
 router.route('/user/:user')
-  .get(funHelper.isAuthenticated, users.getUserProfile)  // Get user profile with all mangas
-  .post(funHelper.isAuthenticated, users.otherActions)   // Other required actions
-  .put(funHelper.isAuthenticated, users.updateUser)     // Update User Info
+  .get(funHelper.isAuthenticated, users.getUserProfile) // Get user profile with all mangas
+  .post(funHelper.isAuthenticated, users.otherActions) // Other required actions
+  .put(funHelper.isAuthenticated, users.updateUser) // Update User Info
   .delete(funHelper.isAuthenticated, users.deleteUser); // Delete Account
-  
+
 // User area
 router.route('/user/:user/manga')
-  .post(funHelper.isAuthenticated, mangas.createManga)    // Create new manga
-  .put(funHelper.isAuthenticated, mangas.updateManga)     // Update Manga
+  .post(funHelper.isAuthenticated, mangas.createManga) // Create new manga
+  .put(funHelper.isAuthenticated, mangas.updateManga) // Update Manga
   .delete(funHelper.isAuthenticated, mangas.deleteManga); // Delete manga
-  
-  
+
+
 // Admin area
 router.route('/admin')
   .get(funHelper.isAuthenticated, admin.getUsersProfiles) // Get list of users
-  .put(funHelper.isAuthenticated, users.updateUser)       // Update User
-  .post(funHelper.isAuthenticated, users.deleteUser)      // Delete user
-  .delete(funHelper.isAuthenticated, admin.deleteUsers);  // Delete Users
+  .put(funHelper.isAuthenticated, users.updateUser) // Update User
+  .post(funHelper.isAuthenticated, users.deleteUser) // Delete user
+  .delete(funHelper.isAuthenticated, admin.deleteUsers); // Delete Users
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -113,7 +115,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -124,7 +126,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,

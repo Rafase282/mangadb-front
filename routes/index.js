@@ -4,7 +4,7 @@ var request = require("request");
 var sess;
 
 /* GET home page. */
-exports.getHome = function(req, res) {
+exports.getHome = function (req, res) {
     sess = req.session;
     res.render('index', {
         title: sess.title,
@@ -14,7 +14,7 @@ exports.getHome = function(req, res) {
 };
 
 /* GET login page. */
-exports.getLogIn = function(req, res) {
+exports.getLogIn = function (req, res) {
     sess = req.session;
     sess.url = '/';
     sess.user = null;
@@ -26,7 +26,7 @@ exports.getLogIn = function(req, res) {
 };
 
 /* GET register page. */
-exports.getSignUp = function(req, res) {
+exports.getSignUp = function (req, res) {
     sess = req.session;
     sess.url = '/';
     sess.user = null;
@@ -38,13 +38,13 @@ exports.getSignUp = function(req, res) {
 };
 
 /* GET home page after loggin out. */
-exports.LogOut = function(req, res) {
+exports.LogOut = function (req, res) {
     req.session.destroy();
     res.redirect('/');
 };
 
 /* GET token from login */
-exports.getToken = function(req, res) {
+exports.getToken = function (req, res) {
     sess = req.session;
     var username = req.body.username;
     var password = req.body.password;
@@ -62,7 +62,7 @@ exports.getToken = function(req, res) {
         }
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
         sess.token = JSON.parse(body).token;
         res.redirect('/user/' + username);
