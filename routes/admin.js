@@ -8,7 +8,7 @@ var request = require("request");
 var sess;
 
 /* UPDATE USER INFO */
-exports.getUsersProfiles = function(req, res) {
+exports.getUsersProfiles = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -21,7 +21,7 @@ exports.getUsersProfiles = function(req, res) {
         }
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);
@@ -31,7 +31,7 @@ exports.getUsersProfiles = function(req, res) {
 };
 
 /* DELETE USERS ACCOUNTS */
-exports.deleteUsers = function(req, res) {
+exports.deleteUsers = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -45,7 +45,7 @@ exports.deleteUsers = function(req, res) {
         }
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);
@@ -54,7 +54,7 @@ exports.deleteUsers = function(req, res) {
 };
 
 /* DELETE USER ACCOUNT */
-exports.deleteMangas = function(req, res) {
+exports.deleteMangas = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -68,7 +68,7 @@ exports.deleteMangas = function(req, res) {
         }
     };
 
-    request(options, function(error, response, body) {
+    request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
         console.log(body);
