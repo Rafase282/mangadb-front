@@ -86,17 +86,17 @@ function mangaInfo(manga) {
 function createManga(title, author, url, userStatus, type, categories, chapter,
     seriesStatus, plot, altName, direction, thumbnail) {
     this.title = title,
-    this.author = author,
-    this.url = url,
-    this.userStatus = userStatus,
-    this.type = type,
-    this.categories = categories,
-    this.chapter = chapter,
-    this.seriesStatus = seriesStatus,
-    this.plot = plot,
-    this.altName = altName,
-    this.direction = direction,
-    this.thumbnail = thumbnail
+        this.author = author,
+        this.url = url,
+        this.userStatus = userStatus,
+        this.type = type,
+        this.categories = categories,
+        this.chapter = chapter,
+        this.seriesStatus = seriesStatus,
+        this.plot = plot,
+        this.altName = altName,
+        this.direction = direction,
+        this.thumbnail = thumbnail
 };
 
 /* Get list of all user's mangas
@@ -151,9 +151,9 @@ $(document).ready(getMangas);
  */
 function oneUp(info) {
     var manga = info.split(','); // Split string into array
-    var mangaClass = '.' + manga[0] + ':first'; // Select the first element
+    var mangaClass = '.' + manga[0]; // Select the class
     var mangaTitle = manga[1];
-    var currentChapter = +$(mangaClass).text(); // Get value as int
+    var currentChapter = +$(mangaClass + ':first').text(); // Get value as int
     var newChapter = currentChapter + 1; // increment chapter
 
     var settings = {
@@ -174,7 +174,7 @@ function oneUp(info) {
     $.ajax(settings).done(function (response) {
         // Update chapter number in place
         userMangas[mangaTitle].chapter = newChapter;
-        $(mangaClass).text(newChapter);
+        $(mangaClass).text(newChapter); // updates chapter for all catagories
     });
 }
 
