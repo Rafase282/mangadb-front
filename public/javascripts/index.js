@@ -108,7 +108,7 @@ function getMangas() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": api + "/mangas/" + user,
+        "url": api + "/mangas/" + user.toLowerCase(),
         "method": "GET",
         "headers": {
             "x-access-token": token
@@ -159,7 +159,7 @@ function oneUp(info) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": api + "/mangas/" + user + "/" +
+        "url": api + "/mangas/" + user.toLowerCase() + "/" +
             encodeURIComponent(mangaTitle),
         "method": "PUT",
         "headers": {

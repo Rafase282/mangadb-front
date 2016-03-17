@@ -49,7 +49,7 @@ exports.getToken = function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
     sess.user = s.titleize(username);
-    sess.username = username;
+    sess.username = username.toLowerCase();
     var options = {
         method: 'POST',
         url: process.env.API + '/auth',

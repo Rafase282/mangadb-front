@@ -1,45 +1,53 @@
 extends layout
 block content
   body
-    section.area
+    .area.main
+      h1 Welcome #{user}!
+      br
       .container-fluid
         .row
           .col-xs-12
-            ul.nav.nav-tabs
-              li.col-xs-12.col-sm-6.col-md-3.active
-                a.center-text(data-toggle='tab', href='#all') All Mangas
-              li.col-xs-12.col-sm-6.col-md-3
-                a.center-text(data-toggle='tab', href='#current') Currently Reading
-              li.col-xs-12.col-sm-6.col-md-3
-                a.center-text(data-toggle='tab', href='#done') Done Reading
-              li.col-xs-12.col-sm-6.col-md-3
-                a.center-text(data-toggle='tab', href='#willread') Will Read
-            .tab-content
-              form.search-form.clearfix(action='')
-                .form-group.has-feedback
-                  label.sr-only(for='search') Search
-                  input#search.form-control(type='text', name='search', placeholder='Search for your Manga')
-                  span.glyphicon.glyphicon-search.form-control-feedback
-              #all.tab-pane.fade.in.active
-                h3.center-text All Mangas
-                div
-                  ul.list
-              #current.tab-pane.fade
-                h3.center-text Currently Reading
-                div
-                  ul.list2
-              #done.tab-pane.fade
-                h3.center-text Done Reading
-                div
-                  ul.list3
-              #willread.tab-pane.fade
-                h3.center-text Will Read Soon
-                div
-                  ul.list4
-    .area.main
-      h1 Welcome #{user}
+            input.col-xs-12.col-sm-6(type='submit', value='Create New Manga', onclick="window.location.href='/user/#{user}/new'")
+            input.col-xs-12.col-sm-6(type='submit', value='Delete Account', onclick="window.location.href='/user/#{user}/delete'")
       br
       br
-      input(type='submit', value='Create New Manga', onclick="window.location.href='/new'")
-      input(type='submit', value='Delete Account', onclick="window.location.href='/user/#{user}/delete'")
+      section
+        .container-fluid
+          .row
+            .col-xs-12
+              ul.nav.nav-tabs
+                li.col-xs-12.col-sm-6.col-md-3.active
+                  a.center-text(data-toggle='tab', href='#all') All Mangas
+                li.col-xs-12.col-sm-6.col-md-3
+                  a.center-text(data-toggle='tab', href='#current') Currently Reading
+                li.col-xs-12.col-sm-6.col-md-3
+                  a.center-text(data-toggle='tab', href='#done') Done Reading
+                li.col-xs-12.col-sm-6.col-md-3
+                  a.center-text(data-toggle='tab', href='#willread') Will Read
+              .tab-content
+                form.search-form.clearfix(action='')
+                  .form-group.has-feedback
+                    label.sr-only(for='search') Search
+                    input#search.form-control(type='text', name='search', placeholder='Search for your Manga')
+                    span.glyphicon.glyphicon-search.form-control-feedback
+                #all.tab-pane.fade.in.active
+                  h1.center-text All Mangas
+                  br
+                  div
+                    ul.list
+                #current.tab-pane.fade
+                  h1.center-text Currently Reading
+                  br
+                  div
+                    ul.list2
+                #done.tab-pane.fade
+                  h1.center-text Done Reading
+                  br
+                  div
+                    ul.list3
+                #willread.tab-pane.fade
+                  h1.center-text Will Read Soon
+                  br
+                  div
+                    ul.list4
     section#push

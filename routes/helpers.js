@@ -6,10 +6,12 @@
 // Checks to make sure used is logged in
 exports.isAuthenticated = function (req, res, next) {
     // Check to see if there is there is a user in session
-    if (req.session.user !== undefined && req.session.user !== null) {
+    var backURL = req.header('Referer') || '/';
+    if (req.session.user !== undefined && req.session.user !== null &&
+        req.session.user.toLowerCase() === req.params.user.toLowerCase()) {
         return next();
     }
-    res.redirect('/');
+    res.redirect(backURL);
 };
 
 // Sets complete manga object
