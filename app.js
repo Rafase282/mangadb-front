@@ -82,7 +82,7 @@ router.route('/signup')
   .get(users.getSignUp)
   .post(users.createUser);
 
-// Get upser Profile
+// Get User Profile
 router.route('/user/:user')
   .get(funHelper.isAuthenticated, users.getUserProfile);
 
@@ -96,19 +96,20 @@ router.route('/user/:user/delete')
   .get(funHelper.isAuthenticated, users.getDeleteUser)
   .post(funHelper.isAuthenticated, users.deleteUser);
 
-// User area
+// Create New Manga
+router.route('/user/:user/new')
+  .get(funHelper.isAuthenticated, mangas.getCreateManga)
+  .post(funHelper.isAuthenticated, mangas.createManga);
+
+// Update Manga
 router.route('/user/:user/:manga')
-  .post(funHelper.isAuthenticated, mangas.createManga) // Create new manga
-  .put(funHelper.isAuthenticated, mangas.updateManga) // Update Manga
-  .delete(funHelper.isAuthenticated, mangas.deleteManga); // Delete manga
+  .get(funHelper.isAuthenticated, mangas.getUpdateManga)
+  .post(funHelper.isAuthenticated, mangas.updateManga);
 
 
 // Admin area
 router.route('/admin')
-  .get(funHelper.isAuthenticated, admin.getUsersProfiles) // Get list of users
-  .put(funHelper.isAuthenticated, users.updateUser) // Update User
-  .post(funHelper.isAuthenticated, users.deleteUser) // Delete user
-  .delete(funHelper.isAuthenticated, admin.deleteUsers); // Delete Users
+  .get(funHelper.isAuthenticated, admin.getUsersProfiles);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

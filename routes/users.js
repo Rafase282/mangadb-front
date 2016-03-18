@@ -17,11 +17,9 @@ exports.getUserProfile = function (req, res) {
     res.render('profile', funHelper.jadeObj(sess));
 };
 
-
-
 /* New User Registration Handling
- * The following code handles displaying and handling the profile
- * creation form.
+ * The following code handles displaying and API call method
+ * for user creation form.
  */
 
 /* Displays Registration Form. */
@@ -58,11 +56,9 @@ exports.createUser = function (req, res) {
     });
 };
 
-
-
 /* Profile Update Handling
- * The following code handles displaying and handling the profile
- * update form.
+ * The following code handles displaying and API call method
+ * for profile update form.
  */
 
 /* Displays update user form on request */
@@ -97,11 +93,9 @@ exports.updateUser = function (req, res) {
     });
 };
 
-
-
 /* Profile Delete Handling
- * The following code handles displaying and handling the profile
- * deleting comfirmation.
+ * The following code handles displaying and API call method
+ * for profile deleting comfirmation.
  */
 
 /* Displays delete user comfirmation on request */

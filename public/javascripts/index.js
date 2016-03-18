@@ -57,7 +57,7 @@ function mangaInfo(manga) {
         window.s.humanize(manga.plot) + '</p>';
 
     var addOne = '<button type="button" class="btn btn-default"' +
-        ' onclick="oneUp(\'' + dataChapter + '\')">' + 
+        ' onclick="oneUp(\'' + dataChapter + '\')">' +
         'Increase Chapter 1+</button>';
 
     var del = '<button type="button" class="btn btn-default"' +
@@ -107,6 +107,7 @@ function createManga(title, author, url, userStatus, type, categories, chapter,
  * directory with curated manga information, sensitive data
  * is not kept.
  */
+
 function getMangas() {
     var settings = {
         "async": true,
@@ -184,12 +185,13 @@ function oneUp(info) {
 /* Sends request to delete manga from DB
  * and from the DOM itself
  */
+
 function delManga(info) {
     // Sends delete request and removes the manga from the DOM
     var manga = info.split(','); // Split string into array
     var mangaClass = '.' + manga[0]; // Select the class
     var mangaTitle = manga[1];
-    
+
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -211,6 +213,7 @@ function delManga(info) {
 /* Search bar
  * Search for mangas on keypress.
  */
+
 function search() {
     if ($('#search').val().length > 0) {
         var reg = new RegExp($('#search').val(), 'ig');
@@ -235,4 +238,5 @@ function search() {
 /* Start Search
  * When a key is released call the function.
  */
+
 $('#search').keyup(search);
