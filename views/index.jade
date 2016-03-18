@@ -7,6 +7,9 @@ block content
       h2 Track your personal manga collection.
       button#btn-hide.btn.btn-success(type='button', onclick="window.location.href='/signup'") Create account
     // Main area of the page, three colums, one row
+    if msg
+        br
+        h3 #{msg}
     main.main.opacity
       section.container-fluid.center-text
         .row

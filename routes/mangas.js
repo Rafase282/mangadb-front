@@ -24,7 +24,9 @@ exports.getCreateManga = function (req, res) {
 
 /* Creates New Manga */
 exports.createManga = function (req, res) {
+    var url = req.header('Referer') || '/';
     sess = req.session;
+    var msg = 'The manga ' + req.body.title + ' has been created!';
     var options = {
         method: 'POST',
         url: sess.api + '/mangas/' + sess.username,
@@ -34,12 +36,7 @@ exports.createManga = function (req, res) {
         },
         form: funHelper.mangaObj(req)
     };
-
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-
-        console.log(body);
-    });
+    request(options, funHelper.requestFunc(error, response, body, msg, url));
 };
 
 /* Update Manga Handling
@@ -58,10 +55,12 @@ exports.getUpdateManga = function (req, res) {
 
 /* Updates Manga */
 exports.updateManga = function (req, res) {
+    var url = req.header('Referer') || '/';
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
+    var msg = 'The manga has been updated.';
     var options = {
         method: 'PUT',
         url: sess.api + '/mangas/' + sess.username + '/' + req.body.title,
@@ -69,13 +68,9 @@ exports.updateManga = function (req, res) {
             'content-type': 'application/x-www-form-urlencoded',
             'x-access-token': sess.token
         },
-        form: funHelper.mangaObj(req)
+        form: funHelper.mangaObj(req.body)
     };
 
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-
-        console.log(body);
-    });
+    request(options, funHelper.requestFunc(error, response, body, msg, url));
 
 };

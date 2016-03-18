@@ -15,31 +15,31 @@ exports.isAuthenticated = function (req, res, next) {
 };
 
 // Sets complete manga object
-exports.mangaObj = function (req) {
+exports.mangaObj = function (manga) {
     return {
-        title: req.body.title,
-        author: req.body.author,
-        url: req.body.url,
-        userStatus: req.body.userStatus,
-        type: req.body.type,
-        categories: req.body.categories,
-        chapter: req.body.chapter,
-        seriesStatus: req.body.seriesStatus,
-        plot: req.body.plot,
-        altName: req.body.altName,
-        direction: req.body.direction,
-        thumbnail: req.body.thumbnail
+        title: manga.title,
+        author: manga.author,
+        url: manga.url,
+        userStatus: manga.userStatus,
+        type: manga.type,
+        categories: manga.categories,
+        chapter: manga.chapter,
+        seriesStatus: manga.seriesStatus,
+        plot: manga.plot,
+        altName: manga.altName,
+        direction: manga.direction,
+        thumbnail: manga.thumbnail
     };
 };
 
 // Sets complete manga object
-exports.userObj = function (req) {
+exports.userObj = function (user) {
     return {
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
+        username: user.username,
+        password: user.password,
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname
     };
 };
 
@@ -51,6 +51,15 @@ exports.jadeObj = function (sess) {
         url: sess.url,
         token: sess.token,
         api: sess.api,
-        username: sess.username
+        username: sess.username,
+        msg: sess.msg
     };
 };
+
+// Function for requests
+exports.requestFunc = function (error, response, body, msg, url) {
+    if (error) throw new Error(error);
+    console.log(body);
+    sess.msg = msg;
+    res.redirect(url);
+}

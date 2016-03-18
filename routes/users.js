@@ -28,14 +28,13 @@ exports.getSignUp = function (req, res) {
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Register';
-    res.render('signup', {
-        title: sess.title,
-        url: sess.url
-    });
+    res.render('signup', funHelper.jadeObj(sess));
 };
 
 /* Creates New User */
 exports.createUser = function (req, res) {
+    var url = req.header('Referer') || '/';
+    var msg = 'The account has been created, please log in.';
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -46,14 +45,10 @@ exports.createUser = function (req, res) {
         headers: {
             'content-type': 'application/x-www-form-urlencoded'
         },
-        form: funHelper.userObj(req)
+        form: funHelper.userObj(req.body)
     };
 
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-
-        console.log(body);
-    });
+    request(options, funHelper.requestFunc(error, response, body, msg, url));
 };
 
 /* Profile Update Handling
@@ -73,6 +68,8 @@ exports.getUpdateUser = function (req, res) {
 /* Makes the PUT request to the api with data from the form */
 exports.updateUser = function (req, res) {
     sess = req.session;
+    var url = req.header('Referer') || '/';
+    var msg = 'The account information has been updated.';
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
@@ -83,14 +80,10 @@ exports.updateUser = function (req, res) {
             'content-type': 'application/x-www-form-urlencoded',
             'x-access-token': sess.token
         },
-        form: funHelper.userObj(req)
+        form: funHelper.userObj(req.body)
     };
 
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-
-        console.log(body);
-    });
+    request(options, funHelper.requestFunc(error, response, body, msg, url));
 };
 
 /* Profile Delete Handling
@@ -110,6 +103,8 @@ exports.getDeleteUser = function (req, res) {
 /* Makes the DELETE request to the api */
 exports.deleteUser = function (req, res) {
     sess = req.session;
+    var url = req.header('Referer') || '/';
+    var msg = 'The account has been deleted.';
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
@@ -121,9 +116,5 @@ exports.deleteUser = function (req, res) {
         }
     };
 
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-
-        console.log(body);
-    });
+    request(options, funHelper.requestFunc(error, response, body, msg, url));
 };
