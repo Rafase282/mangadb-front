@@ -7,8 +7,9 @@ block content
       .container-fluid
         .row
           .col-xs-12
-            input.col-xs-12.col-sm-6(type='submit', value='Create New Manga', onclick="window.location.href='/user/#{user}/new'")
-            input.col-xs-12.col-sm-6(type='submit', value='Delete Account', onclick="window.location.href='/user/#{user}/delete'")
+            input.col-xs-12.col-sm-4(type='submit', value='Create New Manga', onclick="window.location.href='/user/#{username}/new'")
+            input.col-xs-12.col-sm-4(type='submit', value='Update Profile', onclick="window.location.href='/user/#{username}/update'")
+            input.col-xs-12.col-sm-4(type='submit', value='Delete Account', onclick="window.location.href='/user/#{username}/delete'")
       br
       br
       section

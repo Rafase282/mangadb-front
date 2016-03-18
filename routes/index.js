@@ -3,7 +3,7 @@ var s = require("underscore.string");
 var request = require("request");
 var sess;
 
-/* GET home page. */
+/* Get Home Page */
 exports.getHome = function (req, res) {
     sess = req.session;
     res.render('index', {
@@ -13,7 +13,12 @@ exports.getHome = function (req, res) {
     });
 };
 
-/* GET login page. */
+/* User Authentication Handling
+ * The following code handles displaying and handling the profile
+ * login and logout forms.
+ */
+
+/* Displays Login Form */
 exports.getLogIn = function (req, res) {
     sess = req.session;
     sess.url = '/';
@@ -25,25 +30,13 @@ exports.getLogIn = function (req, res) {
     });
 };
 
-/* GET register page. */
-exports.getSignUp = function (req, res) {
-    sess = req.session;
-    sess.url = '/';
-    sess.user = null;
-    sess.title = 'MangaDB: Register';
-    res.render('signup', {
-        title: sess.title,
-        url: sess.url
-    });
-};
-
-/* GET home page after loggin out. */
+/* Logs User Out */
 exports.LogOut = function (req, res) {
     req.session.destroy();
     res.redirect('/');
 };
 
-/* GET token from login */
+/* Get Token For Login */
 exports.getToken = function (req, res) {
     sess = req.session;
     var username = req.body.username;

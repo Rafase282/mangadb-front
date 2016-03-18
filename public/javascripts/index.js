@@ -18,7 +18,8 @@ function clean() {
 function mangaInfo(manga) {
     var inputClass = 'input-' + window.s.slugify(manga.title);
     var panelClass = 'panel-' + window.s.slugify(manga.title);
-    var data = [inputClass, manga.title];
+    var dataChapter = [inputClass, manga.title];
+    var dataDel = [panelClass, manga.title];
 
     var title = '<h1>' + window.s.titleize(manga.title) + '</h1>';
 
@@ -56,9 +57,11 @@ function mangaInfo(manga) {
         window.s.humanize(manga.plot) + '</p>';
 
     var addOne = '<button type="button" class="btn btn-default"' +
-        ' onclick="oneUp(\'' + data + '\')">' + 'Increase Chapter 1+</button>';
+        ' onclick="oneUp(\'' + dataChapter + '\')">' + 
+        'Increase Chapter 1+</button>';
 
-    var del = '<button type="button" class="btn btn-default">Delete</button>';
+    var del = '<button type="button" class="btn btn-default"' +
+        ' onclick="delManga(\'' + dataDel + '\')">Delete</button>';
 
     var upd = '<button type="button" class="btn btn-default">Update</button>';
 
@@ -175,6 +178,33 @@ function oneUp(info) {
         // Update chapter number in place
         userMangas[mangaTitle].chapter = newChapter;
         $(mangaClass).text(newChapter); // updates chapter for all catagories
+    });
+}
+
+/* Sends request to delete manga from DB
+ * and from the DOM itself
+ */
+function delManga(info) {
+    // Sends delete request and removes the manga from the DOM
+    var manga = info.split(','); // Split string into array
+    var mangaClass = '.' + manga[0]; // Select the class
+    var mangaTitle = manga[1];
+    
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": api + "/mangas/" + user.toLowerCase() + "/" +
+            encodeURIComponent(mangaTitle),
+        "method": "DELETE",
+        "headers": {
+            "x-access-token": token,
+            "content-type": "application/x-www-form-urlencoded"
+        }
+    }
+
+    // When the DEL request is done, delete from DOM
+    $.ajax(settings).done(function (response) {
+        $(mangaClass).remove();
     });
 }
 

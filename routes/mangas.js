@@ -32,7 +32,7 @@ exports.updateManga = function (req, res) {
 
 };
 
-/* DELETE MANGA */
+/* DELETE MANGA*/
 exports.deleteManga = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
@@ -40,7 +40,7 @@ exports.deleteManga = function (req, res) {
     sess.api = process.env.API;
     var options = {
         method: 'DELETE',
-        url: sess.api + '/mangas/' + sess.username + '/' + req.body.title,
+        url: sess.api + '/mangas/' + sess.username + '/' + req.params.manga,
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
             'x-access-token': sess.token
@@ -49,7 +49,6 @@ exports.deleteManga = function (req, res) {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-
         console.log(body);
     });
 

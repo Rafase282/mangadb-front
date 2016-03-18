@@ -79,18 +79,25 @@ router.route('/reset')
 
 // Get the registration page
 router.route('/signup')
-  .get(routes.getSignUp)
+  .get(users.getSignUp)
   .post(users.createUser);
 
-// User area
+// Get upser Profile
 router.route('/user/:user')
-  .get(funHelper.isAuthenticated, users.getUserProfile) // Get user profile with all mangas
-  .post(funHelper.isAuthenticated, users.otherActions) // Other required actions
-  .put(funHelper.isAuthenticated, users.updateUser) // Update User Info
-  .delete(funHelper.isAuthenticated, users.deleteUser); // Delete Account
+  .get(funHelper.isAuthenticated, users.getUserProfile);
+
+// Update User Account
+router.route('/user/:user/update')
+  .get(funHelper.isAuthenticated, users.getUpdateUser)
+  .post(funHelper.isAuthenticated, users.updateUser);
+
+// Delete User Account
+router.route('/user/:user/delete')
+  .get(funHelper.isAuthenticated, users.getDeleteUser)
+  .post(funHelper.isAuthenticated, users.deleteUser);
 
 // User area
-router.route('/user/:user/manga')
+router.route('/user/:user/:manga')
   .post(funHelper.isAuthenticated, mangas.createManga) // Create new manga
   .put(funHelper.isAuthenticated, mangas.updateManga) // Update Manga
   .delete(funHelper.isAuthenticated, mangas.deleteManga); // Delete manga

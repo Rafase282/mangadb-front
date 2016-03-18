@@ -50,6 +50,7 @@ exports.jadeObj = function (sess) {
         user: sess.user,
         url: sess.url,
         token: sess.token,
-        api: sess.api
+        api: sess.api,
+        username: sess.username
     };
 };

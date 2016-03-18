@@ -8,7 +8,7 @@ var request = require("request");
 var funHelper = require('./helpers');
 var sess;
 
-/* GET USER PROFILE */
+/* Displays User Profile */
 exports.getUserProfile = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
@@ -17,7 +17,26 @@ exports.getUserProfile = function (req, res) {
     res.render('profile', funHelper.jadeObj(sess));
 };
 
-/* CREATE NEW USER */
+
+
+/* New User Registration Handling
+ * The following code handles displaying and handling the profile
+ * creation form.
+ */
+
+/* Displays Registration Form. */
+exports.getSignUp = function (req, res) {
+    sess = req.session;
+    sess.url = '/';
+    sess.user = null;
+    sess.title = 'MangaDB: Register';
+    res.render('signup', {
+        title: sess.title,
+        url: sess.url
+    });
+};
+
+/* Creates New User */
 exports.createUser = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
@@ -39,7 +58,23 @@ exports.createUser = function (req, res) {
     });
 };
 
-/* UPDATE USER INFO */
+
+
+/* Profile Update Handling
+ * The following code handles displaying and handling the profile
+ * update form.
+ */
+
+/* Displays update user form on request */
+exports.getUpdateUser = function (req, res) {
+    sess = req.session;
+    sess.url = '/user/' + sess.username;
+    sess.title = 'MangaDB: ' + sess.user;
+    sess.api = process.env.API;
+    res.render('updateUser', funHelper.jadeObj(sess));
+};
+
+/* Makes the PUT request to the api with data from the form */
 exports.updateUser = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
@@ -60,10 +95,25 @@ exports.updateUser = function (req, res) {
 
         console.log(body);
     });
-
 };
 
-/* DELETE USER ACCOUNT */
+
+
+/* Profile Delete Handling
+ * The following code handles displaying and handling the profile
+ * deleting comfirmation.
+ */
+
+/* Displays delete user comfirmation on request */
+exports.getDeleteUser = function (req, res) {
+    sess = req.session;
+    sess.url = '/user/' + sess.username;
+    sess.title = 'MangaDB: ' + sess.user;
+    sess.api = process.env.API;
+    res.render('deleteUser', funHelper.jadeObj(sess));
+};
+
+/* Makes the DELETE request to the api */
 exports.deleteUser = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
@@ -82,12 +132,4 @@ exports.deleteUser = function (req, res) {
 
         console.log(body);
     });
-
-
-};
-
-/* OTHER ACTIONS NEEDED */
-exports.otherActions = function (req, res) {
-    sess = req.session;
-
 };
