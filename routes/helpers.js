@@ -42,7 +42,8 @@ exports.userObj = function (user) {
             firstname: user.firstname,
             lastname: user.lastname
         };
-    }else{
+    }
+    else {
         return null;
     }
 
@@ -60,11 +61,3 @@ exports.jadeObj = function (sess, req) {
         msg: sess.msg
     };
 };
-
-// Function for requests
-exports.requestFunc = function (error, response, body) {
-    if (error) throw new Error(error);
-    console.log(body);
-    sess.msg = msg;
-    res.redirect(url);
-}

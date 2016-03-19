@@ -48,7 +48,12 @@ exports.createUser = function (req, res) {
         form: funHelper.userObj(req.body)
     };
 
-    request(options, funHelper.requestFunc(error, response, body, msg, url));
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        console.log(body);
+        sess.msg = msg;
+        res.redirect('/login');
+    });
 };
 
 /* Profile Update Handling

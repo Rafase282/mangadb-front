@@ -6,7 +6,7 @@ var sess;
  * The following code handles displaying and and API call method
  * for requesting to change password.
  */
- 
+
 /* Displays the password recovery form. */
 exports.getForgot = function (req, res) {
     sess = req.session;
