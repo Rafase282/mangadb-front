@@ -2,8 +2,8 @@ extends layout
 block content
       .form.main
         h1 Update User Information
-        h4 To update any piec of information just fill in the particular information.
-        h4 Whatever field that is kept blank will retain the old information.
+        h4 To update any piece of information just fill in the particular field.
+        h4 Whatever field that is left blank will retain the user old information.
         br
         form(role='form', action='/user/#{username}/update', method='POST', name='updateUser', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
