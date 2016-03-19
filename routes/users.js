@@ -48,20 +48,34 @@ exports.createUser = function (req, res) {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        console.log(body);
-        switch (body) {
-        case body.error !== null:
+        body = JSON.parse(body);
+        console.log('ERROR',body.error,'\nERROR',body.error.code, '\nERR', body.err, '\nMESSAGE', body.message, '\nBODY',body);
+        switch (true) {
+        case (body.error !== undefined):
             req.flash('error', body.error.message);
+            res.redirect('/signup');
             break;
-        case body.err !== null:
+        case (body.err !== undefined):
             req.flash('error', body.err);
+            res.redirect('/signup');
             break;
-        case body.message !== null:
+        case (body.message.code == 400):
+            req.flash('error', 'Fill the form properly!');
+            res.redirect('/signup');
+            break;
+        case (body.error.code == 11000):
+            var msg = body.errmsg.split(': ');
+            console.log(msg);
+            msg = msg[0] + msg[3];
+            req.flash('error', msg);
+            res.redirect('/signup');
+            break;
+        case (body.message !== undefined):
             req.flash('success', body.message);
             res.redirect('/login');
             break;
         };
-        res.redirect('/signup');
+        
     });
 };
 
