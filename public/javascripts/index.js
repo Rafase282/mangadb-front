@@ -144,11 +144,15 @@ function getMangas() {
     });
 };
 
-/* Load Manga info when page is loaded
+/* Load Manga info When Page Is Loaded
  * When the profile page is read it will
  * call the function to get all mangas.
  */
-$('.user-profile').ready(getMangas);
+$(document).ready(function () {
+    if (window.location.pathname == '/user/' + user.toLowerCase()) {
+        getMangas();
+    };
+});
 
 /* Increment chapter number
  * Sends a PUT to the API with the new chapter number.
