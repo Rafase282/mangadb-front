@@ -56,9 +56,10 @@ exports.createUser = function (req, res) {
         case body.err !== null:
             req.flash('error', body.err);
             break;
-        default:
+        case body.message !== null:
             req.flash('success', body.message);
             res.redirect('/login');
+            break;
         };
         res.redirect('/signup');
     });

@@ -57,6 +57,7 @@ exports.getToken = function (req, res) {
         
         if (error) throw new Error(error);
         if (!body.success) {
+            sess.user = null;
             req.flash('error', body.message);
             res.redirect('/login');
         }else {
