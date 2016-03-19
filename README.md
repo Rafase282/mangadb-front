@@ -16,3 +16,4 @@ The Front-End for the MangaDB app
 - [ ] Change the way the manga is displayed.
 - [X] Add buttons inside the manga info for manga action.
 - [ ] Improve authentication middleware so the user can't go to restricted pages.
+- [ ] Implement manga search by alternate name and category.

@@ -214,6 +214,7 @@ function delManga(info) {
  * Search for mangas on keypress.
  */
 
+// To-Do: Implement AltName and Category search.
 function search() {
     if ($('#search').val().length > 0) {
         var reg = new RegExp($('#search').val(), 'ig');

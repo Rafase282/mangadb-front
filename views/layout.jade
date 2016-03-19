@@ -48,6 +48,16 @@ html
                 a(href='/login')
                   span#btn-hide.glyphicon.glyphicon-log-in
                   |  Login
+    .container-fluid
+      if msg.error
+        .alert.alert-danger
+          div= msg.error
+      if msg.info
+        .alert.alert-info
+          div= msg.info
+      if msg.success
+        .alert.alert-success
+          div= msg.success
     block content
     footer
       p Copyright © Rafael J. Rodriguez 2016. All Rights Reserved
