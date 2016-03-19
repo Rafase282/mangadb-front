@@ -1,23 +1,13 @@
 extends layout
-.container
-  if messages.error
-    .alert.alert-danger
-      div= messages.error
-  if messages.info
-    .alert.alert-info
-      div= messages.info
-  if messages.success
-    .alert.alert-success
-      div= messages.success
   block content
       .form.main
         h1 Password Recovery
-        form(role='form', method='POST', name='forgot', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+        form(role='form', action='/forgot', method='POST', name='forgot', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-envelope
-              input.form-control(type='text', name='email', placeholder='Enter your E-mail address', aria-describedby='basic-addon1')
+              input.form-control(type='text', name='email', placeholder='Enter your E-mail address', aria-describedby='basic-addon1', autocomplete='off')
           .field-wrap
-          button.btn.btn-danger.button.button-block(type='button') Reset Password
+          button.btn.btn-danger.button.button-block(type='submit') Reset Password
     
