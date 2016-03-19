@@ -2,12 +2,17 @@ extends layout
 block content
   body
     .area.main
-      h1 Welcome #{user}!
-      if msg
-        br
-        h3 #{msg}
+      h1 #{user} Control Panel
       br
       .container-fluid
+        .row
+          .col-xs-12
+            span#basic-addon1.input-group-addon
+              span.glyphicon.glyphicon-book.col-xs-12
+            span#basic-addon1.input-group-addon
+              span.glyphicon.glyphicon-refresh.col-xs-12
+            span#basic-addon1.input-group-addon
+              span.glyphicon.glyphicon-trash.col-xs-12
         .row
           .col-xs-12
             input.col-xs-12.col-sm-4(type='submit', value='Create New Manga', onclick="window.location.href='/user/#{username}/new'")
