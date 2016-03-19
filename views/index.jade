@@ -1,15 +1,11 @@
 extends layout
 block content
   body
-    // Header area for the page
     section.jumbotron.center-text.transparent
       h1 MangaDB
       h2 Track your personal manga collection.
-      button#btn-hide.btn.btn-success(type='button', onclick="window.location.href='/signup'") Create account
-    // Main area of the page, three colums, one row
-    if msg
-        br
-        h3 #{msg}
+      if !user
+        button#btn-hide.btn.btn-success(type='button', onclick="window.location.href='/signup'") Create account
     main.main.opacity
       section.container-fluid.center-text
         .row
