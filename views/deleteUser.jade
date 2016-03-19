@@ -1,0 +1,16 @@
+extends layout
+block content
+      .form.main
+        h1 Are you sure you want to proceed?
+        form(role='form', method='POST', name='forgot', accept-charset='UTF-8', 
+        enctype='application/x-www-form-urlencoded', autocomplete='off')
+          .field-wrap
+            .form-group.input-group
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-alert
+              input.form-control(type='text', name='username', 
+              placeholder='Confirm your username', 
+              aria-describedby='basic-addon1')
+            .field-wrap
+            button.btn.btn-danger.button.button-block(type='submit').
+             Delete Account

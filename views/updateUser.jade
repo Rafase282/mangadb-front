@@ -5,7 +5,7 @@ block content
         h4 To update any piece of information just fill in the particular field.
         h4 Whatever field that is left blank will retain the user old information.
         br
-        form(role='form', action='/user/#{username}/update', method='POST', name='updateUser', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+        form(role='form', method='POST', name='updateUser', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
