@@ -59,9 +59,9 @@ exports.jadeObj = function (sess, req) {
         api: sess.api,
         username: sess.username,
         msg: {
-            error: sess.error,
-            info: sess.info,
-            success: sess.success
+            error: req.flash('error'),
+            info: req.flash('info'),
+            success: req.flash('success')
         }
     };
 };
