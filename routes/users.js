@@ -33,8 +33,6 @@ exports.getSignUp = function (req, res) {
 
 /* Creates New User */
 exports.createUser = function (req, res) {
-    var url = req.header('Referer') || '/';
-    var msg = 'The account has been created, please log in.';
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -51,8 +49,18 @@ exports.createUser = function (req, res) {
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
         console.log(body);
-        sess.msg = msg;
-        res.redirect('/login');
+        switch (body) {
+        case body.error !== null:
+            req.flash('error', body.error.message);
+            break;
+        case body.err !== null:
+            req.flash('error', body.err);
+            break;
+        default:
+            req.flash('success', body.message);
+            res.redirect('/login');
+        };
+        res.redirect('/signup');
     });
 };
 
