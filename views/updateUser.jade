@@ -1,8 +1,8 @@
 extends layout
 block content
       .form.main
-        h1 Register
-        form(role='form', action='/signup', method='POST', name='signup', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+        h1 Update User Information
+        form(role='form', action='/user/#{username}/update', method='POST', name='signup', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
@@ -27,4 +27,4 @@ block content
               span#basic-addon2.input-group-addon
                 span.glyphicon.glyphicon-lock
               input.form-control(type='password', name='password2', placeholder='Comfirm Password *', aria-describedby='basic-addon2', ,='', autocomplete='off')
-          button.button.button-block.btn.btn-danger(type='button') Register
+          button.button.button-block.btn.btn-danger(type='button') Update
