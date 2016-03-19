@@ -121,5 +121,18 @@ exports.deleteUser = function (req, res) {
         }
     };
 
-    request(options, funHelper.requestFunc(error, response, body, msg, url));
+    if (sess.username === req.params.user.toLowerCase() && req.params.user.toLowerCase() === req.body.username.toLowerCase()) {
+        request(options, function (error, response, body) {
+            if (error) {
+                throw new Error(error);
+            }
+            console.log(body);
+            sess.success = 'The account has been deleted.';
+            res.redirect('/logout');
+        });
+    }
+    else {
+        sess.error = 'You have input the wrong username, make sure you are deleting your own account and that you spelled it right!'
+        res.redirect('/user/' + sess.username + '/delete')
+    }
 };
