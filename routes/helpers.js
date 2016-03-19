@@ -34,17 +34,22 @@ exports.mangaObj = function (manga) {
 
 // Sets complete manga object
 exports.userObj = function (user) {
-    return {
-        username: user.username,
-        password: user.password,
-        email: user.email,
-        firstname: user.firstname,
-        lastname: user.lastname
-    };
+    if (user.password === user.password2) {
+        return {
+            username: user.username,
+            password: user.password,
+            email: user.email,
+            firstname: user.firstname,
+            lastname: user.lastname
+        };
+    }else{
+        return null;
+    }
+
 };
 
 // Sets complete manga object
-exports.jadeObj = function (sess) {
+exports.jadeObj = function (sess, req) {
     return {
         title: sess.title,
         user: sess.user,
@@ -57,7 +62,7 @@ exports.jadeObj = function (sess) {
 };
 
 // Function for requests
-exports.requestFunc = function (error, response, body, msg, url) {
+exports.requestFunc = function (error, response, body) {
     if (error) throw new Error(error);
     console.log(body);
     sess.msg = msg;

@@ -14,7 +14,7 @@ exports.getUserProfile = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('profile', funHelper.jadeObj(sess));
+    res.render('profile', funHelper.jadeObj(sess, req));
 };
 
 /* New User Registration Handling
@@ -28,7 +28,7 @@ exports.getSignUp = function (req, res) {
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Register';
-    res.render('signup', funHelper.jadeObj(sess));
+    res.render('signup', funHelper.jadeObj(sess, req));
 };
 
 /* Creates New User */
@@ -62,7 +62,7 @@ exports.getUpdateUser = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('updateUser', funHelper.jadeObj(sess));
+    res.render('updateUser', funHelper.jadeObj(sess, req));
 };
 
 /* Makes the PUT request to the api with data from the form */
@@ -83,7 +83,12 @@ exports.updateUser = function (req, res) {
         form: funHelper.userObj(req.body)
     };
 
-    request(options, funHelper.requestFunc(error, response, body, msg, url));
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        console.log(body);
+        sess.msg = msg;
+        res.redirect('/user/' + sess.username);
+    });
 };
 
 /* Profile Delete Handling
@@ -97,7 +102,7 @@ exports.getDeleteUser = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('deleteUser', funHelper.jadeObj(sess));
+    res.render('deleteUser', funHelper.jadeObj(sess, req));
 };
 
 /* Makes the DELETE request to the api */
