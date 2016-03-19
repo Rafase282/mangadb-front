@@ -7,7 +7,7 @@ var sess;
 /* Get Home Page */
 exports.getHome = function (req, res) {
     sess = req.session;
-    sess.url = '/';
+    sess.url = sess.url || '/';
     sess.title = 'MangaDB: Home';
     res.render('index', funHelper.jadeObj(sess, req));
 };
@@ -27,6 +27,7 @@ exports.getLogIn = function (req, res) {
 
 /* Logs User Out */
 exports.LogOut = function (req, res) {
+    req.flash('info', body.message);
     req.session.destroy();
     res.redirect('/');
 };
@@ -51,15 +52,14 @@ exports.getToken = function (req, res) {
     };
 
     request(options, function (error, response, body) {
-        if (error) throw new Error(error);
         body = JSON.parse(body);
         sess.token = body.token;
-        console.log(body)
+        
+        if (error) throw new Error(error);
         if (!body.success) {
             req.flash('error', body.message);
             res.redirect('/login');
-        }
-        else {
+        }else {
             req.flash('success', body.message);
             res.redirect('/user/' + username);
         }
