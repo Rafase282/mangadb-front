@@ -14,8 +14,8 @@ exports.getHome = function (req, res) {
 };
 
 /* User Authentication Handling
- * The following code handles displaying and handling the profile
- * login and logout forms.
+ * The following code handles displaying and and API call method
+ * for getting JWT, login and logout forms.
  */
 
 /* Displays Login Form */
