@@ -35,7 +35,6 @@ exports.mangaObj = function (manga) {
 
 // Sets complete manga object
 exports.userObj = function (user) {
-    if (user.password === user.password2) {
         return {
             username: user.username,
             password: user.password,
@@ -43,11 +42,6 @@ exports.userObj = function (user) {
             firstname: user.firstname,
             lastname: user.lastname
         };
-    }
-    else {
-        return null;
-    }
-
 };
 
 // Sets complete manga object

@@ -35,7 +35,6 @@ exports.getSignUp = function (req, res) {
 exports.createUser = function (req, res) {
     // If the passwords matches each other
     if (req.body.password === req.body.password2) {
-
         sess = req.session;
         sess.url = '/user/' + sess.username;
         sess.title = 'MangaDB: ' + sess.user;
@@ -49,10 +48,7 @@ exports.createUser = function (req, res) {
             form: funHelper.userObj(req.body)
         };
         request(options, function (error, response, body) {
-            if (error) {
-                req.flash('error', error);
-                res.redirect('/signup');
-            }
+            if (error) throw new Error(error);
             body = JSON.parse(body);
             switch (true) {
                 // Invalid E-mail Case
@@ -113,7 +109,6 @@ exports.getUpdateUser = function (req, res) {
 exports.updateUser = function (req, res) {
     sess = req.session;
     var url = req.header('Referer') || '/';
-    var msg = 'The account information has been updated.';
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
@@ -129,9 +124,16 @@ exports.updateUser = function (req, res) {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        console.log(body);
-        sess.msg = msg;
-        res.redirect('/user/' + sess.username);
+        body = JSON.parse(body);
+        if (body.message) {
+            req.flash('success', 'The account information has been updated.');
+            res.redirect('/user/' + sess.username);
+        }
+        else {
+            req.flash('error', body.error);
+            res.redirect(url);
+        }
+
     });
 };
 
