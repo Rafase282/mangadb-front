@@ -27,9 +27,9 @@ exports.getLogIn = function (req, res) {
 
 /* Logs User Out */
 exports.LogOut = function (req, res) {
-    req.flash('info', body.message);
-    req.session.destroy();
     res.redirect('/');
+    req.session.destroy();
+    
 };
 
 /* Get Token For Login */

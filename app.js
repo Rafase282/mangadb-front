@@ -128,7 +128,8 @@ if (app.get('env') === 'development') {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
-      error: err
+      error: err,
+      msg:{error: req.flash('error', err.message)}
     });
   });
 }
@@ -139,7 +140,8 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: {},
+    msg:{error: req.flash('error', err.message)}
   });
 });
 

@@ -11,6 +11,7 @@ exports.isAuthenticated = function (req, res, next) {
         req.session.user.toLowerCase() === req.params.user.toLowerCase()) {
         return next();
     }
+    req.flash('info', 'Your session has either timed out or you have yet to log in. Please log in to go to your profile.');
     res.redirect(backURL);
 };
 
