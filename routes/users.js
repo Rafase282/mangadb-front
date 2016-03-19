@@ -56,7 +56,7 @@ exports.createUser = function (req, res) {
  * for profile update form.
  */
 
-/* Displays update user form on request */
+/* Displays Form to Update User */
 exports.getUpdateUser = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
@@ -65,7 +65,7 @@ exports.getUpdateUser = function (req, res) {
     res.render('updateUser', funHelper.jadeObj(sess, req));
 };
 
-/* Makes the PUT request to the api with data from the form */
+/* Handles User Update Request */
 exports.updateUser = function (req, res) {
     sess = req.session;
     var url = req.header('Referer') || '/';
@@ -96,7 +96,7 @@ exports.updateUser = function (req, res) {
  * for profile deleting comfirmation.
  */
 
-/* Displays delete user comfirmation on request */
+/* Displays Delete Comfirmation Page */
 exports.getDeleteUser = function (req, res) {
     sess = req.session;
     sess.url = '/user/' + sess.username;
@@ -105,7 +105,7 @@ exports.getDeleteUser = function (req, res) {
     res.render('deleteUser', funHelper.jadeObj(sess, req));
 };
 
-/* Makes the DELETE request to the api */
+/* Handles User Deletion Request */
 exports.deleteUser = function (req, res) {
     sess = req.session;
     var url = req.header('Referer') || '/';
