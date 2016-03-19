@@ -148,7 +148,7 @@ function getMangas() {
  * When the profile page is read it will
  * call the function to get all mangas.
  */
-$(document).ready(getMangas);
+$('.user-profile').ready(getMangas);
 
 /* Increment chapter number
  * Sends a PUT to the API with the new chapter number.
@@ -210,7 +210,7 @@ function delManga(info) {
     });
 }
 
-/* Search bar
+/* Search Bar Functionality
  * Search for mangas on keypress.
  */
 
