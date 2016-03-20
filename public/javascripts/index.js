@@ -167,7 +167,9 @@ function getUserInfo() {
             lastname: response.lastname
         };
         console.log(account);
-        var userName = '<h4>Full name: ' + response.firstname + ' ' + response.lastname + '</h4>';
+        var userName = '<h4>Full name: ' +
+            window.s.titleize(response.firstname) + ' ' +
+            window.s.titleize(response.lastname) + '</h4>';
         var userEmail = '<h4>E-Mail: ' + response.email + '</h4>';
         $(".user-name").append(userName);
         $(".user-email").append(userEmail);
