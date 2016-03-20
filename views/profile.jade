@@ -5,23 +5,24 @@ block content
       br
       .container-fluid
         .row
-          .col-xs-12.center-text.user-info
+          .col-xs-12.center-text
             .col-xs-12.col-sm-4.user-name.table-bordered
             .col-xs-12.col-sm-4.table-bordered
             .col-xs-12.col-sm-4.user-email.table-bordered
         .row
-          .col-xs-12
-            span#basic-addon1.input-group-addon
-              span.glyphicon.glyphicon-book.col-xs-12
-            span#basic-addon1.input-group-addon
-              span.glyphicon.glyphicon-refresh.col-xs-12
-            span#basic-addon1.input-group-addon
-              span.glyphicon.glyphicon-trash.col-xs-12
-        .row
-          .col-xs-12
-            input.col-xs-12.col-sm-4(type='submit', value='Create New Manga', onclick="window.location.href='/user/#{username}/new'")
-            input.col-xs-12.col-sm-4(type='submit', value='Update Profile', onclick="window.location.href='/user/#{username}/update'")
-            input.col-xs-12.col-sm-4(type='submit', value='Delete Account', onclick="window.location.href='/user/#{username}/delete'")
+          .btn-group.btn-group-justified
+            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/new')
+              i.glyphicon.glyphicon-plus
+              br
+              |  Create new Manga
+            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/update')
+              i.glyphicon.glyphicon-refresh
+              br
+              |  Update Profile
+            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/delete')
+              i.glyphicon.glyphicon-trash
+              br
+              |  Delete Account
       br
       br
       section
