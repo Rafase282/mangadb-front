@@ -33,16 +33,16 @@ block content
             .form-group.input-group
               span#basic-addon2.input-group-addon
                 span.glyphicon.glyphicon-stats
-              label.center-text(for='userStatus') 1. Reading Status &nbsp;
+              label.col-xs-12.col-sm-6(for='userStatus') Reading Status
               select#userStatus.form-control
                 option Finished
                 option Reading
                 option Will Read
-              label.center-text(for='seriesStatus') 2. Series Status &nbsp;
+              label.col-xs-12.col-sm-6(for='seriesStatus') Series Status
               select#seriesStatus.form-control
                 option Ongoing
                 option Completed
-              label.center-text(for='direction') 3. Reading Direction
+              label.col-xs-12.col-sm-6(for='direction') Reading Direction
               select#direction.form-control
                 option Right to Left
                 option Left to Right
@@ -55,11 +55,13 @@ block content
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-pencil
-              textarea.form-control(rows='10', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
+              textarea.form-control.col-xs-12.col-sm-6.col-md-3(rows='12', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
+            .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-picture
-                input.form-control(type='text', name='thumbnail', placeholder='Thumbnail *', style="width: 20em;", aria-describedby='basic-addon1')
-                img.img-thumbnail(src='http://www.readmanga.today/uploads/posters/terra-formars.jpg', alt='Cinque Terre', width='120', height='160')
+              .img-responsive.img-thumbnail.col-xs-12.col-sm-6.col-md-3
+                input.form-control.col-xs-12(type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
+                img.col-xs-12(src='http://www.readmanga.today/uploads/posters/terra-formars.jpg', alt='Manga Preview', width='130', height='200')
             .form-group.input-group
-          button.button.button-block.btn.btn-danger(type='button') Create
+          button.button.button-block.btn.btn-danger(type='submit') Create
       section#push
