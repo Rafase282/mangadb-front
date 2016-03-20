@@ -5,10 +5,13 @@ block content
       br
       .container-fluid
         .row
-          .col-xs-12.center-text
-            .col-xs-12.col-sm-4.user-name.table-bordered
-            .col-xs-12.col-sm-4.table-bordered
-            .col-xs-12.col-sm-4.user-email.table-bordered
+          .btn-group.btn-group-justified.center-text.table-bordered
+            .col-xs-12.col-sm-6
+              br
+              .user-name
+            .col-xs-12.col-sm-6
+              br
+              .user-email
         .row
           .btn-group.btn-group-justified
             a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/new')

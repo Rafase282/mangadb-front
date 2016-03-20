@@ -1,6 +1,6 @@
 'use strict';
 var userMangas = {};
-var account;
+var account = {};
 
 /* Clear mangas from view
  * Removes manga from all views and lists.
@@ -10,6 +10,8 @@ function clean() {
     $(".list2").empty();
     $(".list3").empty();
     $(".list4").empty();
+    $(".user-name").empty();
+    $(".user-email").empty();
 }
 
 /* Manga panels generator
