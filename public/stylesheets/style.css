@@ -371,8 +371,3 @@ section a {
   color: #3596e0;
   left: initial;
   font-size: 14px; }
-  .search-form .form-group span.form-control-feedback .user-info {
-    border: solid;
-    border-style: solid;
-    border-width: 5px;
-    border-color: white; }

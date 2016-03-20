@@ -19,7 +19,7 @@ exports.getCreateManga = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('createManga', funHelper.jadeObj(sess));
+    res.render('createManga', funHelper.jadeObj(sess, req));
 };
 
 /* Creates New Manga */
@@ -36,7 +36,11 @@ exports.createManga = function (req, res) {
         },
         form: funHelper.mangaObj(req)
     };
-    request(options, funHelper.requestFunc(error, response, body, msg, url));
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+
+        console.log(body);
+    });
 };
 
 /* Update Manga Handling
@@ -50,7 +54,7 @@ exports.getUpdateManga = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('updateManga', funHelper.jadeObj(sess));
+    res.render('updateManga', funHelper.jadeObj(sess, req));
 };
 
 /* Updates Manga */
@@ -71,6 +75,10 @@ exports.updateManga = function (req, res) {
         form: funHelper.mangaObj(req.body)
     };
 
-    request(options, funHelper.requestFunc(error, response, body, msg, url));
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+
+        console.log(body);
+    });
 
 };
