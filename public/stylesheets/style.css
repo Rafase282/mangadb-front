@@ -227,29 +227,6 @@ h1 {
   font-weight: 300;
   margin: 0 0 40px; }
 
-label {
-  position: absolute;
-  transform: translateY(6px);
-  left: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  transition: all 0.25s ease;
-  -webkit-backface-visibility: hidden;
-  pointer-events: none;
-  font-size: 22px; }
-  label .req {
-    margin: 2px;
-    color: #c83636; }
-
-label.active {
-  transform: translateY(50px);
-  left: 2px;
-  font-size: 14px; }
-  label.active .req {
-    opacity: 0; }
-
-label.highlight {
-  color: white; }
-
 input, textarea {
   font-size: 22px;
   display: block;

@@ -31,28 +31,35 @@ block content
               input.form-control(type='text', name='categories', placeholder='Categories *', aria-describedby='basic-addon1')
           .field-wrap
             .form-group.input-group
-              span#basic-addon1.input-group-addon
-                span.glyphicon.glyphicon-picture
-              input.form-control(type='text', name='thumbnail', placeholder='Thumbnail *', style="width: 20em;", aria-describedby='basic-addon1')
-              img.img-thumbnail(src='cinqueterre.jpg', alt='Cinque Terre', width='304', height='236')
+              span#basic-addon2.input-group-addon
+                span.glyphicon.glyphicon-stats
+              label.center-text(for='userStatus') 1. Reading Status &nbsp;
+              select#userStatus.form-control
+                option Finished
+                option Reading
+                option Will Read
+              label.center-text(for='seriesStatus') 2. Series Status &nbsp;
+              select#seriesStatus.form-control
+                option Ongoing
+                option Completed
+              label.center-text(for='direction') 3. Reading Direction
+              select#direction.form-control
+                option Right to Left
+                option Left to Right
           .field-wrap
             .form-group.input-group
-              span#basic-addon2.input-group-addon
-                span.glyphicon.glyphicon-stats
-              input.form-control(type='password', name='userStatus', placeholder='Reading Status *', aria-describedby='basic-addon2', autocomplete='off')
-              span#basic-addon2.input-group-addon
-                span.glyphicon.glyphicon-stats
-              input.form-control(type='password', name='seriesStatus', placeholder='Series Status *', aria-describedby='basic-addon2', ,='', autocomplete='off')
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-list
               input.form-control(type='text', name='altName', placeholder='Alternate names *', aria-describedby='basic-addon1')
-              span#basic-addon1.input-group-addon
-                span.glyphicon.glyphicon-resize-horizontal
-              input.form-control(type='text', name='direction', placeholder='Reading Direction *', aria-describedby='basic-addon1')
           .field-wrap
             .form-group.input-group
-            span#basic-addon1.input-group-addon
-              span.glyphicon.glyphicon-pencil
-            textarea.form-control(rows='5', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-pencil
+              textarea.form-control(rows='10', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-picture
+                input.form-control(type='text', name='thumbnail', placeholder='Thumbnail *', style="width: 20em;", aria-describedby='basic-addon1')
+                img.img-thumbnail(src='http://www.readmanga.today/uploads/posters/terra-formars.jpg', alt='Cinque Terre', width='120', height='160')
+            .form-group.input-group
           button.button.button-block.btn.btn-danger(type='button') Create
       section#push
