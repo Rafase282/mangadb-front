@@ -35,13 +35,13 @@ exports.mangaObj = function (manga) {
 
 // Sets complete manga object
 exports.userObj = function (user) {
-        return {
-            username: user.username,
-            password: user.password,
-            email: user.email,
-            firstname: user.firstname,
-            lastname: user.lastname
-        };
+    return {
+        username: user.username,
+        password: user.password,
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname
+    };
 };
 
 // Sets complete manga object
@@ -53,6 +53,9 @@ exports.jadeObj = function (sess, req) {
         token: sess.token,
         api: sess.api,
         username: sess.username,
+        first: sess.first,
+        last: sess.last,
+        email: sess.email,
         msg: {
             error: req.flash('error'),
             info: req.flash('info'),

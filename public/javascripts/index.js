@@ -1,5 +1,6 @@
 'use strict';
 var userMangas = {};
+var account;
 
 /* Clear mangas from view
  * Removes manga from all views and lists.
@@ -144,6 +145,33 @@ function getMangas() {
     });
 };
 
+// Get User Information
+function getUserInfo() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": api + "/users/" + user.toLowerCase(),
+        "method": "GET",
+        "headers": {
+            "x-access-token": token
+        }
+    }
+
+    $.ajax(settings).done(function (response) {
+        account = {
+            username: response.username,
+            email: response.email,
+            firstname: response.firstname,
+            lastname: response.lastname
+        };
+        console.log(account);
+        var userName = '<h4>Full name: ' + response.firstname + ' ' + response.lastname + '</h4>';
+        var userEmail = '<h4>E-Mail: ' + response.email + '</h4>';
+        $(".user-name").append(userName);
+        $(".user-email").append(userEmail);
+
+    });
+}
 /* Load Manga info When Page Is Loaded
  * When the profile page is read it will
  * call the function to get all mangas.
@@ -151,6 +179,7 @@ function getMangas() {
 $(document).ready(function () {
     if (window.location.pathname == '/user/' + user.toLowerCase()) {
         getMangas();
+        getUserInfo();
     };
 });
 
