@@ -282,3 +282,18 @@ function search() {
  */
 
 $('#search').keyup(search);
+
+/* Live Thubnail Preview
+ * When a key is release and the image input has text
+ * then use that text as the new src attribute for the image.
+ */
+// Live Preview
+function getLink() {
+    var img = $('#img-input').val();
+    if ($('#img-input').val().length > 4) {
+        $("#img").attr("src", img);
+    }
+    $('#img-input').unbind('keyup');
+    $('#img-input').keyup(getLink);
+}
+$('#img-input').keyup(getLink);
