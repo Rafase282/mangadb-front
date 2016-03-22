@@ -247,16 +247,19 @@ function delManga(info) {
 
 /* Search Bar Functionality
  * Search for mangas on keypress.
+ * Search by author, title, alt name, and categories.
  */
 
-// To-Do: Implement AltName and Category search.
 function search() {
     if ($('#search').val().length > 0) {
         var reg = new RegExp($('#search').val(), 'ig');
         $('.manga-panel').css('display', 'none');
 
         for (var manga in userMangas) {
-            if (reg.test(userMangas[manga].title)) {
+            if (reg.test(userMangas[manga].title) ||
+                reg.test(userMangas[manga].altName) ||
+                reg.test(userMangas[manga].categories) ||
+                reg.test(userMangas[manga].author)) {
                 $('.panel-' + window.s.slugify(userMangas[manga].title))
                     .css('display', 'block');
             }
