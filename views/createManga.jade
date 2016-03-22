@@ -55,12 +55,12 @@ block content
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-pencil
-              textarea.form-control.col-xs-12.col-sm-6.col-md-3(rows='12', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
+              textarea.form-control(rows='12', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-picture
-              .img-responsive.img-thumbnail.col-xs-12.col-sm-6.col-md-3
-                input.form-control.col-xs-12(type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
+              .img-responsive.img-thumbnail
+                input.form-control(type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
                 img.col-xs-12(src='http://www.readmanga.today/uploads/posters/terra-formars.jpg', alt='Manga Preview', width='130', height='200')
             .form-group.input-group
           button.button.button-block.btn.btn-danger(type='submit') Create Manga
