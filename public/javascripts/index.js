@@ -10,8 +10,6 @@ function clean() {
     $(".list2").empty();
     $(".list3").empty();
     $(".list4").empty();
-    $(".user-name").empty();
-    $(".user-email").empty();
 }
 
 /* Manga panels generator
@@ -166,7 +164,7 @@ function getUserInfo() {
             firstname: response.firstname,
             lastname: response.lastname
         };
-        console.log(account);
+        //console.log(account);
         var userName = '<h4>Full name: ' +
             window.s.titleize(response.firstname) + ' ' +
             window.s.titleize(response.lastname) + '</h4>';
@@ -182,8 +180,8 @@ function getUserInfo() {
  */
 $(document).ready(function () {
     if (window.location.pathname == '/user/' + user.toLowerCase()) {
-        getMangas();
         getUserInfo();
+        getMangas();
     };
 });
 

@@ -11,7 +11,7 @@ exports.isAuthenticated = function (req, res, next) {
         req.session.user.toLowerCase() === req.params.user.toLowerCase()) {
         return next();
     }
-    req.flash('info', 'Your session has either timed out or you have yet to log in. Please log in to go to your profile.');
+    //req.flash('info', 'Your session has either timed out or you have yet to log in. Please log in to go to your profile.');
     res.redirect(backURL);
 };
 
@@ -53,9 +53,6 @@ exports.jadeObj = function (sess, req) {
         token: sess.token,
         api: sess.api,
         username: sess.username,
-        first: sess.first,
-        last: sess.last,
-        email: sess.email,
         msg: {
             error: req.flash('error'),
             info: req.flash('info'),

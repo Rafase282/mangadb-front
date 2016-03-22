@@ -14,6 +14,7 @@ exports.getUserProfile = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
+
     res.render('profile', funHelper.jadeObj(sess, req));
 };
 
@@ -80,9 +81,7 @@ exports.createUser = function (req, res) {
                 res.redirect('/login');
                 break;
             };
-
         });
-
     }
     else {
         req.flash('error', 'Your passwords don\'t match.');
