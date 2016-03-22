@@ -287,12 +287,15 @@ $('#search').keyup(search);
  * When a key is release and the image input has text
  * then use that text as the new src attribute for the image.
  */
-// Live Preview
 function getLink() {
     var img = $('#img-input').val();
     if ($('#img-input').val().length > 4) {
         $("#img").attr("src", img);
     }
+    else {
+        $("#img").attr("src", '../../images/kaneki1.jpg');
+    }
+
     $('#img-input').unbind('keyup');
     $('#img-input').keyup(getLink);
 }

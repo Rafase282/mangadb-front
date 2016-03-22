@@ -9,29 +9,29 @@ block content
         form(role='form', method='POST', name='createManga', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
             .form-group.input-group
-              div.col-md-4.col-xs-12(style="display: inherit;")
+              div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-tag
                 input.form-control(type='text', name='title', placeholder='Title *', aria-describedby='basic-addon1')
-              div.col-md-4.col-xs-12(style="display: inherit;")
+              div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-user
                 input.form-control(type='text', name='author', placeholder='Author *', aria-describedby='basic-addon1')
-              div.col-md-4.col-xs-12(style="display: inherit;")
+              div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-link
                 input.form-control(type='text', name='url', placeholder='URL *', aria-describedby='basic-addon1')
           .field-wrap
             .form-group.input-group
-              div.col-md-4.col-xs-12(style="display: inherit;")
+              div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-bookmark
                 input.form-control(type='text', name='chapter', placeholder='Chapter *', aria-describedby='basic-addon1')
-              div.col-md-4.col-xs-12(style="display: inherit;")
+              div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-globe
                 input.form-control(type='text', name='type', placeholder='Manga Ethnicity *', aria-describedby='basic-addon1')
-              div.col-md-4.col-xs-12(style="display: inherit;")
+              div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-list
                 input.form-control(type='text', name='categories', placeholder='Categories *', aria-describedby='basic-addon1')
@@ -39,16 +39,16 @@ block content
             .form-group.input-group
               span#basic-addon2.input-group-addon
                 span.glyphicon.glyphicon-stats
-              label.col-xs-12.col-sm-6(for='userStatus') Reading Status
+              label.col-xs-12.col-md-4(for='userStatus') Reading Status
               select#userStatus.form-control(name='userStatus')
                 option(value="finished", selected="selected") Finished
                 option(value="reading") Reading
                 option(value="will read") Will Read
-              label.col-xs-12.col-sm-6(for='seriesStatus') Series Status
+              label.col-xs-12.col-md-4(for='seriesStatus') Series Status
               select#seriesStatus.form-control(name='seriesStatus')
                 option(value="ongoing", selected="selected") Ongoing
                 option(value="completed") Completed
-              label.col-xs-12.col-sm-6(for='direction') Reading Direction
+              label.col-xs-12.col-md-4(for='direction') Reading Direction
               select#direction.form-control(name='direction')
                 option(value="right to left", selected="selected") Right to Left
                 option(value="left to right") Left to Right
@@ -56,18 +56,19 @@ block content
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-list
-              input.form-control(type='text', name='altName', placeholder='Alternate names', aria-describedby='basic-addon1')
+              input.form-control.col-xs-12.col-md-4(type='text', name='altName', placeholder='Alternate names', aria-describedby='basic-addon1')
           .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-pencil
-              textarea.form-control(rows='12', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
+              textarea.form-control.col-xs-12.col-md-4(rows='12', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
+          .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-picture
               .img-responsive.img-thumbnail
-                input.form-control(id='img-input', type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
-                img.col-xs-12(id='img', src='img.jpg', alt='Manga Preview', name='img', width='130', height='200')
+                input.form-control.col-xs-12.col-md-4(id='img-input', type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
+                img.col-xs-12.col-xs-12.col-md-4(id='img', src='../../images/kaneki1.jpg', alt='Manga Preview', name='img', width='130', height='200')
             .form-group.input-group
           button.button.button-block.btn.btn-danger(type='submit') Create Manga
       section#push
