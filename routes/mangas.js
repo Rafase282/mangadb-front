@@ -73,7 +73,7 @@ exports.updateManga = function (req, res) {
     var msg = 'The manga has been updated.';
     var options = {
         method: 'PUT',
-        url: sess.api + '/mangas/' + sess.username + '/' + req.body.title,
+        url: sess.api + '/mangas/' + sess.username + '/' + req.params.manga,
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
             'x-access-token': sess.token

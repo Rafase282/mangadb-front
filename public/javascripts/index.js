@@ -64,7 +64,9 @@ function mangaInfo(manga) {
     var del = '<button type="button" class="btn btn-default"' +
         ' onclick="delManga(\'' + dataDel + '\')">Delete</button>';
 
-    var upd = '<button type="button" class="btn btn-default">Update</button>';
+    var upd = '<button type="button" class="btn btn-default" ' +
+        'onclick="window.location=\'/user/' + user.toLowerCase() + '/' +
+        encodeURIComponent(manga.title) + '\'">Update</button>';
 
     var buttons = '<div class="btn-group btn-group-justified" role="group"' +
         'aria-label="Controls"> <div class="btn-group" role="group">' +
