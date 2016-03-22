@@ -25,7 +25,7 @@ block content
               input.form-control(type='text', name='chapter', placeholder='Chapter *', aria-describedby='basic-addon1')
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-globe
-              input.form-control(type='text', name='type', placeholder='Manga Origin *', aria-describedby='basic-addon1')
+              input.form-control(type='text', name='type', placeholder='Manga Ethnicity *', aria-describedby='basic-addon1')
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-list
               input.form-control(type='text', name='categories', placeholder='Categories *', aria-describedby='basic-addon1')
@@ -34,23 +34,23 @@ block content
               span#basic-addon2.input-group-addon
                 span.glyphicon.glyphicon-stats
               label.col-xs-12.col-sm-6(for='userStatus') Reading Status
-              select#userStatus.form-control
-                option Finished
-                option Reading
-                option Will Read
+              select#userStatus.form-control(name='userStatus')
+                option(value="finished", selected="selected") Finished
+                option(value="reading") Reading
+                option(value="will read") Will Read
               label.col-xs-12.col-sm-6(for='seriesStatus') Series Status
-              select#seriesStatus.form-control
-                option Ongoing
-                option Completed
+              select#seriesStatus.form-control(name='seriesStatus')
+                option(value="ongoing", selected="selected") Ongoing
+                option(value="completed") Completed
               label.col-xs-12.col-sm-6(for='direction') Reading Direction
-              select#direction.form-control
-                option Right to Left
-                option Left to Right
+              select#direction.form-control(name='direction')
+                option(value="right to left", selected="selected") Right to Left
+                option(value="left to right") Left to Right
           .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-list
-              input.form-control(type='text', name='altName', placeholder='Alternate names *', aria-describedby='basic-addon1')
+              input.form-control(type='text', name='altName', placeholder='Alternate names', aria-describedby='basic-addon1')
           .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
@@ -63,5 +63,5 @@ block content
                 input.form-control.col-xs-12(type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
                 img.col-xs-12(src='http://www.readmanga.today/uploads/posters/terra-formars.jpg', alt='Manga Preview', width='130', height='200')
             .form-group.input-group
-          button.button.button-block.btn.btn-danger(type='submit') Create
+          button.button.button-block.btn.btn-danger(type='submit') Create Manga
       section#push

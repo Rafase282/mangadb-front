@@ -1,30 +1,67 @@
 extends layout
 block content
-      .form.main
-        h1 Update Manga
-        form(role='form', action='/signup', method='POST', name='updateManga', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+      .area
+        p Please note that for the best experience, you should try and fill as much information as you can.
+        p For the thumbnails, try to use an image link with https to avoid serving mixed content.
+        p This is to protect your info from attacks by making the app less secure.
+      .area.main
+        h1 Update Manga Information
+        form(role='form', method='POST', name='createManga', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
-                span.glyphicon.glyphicon-tags
-              input.form-control(type='text', name='firstname', placeholder='First Name *', aria-describedby='basic-addon1')
-              span#basic-addon1.input-group-addon
-                span.glyphicon.glyphicon-tags
-              input.form-control(type='text', name='lastname', placeholder='Last Name *', aria-describedby='basic-addon1')
-          .field-wrap
-            .form-group.input-group
+                span.glyphicon.glyphicon-tag
+              input.form-control(type='text', name='title', placeholder='Title *', aria-describedby='basic-addon1')
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-user
-              input.form-control(type='text', name='username', placeholder='Username *', aria-describedby='basic-addon1')
+              input.form-control(type='text', name='author', placeholder='Author *', aria-describedby='basic-addon1')
               span#basic-addon1.input-group-addon
-                span.glyphicon.glyphicon-envelope
-              input.form-control(type='text', name='email', placeholder='E-Mail *', aria-describedby='basic-addon1')
+                span.glyphicon.glyphicon-link
+              input.form-control(type='text', name='url', placeholder='URL *', aria-describedby='basic-addon1')
+          .field-wrap
+            .form-group.input-group
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-bookmark
+              input.form-control(type='text', name='chapter', placeholder='Chapter *', aria-describedby='basic-addon1')
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-globe
+              input.form-control(type='text', name='type', placeholder='Manga Ethnicity *', aria-describedby='basic-addon1')
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-list
+              input.form-control(type='text', name='categories', placeholder='Categories *', aria-describedby='basic-addon1')
           .field-wrap
             .form-group.input-group
               span#basic-addon2.input-group-addon
-                span.glyphicon.glyphicon-lock
-              input.form-control(type='password', name='password', placeholder='Password *', aria-describedby='basic-addon2', autocomplete='off')
-              span#basic-addon2.input-group-addon
-                span.glyphicon.glyphicon-lock
-              input.form-control(type='password', name='password2', placeholder='Comfirm Password *', aria-describedby='basic-addon2', ,='', autocomplete='off')
-          button.button.button-block.btn.btn-danger(type='button') Update
+                span.glyphicon.glyphicon-stats
+              label.col-xs-12.col-sm-6(for='userStatus') Reading Status
+              select#userStatus.form-control(name='userStatus')
+                option(value="finished", selected="selected") Finished
+                option(value="reading") Reading
+                option(value="will read") Will Read
+              label.col-xs-12.col-sm-6(for='seriesStatus') Series Status
+              select#seriesStatus.form-control(name='seriesStatus')
+                option(value="ongoing", selected="selected") Ongoing
+                option(value="completed") Completed
+              label.col-xs-12.col-sm-6(for='direction') Reading Direction
+              select#direction.form-control(name='direction')
+                option(value="right to left", selected="selected") Right to Left
+                option(value="left to right") Left to Right
+          .field-wrap
+            .form-group.input-group
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-list
+              input.form-control(type='text', name='altName', placeholder='Alternate names', aria-describedby='basic-addon1')
+          .field-wrap
+            .form-group.input-group
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-pencil
+              textarea.form-control.col-xs-12.col-sm-6.col-md-3(rows='12', name='plot', placeholder='Story Plot *', aria-describedby='basic-addon1')
+            .form-group.input-group
+              span#basic-addon1.input-group-addon
+                span.glyphicon.glyphicon-picture
+              .img-responsive.img-thumbnail.col-xs-12.col-sm-6.col-md-3
+                input.form-control.col-xs-12(type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
+                img.col-xs-12(src='http://www.readmanga.today/uploads/posters/terra-formars.jpg', alt='Manga Preview', width='130', height='200')
+            .form-group.input-group
+          button.button.button-block.btn.btn-danger(type='submit') Update Manga
+      section#push

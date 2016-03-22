@@ -26,7 +26,6 @@ exports.getCreateManga = function (req, res) {
 exports.createManga = function (req, res) {
     var url = req.header('Referer') || '/';
     sess = req.session;
-    var msg = 'The manga ' + req.body.title + ' has been created!';
     var options = {
         method: 'POST',
         url: sess.api + '/mangas/' + sess.username,
@@ -34,12 +33,19 @@ exports.createManga = function (req, res) {
             'content-type': 'application/x-www-form-urlencoded',
             'x-access-token': sess.token
         },
-        form: funHelper.mangaObj(req)
+        form: funHelper.mangaObj(req.body)
     };
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-
-        console.log(body);
+        if (body.error !== undefined) {
+            req.flash('error', 'Don\'t leave empty fields, ' +
+                'fill the form properly!');
+            res.redirect(url);
+        }
+        else {
+            req.flash('success', body.message);
+            res.redirect(sess.url);
+        }
     });
 };
 
@@ -77,8 +83,15 @@ exports.updateManga = function (req, res) {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-
-        console.log(body);
+        if (body.error !== undefined) {
+            req.flash('error', 'Don\'t leave empty fields, ' +
+                'fill the form properly!');
+            res.redirect(url);
+        }
+        else {
+            req.flash('success', body.message);
+            res.redirect(sess.url);
+        }
     });
 
 };

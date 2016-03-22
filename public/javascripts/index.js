@@ -259,7 +259,8 @@ function search() {
             if (reg.test(userMangas[manga].title) ||
                 reg.test(userMangas[manga].altName) ||
                 reg.test(userMangas[manga].categories) ||
-                reg.test(userMangas[manga].author)) {
+                reg.test(userMangas[manga].author) ||
+                reg.test(userMangas[manga].type)) {
                 $('.panel-' + window.s.slugify(userMangas[manga].title))
                     .css('display', 'block');
             }
