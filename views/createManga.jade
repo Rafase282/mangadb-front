@@ -12,29 +12,29 @@ block content
               div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-tag
-                input.form-control(type='text', name='title', placeholder='Title *', aria-describedby='basic-addon1')
+                input.form-control(type='text', name='title', placeholder='Title *', aria-describedby='basic-addon1', size='100')
               div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-user
-                input.form-control(type='text', name='author', placeholder='Author *', aria-describedby='basic-addon1')
+                input.form-control(type='text', name='author', placeholder='Author *', aria-describedby='basic-addon1', size='100')
               div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-link
-                input.form-control(type='text', name='url', placeholder='URL *', aria-describedby='basic-addon1')
+                input.form-control(type='text', name='url', placeholder='URL *', aria-describedby='basic-addon1', size='100')
           .field-wrap
             .form-group.input-group
               div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-bookmark
-                input.form-control(type='text', name='chapter', placeholder='Chapter *', aria-describedby='basic-addon1')
+                input.form-control(type='text', name='chapter', placeholder='Chapter *', aria-describedby='basic-addon1', size='100')
               div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-globe
-                input.form-control(type='text', name='type', placeholder='Manga Ethnicity *', aria-describedby='basic-addon1')
+                input.form-control(type='text', name='type', placeholder='Manga Ethnicity *', aria-describedby='basic-addon1', size='100')
               div.col-xs-12.col-md-4(style="display: inherit;")
                 span#basic-addon1.input-group-addon
                   span.glyphicon.glyphicon-list
-                input.form-control(type='text', name='categories', placeholder='Categories *', aria-describedby='basic-addon1')
+                input.form-control(type='text', name='categories', placeholder='Categories *', aria-describedby='basic-addon1', size='100')
           .field-wrap
             .form-group.input-group
               span#basic-addon2.input-group-addon
@@ -66,9 +66,10 @@ block content
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-picture
-              .img-responsive.img-thumbnail
+              .img-responsive.img-thumbnail.img-container
                 input.form-control.col-xs-12.col-md-4(id='img-input', type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
-                img.col-xs-12.col-xs-12.col-md-4(id='img', src='../../images/kaneki1.jpg', alt='Manga Preview', name='img', width='130', height='200')
+                br
+                img.col-xs-12.col-xs-12.col-md-4(id='img', src='../../images/kaneki1.jpg', alt='Manga Preview', name='img', height='250', style="float: center;")
             .form-group.input-group
           button.button.button-block.btn.btn-danger(type='submit') Create Manga
       section#push
