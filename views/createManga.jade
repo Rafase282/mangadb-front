@@ -67,9 +67,11 @@ block content
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-picture
               .img-responsive.img-thumbnail.img-container
-                input.form-control.col-xs-12.col-md-4(id='img-input', type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
+                input.form-control.col-xs-12(id='img-input', type='text', name='thumbnail', placeholder='Thumbnail *', aria-describedby='basic-addon1')
                 br
-                img.col-xs-12.col-xs-12.col-md-4(id='img', src='../../images/kaneki1.jpg', alt='Manga Preview', name='img', height='250', style="float: center;")
+                .col-xs-12.col-xs-12.col-md-4
+                img.col-xs-12.col-xs-12.col-md-4(id='img', src='../../images/kaneki1.jpg', alt='Manga Preview', name='img', height='250')
+                .col-xs-12.col-xs-12.col-md-4
             .form-group.input-group
           button.button.button-block.btn.btn-danger(type='submit') Create Manga
       section#push

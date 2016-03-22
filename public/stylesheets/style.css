@@ -363,3 +363,7 @@ td {
 .img-container {
   height: 400;
   width: 100%; }
+
+#img {
+  display: block;
+  margin: 0 auto; }
