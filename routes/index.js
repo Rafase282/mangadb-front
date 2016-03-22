@@ -46,7 +46,7 @@ exports.getToken = function (req, res) {
             'content-type': 'application/x-www-form-urlencoded'
         },
         form: {
-            username: username,
+            username: sess.username,
             password: password
         }
     };
