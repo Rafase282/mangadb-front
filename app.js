@@ -12,7 +12,6 @@ var users = require('./routes/users');
 var password = require('./routes/password');
 var funHelper = require('./routes/helpers');
 var mangas = require('./routes/mangas');
-var admin = require('./routes/admin');
 require('dotenv').config({
   silent: true
 });
