@@ -107,11 +107,6 @@ router.route('/user/:user/:manga')
   .get(funHelper.isAuthenticated, mangas.getUpdateManga)
   .post(funHelper.isAuthenticated, mangas.updateManga);
 
-
-// Admin area
-router.route('/admin')
-  .get(funHelper.isAuthenticated, admin.getUsersProfiles);
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
