@@ -13,7 +13,8 @@ The Front-End for the MangaDB app
 - [X] Create multipage site.
 - [X] Figure way to hash username and password and use it for a session.
 - [X] Figure out how to keep a session.
-- [ ] Change the way the manga is displayed.
+- [X] Change the way the manga is displayed.
 - [X] Add buttons inside the manga info for manga action.
-- [-] Improve authentication middleware so the user can't go to restricted pages.
-- [ ] Implement manga search by alternate name and category.
+- [X] Improve authentication middleware so the user can't go to restricted pages.
+- [X] Implement manga search by alternate name and category.
+- [ ] Implement password Recovery and reset.
