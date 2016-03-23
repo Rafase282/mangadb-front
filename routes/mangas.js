@@ -19,7 +19,9 @@ exports.getCreateManga = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('createManga', funHelper.jadeObj(sess, req));
+    sess.button = 'Create Manga';
+    sess.header = 'Create New Manga';
+    res.render('editManga', funHelper.jadeObj(sess, req));
 };
 
 /* Creates New Manga */
@@ -60,7 +62,9 @@ exports.getUpdateManga = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('updateManga', funHelper.jadeObj(sess, req));
+    sess.button = 'Update Manga';
+    sess.header = 'Update Manga Information';
+    res.render('editManga', funHelper.jadeObj(sess, req));
 };
 
 /* Updates Manga */

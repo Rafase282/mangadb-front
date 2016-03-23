@@ -1,12 +1,14 @@
 extends layout
 block content
-      .area
-        p Please note that for the best experience, you should try and fill as much information as you can.
-        p For the thumbnails, try to use an image link with https to avoid serving mixed content.
-        p This is to protect your info from attacks by making the app less secure.
       .area.main
-        h1 Create a New Manga
-        form(role='form', method='POST', name='createManga', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+        h1 #{header}
+        ul
+          li (Update only) To update any piece of information just fill in the particular field.
+          li (Update only) Whatever information is left blank will retain the old information.
+          li Avoid using images url over http as it will serve mixed content which lowers the security of your session.
+          li Please note that for the best experience, you should try and fill as much information as you can.
+        br
+        form(role='form', method='POST', name='editManga', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
             .form-group.input-group
               div.col-xs-12.col-md-4(style="display: inherit;")
@@ -73,5 +75,5 @@ block content
                 img.col-xs-12.col-xs-12.col-md-4(id='img', src='../../images/kaneki1.jpg', alt='Manga Preview', name='img', height='250')
                 .col-xs-12.col-xs-12.col-md-4
             .form-group.input-group
-          button.button.button-block.btn.btn-danger(type='submit') Create Manga
+          button.button.button-block.btn.btn-danger(type='submit') #{button}
       section#push

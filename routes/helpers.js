@@ -53,6 +53,8 @@ exports.jadeObj = function (sess, req) {
         token: sess.token,
         api: sess.api,
         username: sess.username,
+        header: sess.header,
+        button: sess.button,
         msg: {
             error: req.flash('error'),
             info: req.flash('info'),

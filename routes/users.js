@@ -29,7 +29,9 @@ exports.getSignUp = function (req, res) {
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Register';
-    res.render('signup', funHelper.jadeObj(sess, req));
+    sess.button = 'Create User';
+    sess.header = 'Create Account';
+    res.render('editUser', funHelper.jadeObj(sess, req));
 };
 
 /* Creates New User */
@@ -101,7 +103,9 @@ exports.getUpdateUser = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('updateUser', funHelper.jadeObj(sess, req));
+    sess.button = 'Update User Information';
+    sess.header = 'Update User';
+    res.render('editUser', funHelper.jadeObj(sess, req));
 };
 
 /* Handles User Update Request */

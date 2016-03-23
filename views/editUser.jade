@@ -1,9 +1,12 @@
 extends layout
 block content
       .form.main
-        h1 Update User Information
-        h4 To update any piece of information just fill in the particular field.
-        h4 Whatever field that is left blank will retain the user old information.
+        h1 #{header}
+        ul
+          li (Update only) To update any piece of information just fill in the particular field.
+          li (Update only) Whatever information is left blank will retain the old information.
+          li Usernames are lowercase internally.
+          li Passwords are case sensitive.
         br
         form(role='form', method='POST', name='updateUser', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
@@ -27,4 +30,4 @@ block content
               span#basic-addon2.input-group-addon
                 span.glyphicon.glyphicon-lock
               input.form-control(type='password', name='password', placeholder='Password', aria-describedby='basic-addon2', autocomplete='off')
-          button.button.button-block.btn.btn-danger(type='submit') Update
+          button.button.button-block.btn.btn-danger(type='submit') #{button}
