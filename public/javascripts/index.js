@@ -256,19 +256,10 @@ function search() {
     if ($('#search').val().length > 0) {
         var reg = new RegExp($('#search').val(), 'ig');
         $('.manga-panel').css('display', 'none');
-
-        for (var manga in userMangas) {
-            if (reg.test(userMangas[manga].title) ||
-                reg.test(userMangas[manga].altName) ||
-                reg.test(userMangas[manga].categories) ||
-                reg.test(userMangas[manga].author) ||
-                reg.test(userMangas[manga].type)) {
-                $('.panel-' + window.s.slugify(userMangas[manga].title))
-                    .css('display', 'block');
-            }
-        }
+        // Display the results
+        displayResults()
     }
-    else if ($('#search').val().length < 1) {
+    else {
         // display everything again
         $('.manga-panel').css('display', 'block');
     }
@@ -277,6 +268,21 @@ function search() {
     $('#search').keyup(search);
 }
 
+/* Display Search Results
+ * part of the search function.
+ */
+function displayResults() {
+    for (var manga in userMangas) {
+        if (reg.test(userMangas[manga].title) ||
+            reg.test(userMangas[manga].altName) ||
+            reg.test(userMangas[manga].categories) ||
+            reg.test(userMangas[manga].author) ||
+            reg.test(userMangas[manga].type)) {
+            $('.panel-' + window.s.slugify(userMangas[manga].title))
+                .css('display', 'block');
+        }
+    }
+}
 /* Start Search
  * When a key is released call the function.
  */
@@ -287,7 +293,7 @@ $('#search').keyup(search);
  * When a key is release and the image input has text
  * then use that text as the new src attribute for the image.
  */
-function getLink() {
+function previewThumbnail() {
     var img = $('#img-input').val();
     if ($('#img-input').val().length > 4) {
         $("#img").attr("src", img);
@@ -297,6 +303,7 @@ function getLink() {
     }
 
     $('#img-input').unbind('keyup');
-    $('#img-input').keyup(getLink);
+    $('#img-input').keyup(previewThumbnail);
 }
-$('#img-input').keyup(getLink);
+
+$('#img-input').keyup(previewThumbnail);
