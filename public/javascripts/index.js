@@ -254,7 +254,6 @@ function delManga(info) {
 
 function search() {
     if ($('#search').val().length > 0) {
-        var reg = new RegExp($('#search').val(), 'ig');
         $('.manga-panel').css('display', 'none');
         // Display the results
         displayResults()
@@ -272,6 +271,7 @@ function search() {
  * part of the search function.
  */
 function displayResults() {
+    var reg = new RegExp($('#search').val(), 'ig');
     for (var manga in userMangas) {
         if (reg.test(userMangas[manga].title) ||
             reg.test(userMangas[manga].altName) ||
