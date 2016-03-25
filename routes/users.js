@@ -82,7 +82,7 @@ exports.createUser = function (req, res) {
                 req.flash('success', body.message);
                 res.redirect('/login');
                 break;
-            };
+            }
         });
     }
     else {
@@ -170,7 +170,8 @@ exports.deleteUser = function (req, res) {
         }
     };
 
-    if (sess.username === req.params.user.toLowerCase() && req.params.user.toLowerCase() === req.body.username.toLowerCase()) {
+    if (sess.username === req.params.user.toLowerCase() &&
+        req.params.user.toLowerCase() === req.body.username.toLowerCase()) {
         request(options, function (error, response, body) {
             if (error) {
                 throw new Error(error);
@@ -181,7 +182,8 @@ exports.deleteUser = function (req, res) {
         });
     }
     else {
-        sess.error = 'You have input the wrong username, make sure you are deleting your own account and that you spelled it right!'
-        res.redirect('/user/' + sess.username + '/delete')
+        sess.error = 'You have input the wrong username, make sure you are' +
+            ' deleting your own account and that you spelled it right!';
+        res.redirect('/user/' + sess.username + '/delete');
     }
 };
