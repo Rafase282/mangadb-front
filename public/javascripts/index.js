@@ -103,7 +103,7 @@ function createManga(title, author, url, userStatus, type, categories, chapter,
         this.altName = altName,
         this.direction = direction,
         this.thumbnail = thumbnail
-};
+}
 
 /* Get list of all user's mangas
  * Sends a GET request to the API and generates an oject
@@ -145,7 +145,7 @@ function getMangas() {
             $(".list").append(html);
         });
     });
-};
+}
 
 // Get User Information
 function getUserInfo() {
@@ -181,10 +181,10 @@ function getUserInfo() {
  * call the function to get all mangas.
  */
 $(document).ready(function () {
-    if (window.location.pathname == '/user/' + user.toLowerCase()) {
+    if (window.location.pathname === '/user/' + user.toLowerCase()) {
         getUserInfo();
         getMangas();
-    };
+    }
 });
 
 /* Increment chapter number

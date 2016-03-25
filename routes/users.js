@@ -60,13 +60,13 @@ exports.createUser = function (req, res) {
                 res.redirect('/signup');
                 break;
                 // Empty form or missing fields
-            case (body.message && body.message.code == 400):
+            case (body.message && body.message.code === 400):
                 req.flash('error', 'Don\'t leave empty fields, ' +
                     'fill the form properly!');
                 res.redirect('/signup');
                 break;
                 // Duplicated Key (Username or E-Mail)
-            case (body.error && body.error.code == 11000):
+            case (body.error && body.error.code === 11000):
                 var msg = body.error.errmsg.split(': ');
                 var msg2 = msg[3].split('"');
                 msg = 'We already have ' + msg2[1] +
