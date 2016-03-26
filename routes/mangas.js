@@ -39,9 +39,8 @@ exports.createManga = function (req, res) {
     };
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        if (body.error !== undefined) {
-            req.flash('error', 'Don\'t leave empty fields, ' +
-                'fill the form properly!');
+        if (!body.success) {
+            req.flash('error', body.message);
             res.redirect(url);
         }
         else {
@@ -87,9 +86,8 @@ exports.updateManga = function (req, res) {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        if (body.error !== undefined) {
-            req.flash('error', 'Don\'t leave empty fields, ' +
-                'fill the form properly!');
+        if (!body.success) {
+            req.flash('error', body.message);
             res.redirect(url);
         }
         else {

@@ -158,6 +158,7 @@ function getUserInfo() {
     }
 
     $.ajax(settings).done(function (response) {
+        console.log(response);
         account = {
             username: response.username,
             email: response.email,

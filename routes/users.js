@@ -53,6 +53,16 @@ exports.createUser = function (req, res) {
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
             body = JSON.parse(body);
+            console.log(body)
+            if (!body.success) {
+                req.flash('error', body.message);
+                res.redirect(url);
+            } else {
+                req.flash('success', body.message);
+                res.redirect('/user/' + sess.username);
+            }
+
+            /*
             switch (true) {
                 // Invalid E-mail Case
             case (body.err !== undefined):
@@ -83,9 +93,9 @@ exports.createUser = function (req, res) {
                 res.redirect('/login');
                 break;
             }
+            */
         });
-    }
-    else {
+    } else {
         req.flash('error', 'Your passwords don\'t match.');
         res.redirect('/signup');
     }
@@ -128,15 +138,13 @@ exports.updateUser = function (req, res) {
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
         body = JSON.parse(body);
-        if (body.message) {
-            req.flash('success', 'The account information has been updated.');
+        if (!body.success) {
+            req.flash('error', body.message);
+            res.redirect(url);
+        } else {
+            req.flash('success', body.message);
             res.redirect('/user/' + sess.username);
         }
-        else {
-            req.flash('error', body.error);
-            res.redirect(url);
-        }
-
     });
 };
 
@@ -158,7 +166,6 @@ exports.getDeleteUser = function (req, res) {
 exports.deleteUser = function (req, res) {
     sess = req.session;
     var url = req.header('Referer') || '/';
-    var msg = 'The account has been deleted.';
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
@@ -176,12 +183,15 @@ exports.deleteUser = function (req, res) {
             if (error) {
                 throw new Error(error);
             }
-            console.log(body);
-            sess.success = 'The account has been deleted.';
-            res.redirect('/logout');
+            if (!body.success) {
+                req.flash('error', body.message);
+                res.redirect(url);
+            } else {
+                req.flash('success', body.message);
+                res.redirect('/logout');
+            }
         });
-    }
-    else {
+    } else {
         sess.error = 'You have input the wrong username, make sure you are' +
             ' deleting your own account and that you spelled it right!';
         res.redirect('/user/' + sess.username + '/delete');
