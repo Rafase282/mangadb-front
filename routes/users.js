@@ -53,47 +53,12 @@ exports.createUser = function (req, res) {
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
             body = JSON.parse(body);
-            console.log(body)
             if (!body.success) {
-                req.flash('error', body.message);
-                res.redirect(url);
+                funHelper.newUserMsg(req, res, body)
             } else {
                 req.flash('success', body.message);
                 res.redirect('/user/' + sess.username);
             }
-
-            /*
-            switch (true) {
-                // Invalid E-mail Case
-            case (body.err !== undefined):
-                req.flash('error', body.err);
-                res.redirect('/signup');
-                break;
-                // Empty form or missing fields
-            case (body.message && body.message.code === 400):
-                req.flash('error', 'Don\'t leave empty fields, ' +
-                    'fill the form properly!');
-                res.redirect('/signup');
-                break;
-                // Duplicated Key (Username or E-Mail)
-            case (body.error && body.error.code === 11000):
-                var msg = body.error.errmsg.split(': ');
-                var msg2 = msg[3].split('"');
-                msg = 'We already have ' + msg2[1] +
-                    ' in the system, try a different one.';
-                req.flash('error', msg);
-                res.redirect('/signup');
-                break;
-            case (body.error !== undefined): // just in case
-                req.flash('error', body.error.message);
-                res.redirect('/signup');
-                break;
-            case (body.message !== undefined):
-                req.flash('success', body.message);
-                res.redirect('/login');
-                break;
-            }
-            */
         });
     } else {
         req.flash('error', 'Your passwords don\'t match.');
@@ -101,6 +66,7 @@ exports.createUser = function (req, res) {
     }
 
 };
+
 
 /* Profile Update Handling
  * The following code handles displaying and API call method
@@ -139,8 +105,7 @@ exports.updateUser = function (req, res) {
         if (error) throw new Error(error);
         body = JSON.parse(body);
         if (!body.success) {
-            req.flash('error', body.message);
-            res.redirect(url);
+            funHelper.newUserMsg(req, res, body)
         } else {
             req.flash('success', body.message);
             res.redirect('/user/' + sess.username);
@@ -184,11 +149,10 @@ exports.deleteUser = function (req, res) {
                 throw new Error(error);
             }
             if (!body.success) {
-                req.flash('error', body.message);
-                res.redirect(url);
+                funHelper.newUserMsg(req, res, body)
             } else {
                 req.flash('success', body.message);
-                res.redirect('/logout');
+                res.redirect('/user/' + sess.username);
             }
         });
     } else {

@@ -39,8 +39,9 @@ exports.createManga = function (req, res) {
     };
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        if (!body.success) {
-            req.flash('error', body.message);
+        console.log(body);
+        if (body.success === false) {
+            req.flash('error', 'Some data is missing.');
             res.redirect(url);
         }
         else {

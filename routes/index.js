@@ -35,7 +35,7 @@ exports.LogOut = function (req, res) {
 /* Get Token For Login */
 exports.getToken = function (req, res) {
     sess = req.session;
-    var username = req.body.username;
+    var username = req.body.username.toLowerCase();
     var password = req.body.password;
     sess.user = s.titleize(username);
     sess.username = username.toLowerCase();

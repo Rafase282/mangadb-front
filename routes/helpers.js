@@ -11,7 +11,8 @@ exports.isAuthenticated = function (req, res, next) {
         req.session.user.toLowerCase() === req.params.user.toLowerCase()) {
         return next();
     }
-    //req.flash('info', 'Your session has either timed out or you have yet to log in. Please log in to go to your profile.');
+    req.flash('info', 'Your session has either timed out or you have yet to ' +
+        'log in. Please log in to go to your profile.');
     res.redirect(backURL);
 };
 
@@ -62,3 +63,26 @@ exports.jadeObj = function (sess, req) {
         }
     };
 };
+
+exports.newUserMsg = function newUserMsg(req, res, body) {
+    // Displays error messages for new user creation.
+    var url = req.header('Referer') || '/';
+    if (body.message.code === 400) {
+        // Empty form or missing fields
+        req.flash('error', 'Don\'t leave empty fields, ' +
+            'fill the form properly!');
+        res.redirect('/signup');
+    } else if (body.message.code === 11000) {
+        // Duplicated Key (Username or E-Mail)
+        var msg = body.message.errmsg.split(': ');
+        var msg2 = msg[3].split('"');
+        msg = 'We already have ' + msg2[1] +
+            ' in the system, try a different one.';
+        req.flash('error', msg);
+        res.redirect('/signup');
+    } else {
+        // Invalid E-mail Case
+        req.flash('error', body.message);
+        res.redirect(url);
+    }
+}
