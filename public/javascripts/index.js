@@ -160,16 +160,16 @@ function getUserInfo() {
     $.ajax(settings).done(function (response) {
         console.log(response);
         account = {
-            username: response.username,
-            email: response.email,
-            firstname: response.firstname,
-            lastname: response.lastname
+            username: response.data.username,
+            email: response.data.email,
+            firstname: response.data.firstname,
+            lastname: response.data.lastname
         };
         //console.log(account);
         var userName = '<h4>Full name: ' +
-            window.s.titleize(response.firstname) + ' ' +
-            window.s.titleize(response.lastname) + '</h4>';
-        var userEmail = '<h4>E-Mail: ' + response.email + '</h4>';
+            window.s.titleize(response.data.firstname) + ' ' +
+            window.s.titleize(response.data.lastname) + '</h4>';
+        var userEmail = '<h4>E-Mail: ' + response.data.email + '</h4>';
         $(".user-name").append(userName);
         $(".user-email").append(userEmail);
 
