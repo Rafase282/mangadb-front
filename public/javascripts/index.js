@@ -122,9 +122,9 @@ function getMangas() {
         }
     };
 
-    $.ajax(settings).done(function (data) {
+    $.ajax(settings).done(function (mangas) {
         clean();
-        data.map(function (manga) {
+        mangas.data.map(function (manga) {
             var newManga = new createManga(manga.title, manga.author, manga.url,
                 manga.userStatus, manga.type, manga.categories, manga.chapter,
                 manga.seriesStatus, manga.plot, manga.altName, manga.direction,
@@ -135,11 +135,9 @@ function getMangas() {
 
             if (newManga.userStatus === 'reading') {
                 $(".list2").append(html);
-            }
-            else if (newManga.userStatus === 'finished') {
+            } else if (newManga.userStatus === 'finished') {
                 $(".list3").append(html);
-            }
-            else if (newManga.userStatus === 'will read') {
+            } else if (newManga.userStatus === 'will read') {
                 $(".list4").append(html);
             }
             $(".list").append(html);
@@ -257,8 +255,7 @@ function search() {
         $('.manga-panel').css('display', 'none');
         // Display the results
         displayResults()
-    }
-    else {
+    } else {
         // display everything again
         $('.manga-panel').css('display', 'block');
     }
@@ -297,8 +294,7 @@ function previewThumbnail() {
     var img = $('#img-input').val();
     if ($('#img-input').val().length > 4) {
         $("#img").attr("src", img);
-    }
-    else {
+    } else {
         $("#img").attr("src", '../../images/kaneki1.jpg');
     }
 

@@ -53,7 +53,7 @@ exports.getToken = function (req, res) {
 
     request(options, function (error, response, body) {
         body = JSON.parse(body);
-        sess.token = body.token;
+        sess.token = body.data;
         
         if (error) throw new Error(error);
         if (!body.success) {
