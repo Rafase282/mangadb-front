@@ -1,5 +1,8 @@
 'use strict';
 var userMangas = {};
+var api = api;
+var user = user;
+var token = token;
 
 /* Clear mangas from view
  * Removes manga from all views and lists.
