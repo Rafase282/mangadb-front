@@ -54,7 +54,7 @@ exports.createUser = function (req, res) {
             if (error) throw new Error(error);
             body = JSON.parse(body);
             if (!body.success) {
-                funHelper.newUserMsg(req, res, body)
+                funHelper.newUserMsg(req, res, body);
             } else {
                 req.flash('success', body.message);
                 res.redirect('/login');
@@ -103,7 +103,7 @@ exports.updateUser = function (req, res) {
         if (error) throw new Error(error);
         body = JSON.parse(body);
         if (!body.success) {
-            funHelper.newUserMsg(req, res, body)
+            funHelper.newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);
             res.redirect('/user/' + sess.username);
@@ -146,7 +146,7 @@ exports.deleteUser = function (req, res) {
                 throw new Error(error);
             }
             if (!body.success) {
-                funHelper.newUserMsg(req, res, body)
+                funHelper.newUserMsg(req, res, body);
             } else {
                 req.flash('success', body.message);
                 res.redirect('/logout');

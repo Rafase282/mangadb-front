@@ -41,7 +41,7 @@ exports.createManga = function (req, res) {
             throw new Error(error);
         }
         if (!body.success) {
-            funHelper.newUserMsg(req, res, body)
+            funHelper.newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);
             res.redirect(sess.url);
@@ -87,7 +87,7 @@ exports.updateManga = function (req, res) {
             throw new Error(error);
         }
         if (!body.success) {
-            funHelper.newUserMsg(req, res, body)
+            funHelper.newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);
             res.redirect(sess.url);
