@@ -57,14 +57,13 @@ exports.createUser = function (req, res) {
                 funHelper.newUserMsg(req, res, body)
             } else {
                 req.flash('success', body.message);
-                res.redirect('/user/' + sess.username);
+                res.redirect('/login');
             }
         });
     } else {
         req.flash('error', 'Your passwords don\'t match.');
         res.redirect('/signup');
     }
-
 };
 
 
@@ -87,7 +86,6 @@ exports.getUpdateUser = function (req, res) {
 /* Handles User Update Request */
 exports.updateUser = function (req, res) {
     sess = req.session;
-    var url = req.header('Referer') || '/';
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
@@ -130,7 +128,6 @@ exports.getDeleteUser = function (req, res) {
 /* Handles User Deletion Request */
 exports.deleteUser = function (req, res) {
     sess = req.session;
-    var url = req.header('Referer') || '/';
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
@@ -152,7 +149,7 @@ exports.deleteUser = function (req, res) {
                 funHelper.newUserMsg(req, res, body)
             } else {
                 req.flash('success', body.message);
-                res.redirect('/user/' + sess.username);
+                res.redirect('/logout');
             }
         });
     } else {

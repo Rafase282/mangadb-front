@@ -26,7 +26,6 @@ exports.getCreateManga = function (req, res) {
 
 /* Creates New Manga */
 exports.createManga = function (req, res) {
-    var url = req.header('Referer') || '/';
     sess = req.session;
     var options = {
         method: 'POST',
@@ -38,13 +37,12 @@ exports.createManga = function (req, res) {
         form: funHelper.mangaObj(req.body)
     };
     request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        console.log(body);
-        if (body.success === false) {
-            req.flash('error', 'Some data is missing.');
-            res.redirect(url);
+        if (error) {
+            throw new Error(error);
         }
-        else {
+        if (!body.success) {
+            funHelper.newUserMsg(req, res, body)
+        } else {
             req.flash('success', body.message);
             res.redirect(sess.url);
         }
@@ -69,7 +67,6 @@ exports.getUpdateManga = function (req, res) {
 
 /* Updates Manga */
 exports.updateManga = function (req, res) {
-    var url = req.header('Referer') || '/';
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
@@ -86,12 +83,12 @@ exports.updateManga = function (req, res) {
     };
 
     request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        if (!body.success) {
-            req.flash('error', body.message);
-            res.redirect(url);
+        if (error) {
+            throw new Error(error);
         }
-        else {
+        if (!body.success) {
+            funHelper.newUserMsg(req, res, body)
+        } else {
             req.flash('success', body.message);
             res.redirect(sess.url);
         }
