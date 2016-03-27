@@ -21,6 +21,7 @@
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {
+    "eslint": "^2.5.1",
     "gulp": "^3.9.1",
     "gulp-sass": "^2.2.0"
   }
