@@ -4,7 +4,7 @@
  */
 
 'use strict';
-var request = require("request");
+var request = require('request');
 var funHelper = require('./helpers');
 var sess;
 
@@ -52,8 +52,10 @@ exports.createUser = function (req, res) {
         };
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
-            body = JSON.parse(body);
-            if (!body.success) {
+            if (typeof body === 'string') {
+                body = JSON.parse(body);
+            }
+            if (body.success === false) {
                 funHelper.newUserMsg(req, res, body);
             } else {
                 req.flash('success', body.message);
@@ -101,8 +103,10 @@ exports.updateUser = function (req, res) {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        body = JSON.parse(body);
-        if (!body.success) {
+        if (typeof body === 'string') {
+            body = JSON.parse(body);
+        }
+        if (body.success === false) {
             funHelper.newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);
@@ -145,7 +149,10 @@ exports.deleteUser = function (req, res) {
             if (error) {
                 throw new Error(error);
             }
-            if (!body.success) {
+            if (typeof body === 'string') {
+                body = JSON.parse(body);
+            }
+            if (body.success === false) {
                 funHelper.newUserMsg(req, res, body);
             } else {
                 req.flash('success', body.message);

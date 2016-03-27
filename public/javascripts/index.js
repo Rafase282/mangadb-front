@@ -1,15 +1,14 @@
 'use strict';
 var userMangas = {};
-var account = {};
 
 /* Clear mangas from view
  * Removes manga from all views and lists.
  */
 function clean() {
-    $(".list").empty();
-    $(".list2").empty();
-    $(".list3").empty();
-    $(".list4").empty();
+    $('.list').empty();
+    $('.list2').empty();
+    $('.list3').empty();
+    $('.list4').empty();
 }
 
 /* Manga panels generator
@@ -47,11 +46,11 @@ function mangaInfo(manga) {
         ' ' + window.s.titleize(manga.direction) + '</span>';
 
     var altName = '<span id="altName"> <strong>Other Names:</strong> ' +
-        window.s.titleize(window.s.toSentence(manga.altName, ", ", ", ")) +
+        window.s.titleize(window.s.toSentence(manga.altName, ', ', ', ')) +
         '</span>';
 
     var categories = '<span id="categories"> <strong>Categories:</strong> ' +
-        window.s.titleize(window.s.toSentence(manga.categories, ", ", ", ")) +
+        window.s.titleize(window.s.toSentence(manga.categories, ', ', ', ')) +
         '</span>';
 
     var plot = '<p id="plot"> <strong>Plot:</strong> ' +
@@ -102,7 +101,7 @@ function createManga(title, author, url, userStatus, type, categories, chapter,
         this.plot = plot,
         this.altName = altName,
         this.direction = direction,
-        this.thumbnail = thumbnail
+        this.thumbnail = thumbnail;
 }
 
 /* Get list of all user's mangas
@@ -113,12 +112,12 @@ function createManga(title, author, url, userStatus, type, categories, chapter,
 
 function getMangas() {
     var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": api + "/mangas/" + user.toLowerCase(),
-        "method": "GET",
-        "headers": {
-            "x-access-token": token
+        'async': true,
+        'crossDomain': true,
+        'url': api + '/mangas/' + user.toLowerCase(),
+        'method': 'GET',
+        'headers': {
+            'x-access-token': token
         }
     };
 
@@ -134,13 +133,13 @@ function getMangas() {
             var html = mangaInfo(newManga);
 
             if (newManga.userStatus === 'reading') {
-                $(".list2").append(html);
+                $('.list2').append(html);
             } else if (newManga.userStatus === 'finished') {
-                $(".list3").append(html);
+                $('.list3').append(html);
             } else if (newManga.userStatus === 'will read') {
-                $(".list4").append(html);
+                $('.list4').append(html);
             }
-            $(".list").append(html);
+            $('.list').append(html);
         });
     });
 }
@@ -148,31 +147,24 @@ function getMangas() {
 // Get User Information
 function getUserInfo() {
     var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": api + "/users/" + user.toLowerCase(),
-        "method": "GET",
-        "headers": {
-            "x-access-token": token
+        'async': true,
+        'crossDomain': true,
+        'url': api + '/users/' + user.toLowerCase(),
+        'method': 'GET',
+        'headers': {
+            'x-access-token': token
         }
-    }
+    };
 
     $.ajax(settings).done(function (response) {
-        console.log(user)
+        console.log(user);
         var userInfo = response.data[0];
-        account = {
-            username: userInfo.username,
-            email: userInfo.email,
-            firstname: userInfo.firstname,
-            lastname: userInfo.lastname
-        };
-        //console.log(account);
         var userName = '<h4>Full name: ' +
             window.s.titleize(userInfo.firstname) + ' ' +
             window.s.titleize(userInfo.lastname) + '</h4>';
         var userEmail = '<h4>E-Mail: ' + userInfo.email + '</h4>';
-        $(".user-name").append(userName);
-        $(".user-email").append(userEmail);
+        $('.user-name').append(userName);
+        $('.user-email').append(userEmail);
 
     });
 }
@@ -198,17 +190,17 @@ function oneUp(info) {
     var newChapter = currentChapter + 1; // increment chapter
 
     var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": api + "/mangas/" + user.toLowerCase() + "/" +
+        'async': true,
+        'crossDomain': true,
+        'url': api + '/mangas/' + user.toLowerCase() + '/' +
             encodeURIComponent(mangaTitle),
-        "method": "PUT",
-        "headers": {
-            "x-access-token": token,
-            "content-type": "application/x-www-form-urlencoded"
+        'method': 'PUT',
+        'headers': {
+            'x-access-token': token,
+            'content-type': 'application/x-www-form-urlencoded'
         },
-        "data": {
-            "chapter": newChapter
+        'data': {
+            'chapter': newChapter
         }
     };
 
@@ -230,16 +222,16 @@ function delManga(info) {
     var mangaTitle = manga[1];
 
     var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": api + "/mangas/" + user.toLowerCase() + "/" +
+        'async': true,
+        'crossDomain': true,
+        'url': api + '/mangas/' + user.toLowerCase() + '/' +
             encodeURIComponent(mangaTitle),
-        "method": "DELETE",
-        "headers": {
-            "x-access-token": token,
-            "content-type": "application/x-www-form-urlencoded"
+        'method': 'DELETE',
+        'headers': {
+            'x-access-token': token,
+            'content-type': 'application/x-www-form-urlencoded'
         }
-    }
+    };
 
     // When the DEL request is done, delete from DOM
     $.ajax(settings).done(function (response) {
@@ -256,7 +248,7 @@ function search() {
     if ($('#search').val().length > 0) {
         $('.manga-panel').css('display', 'none');
         // Display the results
-        displayResults()
+        displayResults();
     } else {
         // display everything again
         $('.manga-panel').css('display', 'block');
@@ -295,9 +287,9 @@ $('#search').keyup(search);
 function previewThumbnail() {
     var img = $('#img-input').val();
     if ($('#img-input').val().length > 4) {
-        $("#img").attr("src", img);
+        $('#img').attr('src', img);
     } else {
-        $("#img").attr("src", '../../images/kaneki1.jpg');
+        $('#img').attr('src', '../../images/kaneki1.jpg');
     }
 
     $('#img-input').unbind('keyup');

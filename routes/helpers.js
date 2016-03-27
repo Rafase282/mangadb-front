@@ -67,9 +67,6 @@ exports.jadeObj = function (sess, req) {
 exports.newUserMsg = function newUserMsg(req, res, body) {
     // Displays error messages for new user creation.
     var url = req.header('Referer') || '/';
-    if (typeof body === 'string') {
-        body = JSON.parse(body);
-    }
     if (body.message.message || body.message.code === 400) {
         // Empty form or missing fields
         req.flash('error', 'Don\'t leave empty fields, ' +
@@ -88,4 +85,4 @@ exports.newUserMsg = function newUserMsg(req, res, body) {
         req.flash('error', body.message);
         res.redirect(url);
     }
-}
+};

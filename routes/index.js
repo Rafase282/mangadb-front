@@ -1,6 +1,6 @@
 'use strict';
-var s = require("underscore.string");
-var request = require("request");
+var s = require('underscore.string');
+var request = require('request');
 var funHelper = require('./helpers');
 var sess;
 

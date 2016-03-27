@@ -4,7 +4,7 @@
  */
 
 'use strict';
-var request = require("request");
+var request = require('request');
 var funHelper = require('./helpers');
 var sess;
 
@@ -40,7 +40,10 @@ exports.createManga = function (req, res) {
         if (error) {
             throw new Error(error);
         }
-        if (!body.success) {
+        if (typeof body === 'string') {
+            body = JSON.parse(body);
+        }
+        if (body.success === false) {
             funHelper.newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);
@@ -71,7 +74,6 @@ exports.updateManga = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    var msg = 'The manga has been updated.';
     var options = {
         method: 'PUT',
         url: sess.api + '/mangas/' + sess.username + '/' + req.params.manga,
@@ -86,7 +88,10 @@ exports.updateManga = function (req, res) {
         if (error) {
             throw new Error(error);
         }
-        if (!body.success) {
+        if (typeof body === 'string') {
+            body = JSON.parse(body);
+        }
+        if (body.success === false) {
             funHelper.newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);
