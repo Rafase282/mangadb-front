@@ -160,7 +160,6 @@ function getUserInfo() {
     };
 
     $.ajax(settings).done(function (response) {
-        console.log(user);
         var userInfo = response.data[0];
         var userName = '<h4>Full name: ' +
             window.s.titleize(userInfo.firstname) + ' ' +

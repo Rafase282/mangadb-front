@@ -9,6 +9,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var usersView = require('./routes/usersView');
 var password = require('./routes/password');
 var funHelper = require('./routes/helpers');
 var mangas = require('./routes/mangas');
@@ -79,21 +80,21 @@ router.route('/reset')
 
 // Get the registration page
 router.route('/signup')
-  .get(users.getSignUp)
+  .get(usersView.getSignUp)
   .post(users.createUser);
 
 // Get User Profile
 router.route('/user/:user')
-  .get(funHelper.isAuthenticated, users.getUserProfile);
+  .get(funHelper.isAuthenticated, usersView.getUserProfile);
 
 // Update User Account
 router.route('/user/:user/update')
-  .get(funHelper.isAuthenticated, users.getUpdateUser)
+  .get(funHelper.isAuthenticated, usersView.getUpdateUser)
   .post(funHelper.isAuthenticated, users.updateUser);
 
 // Delete User Account
 router.route('/user/:user/delete')
-  .get(funHelper.isAuthenticated, users.getDeleteUser)
+  .get(funHelper.isAuthenticated, usersView.getDeleteUser)
   .post(funHelper.isAuthenticated, users.deleteUser);
 
 // Create New Manga
