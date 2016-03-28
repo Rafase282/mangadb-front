@@ -8,22 +8,6 @@ var request = require('request');
 var funHelper = require('./helpers');
 var sess;
 
-/* New Manga Handling
- * The following code handles displaying and API call method
- * for manga creation form.
- */
-
-/* Displays Manga Creation Form */
-exports.getCreateManga = function (req, res) {
-    sess = req.session;
-    sess.url = '/user/' + sess.username;
-    sess.title = 'MangaDB: ' + sess.user;
-    sess.api = process.env.API;
-    sess.button = 'Create Manga';
-    sess.header = 'Create New Manga';
-    res.render('editManga', funHelper.jadeObj(sess, req));
-};
-
 /* Creates New Manga */
 exports.createManga = function (req, res) {
     sess = req.session;
@@ -50,22 +34,6 @@ exports.createManga = function (req, res) {
             res.redirect(sess.url);
         }
     });
-};
-
-/* Update Manga Handling
- * The following code handles displaying and API call method
- * for manga update form.
- */
-
-/* Displays Manga Update Form */
-exports.getUpdateManga = function (req, res) {
-    sess = req.session;
-    sess.url = '/user/' + sess.username;
-    sess.title = 'MangaDB: ' + sess.user;
-    sess.api = process.env.API;
-    sess.button = 'Update Manga';
-    sess.header = 'Update Manga Information';
-    res.render('editManga', funHelper.jadeObj(sess, req));
 };
 
 /* Updates Manga */

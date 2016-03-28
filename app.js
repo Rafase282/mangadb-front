@@ -13,6 +13,7 @@ var usersView = require('./routes/usersView');
 var password = require('./routes/password');
 var funHelper = require('./routes/helpers');
 var mangas = require('./routes/mangas');
+var mangasView = require('./routes/mangasView');
 require('dotenv').config({
     silent: true
 });
@@ -99,12 +100,12 @@ router.route('/user/:user/delete')
 
 // Create New Manga
 router.route('/user/:user/new')
-  .get(funHelper.isAuthenticated, mangas.getCreateManga)
+  .get(funHelper.isAuthenticated, mangasView.getCreateManga)
   .post(funHelper.isAuthenticated, mangas.createManga);
 
 // Update Manga
 router.route('/user/:user/:manga')
-  .get(funHelper.isAuthenticated, mangas.getUpdateManga)
+  .get(funHelper.isAuthenticated, mangasView.getUpdateManga)
   .post(funHelper.isAuthenticated, mangas.updateManga);
 
 // catch 404 and forward to error handler
