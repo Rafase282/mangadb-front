@@ -3,8 +3,7 @@
  */
 'use strict';
 
-// Checks to make sure used is logged in
-exports.isAuthenticated = function (req, res, next) {
+var isAuthenticated = function (req, res, next) {
     // Check to see if there is there is a user in session
     var url = req.header('Referer') || '/';
     if (req.session.user !== undefined && req.session.user !== null &&
@@ -16,8 +15,10 @@ exports.isAuthenticated = function (req, res, next) {
     res.redirect(url);
 };
 
-// Sets complete manga object
-exports.mangaObj = function (manga) {
+// Checks to make sure used is logged in
+exports.isAuthenticated = isAuthenticated;
+
+var mangaObj = function (manga) {
     return {
         title: manga.title,
         author: manga.author,
@@ -35,7 +36,9 @@ exports.mangaObj = function (manga) {
 };
 
 // Sets complete manga object
-exports.userObj = function (user) {
+exports.mangaObj = mangaObj;
+
+var userObj = function (user) {
     return {
         username: user.username,
         password: user.password,
@@ -46,7 +49,9 @@ exports.userObj = function (user) {
 };
 
 // Sets complete manga object
-exports.jadeObj = function (sess, req) {
+exports.userObj = userObj;
+
+var jadeObj = function (sess, req) {
     return {
         title: sess.title,
         user: sess.user,
@@ -64,7 +69,10 @@ exports.jadeObj = function (sess, req) {
     };
 };
 
-exports.newUserMsg = function newUserMsg(req, res, body) {
+// Sets complete manga object
+exports.jadeObj = jadeObj;
+
+var newUserMsg = function newUserMsg(req, res, body) {
     // Displays error messages for new user creation.
     var url = req.header('Referer') || '/';
     if (body.message.message || body.message.code === 400) {
@@ -86,3 +94,23 @@ exports.newUserMsg = function newUserMsg(req, res, body) {
         res.redirect(url);
     }
 };
+exports.newUserMsg = newUserMsg;
+
+var makeRequest = function makeRequest(options, req, res, url) {
+    // Handles API requests and flash messages.
+    request(options, function (error, response, body) {
+        if (error) {
+            throw new Error(error);
+        }
+        if (typeof body === 'string') {
+            body = JSON.parse(body);
+        }
+        if (body.success === false) {
+            newUserMsg(req, res, body);
+        } else {
+            req.flash('success', body.message);
+            res.redirect(url);
+        }
+    });
+};
+exports.mangaObj = makeRequest;

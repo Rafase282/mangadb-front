@@ -16,6 +16,7 @@ exports.createUser = function (req, res) {
         sess.url = '/user/' + sess.username;
         sess.title = 'MangaDB: ' + sess.user;
         sess.api = process.env.API;
+        var url = '/login';
         var options = {
             method: 'POST',
             url: sess.api + '/users',
@@ -24,18 +25,7 @@ exports.createUser = function (req, res) {
             },
             form: funHelper.userObj(req.body)
         };
-        request(options, function (error, response, body) {
-            if (error) throw new Error(error);
-            if (typeof body === 'string') {
-                body = JSON.parse(body);
-            }
-            if (body.success === false) {
-                funHelper.newUserMsg(req, res, body);
-            } else {
-                req.flash('success', body.message);
-                res.redirect('/login');
-            }
-        });
+        funHelper.makeRequest(options, req, res, url);
     } else {
         req.flash('error', 'Your passwords don\'t match.');
         res.redirect('/signup');
@@ -48,6 +38,7 @@ exports.updateUser = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
+    var url = '/user/' + sess.username;
     var options = {
         method: 'PUT',
         url: sess.api + '/users/' + sess.username,
@@ -57,19 +48,7 @@ exports.updateUser = function (req, res) {
         },
         form: funHelper.userObj(req.body)
     };
-
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        if (typeof body === 'string') {
-            body = JSON.parse(body);
-        }
-        if (body.success === false) {
-            funHelper.newUserMsg(req, res, body);
-        } else {
-            req.flash('success', body.message);
-            res.redirect('/user/' + sess.username);
-        }
-    });
+    funHelper.makeRequest(options, req, res, url);
 };
 
 /* Handles User Deletion Request */
@@ -78,6 +57,7 @@ exports.deleteUser = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
+    var url = '/logout';
     var options = {
         method: 'DELETE',
         url: sess.api + '/users/' + sess.username,
@@ -88,20 +68,7 @@ exports.deleteUser = function (req, res) {
 
     if (sess.username === req.params.user.toLowerCase() &&
         req.params.user.toLowerCase() === req.body.username.toLowerCase()) {
-        request(options, function (error, response, body) {
-            if (error) {
-                throw new Error(error);
-            }
-            if (typeof body === 'string') {
-                body = JSON.parse(body);
-            }
-            if (body.success === false) {
-                funHelper.newUserMsg(req, res, body);
-            } else {
-                req.flash('success', body.message);
-                res.redirect('/logout');
-            }
-        });
+        funHelper.makeRequest(options, req, res, url);
     } else {
         sess.error = 'You have input the wrong username, make sure you are' +
             ' deleting your own account and that you spelled it right!';
