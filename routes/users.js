@@ -4,7 +4,6 @@
  */
 
 'use strict';
-var request = require('request');
 var funHelper = require('./helpers');
 var sess;
 

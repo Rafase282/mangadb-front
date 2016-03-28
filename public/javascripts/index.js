@@ -206,7 +206,7 @@ function oneUp(info) {
         }
     };
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function () {
         // Update chapter number in place
         userMangas[mangaTitle].chapter = newChapter;
         $(mangaClass).text(newChapter); // updates chapter for all catagories
@@ -236,7 +236,7 @@ function delManga(info) {
     };
 
     // When the DEL request is done, delete from DOM
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function () {
         $(mangaClass).remove();
     });
 }

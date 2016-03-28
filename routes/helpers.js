@@ -2,6 +2,7 @@
  * that are needed across the app.
  */
 'use strict';
+var request = require('request');
 
 var isAuthenticated = function (req, res, next) {
     // Check to see if there is there is a user in session
