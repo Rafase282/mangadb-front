@@ -20,20 +20,7 @@ exports.createManga = function (req, res) {
         },
         form: funHelper.mangaObj(req.body)
     };
-    request(options, function (error, response, body) {
-        if (error) {
-            throw new Error(error);
-        }
-        if (typeof body === 'string') {
-            body = JSON.parse(body);
-        }
-        if (body.success === false) {
-            funHelper.newUserMsg(req, res, body);
-        } else {
-            req.flash('success', body.message);
-            res.redirect(sess.url);
-        }
-    });
+    makeRequest(options, req, res);
 };
 
 /* Updates Manga */
@@ -52,6 +39,12 @@ exports.updateManga = function (req, res) {
         form: funHelper.mangaObj(req.body)
     };
 
+    makeRequest(options, req, res);
+
+};
+
+var makeRequest = function makeRequest(options, req, res) {
+    // body...
     request(options, function (error, response, body) {
         if (error) {
             throw new Error(error);
@@ -66,5 +59,4 @@ exports.updateManga = function (req, res) {
             res.redirect(sess.url);
         }
     });
-
-};
+}

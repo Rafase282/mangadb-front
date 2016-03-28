@@ -72,12 +72,12 @@ router.route('/logout')
 // Get the forgotten password page
 router.route('/forgot')
   .get(password.getForgot)
-  .post(password.postForgot);
+  //.post(password.postForgot);
 
 // Get the reset password page
 router.route('/reset')
   .get(password.getReset)
-  .post(password.postReset);
+  //.post(password.postReset);
 
 // Get the registration page
 router.route('/signup')
