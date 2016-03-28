@@ -29,7 +29,7 @@ exports.getLogIn = function (req, res) {
 exports.LogOut = function (req, res) {
     req.session.destroy();
     res.redirect('/');
-    
+
 };
 
 /* Get Token For Login */
@@ -54,7 +54,7 @@ exports.getToken = function (req, res) {
     request(options, function (error, response, body) {
         body = JSON.parse(body);
         sess.token = body.data;
-        
+
         if (error) throw new Error(error);
         if (!body.success) {
             sess.user = null;

@@ -12,7 +12,7 @@ html
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css')
     link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
     link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
-    link(rel='stylesheet prefetch', href='https://manga-client.herokuapp.com/stylesheets/style.css')
+    link(rel='stylesheet prefetch', href='https://mangadb-front-rafase282.c9users.io/stylesheets/style.css')
     script(type='text/javascript').
       var token = '#{token}';
       var user = '#{user}';
@@ -25,16 +25,14 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          if user
-            a.navbar-brand(href='#{url}') #{user}
-          else
-            a.navbar-brand MangaDB
+          a.navbar-brand(href='/') MangaDB
         #myNavbar.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li.active
-              a(href='/') Home
           ul.nav.navbar-nav.navbar-right
             if user
+              li
+                a(href=url)
+                  span.glyphicon.glyphicon-user
+                  |  #{user}
               li
                 a(href='/logout')
                   span.glyphicon.glyphicon-log-out
@@ -67,11 +65,11 @@ html
         a(href='https://github.com/Rafase282', target='_blank')
           i.fa.fa-github.fa-fw
         a(href='https://www.linkedin.com/in/rafase282', target='_blank')
-          i.fa.fa-linkedin
+          i.fa.fa-linkedin &nbsp;
         a(href='http://codepen.io/Rafase282', target='_blank')
-          i.fa.fa-codepen
+          i.fa.fa-codepen &nbsp;
         a(href='https://rafase282.wordpress.com/', target='_blank')
-          i.fa.fa-wordpress
+          i.fa.fa-wordpress &nbsp;
         a(href='http://www.freecodecamp.com/rafase282', target='_blank')
           | (
           i.fa.fa-fire.fa-fw
@@ -82,4 +80,4 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js', data-no-instant='')
     script(data-no-instant='').
       InstantClick.init();
-    script(src='https://manga-client.herokuapp.com/javascripts/index.js')
+    script(src='https://mangadb-front-rafase282.c9users.io/javascripts/index.js')
