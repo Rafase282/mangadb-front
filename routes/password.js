@@ -16,15 +16,6 @@ exports.getForgot = function (req, res) {
     res.render('forgot', funHelper.jadeObj(sess, req));
 };
 
-/* Requests Password Reset */
-exports.postForgot = function (req, res) {
-    sess = req.session;
-    sess.url = '/';
-    sess.user = null;
-    sess.title = 'MangaDB: Reset Password';
-    // To-Do: Implement Code.
-};
-
 /* Displays Password Reset Comfirmation Form */
 exports.getReset = function (req, res) {
     sess = req.session;
@@ -34,7 +25,18 @@ exports.getReset = function (req, res) {
     res.render('reset', funHelper.jadeObj(sess, req));
 };
 
-/* Handles New Password Setting */
+/*
+// Requests Password Reset
+exports.postForgot = function (req, res) {
+    sess = req.session;
+    sess.url = '/';
+    sess.user = null;
+    sess.title = 'MangaDB: Reset Password';
+    // To-Do: Implement Code.
+};
+
+
+// Handles New Password Setting
 exports.postReset = function (req, res) {
     sess = req.session;
     sess.url = '/';
@@ -42,3 +44,4 @@ exports.postReset = function (req, res) {
     sess.title = 'MangaDB: Reset Password';
     // To-Do: Implement Code.
 };
+*/
