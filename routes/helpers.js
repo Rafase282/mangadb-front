@@ -73,7 +73,7 @@ var jadeObj = function (sess, req) {
 // Sets complete manga object
 exports.jadeObj = jadeObj;
 
-var newUserMsg = function newUserMsg(req, res, body) {
+var newUserMsg = function (req, res, body) {
     // Displays error messages for new user creation.
     var url = req.header('Referer') || '/';
     if (body.message.message || body.message.code === 400) {
@@ -97,7 +97,7 @@ var newUserMsg = function newUserMsg(req, res, body) {
 };
 exports.newUserMsg = newUserMsg;
 
-var makeRequest = function makeRequest(options, req, res, url) {
+var makeRequest = function (options, req, res, url) {
     // Handles API requests and flash messages.
     request(options, function (error, response, body) {
         if (error) {
@@ -107,6 +107,7 @@ var makeRequest = function makeRequest(options, req, res, url) {
             body = JSON.parse(body);
         }
         if (body.success === false) {
+            console.log('About to send error message')
             newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);
@@ -114,4 +115,4 @@ var makeRequest = function makeRequest(options, req, res, url) {
         }
     });
 };
-exports.mangaObj = makeRequest;
+exports.makeRequest = makeRequest;
