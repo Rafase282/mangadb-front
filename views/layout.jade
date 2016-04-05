@@ -11,7 +11,7 @@ html
         link(rel='apple-touch-icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
         link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css')
         link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/icon?family=Material+Icons')
-        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web: 400, 700')
         link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
         link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
         link(rel='stylesheet prefetch', href='https://mangadb-front-rafase282.c9users.io/stylesheets/main.css')
@@ -32,16 +32,16 @@ html
                     | #{user}
                 li
                   a(href='/logout')
-                    i.material-icons.left perm_identity
+                    i.material-icons.left hot_tub
                     | Logout
               else
                 li
                   a(href='/signup')
-                    i.material-icons.left perm_identity
+                    i.material-icons.left face
                     | Sign Up
                 li
                   a(href='/login')
-                    i.material-icons.left https
+                    i.material-icons.left lock_open
                     | Log In
 
         .container

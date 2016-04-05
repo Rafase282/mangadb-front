@@ -10,6 +10,12 @@
 #secured {
   color: #3498db; }
 
+#blue {
+  color: #3498db;
+  display: inline-block;
+  margin: 0;
+  font-weight: 700; }
+
 body {
   display: flex;
   min-height: 100vh;
