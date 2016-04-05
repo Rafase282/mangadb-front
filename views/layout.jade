@@ -1,128 +1,128 @@
 doctype html
 html
-    head
-        meta(charset='UTF-8')
-        title #{title}
-        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-        meta(name='description', content='Save your Manga info')
-        meta(name='author', content='Rafase282')
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
-        link(rel='shortcut icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
-        link(rel='apple-touch-icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
-        link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css')
-        link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/icon?family=Material+Icons')
-        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web: 400, 700')
-        link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
-        link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
-        link(rel='stylesheet prefetch', href='https://mangadb-front-rafase282.c9users.io/stylesheets/main.css')
-        script(type='text/javascript').
-            var token = '#{token}';
-            var user = '#{user}';
-            var api = '#{api}';
-    body
+  head
+    meta(charset='UTF-8')
+    title #{title}
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='description', content='Save your Manga info')
+    meta(name='author', content='Rafase282')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='shortcut icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
+    link(rel='apple-touch-icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
+    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css')
+    link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web: 400, 700')
+    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
+    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(rel='stylesheet prefetch', href='https://mangadb-front-rafase282.c9users.io/stylesheets/main.css')
+    script(type='text/javascript').
+      var token = '#{token}';
+      var user = '#{user}';
+      var api = '#{api}';
+  body
 
-        nav
-          .nav-wrapper.light-blue.darken-4
-            a.brand-logo(href='/') MangaDB
-            ul.right.hide-on-med-and-down
-              if user
+    nav
+      .nav-wrapper.light-blue.darken-4
+        a.brand-logo(href='/') MangaDB
+        ul.right.hide-on-med-and-down
+          if user
+            li
+              a(href=url)
+                i.material-icons.left verified_user
+                | #{user}
+            li
+              a(href='/logout')
+                i.material-icons.left hot_tub
+                | Logout
+          else
+            li
+              a(href='/signup')
+                i.material-icons.left face
+                | Sign Up
+            li
+              a(href='/login')
+                i.material-icons.left lock_open
+                | Log In
+
+    .container
+      if msg.error && msg.error.length
+        .alert.alert-danger
+          div.center-text= msg.error
+      if msg.info && msg.info.length
+        .alert.alert-info
+          div.center-text= msg.info
+      if msg.success && msg.success.length
+        .alert.alert-success
+          div.center-text= msg.success
+
+    block content
+
+    footer.page-footer.center-align.light-blue.darken-4
+      .container
+        .row
+          .col.l6.s12
+            h5.white-text About the Site
+            p.grey-text.text-lighten-4
+              | The Project is divided in two parts, the&nbsp;
+              a.grey-text(href='https://github.com/Rafase282/mangadb', taget='_blank') Core API&nbsp;
+              | which has the core functionalities like databases, account and manga handling and more, and the&nbsp;
+              a.grey-text(href='https://github.com/Rafase282/mangadb-front', taget='_blank') Client's App.&nbsp;
+              | which is what you can see and interact with.
+              | Created and designed by&nbsp;
+              a.grey-text(href='https://gitter.im/Rafase282', taget='_blank') Rafase282
+              | &nbsp;using&nbsp;
+              a.grey-text(href='http://materializecss.com/', taget='_blank') Materialize&nbsp
+              | Project's chatroom via gitter at&nbsp
+              a.grey-text(href='https://gitter.im/Rafase282/Mangadb', taget='_blank') MangaDB&nbsp
+            p.grey-text.text-lighten-4
+              | Pull request are with improvements or new features are welcome but the author reserves the rights to accept or reject at will.&nbsp;
+              | If you encounter an issue with the way the page is displayed, forms or anything UX related please open an issue on the&nbsp;
+              a.grey-text(href='https://github.com/Rafase282/mangadb-front/issues', taget='_blank') Client's Issue Tracker.&nbsp;
+              | For issues with the
+              | functionality such as account problems, manga issues then use the&nbsp;
+              a.grey-text(href='https://github.com/Rafase282/mangadb/issues', taget='_blank') API's Issue Tracker.
+          .col.l4.offset-l2.s12
+            h5.white-text Contact Me
+            .col.s6
+              ul.white-text
                 li
-                  a(href=url)
-                    i.material-icons.left verified_user
-                    | #{user}
+                  a(href='mailto:rafase282@gmail.com')
+                    i.fa.fa-envelope.fa-fw
+                  | &nbsp;E-Mail
                 li
-                  a(href='/logout')
-                    i.material-icons.left hot_tub
-                    | Logout
-              else
+                  a(href='https://github.com/Rafase282', target='_blank')
+                    i.fa.fa-github.fa-fw
+                  | &nbsp;Github
                 li
-                  a(href='/signup')
-                    i.material-icons.left face
-                    | Sign Up
+                  a(href='https://www.linkedin.com/in/rafase282', target='_blank')
+                    i.fa.fa-linkedin
+                  | &nbsp;LinkedIn
+            .col.s6
+              ul.white-text
                 li
-                  a(href='/login')
-                    i.material-icons.left lock_open
-                    | Log In
+                  a(href='http://codepen.io/Rafase282', target='_blank')
+                    i.fa.fa-codepen
+                  | &nbsp;Codepen
+                li
+                  a(href='https://rafase282.wordpress.com/', target='_blank')
+                    i.fa.fa-wordpress
+                  | &nbsp;Wordpress
+                li
+                  a(href='http://www.freecodecamp.com/rafase282', target='_blank')
+                    | (
+                    i.fa.fa-fire.fa-fw
+                    | )
+                  | &nbsp;FreeCodeCamp
+      .footer-copyright
+        .container.center-align
+          | Copyright ©&nbsp;
+          a.grey-text.text-lighten-4(href='http://rafase282.github.io/') Rafael J. Rodriguez&nbsp;
+          | 2016. All Rights Reserved
 
-        .container
-          if msg.error && msg.error.length
-              .alert.alert-danger
-                  div.center-text= msg.error
-          if msg.info && msg.info.length
-              .alert.alert-info
-                  div.center-text= msg.info
-          if msg.success && msg.success.length
-              .alert.alert-success
-                  div.center-text= msg.success
-
-        block content
-
-        footer.page-footer.center-align.light-blue.darken-4
-            .container
-                .row
-                    .col.l6.s12
-                        h5.white-text About the Site
-                        p.grey-text.text-lighten-4
-                            | The Project is divided in two parts, the&nbsp;
-                            a.grey-text(href='https://github.com/Rafase282/mangadb', taget='_blank') Core API&nbsp;
-                            | which has the core functionalities like databases, account and manga handling and more, and the&nbsp;
-                            a.grey-text(href='https://github.com/Rafase282/mangadb-front', taget='_blank') Client's App.&nbsp;
-                            | which is what you can see and interact with.
-                            | Created and designed by&nbsp;
-                            a.grey-text(href='https://gitter.im/Rafase282', taget='_blank') Rafase282
-                            | &nbsp;using&nbsp;
-                            a.grey-text(href='http://materializecss.com/', taget='_blank') Materialize&nbsp
-                            | Project's chatroom via gitter at&nbsp
-                            a.grey-text(href='https://gitter.im/Rafase282/Mangadb', taget='_blank') MangaDB&nbsp
-                        p.grey-text.text-lighten-4
-                            | Pull request are with improvements or new features are welcome but the author reserves the rights to accept or reject at will.&nbsp;
-                            | If you encounter an issue with the way the page is displayed, forms or anything UX related please open an issue on the&nbsp;
-                            a.grey-text(href='https://github.com/Rafase282/mangadb-front/issues', taget='_blank') Client's Issue Tracker.&nbsp;
-                            | For issues with the
-                            | functionality such as account problems, manga issues then use the&nbsp;
-                            a.grey-text(href='https://github.com/Rafase282/mangadb/issues', taget='_blank') API's Issue Tracker.
-                    .col.l4.offset-l2.s12
-                        h5.white-text Contact Me
-                        .col.s6
-                            ul.white-text
-                                li
-                                    a(href='mailto:rafase282@gmail.com')
-                                        i.fa.fa-envelope.fa-fw
-                                    | &nbsp;E-Mail
-                                li
-                                    a(href='https://github.com/Rafase282', target='_blank')
-                                        i.fa.fa-github.fa-fw
-                                    | &nbsp;Github
-                                li
-                                    a(href='https://www.linkedin.com/in/rafase282', target='_blank')
-                                        i.fa.fa-linkedin
-                                    | &nbsp;LinkedIn
-                        .col.s6
-                            ul.white-text
-                                li
-                                    a(href='http://codepen.io/Rafase282', target='_blank')
-                                        i.fa.fa-codepen
-                                    | &nbsp;Codepen
-                                li
-                                    a(href='https://rafase282.wordpress.com/', target='_blank')
-                                        i.fa.fa-wordpress
-                                    | &nbsp;Wordpress
-                                li
-                                    a(href='http://www.freecodecamp.com/rafase282', target='_blank')
-                                        | (
-                                        i.fa.fa-fire.fa-fw
-                                        | )
-                                    | &nbsp;FreeCodeCamp
-            .footer-copyright
-                .container.center-align
-                    | Copyright ©&nbsp;
-                    a.grey-text.text-lighten-4(href='http://rafase282.github.io/') Rafael J. Rodriguez&nbsp;
-                    | 2016. All Rights Reserved
-
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js')
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.2.3/underscore.string.min.js')
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js', data-no-instant='')
-        script(data-no-instant='').
-            InstantClick.init();
-        script(src='https://manga-client.herokuapp.com/javascripts/index.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.2.3/underscore.string.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js', data-no-instant='')
+    script(data-no-instant='').
+      InstantClick.init();
+    script(src='https://manga-client.herokuapp.com/javascripts/index.js')

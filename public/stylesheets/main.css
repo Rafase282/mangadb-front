@@ -16,6 +16,9 @@
   margin: 0;
   font-weight: 700; }
 
+.short {
+  width: 20px; }
+
 body {
   display: flex;
   min-height: 100vh;

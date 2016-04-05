@@ -1,29 +1,29 @@
 extends layout
 block content
-    main
-        section.container.center-text.transparent
-            h2 MangaDB
-            h3 Track your personal manga collection.
-            if !user
-                a.waves-effect.blue.darken-2.btn(type='button', onclick="window.location.href='/signup'") Create account
-            section#push
-        section.main.opacity
-            section.container.center-text
-                .row
-                    .col.m4.s12
-                        i.material-icons.large#blue mood
-                        h3 Quick Access
-                        p
-                            | Because you can never keep track of which manga you have read or are reading online, this site will help you keep track and have quick access to the manga you add to your collection. No more forgetting or having to keep bookmarks!
-                    .col.m4.s12
-                        i.material-icons.large#blue public
-                        h3 Site Agnostic
-                        p
-                            | While no manga is hosted here, you can read the physical copy or read the manga online. You are able to keep links to a manga series from any popular sites, which means you
-                            | can have manga from different sites kept on your personal collection.
-                    .col.m4.s12
-                        i.material-icons.large#blue security
-                        h3 Secured Account
-                        p
-                            | Because you might not want others to see what you like to read, having your own account means not only access to the service but your information is protected from attackers and other users. So you can read worry free!
-            section#push
+  main
+    section.container.center-text.transparent
+      h2 MangaDB
+      h3 Track your personal manga collection.
+      if !user
+        a.waves-effect.blue.darken-2.btn(type='button', onclick="window.location.href='/signup'") Create account
+      section#push
+    section.main.opacity
+      section.container.center-text
+        .row
+          .col.m4.s12
+            i.material-icons.large#blue mood
+            h3 Quick Access
+            p
+              | Because you can never keep track of which manga you have read or are reading online, this site will help you keep track and have quick access to the manga you add to your collection. No more forgetting or having to keep bookmarks!
+          .col.m4.s12
+            i.material-icons.large#blue public
+            h3 Site Agnostic
+            p
+              | While no manga is hosted here, you can read the physical copy or read the manga online. You are able to keep links to a manga series from any popular sites, which means you
+              | can have manga from different sites kept on your personal collection.
+          .col.m4.s12
+            i.material-icons.large#blue security
+            h3 Secured Account
+            p
+              | Because you might not want others to see what you like to read, having your own account means not only access to the service but your information is protected from attackers and other users. So you can read worry free!
+      section#push

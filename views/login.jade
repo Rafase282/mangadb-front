@@ -1,18 +1,22 @@
 extends layout
 block content
-      .form.main
-        h1 Welcome Back!
-        form(role='form', method='POST', name='login', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
-          .field-wrap
-            .form-group.input-group
-              span#basic-addon1.input-group-addon
-                span.glyphicon.glyphicon-user
-              input.form-control(type='text', name='username', placeholder='Username', aria-describedby='basic-addon1')
-          .field-wrap
-            .form-group.input-group
-              span#basic-addon2.input-group-addon
-                span.glyphicon.glyphicon-lock
-              input.form-control(type='password', name='password', placeholder='Password', aria-describedby='basic-addon2', autocomplete='off')
-          p.forgot
-            a(href='/forgot') Forgot Password?
-          button.btn.btn-danger.button.button-block(type='submit') Log In
+  .container
+    h1.center-align Welcome Back!
+    form(role='form', method='POST', name='login', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+      .row
+        .col.s12
+          .row
+            .input-field.col.s12.m6
+              i.material-icons.prefix contacts
+              input#icon_prefix.validate.short(type='text', aria-describedby='basic-addon1', autocomplete='off' required)
+              label(for='icon_prefix') Username
+            .input-field.col.s12.m6
+              i.material-icons.prefix fingerprint
+              input#icon_prefix.validate.short(type='password', name='password' aria-describedby='basic-addon2', autocomplete='off' required)
+              label(for='icon_prefix') Password
+      .row.center-align
+        .col.s12
+          a(href='/forgot') Forgot Password?
+          br
+          button.btn.blue.darken-1(type='submit') Log In
+    div#push
