@@ -1,7 +1,8 @@
 extends layout
 block content
-  .container.center-align
+  .err
     h1(style="color:red;")= message
-    h2(style="text-align:center; color:red;")= error.status
-  .container.center-align
-    p(style="text-align:center; color:red;") There is nothign to see here, go back while you can, there are ghouls around this area.
+      h2(style="text-align:center; color:red;")= error.status
+    .form
+      p(style="text-align:center; color:red;") There is nothign to see here, go back while you can, there are ghouls around this area.
+

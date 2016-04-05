@@ -16,15 +16,6 @@
   margin: 0;
   font-weight: 700; }
 
-.err {
-  background-color: red; }
-
-.info {
-  background-color: blue; }
-
-.success {
-  background-color: green; }
-
 body {
   display: flex;
   min-height: 100vh;
