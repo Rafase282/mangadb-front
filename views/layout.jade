@@ -10,14 +10,37 @@ html
     link(rel='shortcut icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
     link(rel='apple-touch-icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css')
-    link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-    link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
-    link(rel='stylesheet prefetch', href='https://manga-client.herokuapp.com/stylesheets/style.css')
+    link(rel='stylesheet prefetch', href='http://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
+    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(rel='stylesheet prefetch', href='https://mangadb-front-rafase282.c9users.io/stylesheets/style.css')
     script(type='text/javascript').
       var token = '#{token}';
       var user = '#{user}';
       var api = '#{api}';
   body
+    nav
+      .nav-wrapper
+        a.brand-logo(href='/') MangaDB
+        ul#nav-mobile.right.hide-on-med-and-down
+          if user
+            li
+              a(href=url)
+                span.glyphicon.glyphicon-user
+                  |  #{user}
+            li
+              a(href='/logout')
+                  i.fa.fa-sign-out
+                  |  Logout
+          else
+            li
+              a(href='/signup')
+                span.glyphicon.glyphicon-user
+                  |  Sign Up
+              li
+                a(href='/login')
+                  span#btn-hide.glyphicon.glyphicon-log-in
+                  |  Login
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         .navbar-header
@@ -35,7 +58,7 @@ html
                   |  #{user}
               li
                 a(href='/logout')
-                  span.glyphicon.glyphicon-log-out
+                  i.fa.fa-sign-out
                   |  Logout
             else
               li
@@ -74,8 +97,8 @@ html
           | (
           i.fa.fa-fire.fa-fw
           | )
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.2.3/underscore.string.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js', data-no-instant='')
     script(data-no-instant='').
