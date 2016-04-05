@@ -1,18 +1,16 @@
 extends layout
 block content
-  .container
+  main.container
     h1.center-align Password Reset
     form(role='form', method='POST', name='reset', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
       .row
-        .col.s12
-          .row
-            .input-field.col.s12.m6
-              i.material-icons.prefix fingerprint
-              input#icon_prefix.validate(type='password', name='password', aria-describedby='basic-addon2', autocomplete='off', required)
-              label(for='icon_prefix') Password
-            .input-field.col.s12.m6
-              i.material-icons.prefix fingerprint
-              input#icon_prefix.validate(type='password', name='password2', aria-describedby='basic-addon2', autocomplete='off', required)
-              label(for='icon_prefix') Re-type Password
+        .input-field.col.s12.m6
+          i.material-icons.prefix fingerprint
+          input#icon_prefix.validate(type='password', name='password', aria-describedby='basic-addon2', autocomplete='off', required)
+          label(for='icon_prefix') Password
+        .input-field.col.s12.m6
+          i.material-icons.prefix fingerprint
+          input#icon_prefix.validate(type='password', name='password2', aria-describedby='basic-addon2', autocomplete='off', required)
+          label(for='icon_prefix') Re-type Password
       .center-align
         button.btn.blue.darken-1(type='submit') Update Password
