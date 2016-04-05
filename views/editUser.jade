@@ -1,30 +1,41 @@
 extends layout
 block content
+    .container
       .form.main
-        h1 #{header}
+        h2 #{header}
         ul
           li (Update only) To update any piece of information just fill in the particular field.
           li (Update only) Whatever information is left blank will retain the old information.
           li Usernames are lowercase internally.
           li Passwords are case sensitive.
-        br
         form(role='form', method='POST', name='updateUser', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .field-wrap
             .form-group.input-group
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-tags
               input.form-control(type='text', name='firstname', placeholder='First Name', aria-describedby='basic-addon1', autocomplete='off')
-              span#basic-addon1.input-group-addon
-                span.glyphicon.glyphicon-tags
-              input.form-control(type='text', name='lastname', placeholder='Last Name', aria-describedby='basic-addon1', autocomplete='off')
+
+              .input-field.col.s6
+                i.material-icons.prefix person_add
+                input#icon_prefix.validate(type='text', aria-describedby='basic-addon1', autocomplete='off')
+                label(for='icon_prefix') First Name
+
+              .input-field.col.s6
+                i.material-icons.prefix person_add
+                input#icon_prefix.validate(type='text', aria-describedby='basic-addon1', autocomplete='off')
+                label(for='icon_prefix') Last Name
           .field-wrap
             .form-group.input-group
+              .input-field.col.s6
+                i.material-icons.prefix person_add
+                input#icon_prefix.validate(type='text', aria-describedby='basic-addon1', autocomplete='off')
+                label(for='icon_prefix') First Name
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-user
               input.form-control(type='text', name='username', placeholder='Username', aria-describedby='basic-addon1', autocomplete='off')
               span#basic-addon1.input-group-addon
                 span.glyphicon.glyphicon-envelope
-              input.form-control(type='text', name='email', placeholder='E-Mail', aria-describedby='basic-addon1', autocomplete='off')
+              input.form-control(type='text', name='email', placeholder='E-mail', aria-describedby='basic-addon1', autocomplete='off')
           .field-wrap
             .form-group.input-group
               span#basic-addon2.input-group-addon
@@ -33,4 +44,6 @@ block content
               span#basic-addon2.input-group-addon
                 span.glyphicon.glyphicon-lock
               input.form-control(type='password', name='password2', placeholder='Re-type Password', aria-describedby='basic-addon2', autocomplete='off')
-          button.button.button-block.btn.btn-danger(type='submit') #{button}
+          button.btn.blue.darken-1(type='submit') #{button}
+
+        div#push

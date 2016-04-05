@@ -11,6 +11,7 @@ html
         link(rel='apple-touch-icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
         link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css')
         link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web')
         link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
         link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
         link(rel='stylesheet prefetch', href='https://mangadb-front-rafase282.c9users.io/stylesheets/main.css')
@@ -19,39 +20,41 @@ html
             var user = '#{user}';
             var api = '#{api}';
     body
-        header.page-header
-            nav
-                .nav-wrapper.light-blue.darken-4
-                    a.brand-logo(href='/') MangaDB
-                    ul#nav-mobile.right.hide-on-med-and-down
-                        if user
-                            li
-                                a(href=url)
-                                    span.material-icons
-                                        |  #{user}
-                            li
-                                a(href='/logout')
-                                    i.fa.fa-sign-out
-                                    |  Logout
-                        else
-                            li
-                              a(href='/signup')
-                                i.small.material-icons perm_identity
-                                |     Sign Up
-                            li
-                              a(href='/login')
-                                i.small.material-icons https
-                                |     Log In
+
+        nav
+          .nav-wrapper.light-blue.darken-4
+            a.brand-logo(href='/') MangaDB
+            ul.right.hide-on-med-and-down
+              if user
+                li
+                  a(href=url)
+                    i.material-icons.left verified_user
+                    | #{user}
+                li
+                  a(href='/logout')
+                    i.material-icons.left perm_identity
+                    | Logout
+              else
+                li
+                  a(href='/signup')
+                    i.material-icons.left perm_identity
+                    | Sign Up
+                li
+                  a(href='/login')
+                    i.material-icons.left https
+                    | Log In
+
         .container
-            if msg.error && msg.error.length
-                .alert.alert-danger
-                    div.center-text= msg.error
-            if msg.info && msg.info.length
-                .alert.alert-info
-                    div.center-text= msg.info
-            if msg.success && msg.success.length
-                .alert.alert-success
-                    div.center-text= msg.success
+          if msg.error && msg.error.length
+              .alert.alert-danger
+                  div.center-text= msg.error
+          if msg.info && msg.info.length
+              .alert.alert-info
+                  div.center-text= msg.info
+          if msg.success && msg.success.length
+              .alert.alert-success
+                  div.center-text= msg.success
+
         block content
 
         footer.page-footer.center-align.light-blue.darken-4
