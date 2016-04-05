@@ -1,396 +1,397 @@
-$body-bg: #c1bdba
-$form-bg: #13232f
-$white: white
 
-$main: #c83636
-$main-light: lighten($main, 5%)
-$main-dark: darken($main, 5%)
+// $body-bg: #c1bdba
+// $form-bg: #13232f
+// $white: white
 
-$gray-light: #a0b3b0
-$gray: #dddddd
+// $main: #c83636
+// $main-light: lighten($main, 5%)
+// $main-dark: darken($main, 5%)
 
-$thin: 300
-$normal: 400
-$bold: 600
-$br: 4px
-$size: 100%
-$text-color: lightgrey
-$font-stack: "Titillium Web", sans-serif
+// $gray-light: #a0b3b0
+// $gray: #dddddd
 
-html
-  height: 100%
-  box-sizing: border-box
+// $thin: 300
+// $normal: 400
+// $bold: 600
+// $br: 4px
+// $size: 100%
+// $text-color: lightgrey
+// $font-stack: "Titillium Web", sans-serif
 
-*,
-*:before,
-*:after
-  box-sizing: inherit
+// html
+//   height: 100%
+//   box-sizing: border-box
 
-body
-  position: relative
-  margin: 0
-  padding-bottom: 6rem
-  min-height: 100%
-  font-family: "Helvetica Neue", Arial, sans-serif
+// *,
+// *:before,
+// *:after
+//   box-sizing: inherit
 
-.err:after
-  background-image: url(../images/kaneki1.jpg)
-  content: ""
-  display: block
-  position: absolute
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  opacity: 0.5
-  z-index: -1
-  background-size: 100% 100%
-  background-position: center
-  background-attachment: fixed
-  background-repeat: no-repeat
-  opacity: 0.8
-  z-index: -1
-  content: ""
-  display: block
-  position: absolute
-  top: 0
-  left: 0
-  
-.main:after
-  content: ""
-  display: block
-  position: absolute
-  top: 0
-  left: 0
-  background-image: url(../images/kaneki.jpg)
-  width: 100%
-  height: 100%
-  opacity: 0.5
-  z-index: -1
-  background-size: 100% 100%
-  background-position: center
-  background-attachment: fixed
-  background-repeat: no-repeat
-  opacity: 0.8
-  z-index: -1
-  content: ""
-  display: block
-  position: absolute
-  top: 0
-  left: 0
+// body
+//   position: relative
+//   margin: 0
+//   padding-bottom: 6rem
+//   min-height: 100%
+//   font-family: "Helvetica Neue", Arial, sans-serif
 
-.main
-  padding-top: 25px
-  margin-top: 20px
+// .err:after
+//   background-image: url(../images/kaneki1.jpg)
+//   content: ""
+//   display: block
+//   position: absolute
+//   top: 0
+//   left: 0
+//   width: 100%
+//   height: 100%
+//   opacity: 0.5
+//   z-index: -1
+//   background-size: 100% 100%
+//   background-position: center
+//   background-attachment: fixed
+//   background-repeat: no-repeat
+//   opacity: 0.8
+//   z-index: -1
+//   content: ""
+//   display: block
+//   position: absolute
+//   top: 0
+//   left: 0
 
-.main h1
-  margin-top: 0
+// .main:after
+//   content: ""
+//   display: block
+//   position: absolute
+//   top: 0
+//   left: 0
+//   background-image: url(../images/kaneki.jpg)
+//   width: 100%
+//   height: 100%
+//   opacity: 0.5
+//   z-index: -1
+//   background-size: 100% 100%
+//   background-position: center
+//   background-attachment: fixed
+//   background-repeat: no-repeat
+//   opacity: 0.8
+//   z-index: -1
+//   content: ""
+//   display: block
+//   position: absolute
+//   top: 0
+//   left: 0
 
-footer
-  background-color: #222222
-  color: LightGray
-  position: absolute
-  text-align: center
-  width: 100%
-  right: 0
-  bottom: 0
-  left: 0
-  padding-top: 10px
-  font-family: "Helvetica Neue", Arial, sans-serif
+// .main
+//   padding-top: 25px
+//   margin-top: 20px
 
-.navbar
-  position: relative
+// .main h1
+//   margin-top: 0
 
-.center-text
-  text-align: center
+// footer
+//   background-color: #222222
+//   color: LightGray
+//   position: absolute
+//   text-align: center
+//   width: 100%
+//   right: 0
+//   bottom: 0
+//   left: 0
+//   padding-top: 10px
+//   font-family: "Helvetica Neue", Arial, sans-serif
 
-.fa-bolt
-  color: Yellow
+// .navbar
+//   position: relative
 
-.fa-globe
-  color: Green
+// .center-text
+//   text-align: center
 
-.fa-twitter
-  color: LightSkyBlue
+// .fa-bolt
+//   color: Yellow
 
-a
-  color: #c83636
+// .fa-globe
+//   color: Green
 
-.jumbotron
-  position: relative
-  padding-top: 5px
-  padding-bottom: 25px
+// .fa-twitter
+//   color: LightSkyBlue
 
-#push
-  padding-bottom: 50px
+// a
+//   color: #c83636
 
-.opacity
-  background: rgba(0, 0, 25, 0.7)
-  color: LightGray
+// .jumbotron
+//   position: relative
+//   padding-top: 5px
+//   padding-bottom: 25px
 
-.transparent
-  background: rgba(200, 54, 54, 0)
-  color: #c83636
+// #push
+//   padding-bottom: 50px
 
-/* TABLE STYLE */
+// .opacity
+//   background: rgba(0, 0, 25, 0.7)
+//   color: LightGray
 
-.area
-  background: rgba($form-bg, 0.9)
-  padding: 20px
-  max-width: 80%
-  margin-left: auto
-  margin-right: auto
-  border-radius: $br
-  box-shadow: 0 4px 10px 4px rgba($form-bg, 0.3)
-  color: white
-  
-.manga-panel
-  background-color: Gray
-  opacity: 0.9
-  margin: 10px auto
-  border-radius: 25px
+// .transparent
+//   background: rgba(200, 54, 54, 0)
+//   color: #c83636
 
-.thumbnail
-  width: 150px
-  margin-left: 4%
+// /* TABLE STYLE */
 
-.tg
-  border-collapse: collapse
-  border-spacing: 0
-  border-color: #ccc
-  border: none
+// .area
+//   background: rgba($form-bg, 0.9)
+//   padding: 20px
+//   max-width: 80%
+//   margin-left: auto
+//   margin-right: auto
+//   border-radius: $br
+//   box-shadow: 0 4px 10px 4px rgba($form-bg, 0.3)
+//   color: white
 
-.tg td
-  font-family: Arial, sans-serif
-  font-size: 14px
-  padding: 10px 5px
-  border-style: solid
-  border-width: 0px
-  overflow: hidden
-  word-break: normal
-  border-color: #ccc
-  color: #333
-  background-color: #fff
+// .manga-panel
+//   background-color: Gray
+//   opacity: 0.9
+//   margin: 10px auto
+//   border-radius: 25px
 
-.tg th
-  font-family: Arial, sans-serif
-  font-size: 14px
-  font-weight: normal
-  padding: 10px 5px
-  border-style: solid
-  border-width: 0px
-  overflow: hidden
-  word-break: normal
-  border-color: #ccc
-  color: #333
-  background-color: #f0f0f0
+// .thumbnail
+//   width: 150px
+//   margin-left: 4%
 
-.tg .tg-yw4l
-  vertical-align: top
+// .tg
+//   border-collapse: collapse
+//   border-spacing: 0
+//   border-color: #ccc
+//   border: none
 
-@media screen and (max-width: 767px)
-  .tg
-    width: auto !important
-  .tg col
-    width: auto !important
-  .tg-wrap
-    overflow-x: auto
-    -webkit-overflow-scrolling: touch
+// .tg td
+//   font-family: Arial, sans-serif
+//   font-size: 14px
+//   padding: 10px 5px
+//   border-style: solid
+//   border-width: 0px
+//   overflow: hidden
+//   word-break: normal
+//   border-color: #ccc
+//   color: #333
+//   background-color: #fff
 
-/* FORMS STYLES */
+// .tg th
+//   font-family: Arial, sans-serif
+//   font-size: 14px
+//   font-weight: normal
+//   padding: 10px 5px
+//   border-style: solid
+//   border-width: 0px
+//   overflow: hidden
+//   word-break: normal
+//   border-color: #ccc
+//   color: #333
+//   background-color: #f0f0f0
 
-a
-  text-decoration: none
-  color: $main
-  transition: .5s ease
-  &:hover
-    color: $main-dark
+// .tg .tg-yw4l
+//   vertical-align: top
 
-.form
-  background: rgba($form-bg, 0.9)
-  padding: 40px
-  max-width: 600px
-  margin: 10% auto
-  border-radius: $br
-  box-shadow: 0 4px 10px 4px rgba($form-bg, 0.3)
+// @media screen and (max-width: 767px)
+//   .tg
+//     width: auto !important
+//   .tg col
+//     width: auto !important
+//   .tg-wrap
+//     overflow-x: auto
+//     -webkit-overflow-scrolling: touch
 
-.tab-group
-  list-style: nonez
-  padding: 0
-  margin: 0 0 40px 0
-  &:after
-    content: ""
-    display: table
-    clear: both
-  li a
-    display: block
-    text-decoration: none
-    padding: 15px
-    background: rgba($gray-light, 0.25)
-    color: $gray-light
-    font-size: 20px
-    float: left
-    width: 80%
-    text-align: center
-    cursor: pointer
-    transition: .5s ease
-    &:hover
-      background: $main-dark
-      color: $white
-  .active a
-    background: $main
-    color: $white
+// /* FORMS STYLES */
 
-.tab-content > div:last-child
-  // display: none
+// a
+//   text-decoration: none
+//   color: $main
+//   transition: .5s ease
+//   &:hover
+//     color: $main-dark
 
-h4
-  color: $white
-h1
-  text-align: center
-  color: $white
-  font-weight: $thin
-  margin: 0 0 40px
+// .form
+//   background: rgba($form-bg, 0.9)
+//   padding: 40px
+//   max-width: 600px
+//   margin: 10% auto
+//   border-radius: $br
+//   box-shadow: 0 4px 10px 4px rgba($form-bg, 0.3)
 
-input, textarea
-  font-size: 22px
-  display: block
-  width: 100%
-  height: 100%
-  padding: 5px 10px
-  background: none
-  background-image: none
-  border: 1px solid $gray-light
-  color: $white
-  border-radius: 0
-  transition: border-color .25s ease, box-shadow .25s ease
-  &:focus
-    outline: 0
-    border-color: $main
+// .tab-group
+//   list-style: nonez
+//   padding: 0
+//   margin: 0 0 40px 0
+//   &:after
+//     content: ""
+//     display: table
+//     clear: both
+//   li a
+//     display: block
+//     text-decoration: none
+//     padding: 15px
+//     background: rgba($gray-light, 0.25)
+//     color: $gray-light
+//     font-size: 20px
+//     float: left
+//     width: 80%
+//     text-align: center
+//     cursor: pointer
+//     transition: .5s ease
+//     &:hover
+//       background: $main-dark
+//       color: $white
+//   .active a
+//     background: $main
+//     color: $white
 
-textarea
-  border: 2px solid $gray-light
-  resize: vertical
+// .tab-content > div:last-child
+//   // display: none
 
-.field-wrap
-  position: relative
-  margin-bottom: 20px
-  display: flex
-  justify-content: center
+// h4
+//   color: $white
+// h1
+//   text-align: center
+//   color: $white
+//   font-weight: $thin
+//   margin: 0 0 40px
 
-.top-row
-  &:after
-    content: ""
-    display: table
-    clear: both
-  > div
-    float: left
-    width: 48%
-    margin-right: 4%
-    &:last-child
-      margin: 0
+// input, textarea
+//   font-size: 22px
+//   display: block
+//   width: 100%
+//   height: 100%
+//   padding: 5px 10px
+//   background: none
+//   background-image: none
+//   border: 1px solid $gray-light
+//   color: $white
+//   border-radius: 0
+//   transition: border-color .25s ease, box-shadow .25s ease
+//   &:focus
+//     outline: 0
+//     border-color: $main
 
-.button
-  border: 0
-  outline: none
-  border-radius: 0
-  padding: 15px 0
-  font-size: 2rem
-  font-weight: $bold
-  text-transform: uppercase
-  letter-spacing: .1em
-  background: $main
-  color: $white
-  transition: all 0.5s ease
-  -webkit-appearance: none
-  &:hover, &:focus
-    background: $main-dark
+// textarea
+//   border: 2px solid $gray-light
+//   resize: vertical
 
-.button-block
-  display: block
-  width: 100%
+// .field-wrap
+//   position: relative
+//   margin-bottom: 20px
+//   display: flex
+//   justify-content: center
 
-.forgot
-  margin-top: -20px
-  text-align: right
+// .top-row
+//   &:after
+//     content: ""
+//     display: table
+//     clear: both
+//   > div
+//     float: left
+//     width: 48%
+//     margin-right: 4%
+//     &:last-child
+//       margin: 0
 
-/* TABS STYLES */
+// .button
+//   border: 0
+//   outline: none
+//   border-radius: 0
+//   padding: 15px 0
+//   font-size: 2rem
+//   font-weight: $bold
+//   text-transform: uppercase
+//   letter-spacing: .1em
+//   background: $main
+//   color: $white
+//   transition: all 0.5s ease
+//   -webkit-appearance: none
+//   &:hover, &:focus
+//     background: $main-dark
 
-.list
-  list-style: none
-  padding: 0
+// .button-block
+//   display: block
+//   width: 100%
 
-.list div
-  display: list-item
+// .forgot
+//   margin-top: -20px
+//   text-align: right
 
-section a
-  color: red
+// /* TABS STYLES */
 
-.search-form .form-group
-  float: right !important
-  transition: all 0.35s, border-radius 0s
-  width: 32px
-  height: 32px
-  background-color: #fff
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset
-  border-radius: 25px
-  border: 1px solid #ccc
-  margin: 8px 0 0 0
+// .list
+//   list-style: none
+//   padding: 0
 
-.search-form .form-group input.form-control
-  padding-right: 20px
-  border: 0 none
-  background: transparent
-  box-shadow: none
-  display: block
+// .list div
+//   display: list-item
 
-.search-form .form-group input.form-control::-webkit-input-placeholder
-  display: none
+// section a
+//   color: red
 
-.search-form .form-group input.form-control:-moz-placeholder
-  /* Firefox 18- */
-  display: none
+// .search-form .form-group
+//   float: right !important
+//   transition: all 0.35s, border-radius 0s
+//   width: 32px
+//   height: 32px
+//   background-color: #fff
+//   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset
+//   border-radius: 25px
+//   border: 1px solid #ccc
+//   margin: 8px 0 0 0
 
-.search-form .form-group input.form-control::-moz-placeholder
-  /* Firefox 19+ */
-  display: none
+// .search-form .form-group input.form-control
+//   padding-right: 20px
+//   border: 0 none
+//   background: transparent
+//   box-shadow: none
+//   display: block
 
-.search-form .form-group input.form-control:-ms-input-placeholder
-  display: none
+// .search-form .form-group input.form-control::-webkit-input-placeholder
+//   display: none
 
-.search-form .form-group:hover,
-.search-form .form-group.hover
-  width: 100%
-  border-radius: 4px 25px 25px 4px
+// .search-form .form-group input.form-control:-moz-placeholder
+//   /* Firefox 18- */
+//   display: none
 
-.search-form .form-group span.form-control-feedback
-  position: absolute
-  top: -1px
-  right: -2px
-  z-index: 2
-  display: block
-  width: 34px
-  height: 34px
-  line-height: 34px
-  text-align: center
-  color: #3596e0
-  left: initial
-  font-size: 14px
-  
-td
-  overflow: hidden
-  word-break: normal
-    
-#plot
-  margin-left: 1%
-  
-.img-container
-  height: 400
-  width: 100%
-  
-#img
-  display: block
-  margin: 0 auto
-  
-ul
-  color: $white
+// .search-form .form-group input.form-control::-moz-placeholder
+//   /* Firefox 19+ */
+//   display: none
+
+// .search-form .form-group input.form-control:-ms-input-placeholder
+//   display: none
+
+// .search-form .form-group:hover,
+// .search-form .form-group.hover
+//   width: 100%
+//   border-radius: 4px 25px 25px 4px
+
+// .search-form .form-group span.form-control-feedback
+//   position: absolute
+//   top: -1px
+//   right: -2px
+//   z-index: 2
+//   display: block
+//   width: 34px
+//   height: 34px
+//   line-height: 34px
+//   text-align: center
+//   color: #3596e0
+//   left: initial
+//   font-size: 14px
+
+// td
+//   overflow: hidden
+//   word-break: normal
+
+// #plot
+//   margin-left: 1%
+
+// .img-container
+//   height: 400
+//   width: 100%
+
+// #img
+//   display: block
+//   margin: 0 auto
+
+// ul
+//   color: $white

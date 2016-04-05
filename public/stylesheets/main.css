@@ -1,0 +1,21 @@
+.fa-bolt {
+  color: #f1c40f; }
+
+.fa-globe {
+  color: #27ae60; }
+
+.fa-twitter {
+  color: #3498db; }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: "Titillium Web", sans-serif; }
+
+main {
+  flex: 1 0 auto;
+  text-align: center; }
+
+#push {
+  padding-bottom: 50px; }
