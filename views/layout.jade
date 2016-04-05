@@ -44,14 +44,20 @@ html
                 | Log In
     .container
       if msg.error && msg.error.length
-        .center-align.valign-wrapper.red.accent-3
-          div.valign.flow-text= msg.error
+        .row.center-align.valign-wrapper
+          .col.s12
+            .card-panel.red.darken-3
+              div.valign.flow-text.white-text= msg.error
       if msg.info && msg.info.length
-        .center-align.valign-wrapper.blue.darken-1
-          div.valign.flow-text= msg.info
+        .row.center-align.valign-wrapper
+          .col.s12
+            .card-panel.blue.darken-1
+              div.valign.flow-text.white-text= msg.info
       if msg.success && msg.success.length
-        .center-align.valign-wrapper.green.accent-2
-          div.valign.flow-text= msg.success
+        .row.center-align.valign-wrapper
+          .col.s12
+            .card-panel.green.darken-1
+              div.valign.flow-text.white-text= msg.success
     block content
 
     footer.page-footer.center-align.light-blue.darken-4
