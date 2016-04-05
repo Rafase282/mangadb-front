@@ -175,6 +175,7 @@ function getUserInfo() {
  * call the function to get all mangas.
  */
 $(document).ready(function () {
+    $('.modal-trigger').leanModal();
     if (window.location.pathname === '/user/' + user.toLowerCase()) {
         getUserInfo();
         getMangas();

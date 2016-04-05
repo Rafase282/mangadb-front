@@ -23,8 +23,7 @@ body {
   font-family: "Titillium Web", sans-serif; }
 
 main {
-  flex: 1 0 auto;
-  text-align: center; }
+  flex: 1 0 auto; }
 
 #push {
   padding-bottom: 50px; }

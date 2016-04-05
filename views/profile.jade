@@ -1,35 +1,39 @@
 extends layout
 block content
     main.container
-      h1 #{user} Control Panel
+      h1.center-align #{user} Control Panel
       br
-      .container-fluid
+      .container
+        a.waves-effect.waves-light.btn.modal-trigger.blue.darken-1(href='#usermodal') User Information
+        #usermodal.modal.bottom-sheet
+          .modal-content
+            h4 Personal Information
+            p A bunch of text
+          .modal-footer
+            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree
         .row
-          .btn-group.btn-group-justified.center-text.table-bordered
-            .col-xs-12.col-sm-6
-              br
-              .user-name
-            .col-xs-12.col-sm-6
-              br
-              .user-email
-        .row
-          .btn-group.btn-group-justified
-            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/new')
-              i.glyphicon.glyphicon-plus
-              br
-              |  Create new Manga
-            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/update')
-              i.glyphicon.glyphicon-refresh
-              br
-              |  Update Profile
-            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/delete')
-              i.glyphicon.glyphicon-trash
-              br
-              |  Delete Account
+          .col.s12
+            .card-panel.blue
+              span.white-text
+                .user-name
+                .user-email
+        .fixed-action-btn.vertical(style='bottom: 45px; right: 24px;')
+          a.btn-floating.btn-large.light-blue.darken-4
+            i.large.material-icons mode_edit
+          ul
+            li
+              a.tooltipped.btn-floating.green(data-position='left', data-delay='50', data-tooltip='New Manga', href='/user/#{username}/new')
+                i.material-icons add
+            li
+              a.tooltipped.btn-floating.blue.darken-1(data-position='left', data-delay='50', data-tooltip='Update Account Information', href='/user/#{username}/update')
+                i.material-icons update
+            li
+              a.tooltipped.btn-floating.red(data-position='left', data-delay='50', data-tooltip='Delete Account', href='/user/#{username}/delete')
+                i.material-icons delete_sweep
       br
       br
       section
-        .container-fluid
+        .container
           .row
             .col-xs-12
               ul.nav.nav-tabs
