@@ -16,8 +16,14 @@
   margin: 0;
   font-weight: 700; }
 
-.short {
-  width: 20px; }
+.err {
+  background-color: red; }
+
+.info {
+  background-color: blue; }
+
+.success {
+  background-color: green; }
 
 body {
   display: flex;

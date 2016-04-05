@@ -20,7 +20,6 @@ html
       var user = '#{user}';
       var api = '#{api}';
   body
-
     nav
       .nav-wrapper.light-blue.darken-4
         a.brand-logo(href='/') MangaDB
@@ -43,18 +42,16 @@ html
               a(href='/login')
                 i.material-icons.left lock_open
                 | Log In
-
     .container
       if msg.error && msg.error.length
-        .alert.alert-danger
-          div.center-text= msg.error
+        .center-align.valign-wrapper.red.accent-3
+          div.valign.flow-text= msg.error
       if msg.info && msg.info.length
-        .alert.alert-info
-          div.center-text= msg.info
+        .center-align.valign-wrapper.blue.darken-1
+          div.valign.flow-text= msg.info
       if msg.success && msg.success.length
-        .alert.alert-success
-          div.center-text= msg.success
-
+        .center-align.valign-wrapper.green.accent-2
+          div.valign.flow-text= msg.success
     block content
 
     footer.page-footer.center-align.light-blue.darken-4
@@ -118,7 +115,6 @@ html
           | Copyright ©&nbsp;
           a.grey-text.text-lighten-4(href='http://rafase282.github.io/') Rafael J. Rodriguez&nbsp;
           | 2016. All Rights Reserved
-
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.2.3/underscore.string.min.js')
