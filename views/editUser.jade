@@ -2,42 +2,42 @@ extends layout
 block content
     main.container
       h2.center-align #{header}
-      ul.center-align
+      ul.center-align.flow-text
         li
-          p#blue (Update only)
+          p.blueIcon.blueText (Update only)
           |  To update any piece of information just fill in the particular field.
         li
-          p#blue (Update only)
+          p.flow-text.blueIcon.blueText (Update only)
           |  Whatever information is left blank will retain the old information.
         li Usernames are lowercase internally. Passwords are case sensitive.
       form(role='form', method='POST', name='updateUser', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
         .row
           .input-field.col.s12.m6
-            i.material-icons.prefix perm_contact_calendar
-            input#icon_prefix.validate(type='text', name='firstname', aria-describedby='basic-addon1', autocomplete='off')
-            label(for='icon_prefix') First Name
+            i.material-icons.prefix.blueIcon perm_contact_calendar
+            input#firstname.validate(type='text', name='firstname', aria-describedby='basic-addon1', autocomplete='off')
+            label(for='firstname') First Name
           .input-field.col.s12.m6
-            i.material-icons.prefix perm_contact_calendar
-            input#icon_prefix.validate(type='text', name='lastname', aria-describedby='basic-addon1', autocomplete='off')
-            label(for='icon_prefix') Last Name
+            i.material-icons.prefix.blueIcon perm_contact_calendar
+            input#lastname.validate(type='text', name='lastname', aria-describedby='basic-addon1', autocomplete='off')
+            label(for='lastname') Last Name
         .row
           .input-field.col.s12.m6
-            i.material-icons.prefix person
-            input#icon_prefix.validate(type='text', name='username', aria-describedby='basic-addon1', autocomplete='off')
-            label(for='icon_prefix') Username
+            i.material-icons.prefix.blueIcon person
+            input#username.validate(type='text', name='username', aria-describedby='basic-addon1', autocomplete='off')
+            label(for='username') Username
           .input-field.col.s12.m6
-            i.material-icons.prefix email
-            input#icon_prefix.validate(type='email', name='email', aria-describedby='basic-addon1', autocomplete='off')
-            label(for='icon_prefix') E-mail
+            i.material-icons.prefix.blueIcon email
+            input#email.validate(type='email', name='email', aria-describedby='basic-addon1', autocomplete='off')
+            label(for='email') E-mail
         .row
           .input-field.col.s12.m6
-            i.material-icons.prefix https
-            input#icon_prefix.validate(type='password', name='password', aria-describedby='basic-addon2', autocomplete='off')
-            label(for='icon_prefix') Password
+            i.material-icons.prefix.blueIcon lock
+            input#password.validate(type='password', name='password', aria-describedby='basic-addon2', autocomplete='off')
+            label(for='password') Password
           .input-field.col.s12.m6
-            i.material-icons.prefix https
-            input#icon_prefix.validate(type='password', name='password2', aria-describedby='basic-addon2', autocomplete='off')
-            label(for='icon_prefix') Re-type Password
+            i.material-icons.prefix.blueIcon lock
+            input#password2.validate(type='password', name='password2', aria-describedby='basic-addon2', autocomplete='off')
+            label(for='password2') Re-type Password
         br
         .center-align
           button.btn.blue.darken-1(type='submit') #{button}

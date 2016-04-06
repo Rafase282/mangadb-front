@@ -2,55 +2,59 @@ extends layout
 block content
       main.container
         h1.center-align #{header}
-        ul.center-align
-          li (Update only) To update any piece of information just fill in the particular field.
-          li (Update only) Whatever information is left blank will retain the old information.
+        ul.center-align.flow-text
+          li
+            p.blueIcon.blueText (Update only)
+            |  To update any piece of information just fill in the particular field.
+          li
+            p.blueIcon.blueText (Update only)
+            |  Whatever information is left blank will retain the old information.
           li Avoid using images url over http as it will serve mixed content which lowers the security of your session.
           li Please note that for the best experience, you should try and fill as much information as you can.
         br
         form(role='form', method='POST', name='editManga', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .row
             .input-field.col.s12.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon title
               input#title.validate(type='text', name='title', aria-describedby='basic-addon1', autocomplete='off')
               label(for='title') Title *
             .input-field.col.s12.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon face
               input#author.validate(type='text', name='author', aria-describedby='basic-addon1', autocomplete='off')
               label(for='author') Author *
             .input-field.col.s12.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon link
               input#url.validate(type='url', name='url', aria-describedby='basic-addon1', autocomplete='off')
               label(for='url') Reading Site *
           .row
             .input-field.col.s12.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon list
               input#chapter.validate(type='number', name='chapter', aria-describedby='basic-addon1', autocomplete='off')
               label(for='chapter') Chapter *
             .input-field.col.s12.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon flag
               input#type.validate(type='text', name='type', aria-describedby='basic-addon1', autocomplete='off')
               label(for='type') Manga Ethnicity *
             .input-field.col.s12.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon subtitles
               input#altName.validate(type='text', name='altName', aria-describedby='basic-addon1', autocomplete='off')
               label(for='altName') Alternate Names
           .row
             .input-field.col.s6.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon equalizer
               br
-              p
-                input#finished.with-gap(value='finished', name='userStatus', type='radio')
-                label(for='finished') Finished
               p
                 input#reading.with-gap(value='reading', name='userStatus', type='radio', checked)
                 label(for='reading') Reading
+              p
+                input#finished.with-gap(value='finished', name='userStatus', type='radio')
+                label(for='finished') Finished
               p
                 input#willRead.with-gap(value='willRead', name='userStatus', type='radio')
                 label(for='willRead') Will Read
               label(for='userStatus') User Status *
             .input-field.col.s6.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon access_time
               br
               p
                 input#ongoing.with-gap(value='ongoing', name='seriesStatus', type='radio', checked)
@@ -60,7 +64,7 @@ block content
                 label(for='completed') Completed
               label(for='seriesStatus') Series Status *
             .input-field.col.s12.m4
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon swap_horiz
               br
               p
                 input#rightToLeft.with-gap(value="right to left", name='direction', type='radio', checked)
@@ -71,18 +75,18 @@ block content
               label(for='direction') Reading Direction
           .row
             .input-field.col.s12
-              span#basic-addon1.input-group-addon
-                span.glyphicon.glyphicon-pencil
+              i.material-icons.prefix.blueIcon edit
               textarea#storyPlot.materialize-textarea
               label(for='storyPlot') Story Plot *
           .row
             .input-field.col.s12
-              i.material-icons.prefix perm_contact_calendar
+              i.material-icons.prefix.blueIcon add_a_photo
               input#img-input.validate(type='url', name='thumbnail', aria-describedby='basic-addon1', autocomplete='off')
               label(for='img-input') Thumbnail *
-            .center
-              .input-field.col.s12.m3
-                img#img.responsive-img(src='../../images/kaneki1.jpg', alt='Manga Preview', name='img', height='250')
+          .row
+            .input-field.col.s12
+              p.center-align
+                img#img.circle.responsive-img(src='../../images/kaneki1.jpg', alt='Manga Preview', name='img')
         .center-align
           button.btn.blue.darken-1(type='submit') #{button}
       section#push

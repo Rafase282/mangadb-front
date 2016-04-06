@@ -10,11 +10,17 @@
 #secured {
   color: #3498db; }
 
-#blue {
-  color: #3498db;
+.blueText {
   display: inline-block;
   margin: 0;
   font-weight: 700; }
+
+.blueIcon {
+  color: #3498db; }
+
+#img {
+  width: 20em;
+  height: 20em; }
 
 body {
   display: flex;
