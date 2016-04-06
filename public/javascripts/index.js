@@ -24,9 +24,9 @@ function mangaInfo(manga) {
     var dataChapter = [inputClass, manga.title];
     var dataDel = [panelClass, manga.title];
 
-    var title = '<h1>' + window.s.titleize(manga.title) + '</h1>';
+    var title = window.s.titleize(manga.title);
 
-    var photo = '<img class="thumbnail" src="' + manga.thumbnail +
+    var photo = '<img class="activator thumbnail" src="' + manga.thumbnail +
         '"</img>';
 
     var author = '<span id="author"> <strong>Author:</strong> ' +
@@ -59,30 +59,35 @@ function mangaInfo(manga) {
     var plot = '<p id="plot"> <strong>Plot:</strong> ' +
         window.s.humanize(manga.plot) + '</p>';
 
-    var addOne = '<button type="button" class="btn btn-default"' +
+    var addOne = '<button type="button" class="btn blue darken-1"' +
         ' onclick="oneUp(\'' + dataChapter + '\')">' +
-        'Increase Chapter 1+</button>';
+        '<i class="material-icons">plus_one</i></button>';
 
-    var del = '<button type="button" class="btn btn-default"' +
-        ' onclick="delManga(\'' + dataDel + '\')">Delete</button>';
+    var del = '<button type="button" class="btn blue darken-1"' +
+        ' onclick="delManga(\'' + dataDel + '\')">' +
+        '<i class="material-icons">delete</i></button>';
 
-    var upd = '<button type="button" class="btn btn-default" ' +
+    var upd = '<button type="button" class="btn blue darken-1" ' +
         'onclick="window.location=\'/user/' + user.toLowerCase() + '/' +
-        encodeURIComponent(manga.title) + '\'">Update</button>';
+        encodeURIComponent(manga.title) + '\'">' +
+        '<i class="material-icons">update</i></button>';
 
-    var buttons = '<div class="btn-group btn-group-justified" role="group"' +
-        'aria-label="Controls"> <div class="btn-group" role="group">' +
-        del + '</div> <div class="btn-group" role="group">' + addOne +
-        '</div> <div class="btn-group" role="group">' + upd + '</div></div>';
+    var buttons = '<div class="row center-align">' +
+        '<div class="input-field.col.s12.m6">' + del + addOne + upd +
+        '</div></div>';
 
-    var html = '<div class="manga-panel ' + panelClass +
-        ' tg-wrap"><table><tr><th colspan="3">' + title +
-        '</th></tr><tr><td rowspan="4">' + photo + '</td><td>' + status +
-        '</td><td>' + userStats + '</td></tr><tr><td>' + author +
-        '</td><td>' + direction + '</td></tr><tr><td>' + chapter +
-        '</td><td>' + type + '</td></tr><tr><td>' + categories +
-        '</td><td>' + altName + '</td></tr><tr><td colspan="3">' + plot +
-        '<br>' + buttons + '</td></tr></table></div>';
+    var html = '<dev class="row"> <div class="col s12 m6 l3">' +
+        '<div class="card flow-text" style="overflow: hidden;">' +
+        '<div class="card-image waves-effect waves-block waves-light' +
+        ' float-center">' + photo + '</div><div class="card-content">' +
+        ' <span class="card-title activator grey-text text-darken-4">' +
+        title + '<i class="material-icons right">more_vert</i></span> <br>' +
+        chapter + userStats + direction + altName +
+        '</div><div class="card-action">' + buttons + '</div>' +
+        '<div class="card-reveal" style="display: none; transform:' +
+        ' translateY(0px);"><span class="card-title grey-text text-darken-4">' +
+        title + '<i class="material-icons right">close</i></span> ' + author +
+        status + type + categories + plot + '</div></div></div></div>';
 
     return html;
 }

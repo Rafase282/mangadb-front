@@ -22,6 +22,15 @@
   width: 20em;
   height: 20em; }
 
+.manga-panel {
+  opacity: 0.9;
+  margin: 10px auto;
+  border-radius: 25px; }
+
+.thumbnail {
+  width: 150px;
+  margin-left: 4%; }
+
 body {
   display: flex;
   min-height: 100vh;
