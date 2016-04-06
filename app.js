@@ -15,18 +15,18 @@ var funHelper = require('./routes/helpers');
 var mangas = require('./routes/mangas');
 var mangasView = require('./routes/mangasView');
 require('dotenv').config({
-    silent: true
+  silent: true
 });
 
 var app = express();
 app.use(cookieParser());
 app.use(session({
-    secret: process.env.secret,
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 3600000
-    }
+  secret: process.env.secret,
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 3600000
+  }
 }));
 app.use(flash());
 
@@ -39,16 +39,16 @@ app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
 
 app.use(require('node-sass-middleware')({
-    src: path.join(__dirname, '/public'),
-    dest: path.join(__dirname, '/public'),
-    prefix: '/stylesheets',
-    debug: true,
-    indentedSyntax: true,
-    sourceMap: true
+  src: path.join(__dirname, '/public'),
+  dest: path.join(__dirname, '/public'),
+  prefix: '/stylesheets',
+  debug: true,
+  indentedSyntax: true,
+  sourceMap: true
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -72,12 +72,12 @@ router.route('/logout')
 // Get the forgotten password page
 router.route('/forgot')
   .get(password.getForgot);
-  //.post(password.postForgot);
+//.post(password.postForgot);
 
 // Get the reset password page
 router.route('/reset')
   .get(password.getReset);
-  //.post(password.postReset);
+//.post(password.postReset);
 
 // Get the registration page
 router.route('/signup')
@@ -110,9 +110,9 @@ router.route('/user/:username/:manga')
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // error handlers
@@ -120,27 +120,29 @@ app.use(function (req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-              //msg:{error: req.flash('error', err.message)}
-        });
-        next();
-    });
+  app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    sess = req.session;
+    sess.url = '/user/' + sess.username;
+    sess.title = 'MangaDB: ' + sess.user;
+    sess.api = process.env.API;
+    req.flash('error', err.message);
+    res.render('error', funHelper.jadeObj(sess, req));
+    next();
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-      //msg:{error: req.flash('error', err.message)}
-    });
-    next();
+  res.status(err.status || 500);
+  sess = req.session;
+  sess.url = '/user/' + sess.username;
+  sess.title = 'MangaDB: ' + sess.user;
+  sess.api = process.env.API;
+  req.flash('error', err.message);
+  res.render('error', funHelper.jadeObj(sess, req));
+  next();
 });
 
 module.exports = app;
