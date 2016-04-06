@@ -44,39 +44,44 @@ block content
               i.material-icons.prefix.blueIcon equalizer
               br
               p
-                input#reading.with-gap(value='reading', name='userStatus', type='radio', checked)
+                input#reading.with-gap(value='reading', name='userStatus', aria-describedby='basic-addon1', type='radio', checked)
                 label(for='reading') Reading
               p
-                input#finished.with-gap(value='finished', name='userStatus', type='radio')
+                input#finished.with-gap(value='finished', name='userStatus', aria-describedby='basic-addon1', type='radio')
                 label(for='finished') Finished
               p
-                input#willRead.with-gap(value='willRead', name='userStatus', type='radio')
+                input#willRead.with-gap(value='willRead', name='userStatus', aria-describedby='basic-addon1', type='radio')
                 label(for='willRead') Will Read
               label(for='userStatus') User Status *
             .input-field.col.s6.m4
               i.material-icons.prefix.blueIcon access_time
               br
               p
-                input#ongoing.with-gap(value='ongoing', name='seriesStatus', type='radio', checked)
+                input#ongoing.with-gap(value='ongoing', name='seriesStatus', aria-describedby='basic-addon1', type='radio', checked)
                 label(for='ongoing') Ongoing
               p
-                input#completed.with-gap(value='completed', name='seriesStatus', type='radio')
+                input#completed.with-gap(value='completed', name='seriesStatus', aria-describedby='basic-addon1', type='radio')
                 label(for='completed') Completed
               label(for='seriesStatus') Series Status *
             .input-field.col.s12.m4
               i.material-icons.prefix.blueIcon swap_horiz
               br
               p
-                input#rightToLeft.with-gap(value="right to left", name='direction', type='radio', checked)
+                input#rightToLeft.with-gap(value="right to left", name='direction', aria-describedby='basic-addon1', type='radio', checked)
                 label(for='rightToLeft') Right to Left
               p
-                input#lefToRight.with-gap(value="left to right", name='direction', type='radio')
+                input#lefToRight.with-gap(value="left to right", name='direction', aria-describedby='basic-addon1', type='radio')
                 label(for='lefToRight') Left to Right
               label(for='direction') Reading Direction
           .row
             .input-field.col.s12
+              i.material-icons.prefix.blueIcon sort
+              textarea#storyPlot.materialize-textarea(type='text', name='categories', aria-describedby='basic-addon1', autocomplete='off')
+              label(for='storyPlot') Categories *
+          .row
+            .input-field.col.s12
               i.material-icons.prefix.blueIcon edit
-              textarea#storyPlot.materialize-textarea
+              textarea#storyPlot.materialize-textarea(type='text', name='plot', aria-describedby='basic-addon1', autocomplete='off')
               label(for='storyPlot') Story Plot *
           .row
             .input-field.col.s12
@@ -86,7 +91,7 @@ block content
           .row
             .input-field.col.s12
               p.center-align
-                img#img.circle.responsive-img(src='../../images/kaneki1.jpg', alt='Manga Preview', name='img')
+                img#img.circle.responsive-img(src='../../images/kaneki1.jpg', alt='Manga Preview', aria-describedby='basic-addon1', name='img')
         .center-align
           button.btn.blue.darken-1(type='submit') #{button}
       section#push

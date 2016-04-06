@@ -24,6 +24,8 @@ exports.createManga = function (req, res) {
 
 /* Updates Manga */
 exports.updateManga = function (req, res) {
+    console.log('just got to the updateManga function')
+    console.log(req.body)
     sess = req.session;
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;

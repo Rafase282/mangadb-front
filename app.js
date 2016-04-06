@@ -85,26 +85,26 @@ router.route('/signup')
   .post(users.createUser);
 
 // Get User Profile
-router.route('/user/:user')
+router.route('/user/:username')
   .get(funHelper.isAuthenticated, usersView.getUserProfile);
 
 // Update User Account
-router.route('/user/:user/update')
+router.route('/user/:username/update')
   .get(funHelper.isAuthenticated, usersView.getUpdateUser)
   .post(funHelper.isAuthenticated, users.updateUser);
 
 // Delete User Account
-router.route('/user/:user/delete')
+router.route('/user/:username/delete')
   .get(funHelper.isAuthenticated, usersView.getDeleteUser)
   .post(funHelper.isAuthenticated, users.deleteUser);
 
 // Create New Manga
-router.route('/user/:user/new')
+router.route('/user/:username/new')
   .get(funHelper.isAuthenticated, mangasView.getCreateManga)
   .post(funHelper.isAuthenticated, mangas.createManga);
 
 // Update Manga
-router.route('/user/:user/:manga')
+router.route('/user/:username/:manga')
   .get(funHelper.isAuthenticated, mangasView.getUpdateManga)
   .post(funHelper.isAuthenticated, mangas.updateManga);
 

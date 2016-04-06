@@ -6,14 +6,15 @@ var request = require('request');
 
 var isAuthenticated = function (req, res, next) {
     // Check to see if there is there is a user in session
-    var url = req.header('Referer') || '/';
+    //var url = req.header('Referer') || '/';
     if (req.session.user !== undefined && req.session.user !== null &&
-        req.session.user.toLowerCase() === req.params.user.toLowerCase()) {
+        req.session.user.toLowerCase() === req.params.username.toLowerCase()) {
         return next();
+    } else {
+        req.flash('info', 'Your session has either timed out or you have' +
+            ' yet to log in. Please log in to go to your profile.');
+        //res.redirect(url);
     }
-    req.flash('info', 'Your session has either timed out or you have yet to ' +
-        'log in. Please log in to go to your profile.');
-    res.redirect(url);
 };
 
 // Checks to make sure used is logged in
@@ -98,8 +99,10 @@ var newUserMsg = function (req, res, body) {
 exports.newUserMsg = newUserMsg;
 
 var makeRequest = function (options, req, res, url) {
-    // Handles API requests and flash messages.
+    console.log('about to make the request')
+        // Handles API requests and flash messages.
     request(options, function (error, response, body) {
+        console.log(body)
         if (error) {
             throw new Error(error);
         }
