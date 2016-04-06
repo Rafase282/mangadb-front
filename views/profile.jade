@@ -1,14 +1,19 @@
 extends layout
 block content
     main.container
-      h1.center-align.blue-text #{user} Control Panel
-      br
-      #modal1.modal
-        .modal-content
-          h4 Modal Header
-          p A bunch of text
+      #usermodal.modal.bottom-sheet
+        .modal-content.blue-text
+          h4.center-align User Information
+          .row
+            .col.s12
+              .card-panel
+                .user-name
+            .col.s12
+              .card-panel
+                .user-email
         .modal-footer
-          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!')
+            i.material-icons.prefix.blueIcon close
       .fixed-action-btn.vertical(style='bottom: 45px; right: 24px;')
           a.btn-floating.btn-large.light-blue.darken-1
             i.large.material-icons mode_edit
@@ -46,21 +51,21 @@ block content
                 #all.active
                   h1.center-align All Mangas
                   br
-                  div
+                  .row
                     .list
                 #current
                   h1.center-align Currently Reading
                   br
-                  div
+                  .row
                     .list2
                 #done
                   h1.center-align Done Reading
                   br
-                  div
+                  .row
                     .list3
                 #willread
                   h1.center-align Will Read Soon
                   br
-                  div
+                  .row
                     .list4
       section#push

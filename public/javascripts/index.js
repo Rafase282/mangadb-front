@@ -59,35 +59,39 @@ function mangaInfo(manga) {
     var plot = '<p id="plot"> <strong>Plot:</strong> ' +
         window.s.humanize(manga.plot) + '</p>';
 
-    var addOne = '<button type="button" class="btn blue darken-1"' +
-        ' onclick="oneUp(\'' + dataChapter + '\')">' +
-        '<i class="material-icons">plus_one</i></button>';
+    var addOne = '<button type="button" class="btn blue darken-1 tooltipped" ' +
+        'data-position="bottom" data-delay="50" data-tooltip=' +
+        '"Increase Chapter Number by One"onclick="oneUp(\'' +
+        dataChapter + '\')">' + '<i class="material-icons">' +
+        'plus_one</i></button>';
 
-    var del = '<button type="button" class="btn blue darken-1"' +
-        ' onclick="delManga(\'' + dataDel + '\')">' +
+    var del = '<button type="button" class="btn blue darken-1 tooltipped" ' +
+        'data-position="bottom" data-delay="50" data-tooltip="Delete Manga" ' +
+        'onclick="delManga(\'' + dataDel + '\')">' +
         '<i class="material-icons">delete</i></button>';
 
-    var upd = '<button type="button" class="btn blue darken-1" ' +
-        'onclick="window.location=\'/user/' + user.toLowerCase() + '/' +
-        encodeURIComponent(manga.title) + '\'">' +
+    var upd = '<button type="button" class="btn blue darken-1 tooltipped" ' +
+        'data-position="bottom" data-delay="50" data-tooltip=' +
+        '"Update Manga Information" onclick="window.location=\'/user/' +
+        user.toLowerCase() + '/' + encodeURIComponent(manga.title) + '\'">' +
         '<i class="material-icons">update</i></button>';
 
     var buttons = '<div class="row center-align">' +
         '<div class="input-field.col.s12.m6">' + del + addOne + upd +
         '</div></div>';
 
-    var html = '<dev class="row"> <div class="col s12 m6 l3">' +
+    var html = '<div class="col s12 m6">' +
         '<div class="card flow-text" style="overflow: hidden;">' +
         '<div class="card-image waves-effect waves-block waves-light' +
         ' float-center">' + photo + '</div><div class="card-content">' +
         ' <span class="card-title activator grey-text text-darken-4">' +
-        title + '<i class="material-icons right">more_vert</i></span> <br>' +
+        title + '<br/><i class="material-icons right">more_vert</i></span> <br>' +
         chapter + userStats + direction + altName +
         '</div><div class="card-action">' + buttons + '</div>' +
         '<div class="card-reveal" style="display: none; transform:' +
         ' translateY(0px);"><span class="card-title grey-text text-darken-4">' +
-        title + '<i class="material-icons right">close</i></span> ' + author +
-        status + type + categories + plot + '</div></div></div></div>';
+        title + '<br/><br/><i class="material-icons right">close</i></span> ' + author +
+        status + type + categories + plot + '</div></div></div>';
 
     return html;
 }
@@ -166,7 +170,7 @@ function getUserInfo() {
 
     $.ajax(settings).done(function (response) {
         var userInfo = response.data[0];
-        var userName = '<h4>Full name: ' +
+        var userName = '<h4>Full Name: ' +
             window.s.titleize(userInfo.firstname) + ' ' +
             window.s.titleize(userInfo.lastname) + '</h4>';
         var userEmail = '<h4>E-Mail: ' + userInfo.email + '</h4>';
