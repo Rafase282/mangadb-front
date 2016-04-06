@@ -11,9 +11,9 @@ var isAuthenticated = function (req, res, next) {
         req.session.user.toLowerCase() === req.params.username.toLowerCase()) {
         return next();
     } else {
-        req.flash('info', 'Your session has either timed out or you have' +
-            ' yet to log in. Please log in to go to your profile.');
-        //res.redirect(url);
+        req.flash('info', 'You either tried to visit a restricted area without' +
+            ' permission, or you simply need to login again.');
+        res.redirect('/');
     }
 };
 
