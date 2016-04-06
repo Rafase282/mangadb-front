@@ -1,23 +1,15 @@
 extends layout
 block content
     main.container
-      h1.center-align #{user} Control Panel
+      h1.center-align.blue-text #{user} Control Panel
       br
-      .container
-        a.waves-effect.waves-light.btn.modal-trigger.blue.darken-1(href='#usermodal') User Information
-        #usermodal.modal.bottom-sheet
-          .modal-content
-            h4 Personal Information
-            p A bunch of text
-          .modal-footer
-            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree
-        .row
-          .col.s12
-            .card-panel.blue
-              span.white-text
-                .user-name
-                .user-email
-        .fixed-action-btn.vertical(style='bottom: 45px; right: 24px;')
+      #modal1.modal
+        .modal-content
+          h4 Modal Header
+          p A bunch of text
+        .modal-footer
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree
+      .fixed-action-btn.vertical(style='bottom: 45px; right: 24px;')
           a.btn-floating.btn-large.light-blue.darken-1
             i.large.material-icons mode_edit
           ul
@@ -25,13 +17,14 @@ block content
               a.tooltipped.btn-floating.green(data-position='left', data-delay='50', data-tooltip='New Manga', href='/user/#{username}/new')
                 i.material-icons add
             li
-              a.tooltipped.btn-floating.blue.darken-4(data-position='left', data-delay='50', data-tooltip='Update Account Information', href='/user/#{username}/update')
+              a.tooltipped.btn-floating.deep-purple.darken-4(data-position='left', data-delay='50', data-tooltip='Update Account Information', href='/user/#{username}/update')
                 i.material-icons update
             li
               a.tooltipped.btn-floating.red(data-position='left', data-delay='50', data-tooltip='Delete Account', href='/user/#{username}/delete')
                 i.material-icons delete_sweep
-      br
-      br
+            li
+              a.tooltipped.btn-floating.yellow.darken-3.modal-trigger(href='#usermodal', data-position='left', data-delay='50', data-tooltip='Display User Information')
+                i.material-icons person
       section.blue-text
         .container
           .row
@@ -70,4 +63,4 @@ block content
                   br
                   div
                     ul.list4
-    section#push
+      section#push

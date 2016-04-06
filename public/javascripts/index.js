@@ -175,10 +175,15 @@ function getUserInfo() {
  * call the function to get all mangas.
  */
 $(document).ready(function () {
-    $('.modal-trigger').leanModal();
     if (window.location.pathname === '/user/' + user.toLowerCase()) {
         getUserInfo();
         getMangas();
+        $('.modal-trigger').leanModal({
+            dismissible: false, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            in_duration: 300, // Transition in duration
+            out_duration: 200 // Transition out duration
+        });
     }
 });
 
