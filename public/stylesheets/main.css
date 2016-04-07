@@ -1,6 +1,9 @@
 .brand-logo {
   margin-left: 20px; }
 
+.flash-msg {
+  opacity: 0.5; }
+
 #quick {
   color: #3498db; }
 

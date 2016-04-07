@@ -3,6 +3,7 @@ var userMangas = {};
 var api = api;
 var user = user;
 var token = token;
+var userObj = {};
 
 /* Clear mangas from view
  * Removes manga from all views and lists.
@@ -164,12 +165,17 @@ function getUserInfo() {
 
     $.ajax(settings).done(function (response) {
         var userInfo = response.data[0];
-        var userName = '<h4>Full Name: ' +
-            window.s.titleize(userInfo.firstname) + ' ' +
-            window.s.titleize(userInfo.lastname) + '</h4>';
-        var userEmail = '<h4>E-Mail: ' + userInfo.email + '</h4>';
+        userObj.firstname = window.s.titleize(userInfo.firstname);
+        userObj.lastname = window.s.titleize(userInfo.lastname);
+        userObj.email = userInfo.email;
+        userObj.count = Object.keys(userMangas).length
+        var userName = '<span><h5 class="black-text">Full Name:</h5><h5> ' + userObj.firstname + ' ' +
+            userObj.lastname + '</h5></span>';
+        var userEmail = '<span><h5 class="black-text">E-Mail:</h5><h5> ' + userInfo.email + '</h5></span>';
+        var userCount = '<span><h5 class="black-text">Total Manga Count:</h5><h5> ' + userObj.count + '</h5></span>';
         $('.user-name').append(userName);
         $('.user-email').append(userEmail);
+        $('.user-count').append(userCount);
 
     });
 }
@@ -179,15 +185,15 @@ function getUserInfo() {
  */
 $(document).ready(function () {
     if (window.location.pathname === '/user/' + user.toLowerCase()) {
-        getUserInfo();
         getMangas();
         $('.tooltipped').tooltip({
             delay: 50
         });
         $('.modal-trigger').leanModal({
-            dismissible: false, // Modal can be dismissed by clicking outside of the modal
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
             opacity: .5, // Opacity of modal background
             in_duration: 300, // Transition in duration
+            ready: getUserInfo, // Callback for Modal open
             out_duration: 200 // Transition out duration
         });
     }
