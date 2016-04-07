@@ -12,7 +12,7 @@ var isAuthenticated = function (req, res, next) {
         return next();
     } else {
         req.flash('info', 'You either tried to visit a restricted area without' +
-            ' permission, or you simply need to login again.');
+            ' permission, or you simply just need to login again.');
         res.redirect('/');
     }
 };
