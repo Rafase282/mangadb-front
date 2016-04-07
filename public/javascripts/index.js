@@ -8,11 +8,20 @@ var userObj = {};
 /* Clear mangas from view
  * Removes manga from all views and lists.
  */
-function clean() {
+function cleanMangas() {
     $('.list').empty();
     $('.list2').empty();
     $('.list3').empty();
     $('.list4').empty();
+}
+
+/* Clear User Info from view
+ * Removes user info from all views and lists.
+ */
+function cleanUser() {
+    $('.user-name').empty();
+    $('.user-email').empty();
+    $('.user-count').empty();
 }
 
 /* Manga panels generator
@@ -129,7 +138,7 @@ function getMangas() {
     };
 
     $.ajax(settings).done(function (mangas) {
-        clean();
+        cleanMangas();
         mangas.data.map(function (manga) {
             var newManga = new createManga(manga.title, manga.author, manga.url,
                 manga.userStatus, manga.type, manga.categories, manga.chapter,
@@ -173,6 +182,7 @@ function getUserInfo() {
             userObj.lastname + '</h5></span>';
         var userEmail = '<span><h5 class="black-text">E-Mail:</h5><h5> ' + userInfo.email + '</h5></span>';
         var userCount = '<span><h5 class="black-text">Total Manga Count:</h5><h5> ' + userObj.count + '</h5></span>';
+        cleanUser();
         $('.user-name').append(userName);
         $('.user-email').append(userEmail);
         $('.user-count').append(userCount);
