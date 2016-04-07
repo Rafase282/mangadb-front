@@ -90,12 +90,7 @@ function mangaInfo(manga) {
         '<div class="input-field.col.s12.m6">' + del + addOne + upd +
         '</div></div>';
 
-    var html = '<div class="col s12 m6"><div class="card large" style="overflow: hidden;"><div class="card-image waves-effect waves-block waves-light' +
-        ' float-center">' + photo + '</div><div class="card-content"> <span class="card-title activator grey-text text-darken-4">' +
-        title + '<i class="material-icons right">more_vert</i></span> <br>' + chapter + direction +
-        '</div><div class="card-action">' + buttons + '</div><div class="card-reveal" style="display: none; transform:' +
-        ' translateY(0px);"><span class="card-title grey-text text-darken-4">' + title + '<br/><br/><i class="material-icons right">close</i></span> ' +
-        altName + author + status + userStats + type + categories + plot + '</div></div></div>';
+    var html = '<div class="col s12 m6 manga-panel ' + panelClass + '"><div class="card large" style="overflow: hidden;"><div class="card-image waves-effect waves-block waves-light' + ' float-center">' + photo + '</div><div class="card-content"> <span class="card-title activator grey-text text-darken-4">' + title + '<i class="material-icons right">more_vert</i></span> <br>' + chapter + direction + '</div><div class="card-action">' + buttons + '</div><div class="card-reveal" style="display: none; transform:' + ' translateY(0px);"><span class="card-title grey-text text-darken-4">' + title + '<br/><br/><i class="material-icons right">close</i></span> ' + altName + author + status + userStats + type + categories + plot + '</div></div></div>';
 
     return html;
 }
