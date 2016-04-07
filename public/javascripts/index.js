@@ -29,69 +29,63 @@ function mangaInfo(manga) {
     var photo = '<img class="activator thumbnail" src="' + manga.thumbnail +
         '"</img>';
 
-    var author = '<span id="author"> <strong>Author:</strong> ' +
-        window.s.titleize(manga.author) + '</span>';
+    var author = '<span id="author"> <strong class="black-text">Author:</strong> ' +
+        window.s.titleize(manga.author) + '</span><br/>';
 
-    var status = '<span id="status"> <strong>Status:</strong> ' +
-        window.s.humanize(manga.seriesStatus) + '</span>';
+    var status = '<span id="status"> <strong class="black-text">Series Status:</strong> ' +
+        window.s.humanize(manga.seriesStatus) + '</span>&nbsp;&nbsp;';
 
-    var userStats = '<span id="userStats"> <strong>My Status:</strong> ' +
+    var userStats = '<span id="userStats"> <strong class="black-text">My Status:</strong> ' +
         window.s.humanize(manga.userStatus) + '</span>';
 
-    var chapter = '<span id="chapter"> <strong>Current Chapter: </strong>' +
+    var chapter = '<span class="float-right"> <strong class="black-text">Current Chapter: </strong>' +
         '<a class="' + inputClass + '" href="' +
-        manga.url + '" target="_blank">' + manga.chapter + '</a></span><br>';
+        manga.url + '" target="_blank">' + manga.chapter + '</a></span>&nbsp;&nbsp;&nbsp;';
 
-    var type = '<span id="type"> <strong>Type:</strong> ' +
-        window.s.humanize(manga.type) + '</span>';
+    var type = '<span id="type"> <strong class="black-text">Type:</strong> ' +
+        window.s.humanize(manga.type) + '</span><br>';
 
-    var direction = '<span id="direction"><strong>Reading Direction:</strong>' +
-        ' ' + window.s.titleize(manga.direction) + '</span>';
+    var direction = '<span id="direction"><strong class="black-text">Reading Direction:</strong>' +
+        ' ' + window.s.titleize(manga.direction) + '</span><br/>';
 
-    var altName = '<span id="altName"> <strong>Other Names:</strong> ' +
+    var altName = '<span id="altName"> <strong class="black-text">Other Names:</strong> ' +
         window.s.titleize(window.s.toSentence(manga.altName, ', ', ', ')) +
-        '</span>';
+        '</span><br/><br/>';
 
-    var categories = '<span id="categories"> <strong>Categories:</strong> ' +
+    var categories = '<span id="categories"> <strong class="black-text">Categories:</strong> ' +
         window.s.titleize(window.s.toSentence(manga.categories, ', ', ', ')) +
         '</span>';
 
-    var plot = '<p id="plot"> <strong>Plot:</strong> ' +
-        window.s.humanize(manga.plot) + '</p>';
+    var plot = '<p id="plot"> <strong class="black-text">Plot:</strong> ' +
+        window.s.humanize(manga.plot) + '</p><br/><br/>';
 
-    var addOne = '<button type="button" class="btn blue darken-1 tooltipped" ' +
+    var addOne = '<a class="btn tooltipped blue darken-1" ' +
         'data-position="bottom" data-delay="50" data-tooltip=' +
-        '"Increase Chapter Number by One"onclick="oneUp(\'' +
+        '"Increase Chapter Number by One" onclick="oneUp(\'' +
         dataChapter + '\')">' + '<i class="material-icons">' +
-        'plus_one</i></button>';
+        'plus_one</i></a>';
 
-    var del = '<button type="button" class="btn blue darken-1 tooltipped" ' +
+    var del = '<a class="btn tooltipped blue darken-1" ' +
         'data-position="bottom" data-delay="50" data-tooltip="Delete Manga" ' +
         'onclick="delManga(\'' + dataDel + '\')">' +
-        '<i class="material-icons">delete</i></button>';
+        '<i class="material-icons">delete</i></a>';
 
-    var upd = '<button type="button" class="btn blue darken-1 tooltipped" ' +
+    var upd = '<a class="btn tooltipped blue darken-1" ' +
         'data-position="bottom" data-delay="50" data-tooltip=' +
-        '"Update Manga Information" onclick="window.location=\'/user/' +
+        '"Update Manga Information" href=\'/user/' +
         user.toLowerCase() + '/' + encodeURIComponent(manga.title) + '\'">' +
-        '<i class="material-icons">update</i></button>';
+        '<i class="material-icons">update</i></a>';
 
     var buttons = '<div class="row center-align">' +
         '<div class="input-field.col.s12.m6">' + del + addOne + upd +
         '</div></div>';
 
-    var html = '<div class="col s12 m6">' +
-        '<div class="card flow-text" style="overflow: hidden;">' +
-        '<div class="card-image waves-effect waves-block waves-light' +
-        ' float-center">' + photo + '</div><div class="card-content">' +
-        ' <span class="card-title activator grey-text text-darken-4">' +
-        title + '<br/><i class="material-icons right">more_vert</i></span> <br>' +
-        chapter + userStats + direction + altName +
-        '</div><div class="card-action">' + buttons + '</div>' +
-        '<div class="card-reveal" style="display: none; transform:' +
-        ' translateY(0px);"><span class="card-title grey-text text-darken-4">' +
-        title + '<br/><br/><i class="material-icons right">close</i></span> ' + author +
-        status + type + categories + plot + '</div></div></div>';
+    var html = '<div class="col s12 m6"><div class="card large" style="overflow: hidden;"><div class="card-image waves-effect waves-block waves-light' +
+        ' float-center">' + photo + '</div><div class="card-content"> <span class="card-title activator grey-text text-darken-4">' +
+        title + '<i class="material-icons right">more_vert</i></span> <br>' + chapter + direction +
+        '</div><div class="card-action">' + buttons + '</div><div class="card-reveal" style="display: none; transform:' +
+        ' translateY(0px);"><span class="card-title grey-text text-darken-4">' + title + '<br/><br/><i class="material-icons right">close</i></span> ' +
+        altName + author + status + userStats + type + categories + plot + '</div></div></div>';
 
     return html;
 }
@@ -187,6 +181,9 @@ $(document).ready(function () {
     if (window.location.pathname === '/user/' + user.toLowerCase()) {
         getUserInfo();
         getMangas();
+        $('.tooltipped').tooltip({
+            delay: 50
+        });
         $('.modal-trigger').leanModal({
             dismissible: false, // Modal can be dismissed by clicking outside of the modal
             opacity: .5, // Opacity of modal background
