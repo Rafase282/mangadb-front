@@ -178,10 +178,10 @@ function getUserInfo() {
         userObj.lastname = window.s.titleize(userInfo.lastname);
         userObj.email = userInfo.email;
         userObj.count = Object.keys(userMangas).length
-        var userName = '<span><h5 class="black-text">Full Name:</h5><h5> ' + userObj.firstname + ' ' +
+        var userName = '<span class="center-align"><h5 class="black-text">Full Name:</h5><h5> ' + userObj.firstname + ' ' +
             userObj.lastname + '</h5></span>';
-        var userEmail = '<span><h5 class="black-text">E-Mail:</h5><h5> ' + userInfo.email + '</h5></span>';
-        var userCount = '<span><h5 class="black-text">Total Manga Count:</h5><h5> ' + userObj.count + '</h5></span>';
+        var userEmail = '<span class="center-align"><h5 class="black-text">E-Mail:</h5><h5> ' + userInfo.email + '</h5></span>';
+        var userCount = '<span class="center-align"><h5 class="black-text">Total Manga Count:</h5><h5> ' + userObj.count + '</h5></span>';
         cleanUser();
         $('.user-name').append(userName);
         $('.user-email').append(userEmail);
