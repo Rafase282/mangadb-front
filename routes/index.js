@@ -52,15 +52,17 @@ exports.getToken = function (req, res) {
     };
 
     request(options, function (error, response, body) {
-        body = JSON.parse(body);
+        console.log(body)
+        if (typeof body === 'string') {
+            body = JSON.parse(body);
+        }
         sess.token = body.data;
-
         if (error) throw new Error(error);
         if (!body.success) {
             sess.user = null;
             req.flash('error', body.message);
             res.redirect('/login');
-        }else {
+        } else {
             req.flash('success', body.message);
             res.redirect('/user/' + username);
         }

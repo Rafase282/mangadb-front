@@ -90,6 +90,10 @@ var newUserMsg = function (req, res, body) {
             ' in the system, try a different one.';
         req.flash('error', msg);
         res.redirect(url);
+    } else if (body.message.code === 17280) {
+        // Key Too Large
+        req.flash('error', 'One of the elements is too large, try again with a shorter version!');
+        res.redirect(url);
     } else {
         // Invalid E-mail Case
         req.flash('error', body.message);
@@ -99,7 +103,7 @@ var newUserMsg = function (req, res, body) {
 exports.newUserMsg = newUserMsg;
 
 var makeRequest = function (options, req, res, url) {
-        // Handles API requests and flash messages.
+    // Handles API requests and flash messages.
     request(options, function (error, response, body) {
         if (error) {
             throw new Error(error);
