@@ -99,10 +99,8 @@ var newUserMsg = function (req, res, body) {
 exports.newUserMsg = newUserMsg;
 
 var makeRequest = function (options, req, res, url) {
-    console.log('about to make the request')
         // Handles API requests and flash messages.
     request(options, function (error, response, body) {
-        console.log(body)
         if (error) {
             throw new Error(error);
         }
@@ -110,7 +108,6 @@ var makeRequest = function (options, req, res, url) {
             body = JSON.parse(body);
         }
         if (body.success === false) {
-            console.log('About to send error message')
             newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);
