@@ -52,7 +52,6 @@ exports.getToken = function (req, res) {
     };
 
     request(options, function (error, response, body) {
-        console.log(body)
         if (typeof body === 'string') {
             body = JSON.parse(body);
         }
