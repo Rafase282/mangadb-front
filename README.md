@@ -14,11 +14,10 @@ The Front-End for the MangaDB app
 
 ## To-Do
 - [ ] Create React single Page.
-- [X] Create multipage site.
-- [X] Figure way to hash username and password and use it for a session.
-- [X] Figure out how to keep a session.
-- [X] Change the way the manga is displayed.
-- [X] Add buttons inside the manga info for manga action.
-- [X] Improve authentication middleware so the user can't go to restricted pages.
-- [X] Implement manga search by alternate name and category.
+- [X] Fix Manga Form
+- [ ] Fix Tootltips not showing on Manga Card
+- [X] Fix Error Page
+- [ ] Test Whole Site
+- [X] Implement Fixed Size for Manga Cards
+- [X] Fix the Too Manu Redirects Issue
 - [ ] Implement password Recovery and reset.

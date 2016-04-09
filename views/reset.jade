@@ -1,16 +1,16 @@
 extends layout
 block content
-      .form.main
-        h1 Password Reset
-        form(role='form', method='POST', name='reset', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
-          .field-wrap
-            .form-group.input-group
-              span#basic-addon2.input-group-addon
-                span.glyphicon.glyphicon-lock
-              input.form-control(type='password', name='password', placeholder='Password *', aria-describedby='basic-addon2', autocomplete='off')
-          .field-wrap
-            .form-group.input-group    
-              span#basic-addon2.input-group-addon
-                span.glyphicon.glyphicon-lock
-              input.form-control(type='password', name='password2', placeholder='Comfirm Password *', aria-describedby='basic-addon2', ,='', autocomplete='off')
-          button.button.button-block.btn.btn-danger(type='button') Update Password
+  main.container
+    h1.center-align Password Reset
+    form(role='form', method='POST', name='reset', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
+      .row
+        .input-field.col.s12.m6
+          i.material-icons.prefix.blueIcon lock
+          input#password.validate(type='password', name='password', aria-describedby='basic-addon2', autocomplete='off', required)
+          label(for='password') Password
+        .input-field.col.s12.m6
+          i.material-icons.prefix.blueIcon lock
+          input#password2.validate(type='password', name='password2', aria-describedby='basic-addon2', autocomplete='off', required)
+          label(for='password2') Re-type Password
+      .center-align
+        button.btn.blue.darken-1(type='submit') Update Password

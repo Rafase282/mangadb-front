@@ -38,7 +38,7 @@ exports.getToken = function (req, res) {
     var username = req.body.username.toLowerCase();
     var password = req.body.password;
     sess.user = s.titleize(username);
-    sess.username = username.toLowerCase();
+    sess.username = username;
     var options = {
         method: 'POST',
         url: process.env.API + '/auth',
@@ -52,15 +52,16 @@ exports.getToken = function (req, res) {
     };
 
     request(options, function (error, response, body) {
-        body = JSON.parse(body);
+        if (typeof body === 'string') {
+            body = JSON.parse(body);
+        }
         sess.token = body.data;
-
         if (error) throw new Error(error);
         if (!body.success) {
             sess.user = null;
             req.flash('error', body.message);
             res.redirect('/login');
-        }else {
+        } else {
             req.flash('success', body.message);
             res.redirect('/user/' + username);
         }

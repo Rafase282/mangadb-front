@@ -6,14 +6,15 @@ var request = require('request');
 
 var isAuthenticated = function (req, res, next) {
     // Check to see if there is there is a user in session
-    var url = req.header('Referer') || '/';
+    //var url = req.header('Referer') || '/';
     if (req.session.user !== undefined && req.session.user !== null &&
-        req.session.user.toLowerCase() === req.params.user.toLowerCase()) {
+        req.session.user.toLowerCase() === req.params.username.toLowerCase()) {
         return next();
+    } else {
+        req.flash('info', 'You either tried to visit a restricted area without' +
+            ' permission, or you simply just need to login again.');
+        res.redirect('/');
     }
-    req.flash('info', 'Your session has either timed out or you have yet to ' +
-        'log in. Please log in to go to your profile.');
-    res.redirect(url);
 };
 
 // Checks to make sure used is logged in
@@ -89,6 +90,10 @@ var newUserMsg = function (req, res, body) {
             ' in the system, try a different one.';
         req.flash('error', msg);
         res.redirect(url);
+    } else if (body.message.code === 17280) {
+        // Key Too Large
+        req.flash('error', 'One of the elements is too large, try again with a shorter version!');
+        res.redirect(url);
     } else {
         // Invalid E-mail Case
         req.flash('error', body.message);
@@ -107,7 +112,6 @@ var makeRequest = function (options, req, res, url) {
             body = JSON.parse(body);
         }
         if (body.success === false) {
-            console.log('About to send error message')
             newUserMsg(req, res, body);
         } else {
             req.flash('success', body.message);

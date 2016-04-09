@@ -1,70 +1,72 @@
 extends layout
 block content
-    .area.main
-      h1 #{user} Control Panel
-      br
-      .container-fluid
-        .row
-          .btn-group.btn-group-justified.center-text.table-bordered
-            .col-xs-12.col-sm-6
-              br
-              .user-name
-            .col-xs-12.col-sm-6
-              br
-              .user-email
-        .row
-          .btn-group.btn-group-justified
-            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/new')
-              i.glyphicon.glyphicon-plus
-              br
-              |  Create new Manga
-            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/update')
-              i.glyphicon.glyphicon-refresh
-              br
-              |  Update Profile
-            a.btn.btn-danger.col-xs-12.col-sm-4(href='/user/#{username}/delete')
-              i.glyphicon.glyphicon-trash
-              br
-              |  Delete Account
-      br
-      br
-      section
-        .container-fluid
+    main.container
+      #usermodal.modal.bottom-sheet
+        .modal-content.blue-text
+          h4.center-align User Information
+          .row
+            .col.s12
+              .card-panel.col.s12.m4
+                .user-name
+              .card-panel.col.s12.m4
+                .user-email
+              .card-panel.col.s12.m4
+                .user-count
+        .modal-footer
+          a.modal-action.modal-close.waves-effect.waves-green.btn-flat
+            i.material-icons.prefix.blueIcon close
+      .fixed-action-btn.vertical(style='bottom: 45px; right: 24px;')
+          a.btn-floating.btn-large.light-blue.darken-1
+            i.large.material-icons mode_edit
+          ul
+            li
+              a.tooltipped.btn-floating.green(data-position='left', data-delay='50', data-tooltip='New Manga', href='/user/#{username}/new')
+                i.material-icons add
+            li
+              a.tooltipped.btn-floating.deep-purple.darken-4(data-position='left', data-delay='50', data-tooltip='Update Account Information', href='/user/#{username}/update')
+                i.material-icons update
+            li
+              a.tooltipped.btn-floating.red(data-position='left', data-delay='50', data-tooltip='Delete Account', href='/user/#{username}/delete')
+                i.material-icons delete_sweep
+            li
+              a.tooltipped.btn-floating.yellow.darken-3.modal-trigger(href='#usermodal', data-position='left', data-delay='50', data-tooltip='Display User Information')
+                i.material-icons person
+      section.blue-text
+        .container
           .row
             .col-xs-12
-              ul.nav.nav-tabs
-                li.col-xs-12.col-sm-6.col-md-3.active
-                  a.center-text(data-toggle='tab', href='#all') All Mangas
-                li.col-xs-12.col-sm-6.col-md-3
-                  a.center-text(data-toggle='tab', href='#current') Currently Reading
-                li.col-xs-12.col-sm-6.col-md-3
-                  a.center-text(data-toggle='tab', href='#done') Done Reading
-                li.col-xs-12.col-sm-6.col-md-3
-                  a.center-text(data-toggle='tab', href='#willread') Will Read
+              ul.tabs
+                li.tab.col.s12.m6.l3.active
+                  a.center-align.blue-text(data-toggle='tab', href='#all') All Mangas
+                li.tab.col.s12.m6.l3
+                  a.center-align.blue-text(data-toggle='tab', href='#current') Currently Reading
+                li.tab.col.s12.m6.l3
+                  a.center-align.blue-text(data-toggle='tab', href='#done') Done Reading
+                li.tab.col.s12.m6.l3
+                  a.center-align.blue-text(data-toggle='tab', href='#willread') Will Read
               .tab-content
-                form.search-form.clearfix(action='')
-                  .form-group.has-feedback
-                    label.sr-only(for='search') Search
-                    input#search.form-control(type='text', name='search', placeholder='Search for your Manga')
-                    span.glyphicon.glyphicon-search.form-control-feedback
-                #all.tab-pane.fade.in.active
-                  h1.center-text All Mangas
+                form(action)
+                  .input-field.col.s12
+                    i.material-icons.prefix.blueIcon search
+                    input.validate#search(type='text', name='search', placeholder='Search for your Manga')
+                #all.active
+                  h1.center-align All Mangas
                   br
-                  div
-                    ul.list
-                #current.tab-pane.fade
-                  h1.center-text Currently Reading
+                  .row
+                    .list
+                #current
+                  h1.center-align Currently Reading
                   br
-                  div
-                    ul.list2
-                #done.tab-pane.fade
-                  h1.center-text Done Reading
+                  .row
+                    .list2
+                #done
+                  h1.center-align Done Reading
                   br
-                  div
-                    ul.list3
-                #willread.tab-pane.fade
-                  h1.center-text Will Read Soon
+                  .row
+                    .list3
+                #willread
+                  h1.center-align Will Read Soon
                   br
-                  div
-                    ul.list4
-    section#push
+                  .row
+                    .list4
+      section#push

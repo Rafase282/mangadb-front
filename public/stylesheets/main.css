@@ -1,0 +1,41 @@
+.brand-logo {
+  margin-left: 20px; }
+
+.flash-msg {
+  opacity: 0.9; }
+
+#quick {
+  color: #3498db; }
+
+#site {
+  color: #3498db; }
+
+#secured {
+  color: #3498db; }
+
+.blueText {
+  display: inline-block;
+  margin: 0;
+  font-weight: 700; }
+
+.blueIcon {
+  color: #3498db; }
+
+#img {
+  width: 20em;
+  height: 20em; }
+
+.thumbnail {
+  height: 20em; }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: "Titillium Web", sans-serif; }
+
+main {
+  flex: 1 0 auto; }
+
+#push {
+  padding-bottom: 50px; }

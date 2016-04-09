@@ -65,8 +65,8 @@ exports.deleteUser = function (req, res) {
         }
     };
 
-    if (sess.username === req.params.user.toLowerCase() &&
-        req.params.user.toLowerCase() === req.body.username.toLowerCase()) {
+    if (sess.username === req.params.username.toLowerCase() &&
+        req.params.username.toLowerCase() === req.body.username.toLowerCase()) {
         funHelper.makeRequest(options, req, res, url);
     } else {
         sess.error = 'You have input the wrong username, make sure you are' +

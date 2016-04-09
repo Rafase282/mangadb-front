@@ -3,15 +3,25 @@ var userMangas = {};
 var api = api;
 var user = user;
 var token = token;
+var userObj = {};
 
 /* Clear mangas from view
  * Removes manga from all views and lists.
  */
-function clean() {
+function cleanMangas() {
     $('.list').empty();
     $('.list2').empty();
     $('.list3').empty();
     $('.list4').empty();
+}
+
+/* Clear User Info from view
+ * Removes user info from all views and lists.
+ */
+function cleanUser() {
+    $('.user-name').empty();
+    $('.user-email').empty();
+    $('.user-count').empty();
 }
 
 /* Manga panels generator
@@ -24,65 +34,63 @@ function mangaInfo(manga) {
     var dataChapter = [inputClass, manga.title];
     var dataDel = [panelClass, manga.title];
 
-    var title = '<h1>' + window.s.titleize(manga.title) + '</h1>';
+    var title = window.s.titleize(manga.title);
 
-    var photo = '<img class="thumbnail" src="' + manga.thumbnail +
+    var photo = '<img class="activator thumbnail" src="' + manga.thumbnail +
         '"</img>';
 
-    var author = '<span id="author"> <strong>Author:</strong> ' +
-        window.s.titleize(manga.author) + '</span>';
+    var author = '<span id="author"> <strong class="black-text">Author:</strong> ' +
+        window.s.titleize(manga.author) + '</span><br/>';
 
-    var status = '<span id="status"> <strong>Status:</strong> ' +
-        window.s.humanize(manga.seriesStatus) + '</span>';
+    var status = '<span id="status"> <strong class="black-text">Series Status:</strong> ' +
+        window.s.humanize(manga.seriesStatus) + '</span>&nbsp;&nbsp;';
 
-    var userStats = '<span id="userStats"> <strong>My Status:</strong> ' +
+    var userStats = '<span id="userStats"> <strong class="black-text">My Status:</strong> ' +
         window.s.humanize(manga.userStatus) + '</span>';
 
-    var chapter = '<span id="chapter"> <strong>Current Chapter: </strong>' +
+    var chapter = '<span class="float-right"> <strong class="black-text">Current Chapter: </strong>' +
         '<a class="' + inputClass + '" href="' +
-        manga.url + '" target="_blank">' + manga.chapter + '</a></span><br>';
+        manga.url + '" target="_blank">' + manga.chapter + '</a></span>&nbsp;&nbsp;&nbsp;';
 
-    var type = '<span id="type"> <strong>Type:</strong> ' +
-        window.s.humanize(manga.type) + '</span>';
+    var type = '<span id="type"> <strong class="black-text">Type:</strong> ' +
+        window.s.humanize(manga.type) + '</span><br>';
 
-    var direction = '<span id="direction"><strong>Reading Direction:</strong>' +
-        ' ' + window.s.titleize(manga.direction) + '</span>';
+    var direction = '<span id="direction"><strong class="black-text">Reading Direction:</strong>' +
+        ' ' + window.s.titleize(manga.direction) + '</span><br/>';
 
-    var altName = '<span id="altName"> <strong>Other Names:</strong> ' +
+    var altName = '<span id="altName"> <strong class="black-text">Other Names:</strong> ' +
         window.s.titleize(window.s.toSentence(manga.altName, ', ', ', ')) +
-        '</span>';
+        '</span><br/><br/>';
 
-    var categories = '<span id="categories"> <strong>Categories:</strong> ' +
+    var categories = '<span id="categories"> <strong class="black-text">Categories:</strong> ' +
         window.s.titleize(window.s.toSentence(manga.categories, ', ', ', ')) +
         '</span>';
 
-    var plot = '<p id="plot"> <strong>Plot:</strong> ' +
-        window.s.humanize(manga.plot) + '</p>';
+    var plot = '<p id="plot"> <strong class="black-text">Plot:</strong> ' +
+        window.s.humanize(manga.plot) + '</p><br/><br/>';
 
-    var addOne = '<button type="button" class="btn btn-default"' +
-        ' onclick="oneUp(\'' + dataChapter + '\')">' +
-        'Increase Chapter 1+</button>';
+    var addOne = '<a class="btn tooltipped blue darken-1" ' +
+        'data-position="bottom" data-delay="50" data-tooltip=' +
+        '"Increase Chapter Number by One" onclick="oneUp(\'' +
+        dataChapter + '\')">' + '<i class="material-icons">' +
+        'plus_one</i></a>';
 
-    var del = '<button type="button" class="btn btn-default"' +
-        ' onclick="delManga(\'' + dataDel + '\')">Delete</button>';
+    var del = '<a class="btn tooltipped blue darken-1" ' +
+        'data-position="bottom" data-delay="50" data-tooltip="Delete Manga" ' +
+        'onclick="delManga(\'' + dataDel + '\')">' +
+        '<i class="material-icons">delete</i></a>';
 
-    var upd = '<button type="button" class="btn btn-default" ' +
-        'onclick="window.location=\'/user/' + user.toLowerCase() + '/' +
-        encodeURIComponent(manga.title) + '\'">Update</button>';
+    var upd = '<a class="btn tooltipped blue darken-1" ' +
+        'data-position="bottom" data-delay="50" data-tooltip=' +
+        '"Update Manga Information" href=\'/user/' +
+        user.toLowerCase() + '/' + encodeURIComponent(manga.title) + '\'">' +
+        '<i class="material-icons">update</i></a>';
 
-    var buttons = '<div class="btn-group btn-group-justified" role="group"' +
-        'aria-label="Controls"> <div class="btn-group" role="group">' +
-        del + '</div> <div class="btn-group" role="group">' + addOne +
-        '</div> <div class="btn-group" role="group">' + upd + '</div></div>';
+    var buttons = '<div class="row center-align">' +
+        '<div class="input-field.col.s12.m6">' + del + addOne + upd +
+        '</div></div>';
 
-    var html = '<div class="manga-panel ' + panelClass +
-        ' tg-wrap"><table><tr><th colspan="3">' + title +
-        '</th></tr><tr><td rowspan="4">' + photo + '</td><td>' + status +
-        '</td><td>' + userStats + '</td></tr><tr><td>' + author +
-        '</td><td>' + direction + '</td></tr><tr><td>' + chapter +
-        '</td><td>' + type + '</td></tr><tr><td>' + categories +
-        '</td><td>' + altName + '</td></tr><tr><td colspan="3">' + plot +
-        '<br>' + buttons + '</td></tr></table></div>';
+    var html = '<div class="col s12 m6 manga-panel ' + panelClass + '"><div class="card large" style="overflow: hidden;"><div class="card-image waves-effect waves-block waves-light' + ' float-center">' + photo + '</div><div class="card-content"> <span class="card-title activator grey-text text-darken-4">' + title + '<i class="material-icons right">more_vert</i></span> <br>' + chapter + direction + '</div><div class="card-action">' + buttons + '</div><div class="card-reveal" style="display: none; transform:' + ' translateY(0px);"><span class="card-title grey-text text-darken-4">' + title + '<br/><br/><i class="material-icons right">close</i></span> ' + altName + author + status + userStats + type + categories + plot + '</div></div></div>';
 
     return html;
 }
@@ -125,7 +133,7 @@ function getMangas() {
     };
 
     $.ajax(settings).done(function (mangas) {
-        clean();
+        cleanMangas();
         mangas.data.map(function (manga) {
             var newManga = new createManga(manga.title, manga.author, manga.url,
                 manga.userStatus, manga.type, manga.categories, manga.chapter,
@@ -161,12 +169,18 @@ function getUserInfo() {
 
     $.ajax(settings).done(function (response) {
         var userInfo = response.data[0];
-        var userName = '<h4>Full name: ' +
-            window.s.titleize(userInfo.firstname) + ' ' +
-            window.s.titleize(userInfo.lastname) + '</h4>';
-        var userEmail = '<h4>E-Mail: ' + userInfo.email + '</h4>';
+        userObj.firstname = window.s.titleize(userInfo.firstname);
+        userObj.lastname = window.s.titleize(userInfo.lastname);
+        userObj.email = userInfo.email;
+        userObj.count = Object.keys(userMangas).length
+        var userName = '<span class="center-align"><h5 class="black-text">Full Name:</h5><h5> ' + userObj.firstname + ' ' +
+            userObj.lastname + '</h5></span>';
+        var userEmail = '<span class="center-align"><h5 class="black-text">E-Mail:</h5><h5> ' + userInfo.email + '</h5></span>';
+        var userCount = '<span class="center-align"><h5 class="black-text">Total Manga Count:</h5><h5> ' + userObj.count + '</h5></span>';
+        cleanUser();
         $('.user-name').append(userName);
         $('.user-email').append(userEmail);
+        $('.user-count').append(userCount);
 
     });
 }
@@ -176,8 +190,17 @@ function getUserInfo() {
  */
 $(document).ready(function () {
     if (window.location.pathname === '/user/' + user.toLowerCase()) {
-        getUserInfo();
         getMangas();
+        $('.tooltipped').tooltip({
+            delay: 50
+        });
+        $('.modal-trigger').leanModal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            in_duration: 300, // Transition in duration
+            ready: getUserInfo, // Callback for Modal open
+            out_duration: 200 // Transition out duration
+        });
     }
 });
 
