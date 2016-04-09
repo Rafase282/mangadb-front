@@ -189,6 +189,7 @@ function getUserInfo() {
  * call the function to get all mangas.
  */
 $(document).ready(function () {
+    $(".button-collapse").sideNav();
     if (window.location.pathname === '/user/' + user.toLowerCase()) {
         getMangas();
         $('.tooltipped').tooltip({
