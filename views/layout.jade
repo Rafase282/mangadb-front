@@ -9,19 +9,12 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='shortcut icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
     link(rel='apple-touch-icon', href='https://manga-client.herokuapp.com/images/favicon.ico')
-<<<<<<< HEAD
-    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css')
-    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css')
-    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
-    link(rel='stylesheet prefetch', href='https://manga-client.herokuapp.com/stylesheets/style.css')
-=======
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css')
     link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web: 400, 700')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
     link(rel='stylesheet prefetch', href='https://mangadb-front-rafase282.c9users.io/stylesheets/main.css')
->>>>>>> MangaDBv2
     script(type='text/javascript').
       var token = '#{token}';
       var user = '#{user}';
@@ -61,33 +54,6 @@ html
             .flash-msg.card-panel.blue.darken-1
               .valign.flow-text.white-text= msg.info
       if msg.success && msg.success.length
-<<<<<<< HEAD
-        .alert.alert-success
-          div.center-text= msg.success
-      block content
-    footer
-      p Copyright © Rafael J. Rodriguez 2016. All Rights Reserved
-      p
-        a(href='mailto:rafase282@gmail.com')
-          i.fa.fa-envelope.fa-fw
-        a(href='https://github.com/Rafase282', target='_blank')
-          i.fa.fa-github.fa-fw
-        a(href='https://www.linkedin.com/in/rafase282', target='_blank')
-          i.fa.fa-linkedin &nbsp;
-        a(href='http://codepen.io/Rafase282', target='_blank')
-          i.fa.fa-codepen &nbsp;
-        a(href='https://rafase282.wordpress.com/', target='_blank')
-          i.fa.fa-wordpress &nbsp;
-        a(href='http://www.freecodecamp.com/rafase282', target='_blank')
-          | (
-          i.fa.fa-fire.fa-fw
-          | )
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.3.4/underscore.string.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js', data-no-instant='')
-    script(data-no-instant='').
-=======
         .row.center-align.valign-wrapper
           .col.s12
             .flash-msg.card-panel.green.darken-1
@@ -160,6 +126,5 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.2.3/underscore.string.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js', data-no-instant)
     script(data-no-instant).
->>>>>>> MangaDBv2
       InstantClick.init();
     script(src='https://mangadb-front-rafase282.c9users.io/javascripts/index.js')
