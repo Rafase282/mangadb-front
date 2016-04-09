@@ -15,9 +15,9 @@ The Front-End for the MangaDB app
 ## To-Do
 - [ ] Create React single Page.
 - [X] Fix Manga Form
-- [ ] Fix Tootltips not showing on Manga Card
+- [X] Fix Tootltips not showing on Manga Card
 - [X] Fix Error Page
-- [ ] Test Whole Site
+- [X] Test Whole Site
 - [X] Implement Fixed Size for Manga Cards
 - [X] Fix the Too Manu Redirects Issue
 - [ ] Implement password Recovery and reset.
