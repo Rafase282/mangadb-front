@@ -69,7 +69,6 @@ exports.deleteUserMangas = function (req, res) {
             ' deleting your own mangas and that you spelled it right!';
         res.redirect('/user/' + sess.username + '/mangas/delete');
     }
-
 };
 
 /* Updates Manga */
@@ -85,9 +84,8 @@ var deleteMangas = function (session) {
             'x-access-token': sess.token
         }
     };
-    console.log('About to delete for real')
     return options;
-}
+};
 exports.deleteMangas = deleteMangas;
 
 /* Updates Manga */
