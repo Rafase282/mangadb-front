@@ -13,7 +13,6 @@ exports.getUserProfile = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-
     res.render('profile', funHelper.pugObj(sess, req));
 };
 
@@ -45,5 +44,7 @@ exports.getDeleteUser = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
+    sess.header = 'Delete User Account';
+    sess.button = 'Delete Account';
     res.render('deleteUser', funHelper.pugObj(sess, req));
 };

@@ -108,6 +108,11 @@ router.route('/user/:username/:manga')
     .get(funHelper.isAuthenticated, mangasView.getUpdateManga)
     .post(funHelper.isAuthenticated, mangas.updateManga);
 
+// Delete All User's Mangas
+router.route('/user/:username/mangas/delete')
+    .get(funHelper.isAuthenticated, mangasView.getDeleteUserMangas)
+    .post(funHelper.isAuthenticated, mangas.deleteUserMangas);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

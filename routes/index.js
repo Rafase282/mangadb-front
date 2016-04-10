@@ -63,7 +63,7 @@ exports.getToken = function (req, res) {
             res.redirect('/login');
         } else {
             req.flash('success', body.message);
-            res.redirect('/user/' + username);
+            res.redirect('/user/' + sess.username);
         }
 
     });

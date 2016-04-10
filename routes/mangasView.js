@@ -28,3 +28,14 @@ exports.getUpdateManga = function (req, res) {
     sess.header = 'Update Manga Information';
     res.render('editManga', funHelper.pugObj(sess, req));
 };
+
+/* Displays Delete Comfirmation Page */
+exports.getDeleteUserMangas = function (req, res) {
+    sess = req.session;
+    sess.url = '/user/' + sess.username;
+    sess.title = 'MangaDB: ' + sess.user;
+    sess.api = process.env.API;
+    sess.header = 'Delete All User\'s Mangas';
+    sess.button = 'Delete Mangas';
+    res.render('deleteUser', funHelper.pugObj(sess, req));
+};
