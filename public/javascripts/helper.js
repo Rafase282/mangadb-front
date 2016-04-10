@@ -96,3 +96,30 @@ function previewThumbnail() {
 }
 
 $('#img-input').keyup(previewThumbnail);
+
+/* Sends request to delete manga from DB
+ * and from the DOM itself
+ */
+function delManga(info) {
+    // Sends delete request and removes the manga from the DOM
+    var manga = info.split(','); // Split string into array
+    var mangaClass = '.' + manga[0]; // Select the class
+    var mangaTitle = manga[1];
+
+    var settings = {
+        'async': true,
+        'crossDomain': true,
+        'url': api + '/mangas/' + user.toLowerCase() + '/' +
+            encodeURIComponent(mangaTitle),
+        'method': 'DELETE',
+        'headers': {
+            'x-access-token': token,
+            'content-type': 'application/x-www-form-urlencoded'
+        }
+    };
+
+    // When the DEL request is done, delete from DOM
+    $.ajax(settings).done(function () {
+        $(mangaClass).remove();
+    });
+}

@@ -67,9 +67,9 @@ function getMangas() {
         }
     };
 
-    $.ajax(settings).done(function(mangas) {
+    $.ajax(settings).done(function (mangas) {
         cleanMangas();
-        mangas.data.map(function(manga) {
+        mangas.data.map(function (manga) {
             var newManga = new createManga(manga.title, manga.author, manga.url,
                 manga.userStatus, manga.type, manga.categories, manga.chapter,
                 manga.seriesStatus, manga.plot, manga.altName, manga.direction,
@@ -105,7 +105,7 @@ function getUserInfo() {
         }
     };
 
-    $.ajax(settings).done(function(response) {
+    $.ajax(settings).done(function (response) {
         var userInfo = response.data[0];
         userObj.firstname = window.s.titleize(userInfo.firstname);
         userObj.lastname = window.s.titleize(userInfo.lastname);
@@ -125,7 +125,7 @@ function getUserInfo() {
  * When the profile page is read it will
  * call the function to get all mangas.
  */
-$(document).ready(function() {
+$(document).ready(function () {
     $('.button-collapse').sideNav();
     $('.modal-trigger').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of it
@@ -164,37 +164,9 @@ function oneUp(info) {
         }
     };
 
-    $.ajax(settings).done(function() {
+    $.ajax(settings).done(function () {
         // Update chapter number in place
         userMangas[mangaTitle].chapter = newChapter;
         $(mangaClass).text(newChapter); // updates chapter for all catagories
-    });
-}
-
-/* Sends request to delete manga from DB
- * and from the DOM itself
- */
-
-function delManga(info) {
-    // Sends delete request and removes the manga from the DOM
-    var manga = info.split(','); // Split string into array
-    var mangaClass = '.' + manga[0]; // Select the class
-    var mangaTitle = manga[1];
-
-    var settings = {
-        'async': true,
-        'crossDomain': true,
-        'url': api + '/mangas/' + user.toLowerCase() + '/' +
-            encodeURIComponent(mangaTitle),
-        'method': 'DELETE',
-        'headers': {
-            'x-access-token': token,
-            'content-type': 'application/x-www-form-urlencoded'
-        }
-    };
-
-    // When the DEL request is done, delete from DOM
-    $.ajax(settings).done(function() {
-        $(mangaClass).remove();
     });
 }
