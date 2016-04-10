@@ -56,7 +56,7 @@ var deleteMangas = function (session) {
         }
     };
     console.log('About to delete for real')
-    funHelper.makeRequest(options, req, res, sess.url);
+    return options;
 }
 exports.deleteMangas = deleteMangas;
 
@@ -65,7 +65,8 @@ exports.deleteUserMangas = function (req, res) {
     sess = req.session;
     if (sess.username === req.params.username.toLowerCase() &&
         req.params.username.toLowerCase() === req.body.username.toLowerCase()) {
-        deleteMangas(sess);
+        var options = deleteMangas(sess);
+        funHelper.makeRequest(options, req, res, sess.url);
     } else {
         sess.error = 'You have input the wrong username, make sure you are' +
             ' deleting your own mangas and that you spelled it right!';

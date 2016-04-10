@@ -6,6 +6,7 @@
 'use strict';
 var funHelper = require('./helpers');
 var mangas = require('./mangas');
+var request = require('request');
 var sess;
 
 /* Creates New User */
@@ -69,7 +70,8 @@ exports.deleteUser = function (req, res) {
     if (sess.username === req.params.username.toLowerCase() &&
         req.params.username.toLowerCase() === req.body.username.toLowerCase()) {
         console.log('About to delete')
-        mangas.deleteMangas(req.session);
+        var options2 = mangas.deleteMangas(req.session);
+        request(options2, function (error, response, body) {});
         funHelper.makeRequest(options, req, res, url);
     } else {
         sess.error = 'You have input the wrong username, make sure you are' +
