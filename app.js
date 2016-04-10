@@ -32,7 +32,7 @@ app.use(flash());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
@@ -127,7 +127,7 @@ if (app.get('env') === 'development') {
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
     req.flash('error', err.status, err.message);
-    res.render('error', funHelper.jadeObj(sess, req));
+    res.render('error', funHelper.pugObj(sess, req));
     next();
   });
 }
@@ -141,7 +141,7 @@ app.use(function (err, req, res, next) {
   sess.title = 'MangaDB: ' + sess.user;
   sess.api = process.env.API;
   req.flash('error', err.message);
-  res.render('error', funHelper.jadeObj(sess, req));
+  res.render('error', funHelper.pugObj(sess, req));
   next();
 });
 
