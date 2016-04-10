@@ -149,7 +149,7 @@ function getUserInfo() {
         userObj.firstname = window.s.titleize(userInfo.firstname);
         userObj.lastname = window.s.titleize(userInfo.lastname);
         userObj.email = userInfo.email;
-        userObj.count = Object.keys(userMangas).length
+        userObj.count = Object.keys(userMangas).length;
         var userName = '<span class="center-align"><h5 class="black-text">' + 'Full Name:</h5><h5> ' + userObj.firstname + ' ' + userObj.lastname + '</h5></span>';
         var userEmail = '<span class="center-align"><h5 class="black-text">E-Mail:</h5><h5> ' + userInfo.email + '</h5></span>';
         var userCount = '<span class="center-align"><h5 class="black-text">' + 'Total Manga Count:</h5><h5> ' + userObj.count + '</h5></span>';
@@ -165,7 +165,7 @@ function getUserInfo() {
  * call the function to get all mangas.
  */
 $(document).ready(function() {
-    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav();
     $('.modal-trigger').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of it
         opacity: .5, // Opacity of modal background
