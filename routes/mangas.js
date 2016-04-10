@@ -37,9 +37,7 @@ exports.updateManga = function (req, res) {
         },
         form: funHelper.mangaObj(req.body)
     };
-
     funHelper.makeRequest(options, req, res, sess.url);
-
 };
 
 /* Updates Manga */
@@ -55,9 +53,8 @@ var deleteMangas = function (session) {
             'x-access-token': sess.token
         }
     };
-    console.log('About to delete for real')
     return options;
-}
+};
 exports.deleteMangas = deleteMangas;
 
 /* Updates Manga */
