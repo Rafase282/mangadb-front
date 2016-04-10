@@ -14,7 +14,7 @@ exports.getUserProfile = function (req, res) {
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
 
-    res.render('profile', funHelper.jadeObj(sess, req));
+    res.render('profile', funHelper.pugObj(sess, req));
 };
 
 /* Displays Registration Form. */
@@ -25,7 +25,7 @@ exports.getSignUp = function (req, res) {
     sess.title = 'MangaDB: Register';
     sess.button = 'Create User';
     sess.header = 'Create Account';
-    res.render('editUser', funHelper.jadeObj(sess, req));
+    res.render('editUser', funHelper.pugObj(sess, req));
 };
 
 /* Displays Form to Update User */
@@ -36,7 +36,7 @@ exports.getUpdateUser = function (req, res) {
     sess.api = process.env.API;
     sess.button = 'Update User Information';
     sess.header = 'Update User';
-    res.render('editUser', funHelper.jadeObj(sess, req));
+    res.render('editUser', funHelper.pugObj(sess, req));
 };
 
 /* Displays Delete Comfirmation Page */
@@ -45,5 +45,5 @@ exports.getDeleteUser = function (req, res) {
     sess.url = '/user/' + sess.username;
     sess.title = 'MangaDB: ' + sess.user;
     sess.api = process.env.API;
-    res.render('deleteUser', funHelper.jadeObj(sess, req));
+    res.render('deleteUser', funHelper.pugObj(sess, req));
 };

@@ -13,7 +13,7 @@ exports.getForgot = function (req, res) {
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Forgot Password';
-    res.render('forgot', funHelper.jadeObj(sess, req));
+    res.render('forgot', funHelper.pugObj(sess, req));
 };
 
 /* Displays Password Reset Comfirmation Form */
@@ -22,7 +22,7 @@ exports.getReset = function (req, res) {
     sess.url = '/';
     sess.user = null;
     sess.title = 'MangaDB: Reset Password';
-    res.render('reset', funHelper.jadeObj(sess, req));
+    res.render('reset', funHelper.pugObj(sess, req));
 };
 
 /*

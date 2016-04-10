@@ -15,7 +15,7 @@ exports.getCreateManga = function (req, res) {
     sess.api = process.env.API;
     sess.button = 'Create Manga';
     sess.header = 'Create New Manga';
-    res.render('editManga', funHelper.jadeObj(sess, req));
+    res.render('editManga', funHelper.pugObj(sess, req));
 };
 
 /* Displays Manga Update Form */
@@ -26,5 +26,5 @@ exports.getUpdateManga = function (req, res) {
     sess.api = process.env.API;
     sess.button = 'Update Manga';
     sess.header = 'Update Manga Information';
-    res.render('editManga', funHelper.jadeObj(sess, req));
+    res.render('editManga', funHelper.pugObj(sess, req));
 };

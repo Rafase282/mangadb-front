@@ -9,7 +9,7 @@ exports.getHome = function (req, res) {
     sess = req.session;
     sess.url = sess.url || '/';
     sess.title = 'MangaDB: Home';
-    res.render('index', funHelper.jadeObj(sess, req));
+    res.render('index', funHelper.pugObj(sess, req));
 };
 
 /* User Authentication Handling
@@ -22,7 +22,7 @@ exports.getLogIn = function (req, res) {
     sess = req.session;
     sess.url = '/';
     sess.title = 'MangaDB: Log In';
-    res.render('login', funHelper.jadeObj(sess, req));
+    res.render('login', funHelper.pugObj(sess, req));
 };
 
 /* Logs User Out */

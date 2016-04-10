@@ -53,7 +53,7 @@ var userObj = function (user) {
 // Sets complete manga object
 exports.userObj = userObj;
 
-var jadeObj = function (sess, req) {
+var pugObj = function (sess, req) {
     return {
         title: sess.title,
         user: sess.user,
@@ -72,7 +72,7 @@ var jadeObj = function (sess, req) {
 };
 
 // Sets complete manga object
-exports.jadeObj = jadeObj;
+exports.pugObj = pugObj;
 
 var newUserMsg = function (req, res, body) {
     // Displays error messages for new user creation.
