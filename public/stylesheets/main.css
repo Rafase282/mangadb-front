@@ -27,6 +27,7 @@
 
 .thumbnail {
   max-height: 80%;
+  min-height: 25%;
   max-width: 50%;
   margin: auto; }
 
