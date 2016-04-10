@@ -1,3 +1,5 @@
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "clean || manga" }]*/
+/*global userMangas */
 'use strict';
 var api = api;
 var user = user;
