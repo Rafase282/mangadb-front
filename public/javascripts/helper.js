@@ -3,10 +3,16 @@ var api = api;
 var user = user;
 var token = token;
 
+/* Clear mangas from view Removes manga from all views and lists. */
+function cleanMangas() {
+    $('.list').empty();
+    $('.list2').empty();
+    $('.list3').empty();
+    $('.list4').empty();
+}
+
 /* Manga object constructor
- * Used to create a curated manga without saving
- * sensitive information like _id and user id.
- */
+ * Used to create a curated manga without saving sensitive information like _id and user id. */
 function createManga(title, author, url, userStatus, type, categories, chapter,
     seriesStatus, plot, altName, direction, thumbnail) {
     this.title = title,
@@ -24,10 +30,7 @@ function createManga(title, author, url, userStatus, type, categories, chapter,
 }
 
 /* Search Bar Functionality
- * Search for mangas on keypress.
- * Search by author, title, alt name, and categories.
- */
-
+ * Search for mangas on keypress. Search by author, title, alt name, and categories.  */
 function search() {
     if ($('#search').val().length > 0) {
         $('.manga-panel').css('display', 'none');
@@ -58,16 +61,13 @@ function displayResults() {
         }
     }
 }
-/* Start Search
- * When a key is released call the function.
+/* Start Search when a key is released call the function.
  */
 
 $('#search').keyup(search);
 
 /* Live Thubnail Preview
- * When a key is release and the image input has text
- * then use that text as the new src attribute for the image.
- */
+ * When a key is release and the image input has text then use that text as the new src attribute for the image.  */
 function previewThumbnail() {
     var img = $('#img-input').val();
     if ($('#img-input').val().length > 4) {
@@ -82,11 +82,8 @@ function previewThumbnail() {
 
 $('#img-input').keyup(previewThumbnail);
 
-/* Sends request to delete manga from DB
- * and from the DOM itself
- */
+/* Sends request to delete manga from DB and from the DOM itself */
 function delManga(info) {
-    // Sends delete request and removes the manga from the DOM
     var manga = info.split(','); // Split string into array
     var mangaClass = '.' + manga[0]; // Select the class
     var mangaTitle = manga[1];
@@ -103,7 +100,6 @@ function delManga(info) {
         }
     };
 
-    // When the DEL request is done, delete from DOM
     $.ajax(settings).done(function () {
         $(mangaClass).remove();
     });
@@ -135,7 +131,6 @@ function oneUp(info) {
     };
 
     $.ajax(settings).done(function () {
-        // Update chapter number in place
         userMangas[mangaTitle].chapter = newChapter;
         $(mangaClass).text(newChapter); // updates chapter for all catagories
     });

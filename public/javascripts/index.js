@@ -5,19 +5,7 @@ var user = user;
 var token = token;
 var userObj = {};
 
-/* Clear mangas from view
- * Removes manga from all views and lists.
- */
-function cleanMangas() {
-    $('.list').empty();
-    $('.list2').empty();
-    $('.list3').empty();
-    $('.list4').empty();
-}
-
-/* Clear User Info from view
- * Removes user info from all views and lists.
- */
+/* Clear User Info from view Removes user info from all views and lists. */
 function cleanUser() {
     $('.user-name').empty();
     $('.user-email').empty();
@@ -25,9 +13,7 @@ function cleanUser() {
 }
 
 /* Manga panels generator
- * Takes a manga object and creates custom html
- * to be added to the dom.
- */
+ * Takes a manga object and creates custom html to be added to the dom. */
 function mangaInfo(manga) {
     var inputClass = 'input-' + window.s.slugify(manga.title);
     var panelClass = 'panel-' + window.s.slugify(manga.title);
@@ -35,46 +21,26 @@ function mangaInfo(manga) {
     var dataDel = [panelClass, manga.title];
 
     var title = window.s.titleize(manga.title);
-
     var photo = '<img class="activator thumbnail" src="' + manga.thumbnail + '"</img>';
-
     var author = '<span id="author"> <strong class="black-text">Author:</strong> ' + window.s.titleize(manga.author) + '</span><br/>';
-
     var status = '<span id="status"> <strong class="black-text">Series Status:</strong> ' + window.s.humanize(manga.seriesStatus) + '</span>&nbsp;&nbsp;';
-
     var userStats = '<span id="userStats"> <strong class="black-text">My Status:</strong> ' + window.s.humanize(manga.userStatus) + '</span>';
-
     var chapter = '<span class="float-right"> <strong class="black-text">Current Chapter: </strong>' + '<a class="' + inputClass + '" href="' + manga.url + '" target="_blank">' + manga.chapter + '</a></span>&nbsp;&nbsp;&nbsp;';
-
     var type = '<span id="type"> <strong class="black-text">Type:</strong> ' + window.s.humanize(manga.type) + '</span><br>';
-
     var direction = '<span id="direction"><strong class="black-text">Reading Direction:</strong>' + ' ' + window.s.titleize(manga.direction) + '</span><br/>';
-
     var altName = '<span id="altName"> <strong class="black-text">Other Names:</strong> ' + window.s.titleize(window.s.toSentence(manga.altName, ', ', ', ')) + '</span><br/><br/>';
-
     var categories = '<span id="categories"> <strong class="black-text">Categories:</strong> ' + window.s.titleize(window.s.toSentence(manga.categories, ', ', ', ')) + '</span>';
-
     var plot = '<p id="plot"> <strong class="black-text">Plot:</strong> ' + window.s.humanize(manga.plot) + '</p><br/><br/>';
-
     var addOne = '<a class="btn tooltipped blue darken-1" data-position="bottom" data-delay="50" data-tooltip="Increase Chapter Number by One" onclick="oneUp(\'' + dataChapter + '\')">' + '<i class="material-icons">plus_one</i></a>';
-
     var del = '<a class="btn tooltipped blue darken-1" data-position="bottom" data-delay="50" data-tooltip="Delete Manga" onclick="delManga(\'' + dataDel + '\')"><i class="material-icons">delete</i></a>';
-
     var upd = '<a class="btn tooltipped blue darken-1" data-position="bottom" data-delay="50" data-tooltip="Update Manga Information" href=\'/user/' + user.toLowerCase() + '/' + encodeURIComponent(manga.title) + '\'"><i class="material-icons">update</i></a>';
-
     var buttons = '<div class="row center-align">' + '<div class="input-field.col.s12.m6">' + del + addOne + upd + '</div></div>';
-
     var html = '<div class="col s12 m6 manga-panel ' + panelClass + '"><div class="card large" style="overflow: hidden;"><div class="card-image waves-effect waves-block waves-light blue darken-1 hoverable">' + photo + '</div><div class="card-content"> <span class="card-title activator grey-text text-darken-4">' + title + '<i class="material-icons right">more_vert</i></span> <br>' + chapter + direction + '</div><div class="card-action">' + buttons + '</div><div class="card-reveal" style="display: none; transform:' + ' translateY(0px);"><span class="card-title grey-text text-darken-4">' + title + '<br/><br/><i class="material-icons right">close</i></span> ' + altName + author + status + userStats + type + categories + plot + '</div></div></div>';
-
     return html;
 }
 
 /* Get list of all user's mangas
- * Sends a GET request to the API and generates an oject
- * directory with curated manga information, sensitive data
- * is not kept.
- */
-
+ * Sends a GET request to the API and generates an oject directory with curated manga information, sensitive data is not kept. */
 function getMangas() {
     var settings = {
         'async': true,
@@ -93,10 +59,8 @@ function getMangas() {
                 manga.userStatus, manga.type, manga.categories, manga.chapter,
                 manga.seriesStatus, manga.plot, manga.altName, manga.direction,
                 manga.thumbnail);
-
             userMangas[manga.title] = newManga;
             var html = mangaInfo(newManga);
-
             if (newManga.userStatus === 'reading') {
                 $('.list2').append(html);
             } else if (newManga.userStatus === 'finished') {
@@ -141,9 +105,7 @@ function getUserInfo() {
     });
 }
 /* Load Manga info When Page Is Loaded
- * When the profile page is read it will
- * call the function to get all mangas.
- */
+ * When the profile page is read it will call the function to get all mangas. */
 $(document).ready(function () {
     $('.button-collapse').sideNav();
     $('.modal-trigger').leanModal({
