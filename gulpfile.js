@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var UglifyJS = require("uglify-js");
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'sass', 'uglify']);
 
 gulp.task('watch', function() {
     gulp.watch('./public/sass/**/*.sass', ['sass']);
