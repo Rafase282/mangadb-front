@@ -5,6 +5,25 @@ var user = user;
 var token = token;
 var userObj = {};
 
+/* Clear mangas from view
+ * Removes manga from all views and lists.
+ */
+function cleanMangas() {
+    $('.list').empty();
+    $('.list2').empty();
+    $('.list3').empty();
+    $('.list4').empty();
+}
+
+/* Clear User Info from view
+ * Removes user info from all views and lists.
+ */
+function cleanUser() {
+    $('.user-name').empty();
+    $('.user-email').empty();
+    $('.user-count').empty();
+}
+
 /* Manga panels generator
  * Takes a manga object and creates custom html
  * to be added to the dom.
@@ -138,35 +157,3 @@ $(document).ready(function () {
         getMangas();
     }
 });
-
-/* Increment chapter number
- * Sends a PUT to the API with the new chapter number.
- */
-function oneUp(info) {
-    var manga = info.split(','); // Split string into array
-    var mangaClass = '.' + manga[0]; // Select the class
-    var mangaTitle = manga[1];
-    var currentChapter = +$(mangaClass + ':first').text(); // Get value as int
-    var newChapter = currentChapter + 1; // increment chapter
-
-    var settings = {
-        'async': true,
-        'crossDomain': true,
-        'url': api + '/mangas/' + user.toLowerCase() + '/' +
-            encodeURIComponent(mangaTitle),
-        'method': 'PUT',
-        'headers': {
-            'x-access-token': token,
-            'content-type': 'application/x-www-form-urlencoded'
-        },
-        'data': {
-            'chapter': newChapter
-        }
-    };
-
-    $.ajax(settings).done(function () {
-        // Update chapter number in place
-        userMangas[mangaTitle].chapter = newChapter;
-        $(mangaClass).text(newChapter); // updates chapter for all catagories
-    });
-}
