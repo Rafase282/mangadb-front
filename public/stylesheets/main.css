@@ -26,7 +26,9 @@
   height: 20em; }
 
 .thumbnail {
-  height: 20em; }
+  max-height: 80%;
+  max-width: 50%;
+  margin: auto; }
 
 body {
   display: flex;
