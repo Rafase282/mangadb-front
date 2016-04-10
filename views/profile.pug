@@ -20,13 +20,16 @@ block content
             i.large.material-icons mode_edit
           ul
             li
-              a.tooltipped.btn-floating.green(data-position='left', data-delay='50', data-tooltip='New Manga', href='/user/#{username}/new')
+              a.tooltipped.btn-floating.green(data-position='left', data-delay='50', data-tooltip='New Manga', href='/user/'+username+'/new')
                 i.material-icons add
             li
-              a.tooltipped.btn-floating.deep-purple.darken-4(data-position='left', data-delay='50', data-tooltip='Update Account Information', href='/user/#{username}/update')
+              a.tooltipped.btn-floating.deep-purple.darken-4(data-position='left', data-delay='50', data-tooltip='Update Account Information', href='/user/'+username+'/update')
                 i.material-icons update
             li
-              a.tooltipped.btn-floating.red(data-position='left', data-delay='50', data-tooltip='Delete Account', href='/user/#{username}/delete')
+              a.tooltipped.btn-floating.red(data-position='left', data-delay='50', data-tooltip='Delete Account', href='/user/'+username+'/delete')
+                i.material-icons delete
+            li
+              a.tooltipped.btn-floating.red(data-position='left', data-delay='50', data-tooltip='Delete All Mangas', href='/user/'+username+'/mangas/delete')
                 i.material-icons delete_sweep
             li
               a.tooltipped.btn-floating.yellow.darken-3.modal-trigger(href='#usermodal', data-position='left', data-delay='50', data-tooltip='Display User Information')

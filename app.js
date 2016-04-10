@@ -34,7 +34,6 @@ app.use(flash());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -50,7 +49,6 @@ app.use(require('node-sass-middleware')({
     indentedSyntax: true,
     sourceMap: true
 }));
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 var router = express.Router();
@@ -108,14 +106,17 @@ router.route('/user/:username/:manga')
     .get(funHelper.isAuthenticated, mangasView.getUpdateManga)
     .post(funHelper.isAuthenticated, mangas.updateManga);
 
+// Delete All User's Mangas
+router.route('/user/:username/mangas/delete')
+    .get(funHelper.isAuthenticated, mangasView.getDeleteUserMangas)
+    .post(funHelper.isAuthenticated, mangas.deleteUserMangas);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
-
-// error handlers
 
 // development error handler
 // will print stacktrace
@@ -144,5 +145,4 @@ app.use(function (err, req, res, next) {
     res.render('error', funHelper.pugObj(sess, req));
     next();
 });
-
 module.exports = app;
