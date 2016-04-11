@@ -1,9 +1,9 @@
 {
   "name": "mangadb-client",
-  "version": "0.0.2",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.15.0",
@@ -14,6 +14,7 @@
     "express-session": "1.13.0",
     "morgan": "~1.7.0",
     "node-sass-middleware": "^0.9.7",
+    "nodemon": "^1.9.1",
     "pug": "^2.0.0-alpha3",
     "request": "^2.69.0",
     "serve-favicon": "~2.3.0",
