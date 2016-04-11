@@ -40,7 +40,7 @@ exports.updateManga = function (req, res) {
     funHelper.makeRequest(options, req, res, sess.url);
 };
 
-/* Updates Manga */
+/* Prepares Request for deleting all mangas for a user */
 var deleteMangas = function (session) {
     sess = session;
     sess.url = '/user/' + sess.username;
@@ -57,38 +57,7 @@ var deleteMangas = function (session) {
 };
 exports.deleteMangas = deleteMangas;
 
-/* Updates Manga */
-exports.deleteUserMangas = function (req, res) {
-    sess = req.session;
-    if (sess.username === req.params.username.toLowerCase() &&
-        req.params.username.toLowerCase() === req.body.username.toLowerCase()) {
-        var options = deleteMangas(sess);
-        funHelper.makeRequest(options, req, res, sess.url);
-    } else {
-        sess.error = 'You have input the wrong username, make sure you are' +
-            ' deleting your own mangas and that you spelled it right!';
-        res.redirect('/user/' + sess.username + '/mangas/delete');
-    }
-};
-
-/* Updates Manga */
-var deleteMangas = function (session) {
-    sess = session;
-    sess.url = '/user/' + sess.username;
-    sess.title = 'MangaDB: ' + sess.user;
-    var options = {
-        method: 'DELETE',
-        url: sess.api + '/mangas/' + sess.username,
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'x-access-token': sess.token
-        }
-    };
-    return options;
-};
-exports.deleteMangas = deleteMangas;
-
-/* Updates Manga */
+/* Deletes All User's Mangas */
 exports.deleteUserMangas = function (req, res) {
     sess = req.session;
     if (sess.username === req.params.username.toLowerCase() &&
