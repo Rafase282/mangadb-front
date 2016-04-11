@@ -40,7 +40,7 @@ exports.updateManga = function (req, res) {
     funHelper.makeRequest(options, req, res, sess.url);
 };
 
-/* Updates Manga */
+/* Prepares Request for deleting all mangas for a user */
 var deleteMangas = function (session) {
     sess = session;
     sess.url = '/user/' + sess.username;
@@ -57,7 +57,7 @@ var deleteMangas = function (session) {
 };
 exports.deleteMangas = deleteMangas;
 
-/* Updates Manga */
+/* Deletes All User's Mangas */
 exports.deleteUserMangas = function (req, res) {
     sess = req.session;
     if (sess.username === req.params.username.toLowerCase() &&
