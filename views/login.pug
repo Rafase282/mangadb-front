@@ -5,17 +5,17 @@ block content
     form(role='form', method='POST', name='login', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
       .row
         .input-field.col.s12.m6
-          i.material-icons.prefix.blueIcon person
-          input#username.validate.short(type='text', name='username', aria-describedby='basic-addon1', autocomplete='off', required)
+          i.material-icons.prefix.color-Tp-light person
+          input#username.validate(type='text', name='username', aria-describedby='basic-addon1', autocomplete='off', required)
           label(for='username') Username
         .input-field.col.s12.m6
-          i.material-icons.prefix.blueIcon lock
-          input#password.validate.short(type='password', name='password', aria-describedby='basic-addon2', autocomplete='off', required)
+          i.material-icons.prefix.color-Tp-light lock
+          input#password.validate(type='password', name='password', aria-describedby='basic-addon2', autocomplete='off', required)
           label(for='password') Password
       .row.center-align
         .col.s12
           a(href='/forgot') Forgot Password?
           br
           br
-          button.btn.blue.darken-1(type='submit') Log In
-    div#push
+          button.btn.color-Bp-light(type='submit') Log In
+    div.push
