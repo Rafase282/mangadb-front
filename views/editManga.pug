@@ -4,10 +4,10 @@ block content
         h1.center-align #{header}
         ul.center-align.flow-text
           li
-            p.blueIcon.blueText (Update only)
+            p.color-Tp-light.bold (Update only)
             |  To update any piece of information just fill in the particular field.
           li
-            p.blueIcon.blueText (Update only)
+            p.color-Tp-light.bold (Update only)
             |  Whatever information is left blank will retain the old information.
           li Avoid using images url over http as it will serve mixed content which lowers the security of your session.
           li Please note that for the best experience, you should try and fill as much information as you can.
@@ -15,33 +15,33 @@ block content
         form(role='form', method='POST', name='editManga', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
           .row
             .input-field.col.s12.m4
-              i.material-icons.prefix.blueIcon title
+              i.material-icons.prefix.color-Tp-light title
               input#title.validate(type='text', name='title', autocomplete='off')
               label(for='title') Title *
             .input-field.col.s12.m4
-              i.material-icons.prefix.blueIcon face
+              i.material-icons.prefix.color-Tp-light face
               input#author.validate(type='text', name='author', autocomplete='off')
               label(for='author') Author *
             .input-field.col.s12.m4
-              i.material-icons.prefix.blueIcon link
+              i.material-icons.prefix.color-Tp-light link
               input#url.validate(type='url', name='url', autocomplete='off')
               label(for='url') Reading Site *
           .row
             .input-field.col.s12.m4
-              i.material-icons.prefix.blueIcon list
+              i.material-icons.prefix.color-Tp-light list
               input#chapter.validate(type='number', name='chapter', autocomplete='off')
               label(for='chapter') Chapter *
             .input-field.col.s12.m4
-              i.material-icons.prefix.blueIcon flag
+              i.material-icons.prefix.color-Tp-light flag
               input#type.validate(type='text', name='type', autocomplete='off')
               label(for='type') Manga Ethnicity *
             .input-field.col.s12.m4
-              i.material-icons.prefix.blueIcon subtitles
+              i.material-icons.prefix.color-Tp-light subtitles
               input#altName.validate(type='text', name='altName', autocomplete='off')
               label(for='altName') Alternate Names
           .row
             .input-field.col.s6.m4
-              i.material-icons.prefix.blueIcon equalizer
+              i.material-icons.prefix.color-Tp-light equalizer
               br
               p
                 input#reading.with-gap(value='reading', name='userStatus', type='radio', checked)
@@ -54,7 +54,7 @@ block content
                 label(for='willRead') Will Read
               label(for='userStatus') User Status *
             .input-field.col.s6.m4
-              i.material-icons.prefix.blueIcon access_time
+              i.material-icons.prefix.color-Tp-light access_time
               br
               p
                 input#ongoing.with-gap(value='ongoing', name='seriesStatus', type='radio', checked)
@@ -64,7 +64,7 @@ block content
                 label(for='completed') Completed
               label(for='seriesStatus') Series Status *
             .input-field.col.s12.m4
-              i.material-icons.prefix.blueIcon swap_horiz
+              i.material-icons.prefix.color-Tp-light swap_horiz
               br
               p
                 input#rightToLeft.with-gap(value='right to left', name='direction', type='radio', checked)
@@ -75,17 +75,17 @@ block content
               label(for='direction') Reading Direction
           .row
             .input-field.col.s12
-              i.material-icons.prefix.blueIcon sort
+              i.material-icons.prefix.color-Tp-light sort
               textarea#storyPlot.materialize-textarea(type='text', name='categories',  autocomplete='off')
               label(for='storyPlot') Categories *
           .row
             .input-field.col.s12
-              i.material-icons.prefix.blueIcon edit
+              i.material-icons.prefix.color-Tp-light edit
               textarea#storyPlot.materialize-textarea(type='text', name='plot', autocomplete='off')
               label(for='storyPlot') Story Plot *
           .row
             .input-field.col.s12
-              i.material-icons.prefix.blueIcon add_a_photo
+              i.material-icons.prefix.color-Tp-light add_a_photo
               input#img-input.validate(type='url', name='thumbnail', autocomplete='off')
               label(for='img-input') Thumbnail *
           .row
@@ -93,5 +93,5 @@ block content
               p.center-align
                 img#img.circle.responsive-img(src='../../images/kaneki1.jpg', alt='Manga Preview',  name='img')
           .center-align
-            button.btn.blue.darken-1(type='submit') #{button}
-      section#push
+            button.btn.color-Bp-light(type='submit') #{button}
+      section.push

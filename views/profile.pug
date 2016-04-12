@@ -2,7 +2,7 @@ extends layout
 block content
     main.container
       #usermodal.modal.bottom-sheet
-        .modal-content.blue-text
+        .modal-content.color-Bp-light.color-Tp-light
           h4.center-align User Information
           .row
             .col.s12
@@ -12,29 +12,26 @@ block content
                 .user-email
               .card-panel.col.s12.m4
                 .user-count
-        .modal-footer
-          a.modal-action.modal-close.waves-effect.waves-green.btn-flat
-            i.material-icons.prefix.blueIcon close
       .fixed-action-btn.vertical(style='bottom: 45px; right: 24px;')
-          a.btn-floating.btn-large.light-blue.darken-1
+          a.btn-floating.btn-large.color-Bp-light
             i.large.material-icons mode_edit
           ul
             li
               a.tooltipped.btn-floating.green(data-position='left', data-delay='50', data-tooltip='New Manga', href='/user/'+username+'/new')
                 i.material-icons add
             li
-              a.tooltipped.btn-floating.deep-purple.darken-4(data-position='left', data-delay='50', data-tooltip='Update Account Information', href='/user/'+username+'/update')
+              a.tooltipped.btn-floating.blue(data-position='left', data-delay='50', data-tooltip='Update Account Information', href='/user/'+username+'/update')
                 i.material-icons update
             li
               a.tooltipped.btn-floating.red(data-position='left', data-delay='50', data-tooltip='Delete Account', href='/user/'+username+'/delete')
                 i.material-icons delete
             li
-              a.tooltipped.btn-floating.red(data-position='left', data-delay='50', data-tooltip='Delete All Mangas', href='/user/'+username+'/mangas/delete')
+              a.tooltipped.btn-floating.orange(data-position='left', data-delay='50', data-tooltip='Delete All Mangas', href='/user/'+username+'/mangas/delete')
                 i.material-icons delete_sweep
             li
-              a.tooltipped.btn-floating.yellow.darken-3.modal-trigger(href='#usermodal', data-position='left', data-delay='50', data-tooltip='Display User Information')
+              a.tooltipped.btn-floating.yellow.modal-trigger(href='#usermodal', data-position='left', data-delay='50', data-tooltip='Display User Information')
                 i.material-icons person
-      section.blue-text
+      section.color-Tp-light
         .container
           .row
             .col-xs-12
@@ -50,8 +47,8 @@ block content
               .tab-content
                 form(action)
                   .input-field.col.s12
-                    i.material-icons.prefix.blueIcon search
-                    input.validate#search(type='text', name='search', placeholder='Search for your Manga')
+                    i.material-icons.prefix search
+                    input#search(type='text', name='search', placeholder='Search for your Manga')
                 #all.active
                   h1.center-align All Mangas
                   br
@@ -72,4 +69,4 @@ block content
                   br
                   .row
                     .list4
-      section#push
+      section.push

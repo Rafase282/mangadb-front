@@ -1,3 +1,30 @@
+.color-Bp {
+  background-color: #01579b; }
+
+.color-Bp-light {
+  background-color: #1e88e5; }
+
+.color-Tp {
+  color: #01579b; }
+
+.color-Ts {
+  color: #ffffff; }
+
+.color-Ts-dark {
+  color: #bdbdbd; }
+
+.color-Tp-light {
+  color: #1e88e5; }
+
+.ErrColor {
+  background-color: #b71c1c; }
+
+.InfoColor {
+  background-color: #1e88e5; }
+
+.SuccColor {
+  background-color: #43a047; }
+
 .brand-logo {
   margin-left: 20px; }
 
@@ -5,21 +32,18 @@
   opacity: 0.9; }
 
 #quick {
-  color: #3498db; }
+  color: #1e88e5; }
 
 #site {
-  color: #3498db; }
+  color: #1e88e5; }
 
 #secured {
-  color: #3498db; }
+  color: #1e88e5; }
 
-.blueText {
+.bold {
   display: inline-block;
   margin: 0;
   font-weight: 700; }
-
-.blueIcon {
-  color: #3498db; }
 
 #img {
   width: 20em;
@@ -39,5 +63,5 @@ body {
 main {
   flex: 1 0 auto; }
 
-#push {
+.push {
   padding-bottom: 50px; }

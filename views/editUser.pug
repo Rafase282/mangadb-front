@@ -4,41 +4,41 @@ block content
       h2.center-align #{header}
       ul.center-align.flow-text
         li
-          p.blueIcon.blueText (Update only)
+          p.color-Tp-light.bold (Update only)
           |  To update any piece of information just fill in the particular field.
         li
-          p.flow-text.blueIcon.blueText (Update only)
+          p.flow-text.color-Tp-light.bold (Update only)
           |  Whatever information is left blank will retain the old information.
         li Usernames are lowercase internally. Passwords are case sensitive.
       form(role='form', method='POST', name='updateUser', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
         .row
           .input-field.col.s12.m6
-            i.material-icons.prefix.blueIcon perm_contact_calendar
+            i.material-icons.prefix.color-Tp-light perm_contact_calendar
             input#firstname.validate(type='text', name='firstname', aria-describedby='basic-addon1', autocomplete='off')
             label(for='firstname') First Name
           .input-field.col.s12.m6
-            i.material-icons.prefix.blueIcon perm_contact_calendar
+            i.material-icons.prefix.color-Tp-light perm_contact_calendar
             input#lastname.validate(type='text', name='lastname', aria-describedby='basic-addon1', autocomplete='off')
             label(for='lastname') Last Name
         .row
           .input-field.col.s12.m6
-            i.material-icons.prefix.blueIcon person
+            i.material-icons.prefix.color-Tp-light person
             input#username.validate(type='text', name='username', aria-describedby='basic-addon1', autocomplete='off')
             label(for='username') Username
           .input-field.col.s12.m6
-            i.material-icons.prefix.blueIcon email
+            i.material-icons.prefix.color-Tp-light email
             input#email.validate(type='email', name='email', aria-describedby='basic-addon1', autocomplete='off')
             label(for='email') E-mail
         .row
           .input-field.col.s12.m6
-            i.material-icons.prefix.blueIcon lock
+            i.material-icons.prefix.color-Tp-light lock
             input#password.validate(type='password', name='password', aria-describedby='basic-addon2', autocomplete='off')
             label(for='password') Password
           .input-field.col.s12.m6
-            i.material-icons.prefix.blueIcon lock
+            i.material-icons.prefix.color-Tp-light lock
             input#password2.validate(type='password', name='password2', aria-describedby='basic-addon2', autocomplete='off')
             label(for='password2') Re-type Password
         br
         .center-align
-          button.btn.blue.darken-1(type='submit') #{button}
-      div#push
+          button.btn.color-Bp-light(type='submit') #{button}
+      div.push

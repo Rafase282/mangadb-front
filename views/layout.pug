@@ -14,14 +14,14 @@ html
     link(rel='stylesheet prefetch', href='https://fonts.googleapis.com/css?family=Titillium+Web: 400, 700')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
     link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
-    link(rel='stylesheet prefetch', href='https://manga-client.herokuapp.com//stylesheets/main.css')
+    link(rel='stylesheet prefetch', href='https://manga-client.herokuapp.com/stylesheets/main.css')
     script(type='text/javascript').
       var token = '#{token}';
       var user = '#{user}';
       var api = '#{api}';
   body
     nav
-      .nav-wrapper.light-blue.darken-4
+      .nav-wrapper.color-Bp
         a.brand-logo(href='/') MangaDB
         a.button-collapse(href='#', data-activates='mobile-nav')
           i.material-icons menu
@@ -67,48 +67,48 @@ html
       if msg.error && msg.error.length
         .row.center-align.valign-wrapper
           .col.s12
-            .flash-msg.card-panel.red.darken-3
-              .valign.white-text= msg.error
+            .flash-msg.card-panel.ErrColor
+              .valign.color-Ts= msg.error
       if msg.info && msg.info.length
         .row.center-align.valign-wrapper
           .col.s12
-            .flash-msg.card-panel.blue.darken-1
-              .valign.flow-text.white-text= msg.info
+            .flash-msg.card-panel.InfoColor
+              .valign.flow-text.color-Ts= msg.info
       if msg.success && msg.success.length
         .row.center-align.valign-wrapper
           .col.s12
-            .flash-msg.card-panel.green.darken-1
-              .valign.white-text= msg.success
+            .flash-msg.card-panel.SuccColor
+              .valign.color-Ts= msg.success
     block content
 
     footer.page-footer.center-align.light-blue.darken-4
       .container
         .row
           .col.l6.s12
-            h5.white-text About the Site
-            p.grey-text.text-lighten-4
+            h5.color-Ts About the Site
+            p.color-Ts
               | The Project is divided in two parts, the&nbsp;
-              a.grey-text(href='https://github.com/Rafase282/mangadb', taget='_blank') Core API&nbsp;
+              a.color-Ts-dark(href='https://github.com/Rafase282/mangadb', taget='_blank') Core API&nbsp;
               | which has the core functionalities like databases, account and manga handling and more, and the&nbsp;
-              a.grey-text(href='https://github.com/Rafase282/mangadb-front', taget='_blank') Client's App.&nbsp;
+              a.color-Ts-dark(href='https://github.com/Rafase282/mangadb-front', taget='_blank') Client's App.&nbsp;
               | which is what you can see and interact with.
               | Created and designed by&nbsp;
-              a.grey-text(href='https://gitter.im/Rafase282', taget='_blank') Rafase282
+              a.color-Ts-dark(href='https://gitter.im/Rafase282', taget='_blank') Rafase282
               | &nbsp;using&nbsp;
-              a.grey-text(href='http://materializecss.com/', taget='_blank') Materialize&nbsp
+              a.color-Ts-dark(href='http://materializecss.com/', taget='_blank') Materialize&nbsp
               | Project's chatroom via gitter at&nbsp
-              a.grey-text(href='https://gitter.im/Rafase282/Mangadb', taget='_blank') MangaDB&nbsp
-            p.grey-text.text-lighten-4
+              a.color-Ts-dark(href='https://gitter.im/Rafase282/Mangadb', taget='_blank') MangaDB&nbsp
+            p.color-Ts
               | Pull request are with improvements or new features are welcome but the author reserves the rights to accept or reject at will.&nbsp;
               | If you encounter an issue with the way the page is displayed, forms or anything UX related please open an issue on the&nbsp;
-              a.grey-text(href='https://github.com/Rafase282/mangadb-front/issues', taget='_blank') Client's Issue Tracker.&nbsp;
+              a.color-Ts-dark(href='https://github.com/Rafase282/mangadb-front/issues', taget='_blank') Client's Issue Tracker.&nbsp;
               | For issues with the
               | functionality such as account problems, manga issues then use the&nbsp;
-              a.grey-text(href='https://github.com/Rafase282/mangadb/issues', taget='_blank') API's Issue Tracker.
+              a.color-Ts-dark(href='https://github.com/Rafase282/mangadb/issues', taget='_blank') API's Issue Tracker.
           .col.l4.offset-l2.s12
-            h5.white-text Contact Me
+            h5.color-Ts Contact Me
             .col.s6
-              ul.white-text
+              ul.color-Ts
                 li
                   a(href='mailto:rafase282@gmail.com')
                     i.fa.fa-envelope.fa-fw
@@ -122,7 +122,7 @@ html
                     i.fa.fa-linkedin
                   | &nbsp;LinkedIn
             .col.s6
-              ul.white-text
+              ul.color-Ts
                 li
                   a(href='http://codepen.io/Rafase282', target='_blank')
                     i.fa.fa-codepen
@@ -140,7 +140,7 @@ html
       .footer-copyright
         .container.center-align
           | Copyright ©&nbsp;
-          a.grey-text.text-lighten-4(href='http://rafase282.github.io/') Rafael J. Rodriguez&nbsp;
+          a.color-Ts-dark(href='http://rafase282.github.io/') Rafael J. Rodriguez&nbsp;
           | 2016. All Rights Reserved
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
