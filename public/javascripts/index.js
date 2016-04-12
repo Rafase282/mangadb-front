@@ -8,20 +8,19 @@ var token = token;
 var userObj = {};
 
 /* Manga object constructor: Used to create a curated manga without saving sensitive information like _id and user id. */
-function createManga(title, author, url, userStatus, type, categories, chapter,
-    seriesStatus, plot, altName, direction, thumbnail) {
+function createManga(title, author, url, userStatus, type, categories, chapter, seriesStatus, plot, altName, direction, thumbnail) {
     this.title = title,
-        this.author = author,
-        this.url = url,
-        this.userStatus = userStatus,
-        this.type = type,
-        this.categories = categories,
-        this.chapter = chapter,
-        this.seriesStatus = seriesStatus,
-        this.plot = plot,
-        this.altName = altName,
-        this.direction = direction,
-        this.thumbnail = thumbnail;
+    this.author = author,
+    this.url = url,
+    this.userStatus = userStatus,
+    this.type = type,
+    this.categories = categories,
+    this.chapter = chapter,
+    this.seriesStatus = seriesStatus,
+    this.plot = plot,
+    this.altName = altName,
+    this.direction = direction,
+    this.thumbnail = thumbnail;
 }
 
 /* Get list of all user's mangas: Sends a GET request to the API and generates an oject directory with curated manga information, sensitive data is not kept. */
@@ -35,9 +34,9 @@ function getMangas() {
             'x-access-token': token
         }
     };
-    $.ajax(settings).done(function(mangas) {
+    $.ajax(settings).done(function (mangas) {
         cleanMangas();
-        mangas.data.map(function(manga) {
+        mangas.data.map(function (manga) {
             var newManga = new createManga(manga.title, manga.author, manga.url,
                 manga.userStatus, manga.type, manga.categories, manga.chapter,
                 manga.seriesStatus, manga.plot, manga.altName, manga.direction,
@@ -70,7 +69,7 @@ function getUserInfo() {
             'x-access-token': token
         }
     };
-    $.ajax(settings).done(function(response) {
+    $.ajax(settings).done(function (response) {
         var userInfo = response.data[0];
         userObj.firstname = window.s.titleize(userInfo.firstname);
         userObj.lastname = window.s.titleize(userInfo.lastname);
@@ -86,7 +85,7 @@ function getUserInfo() {
     });
 }
 /* Load Manga info When Page Is Loaded: When the profile page is read it will call the function to get all mangas. */
-$(document).ready(function() {
+$(document).ready(function () {
     $('.button-collapse').sideNav();
     $('.modal-trigger').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of it
@@ -121,7 +120,7 @@ function oneUp(info) {
             'chapter': newChapter
         }
     };
-    $.ajax(settings).done(function() {
+    $.ajax(settings).done(function () {
         userMangas[mangaTitle].chapter = newChapter;
         $(mangaClass).text(newChapter); // updates chapter for all catagories
     });
@@ -143,7 +142,7 @@ function delManga(info) {
             'content-type': 'application/x-www-form-urlencoded'
         }
     };
-    $.ajax(settings).done(function() {
+    $.ajax(settings).done(function () {
         $(mangaClass).remove();
     });
 }
