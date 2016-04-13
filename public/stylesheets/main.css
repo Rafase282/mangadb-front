@@ -1,7 +1,7 @@
-.color-Bp {
+.color-Bp, .color-Bp:hover, .color-Bp:active {
   background-color: #01579b; }
 
-.color-Bp-light {
+.color-Bp-light, .color-Bp-light:hover, .color-Bp-light:active {
   background-color: #1e88e5; }
 
 .color-Tp {
