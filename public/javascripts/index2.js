@@ -66,6 +66,7 @@ function displayResults() {
             reg.test(userMangas[manga].altName) ||
             reg.test(userMangas[manga].categories) ||
             reg.test(userMangas[manga].author) ||
+            reg.test(userMangas[manga].seriesStatus) ||
             reg.test(userMangas[manga].type)) {
             $('.panel-' + window.s.slugify(userMangas[manga].title))
                 .css('display', 'block');
