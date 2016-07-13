@@ -8,21 +8,21 @@ var sess;
  */
 
 /* Displays the password recovery form. */
-exports.getForgot = function (req, res) {
-    sess = req.session;
-    sess.url = '/';
-    sess.user = null;
-    sess.title = 'MangaDB: Forgot Password';
-    res.render('forgot', funHelper.pugObj(sess, req));
+exports.getForgot = function(req, res) {
+  sess = req.session;
+  sess.url = '/';
+  sess.user = null;
+  sess.title = 'MangaDB: Forgot Password';
+  res.render('forgot', funHelper.pugObj(sess, req));
 };
 
 /* Displays Password Reset Comfirmation Form */
-exports.getReset = function (req, res) {
-    sess = req.session;
-    sess.url = '/';
-    sess.user = null;
-    sess.title = 'MangaDB: Reset Password';
-    res.render('reset', funHelper.pugObj(sess, req));
+exports.getReset = function(req, res) {
+  sess = req.session;
+  sess.url = '/';
+  sess.user = null;
+  sess.title = 'MangaDB: Reset Password';
+  res.render('reset', funHelper.pugObj(sess, req));
 };
 
 /*
