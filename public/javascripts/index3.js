@@ -35,7 +35,8 @@ function delManga(info) {
   var manga = info.split(','); // Split string into array
   var mangaClass = '.' + manga[0]; // Select the class
   var mangaTitle = manga[1];
-  if (window.confirm('Are you sure you want to delete?')) {
+  var confirm = window.confirm('Are you sure you want to delete?');
+  if (confirm) {
     var settings = {
       'async': true,
       'crossDomain': true,
@@ -50,6 +51,6 @@ function delManga(info) {
   }
 
   $.ajax(settings).done(function() {
-    $(mangaClass).remove();
+    if (confirm) $(mangaClass).remove();
   });
 }
