@@ -41,6 +41,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, '/public'),
   dest: path.join(__dirname, '/public'),
@@ -49,7 +51,6 @@ app.use(require('node-sass-middleware')({
   indentedSyntax: true,
   sourceMap: true
 }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 var router = express.Router();
 app.use('/', router);
