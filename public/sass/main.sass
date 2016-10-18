@@ -26,13 +26,16 @@ main
 
 .push
   padding-bottom: 50px
-
+  
 input:focus
   border-bottom: 1px solid $color-primary !important
   box-shadow: 0 1px 0 0 $color-primary !important
 
-input:focus label
+input:focus:not([readonly])+label
   color: $color-primary !important
 
 .input-field .prefix.active
   color: $color-primary !important
+
+.tabs .indicator
+  background-color: $color-primary-light !important
