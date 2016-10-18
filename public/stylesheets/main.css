@@ -58,10 +58,20 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  font-family: "Titillium Web", sans-serif; }
+  font-family: "Roboto", sans-serif; }
 
 main {
   flex: 1 0 auto; }
 
 .push {
   padding-bottom: 50px; }
+
+input:focus {
+  border-bottom: 1px solid #01579b !important;
+  box-shadow: 0 1px 0 0 #01579b !important; }
+
+input:focus label {
+  color: #01579b !important; }
+
+.input-field .prefix.active {
+  color: #01579b !important; }

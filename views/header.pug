@@ -1,0 +1,59 @@
+nav
+  .nav-wrapper.color-Bp
+    a.brand-logo(href='/') MangaDB
+    a.button-collapse(href='#', data-activates='mobile-nav')
+      i.material-icons menu
+    ul.right.hide-on-med-and-down
+      if user
+        li
+          a(href=url)
+            i.material-icons.left verified_user
+            | #{user}
+        li
+          a(href='/logout')
+            i.material-icons.left hot_tub
+            | Logout
+      else
+        li
+          a(href='/signup')
+            i.material-icons.left person_pin
+            | Sign Up
+        li
+          a(href='/login')
+            i.material-icons.left lock_open
+            | Log In
+    ul#mobile-nav.side-nav
+      if user
+        li
+          a(href=url)
+            i.material-icons.left verified_user
+            | #{user}
+        li
+          a(href='/logout')
+            i.material-icons.left hot_tub
+            | Logout
+      else
+        li
+          a(href='/signup')
+            i.material-icons.left person_pin
+            | Sign Up
+        li
+          a(href='/login')
+            i.material-icons.left lock_open
+            | Log In
+.container
+  if msg.error && msg.error.length
+    .row.center-align.valign-wrapper
+      .col.s12
+        .flash-msg.card-panel.ErrColor
+          .valign.color-Ts= msg.error
+  if msg.info && msg.info.length
+    .row.center-align.valign-wrapper
+      .col.s12
+        .flash-msg.card-panel.InfoColor
+          .valign.flow-text.color-Ts= msg.info
+  if msg.success && msg.success.length
+    .row.center-align.valign-wrapper
+      .col.s12
+        .flash-msg.card-panel.SuccColor
+          .valign.color-Ts= msg.success
