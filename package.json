@@ -27,7 +27,6 @@
     "eslint": "^3.8.1",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.13",
-    "gulp-exec": "^2.1.2",
     "gulp-minify": "0.0.14",
     "gulp-postcss": "^6.2.0",
     "gulp-rename": "^1.2.2",

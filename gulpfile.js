@@ -4,7 +4,6 @@ var cleanCSS     = require('gulp-clean-css');
 var rename       = require('gulp-rename');
 var minify       = require('gulp-minify');
 var browserSync  = require('browser-sync').create();
-var exec         = require('gulp-exec');
 var postcss      = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 
@@ -45,7 +44,7 @@ gulp.task('minify-js', function() {
     },
     ignoreFiles: ['.combo.js', '.min.js']
   }))
-  .pipe(gulp.dest('./public/javascripts/'))
+  .pipe(gulp.dest('./public/javascripts/'));
 });
 
 gulp.task('browser-sync-proxy', function() {
