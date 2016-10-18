@@ -13,23 +13,19 @@ gulp.task('default', ['watch', 'browser-sync-proxy']);
 gulp.task('watch', function() {
   gulp.watch([
     './public/sass/*/*.sass', './public/sass/*.sass'
-  ], ['sass', 'minify-css']);
-  gulp.watch(['!./public/javascripts/*.min.js', './public/javascripts/*.js'], ['minify-js']);
-  gulp.watch(['!./public/javascripts/*.min.js', './public/javascripts/*.js'], ['minify-js'], browserSync.reload);
-  gulp.watch(['!./public/stylesheets/*min.css', './public/stylesheets/*.css'], browserSync.reload);
-  gulp.watch([
-    './views/*.pug', './views/**/*.pug'
-  ], browserSync.reload);
+  ], ['sass', 'minify-css'], browserSync.reload);
+  gulp.watch(['./public/javascripts/index.js', './public/javascripts/index2.js', './public/javascripts/index3.js'], ['minify-js'], browserSync.reload);
+  gulp.watch(['./views/*.pug', './views/**/*.pug'], browserSync.reload);
 });
 
 gulp.task('autoprefixer', function () {
-  return gulp.src(['!./public/stylesheets/*min.css', './public/stylesheets/*.css'])
+  return gulp.src('./public/stylesheets/main.css')
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(gulp.dest('./public/stylesheets/'));
 });
 
 gulp.task('minify-css', ['autoprefixer'], function() {
-  gulp.src(['./public/stylesheets/*.css', '!./public/stylesheets/*.min.css'])
+  gulp.src('./public/stylesheets/main.css')
   .pipe(cleanCSS({compatibility: 'ie8', keepBreaks: false}))
   .pipe(rename({suffix: '.min'}))
   .pipe(gulp.dest('public/stylesheets/'));
@@ -42,12 +38,12 @@ gulp.task('sass', function() {
 });
 
 gulp.task('minify-js', function() {
-  gulp.src('./public/javascripts/*.js')
+  gulp.src(['./public/javascripts/index.js', './public/javascripts/index2.js', './public/javascripts/index3.js'])
   .pipe(minify({
     ext: {
       min: '.min.js'
     },
-    ignoreFiles: ['.combo.js', '*.min.js']
+    ignoreFiles: ['.combo.js', '.min.js']
   }))
   .pipe(gulp.dest('./public/javascripts/'))
 });
