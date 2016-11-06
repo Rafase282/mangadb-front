@@ -2,12 +2,12 @@ extends layout
 block content
     main.container
       h2.center-align #{header}
-      ul.center-align.flow-text
+      ul.center-align
         li
           p.color-Tp-light.bold (Update only)
           |  To update any piece of information just fill in the particular field.
         li
-          p.flow-text.color-Tp-light.bold (Update only)
+          p.color-Tp-light.bold (Update only)
           |  Whatever information is left blank will retain the old information.
         li Usernames are lowercase internally. Passwords are case sensitive.
       form(role='form', method='POST', name='updateUser', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
