@@ -54,3 +54,8 @@ function delManga(info) {
     if (confirm) $(mangaClass).remove();
   });
 }
+
+// Clear the search bar
+$('.clear').click(function() {
+  $('#search').val('');
+});
