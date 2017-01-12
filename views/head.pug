@@ -12,6 +12,15 @@ head
   link(rel='stylesheet prefetch', href='/stylesheets/materialize-0.97.8.min.css')
   link(rel='stylesheet prefetch', href='/stylesheets/font-awesome-4.7.0.min.css')
   link(rel='stylesheet prefetch', href='/stylesheets/main.min.css')
+  script.
+    (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:387750,hjsv:5};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
   script(type='text/javascript').
     var token = '#{token}';
     var user = '#{user}';
