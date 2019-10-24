@@ -34,14 +34,26 @@ exports.postForgot = function (req, res) {
     sess.title = 'MangaDB: Reset Password';
     // To-Do: Implement Code.
 };
-
-
+*/
 // Handles New Password Setting
 exports.postReset = function (req, res) {
     sess = req.session;
-    sess.url = '/';
+    sess.url = '/forgot';
     sess.user = null;
     sess.title = 'MangaDB: Reset Password';
-    // To-Do: Implement Code.
+    sess.api = process.env.API;
+    sess.host = process.env.HOST;
+    console.log(sess)
+    const options = {
+      method: 'POST',
+      url: sess.api + '/reset',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      form: {
+        email: req.body.email,
+        host: sess.host
+      }
+    };
+    funHelper.makeRequest(options, req, res, sess.url);
 };
-*/

@@ -69,8 +69,8 @@ router.route('/logout')
 
 // Get the forgotten password page
 router.route('/forgot')
-  .get(password.getForgot);
-//.post(password.postForgot);
+  .get(password.getForgot)
+  .post(password.postReset);
 
 // Get the reset password page
 router.route('/reset')
