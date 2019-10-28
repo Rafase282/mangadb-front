@@ -119,7 +119,6 @@ var makeRequest = function(options, req, res, url) {
       throw new Error(error);
     }
     if (typeof body === "string") {
-      console.log("CHECK THIS " + body);
       body = JSON.parse(body);
     }
     if (body.success === false) {

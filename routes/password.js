@@ -53,15 +53,11 @@ exports.postForgot = function(req, res) {
 
 // Handles New Password Setting
 exports.putReset = function(req, res) {
-  console.log("the otp is " + otp);
-  console.log("the username is " + resetUser);
-  console.log("the password is " + req.body.password);
   if (req.body.password === req.body.password2) {
     sess = req.session;
     sess.url = "/users/" + resetUser;
     sess.title = "MangaDB: Password Updated";
     sess.api = process.env.API;
-    console.log(sess.api + sess.url);
     var url = "/login";
     var options = {
       method: "PUT",
