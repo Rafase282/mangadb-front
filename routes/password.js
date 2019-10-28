@@ -50,36 +50,11 @@ exports.postForgot = function(req, res) {
   };
   funHelper.makeRequest(options, req, res, sess.url);
 };
-<<<<<<< HEAD
-*/
-=======
 
->>>>>>> 914dc62511be0198ceb634135f78f8da515df48c
 // Handles New Password Setting
 exports.putReset = function(req, res) {
   if (req.body.password === req.body.password2) {
     sess = req.session;
-<<<<<<< HEAD
-    sess.url = '/forgot';
-    sess.user = null;
-    sess.title = 'MangaDB: Reset Password';
-    sess.api = process.env.API;
-    sess.host = process.env.HOST;
-    console.log(sess)
-    const options = {
-      method: 'POST',
-      url: sess.api + '/reset',
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      form: {
-        email: req.body.email,
-        host: sess.host
-      }
-    };
-    funHelper.makeRequest(options, req, res, sess.url);
-};
-=======
     sess.url = "/users/" + resetUser;
     sess.title = "MangaDB: Password Updated";
     sess.api = process.env.API;
@@ -102,4 +77,3 @@ exports.putReset = function(req, res) {
     res.redirect("/forgot");
   }
 };
->>>>>>> 914dc62511be0198ceb634135f78f8da515df48c

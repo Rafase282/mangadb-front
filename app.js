@@ -73,16 +73,10 @@ router
 router.route("/logout").get(routes.LogOut);
 
 // Get the forgotten password page
-<<<<<<< HEAD
-router.route('/forgot')
-  .get(password.getForgot)
-  .post(password.postReset);
-=======
 router
   .route("/forgot")
   .get(password.getForgot)
   .post(password.postForgot);
->>>>>>> 914dc62511be0198ceb634135f78f8da515df48c
 
 // Get the reset password page
 router
