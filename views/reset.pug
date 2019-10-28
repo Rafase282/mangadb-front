@@ -1,6 +1,8 @@
 extends layout
 block content
   main.container
+    script.
+      window.history.replaceState(null, null, '/reset');
     h1.center-align Password Reset
     form(role='form', method='POST', name='reset', accept-charset='UTF-8', enctype='application/x-www-form-urlencoded', autocomplete='off')
       .row

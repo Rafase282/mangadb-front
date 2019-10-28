@@ -37,3 +37,4 @@ node_modules
 *.db
 storage
 *-lock.json
+**/*{.,-}min.js
