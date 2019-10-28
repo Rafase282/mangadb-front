@@ -1,19 +1,25 @@
 /* This file handles additonal functions
  * that are needed across the app.
  */
-'use strict';
-var request = require('request');
+"use strict";
+var request = require("request");
 
 var isAuthenticated = function(req, res, next) {
   // Check to see if there is there is a user in session
   //var url = req.header('Referer') || '/';
-  if (req.session.user !== undefined && req.session.user !== null &&
-    req.session.user.toLowerCase() === req.params.username.toLowerCase()) {
+  if (
+    req.session.user !== undefined &&
+    req.session.user !== null &&
+    req.session.user.toLowerCase() === req.params.username.toLowerCase()
+  ) {
     return next();
   } else {
-    req.flash('info', 'You either tried to visit a restricted area without' +
-      ' permission, or you simply just need to login again.');
-    res.redirect('/');
+    req.flash(
+      "info",
+      "You either tried to visit a restricted area without" +
+        " permission, or you simply just need to login again."
+    );
+    res.redirect("/");
   }
 };
 
@@ -64,9 +70,9 @@ var pugObj = function(sess, req) {
     header: sess.header,
     button: sess.button,
     msg: {
-      error: req.flash('error'),
-      info: req.flash('info'),
-      success: req.flash('success')
+      error: req.flash("error"),
+      info: req.flash("info"),
+      success: req.flash("success")
     }
   };
 };
@@ -76,27 +82,31 @@ exports.pugObj = pugObj;
 
 var newUserMsg = function(req, res, body) {
   // Displays error messages for new user creation.
-  var url = req.header('Referer') || '/';
+  var url = req.header("Referer") || "/";
   if (body.message.message || body.message.code === 400) {
     // Empty form or missing fields
-    req.flash('error', 'Don\'t leave empty fields, ' +
-      'fill the form properly!');
+    req.flash(
+      "error",
+      "Don't leave empty fields, " + "fill the form properly!"
+    );
     res.redirect(url);
   } else if (body.message.code === 11000) {
     // Duplicated Key (Username or E-Mail)
-    var msg = body.message.errmsg.split(': ');
+    var msg = body.message.errmsg.split(": ");
     var msg2 = msg[3].split('"');
-    msg = 'We already have ' + msg2[1] +
-      ' in the system, try a different one.';
-    req.flash('error', msg);
+    msg = "We already have " + msg2[1] + " in the system, try a different one.";
+    req.flash("error", msg);
     res.redirect(url);
   } else if (body.message.code === 17280) {
     // Key Too Large
-    req.flash('error', 'One of the elements is too large, try again with a shorter version!');
+    req.flash(
+      "error",
+      "One of the elements is too large, try again with a shorter version!"
+    );
     res.redirect(url);
   } else {
     // Invalid E-mail Case
-    req.flash('error', body.message);
+    req.flash("error", body.message);
     res.redirect(url);
   }
 };
@@ -108,13 +118,13 @@ var makeRequest = function(options, req, res, url) {
     if (error) {
       throw new Error(error);
     }
-    if (typeof body === 'string') {
+    if (typeof body === "string") {
       body = JSON.parse(body);
     }
     if (body.success === false) {
       newUserMsg(req, res, body);
     } else {
-      req.flash('success', body.message);
+      req.flash("success", body.message);
       res.redirect(url);
     }
   });
