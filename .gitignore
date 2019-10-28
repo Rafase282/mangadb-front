@@ -36,4 +36,9 @@ node_modules
 .env
 *.db
 storage
+<<<<<<< HEAD
 *-lock.json
+=======
+*-lock.json
+**/*{.,-}min.js
+>>>>>>> 914dc62511be0198ceb634135f78f8da515df48c
