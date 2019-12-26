@@ -16,7 +16,7 @@ function oneUp(info) {
     async: true,
     crossDomain: true,
     url:
-      api + "/mangas/" + user.toLowerCase() + "/" + encodeURIComponent(mangaId),
+      api + "/mangas/" + user.toLowerCase() + "/title/" + encodeURIComponent(mangaTitle),
     method: "PUT",
     headers: {
       "x-access-token": token,
@@ -47,8 +47,8 @@ function delManga(info) {
         api +
         "/mangas/" +
         user.toLowerCase() +
-        "/" +
-        encodeURIComponent(mangaId),
+        "/title/" +
+        encodeURIComponent(mangaTitle),
       method: "DELETE",
       headers: {
         "x-access-token": token,

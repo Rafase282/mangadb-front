@@ -84,7 +84,7 @@ function mangaInfo(manga) {
     '<a class="btn tooltipped color-Bp-light" data-position="bottom" data-delay="50" data-tooltip="Update Manga Information" href=\'/user/' +
     user.toLowerCase() +
     "/" +
-    encodeURIComponent(manga.id) +
+    encodeURIComponent(manga.title) +
     '\'"><i class="material-icons">update</i></a>';
   var buttons =
     '<div class="row center-align">' +
