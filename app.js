@@ -117,6 +117,7 @@ router
 router
   .route("/user/:username/:manga")
   .get(funHelper.isAuthenticated, mangasView.getUpdateManga)
+  //The form sends a post for creating, for updating use the put function
   .post(funHelper.isAuthenticated, mangas.updateManga);
 
 // Delete All User's Mangas

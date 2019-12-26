@@ -7,7 +7,7 @@ var user = user;
 var token = token;
 var userObj = {};
 
-/* Manga object constructor: Used to create a curated manga without saving sensitive information like _id and user id. */
+/* Manga object constructor: Used to create a curated manga without saving sensitive information like and user id. */
 function createManga(
   title,
   author,
@@ -20,7 +20,8 @@ function createManga(
   plot,
   altName,
   direction,
-  thumbnail
+  thumbnail,
+  id
 ) {
   (this.title = title),
     (this.author = author),
@@ -33,7 +34,8 @@ function createManga(
     (this.plot = plot),
     (this.altName = altName),
     (this.direction = direction),
-    (this.thumbnail = thumbnail);
+    (this.thumbnail = thumbnail),
+    (this.id = id);
 }
 
 /* Get list of all user's mangas: Sends a GET request to the API and generates an oject directory with curated manga information, sensitive data is not kept. */
@@ -62,7 +64,8 @@ function getMangas() {
         manga.plot,
         manga.altName,
         manga.direction,
-        manga.thumbnail
+        manga.thumbnail,
+        manga._id
       );
       userMangas[manga.title] = newManga;
       var html = mangaInfo(newManga);

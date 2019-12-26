@@ -6,19 +6,17 @@
 /* Increment chapter number: Sends a PUT to the API with the new chapter number. */
 function oneUp(info) {
   var manga = info.split(","); // Split string into array
+  console.log(manga);
   var mangaClass = "." + manga[0]; // Select the class
   var mangaTitle = manga[1];
+  var mangaId = manga[2];
   var currentChapter = +$(mangaClass + ":first").text(); // Get value as int
   var newChapter = currentChapter + 1; // increment chapter
   var settings = {
     async: true,
     crossDomain: true,
     url:
-      api +
-      "/mangas/" +
-      user.toLowerCase() +
-      "/" +
-      encodeURIComponent(mangaTitle),
+      api + "/mangas/" + user.toLowerCase() + "/" + encodeURIComponent(mangaId),
     method: "PUT",
     headers: {
       "x-access-token": token,
@@ -39,6 +37,7 @@ function delManga(info) {
   var manga = info.split(","); // Split string into array
   var mangaClass = "." + manga[0]; // Select the class
   var mangaTitle = manga[1];
+  var mangaId = manga[2];
   var confirm = window.confirm("Are you sure you want to delete?");
   if (confirm) {
     var settings = {
@@ -49,7 +48,7 @@ function delManga(info) {
         "/mangas/" +
         user.toLowerCase() +
         "/" +
-        encodeURIComponent(mangaTitle),
+        encodeURIComponent(mangaId),
       method: "DELETE",
       headers: {
         "x-access-token": token,

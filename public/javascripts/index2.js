@@ -24,7 +24,7 @@ function cleanUser() {
 function mangaInfo(manga) {
   var inputClass = "input-" + window.s.slugify(manga.title);
   var panelClass = "panel-" + window.s.slugify(manga.title);
-  var dataChapter = [inputClass, manga.title];
+  var dataChapter = [inputClass, manga.title, manga.id];
   var dataDel = [panelClass, manga.title];
   var title = window.s.titleize(manga.title);
   var photo =
@@ -84,7 +84,7 @@ function mangaInfo(manga) {
     '<a class="btn tooltipped color-Bp-light" data-position="bottom" data-delay="50" data-tooltip="Update Manga Information" href=\'/user/' +
     user.toLowerCase() +
     "/" +
-    encodeURIComponent(manga.title) +
+    encodeURIComponent(manga.id) +
     '\'"><i class="material-icons">update</i></a>';
   var buttons =
     '<div class="row center-align">' +

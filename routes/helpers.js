@@ -39,7 +39,8 @@ var mangaObj = function(manga) {
     plot: manga.plot,
     altName: manga.altName,
     direction: manga.direction,
-    thumbnail: manga.thumbnail
+    thumbnail: manga.thumbnail,
+    id: manga._id
   };
 };
 

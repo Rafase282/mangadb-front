@@ -28,6 +28,8 @@ exports.updateManga = function(req, res) {
   sess.url = "/user/" + sess.username;
   sess.title = "MangaDB: " + sess.user;
   sess.api = process.env.API;
+  console.log("params", req.params);
+  console.log("form body", req.body);
   var options = {
     method: "PUT",
     url: sess.api + "/mangas/" + sess.username + "/" + req.params.manga,
