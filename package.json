@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "lint": "clear && eslint . || true",
+    "lint-fix": "clear && eslint --fix . || true",
     "prettier": "clear && prettier --write \"**/*.js\""
   },
   "dependencies": {

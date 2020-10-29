@@ -141,12 +141,12 @@ function waitForModal() {
     typeof $(".modal-trigger").modal !== "undefined" &&
     $.isFunction($(".modal-trigger").modal)
   ) {
-    $(".modal-trigger").modal({
+    $(".modal").modal({
       dismissible: true, // Modal can be dismissed by clicking outside of it
       opacity: 0.5, // Opacity of modal background
       in_duration: 300, // Transition in duration
-      ready: getUserInfo, // Callback for Modal open
-      out_duration: 200 // Transition out duration
+      out_duration: 200, // Transition out duration
+      ready: getUserInfo // Callback for Modal open
     });
   } else {
     setTimeout(this.waitForModal, 100);
