@@ -18,8 +18,9 @@ The Front-End for the MangaDB app
 
 1. Create an **.env** file:
 ```bash
-API="https://mangadb-r282.herokuapp.com/api" // The url for the api
-PORT="8080" // The port the server will be runing on
+API=https://api-hostname/api // The url for the api
+HOST=https://client-hostname/reset //the URL for this client pointing to /reset
+PORT=xxxx // The port the server will be runing on
 secret="the secret!" // Secret for security purpose
 ```
 2. Run the server with `node ./bin/www`

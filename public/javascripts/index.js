@@ -86,6 +86,7 @@ function getMangas() {
 
 // Get User Information
 function getUserInfo() {
+  console.log("Running getUserInfo()")
   var settings = {
     async: true,
     crossDomain: true,
@@ -117,15 +118,24 @@ function getUserInfo() {
       "Total Manga Count:</h5><h5> " +
       userObj.count +
       "</h5></span>";
-    cleanUser();
+    //cleanUser();
+    console.log("hey" + userName)
     $(".user-name").append(userName);
     $(".user-email").append(userEmail);
     $(".user-count").append(userCount);
   });
 }
+function waitForSideNav() {
+    if (typeof $(".button-collapse").sideNav!=='undefined' && $.isFunction($(".button-collapse").sideNav)) {
+      $(".button-collapse").sideNav();
+    } else {
+      setTimeout(this.waitForSideNav, 100);
+    }
+}
+
 /* Load Manga info When Page Is Loaded: When the profile page is read it will call the function to get all mangas. */
-$(document).ready(function() {
-  $(".button-collapse").sideNav();
+$(document).ready(function() {  
+  waitForSideNav();
   $(".modal-trigger").modal({
     dismissible: true, // Modal can be dismissed by clicking outside of it
     opacity: 0.5, // Opacity of modal background
@@ -134,6 +144,7 @@ $(document).ready(function() {
     out_duration: 200 // Transition out duration
   });
   if (window.location.pathname === "/user/" + user.toLowerCase()) {
+    console.log("Running getMangas()")
     getMangas();
   }
 });
