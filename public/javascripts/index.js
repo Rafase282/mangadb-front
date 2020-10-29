@@ -118,8 +118,7 @@ function getUserInfo() {
       "Total Manga Count:</h5><h5> " +
       userObj.count +
       "</h5></span>";
-    //cleanUser();
-    console.log("hey" + userName)
+    cleanUser();
     $(".user-name").append(userName);
     $(".user-email").append(userEmail);
     $(".user-count").append(userCount);
@@ -133,18 +132,26 @@ function waitForSideNav() {
     }
 }
 
+function waitForModal() {
+    if (typeof $(".modal-trigger").modal!=='undefined' && $.isFunction($(".modal-trigger").modal)) {
+      $(".modal-trigger").modal({
+        dismissible: true, // Modal can be dismissed by clicking outside of it
+        opacity: 0.5, // Opacity of modal background
+        in_duration: 300, // Transition in duration
+        ready: getUserInfo, // Callback for Modal open
+        out_duration: 200 // Transition out duration
+      });
+    } else {
+      setTimeout(this.waitForModal, 100);
+    }
+}
+
 /* Load Manga info When Page Is Loaded: When the profile page is read it will call the function to get all mangas. */
 $(document).ready(function() {  
   waitForSideNav();
-  $(".modal-trigger").modal({
-    dismissible: true, // Modal can be dismissed by clicking outside of it
-    opacity: 0.5, // Opacity of modal background
-    in_duration: 300, // Transition in duration
-    ready: getUserInfo, // Callback for Modal open
-    out_duration: 200 // Transition out duration
-  });
+  waitForModal();
+
   if (window.location.pathname === "/user/" + user.toLowerCase()) {
-    console.log("Running getMangas()")
     getMangas();
   }
 });
