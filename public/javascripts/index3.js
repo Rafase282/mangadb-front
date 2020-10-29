@@ -3,7 +3,8 @@
 /*global cleanMangas mangaInfo cleanUser token user api userMangas*/
 "use strict";
 
-/* Increment chapter number: Sends a PUT to the API with the new chapter number. */
+/* Increment chapter number: Sends a PUT to the API with the new chapter 
+number. */
 function oneUp(info) {
   var manga = info.split(","); // Split string into array
   console.log(manga);
@@ -16,7 +17,11 @@ function oneUp(info) {
     async: true,
     crossDomain: true,
     url:
-      api + "/mangas/" + user.toLowerCase() + "/title/" + encodeURIComponent(mangaTitle),
+      api +
+      "/mangas/" +
+      user.toLowerCase() +
+      "/title/" +
+      encodeURIComponent(mangaTitle),
     method: "PUT",
     headers: {
       "x-access-token": token,
