@@ -20,7 +20,8 @@ function cleanUser() {
   $(".user-count").empty();
 }
 
-/* Manga panels generator: Takes a manga object and creates custom html to be added to the dom. */
+/* Manga panels generator: Takes a manga object and creates custom html to be 
+added to the dom. */
 function mangaInfo(manga) {
   var inputClass = "input-" + window.s.slugify(manga.title);
   var panelClass = "panel-" + window.s.slugify(manga.title);
@@ -42,8 +43,8 @@ function mangaInfo(manga) {
     window.s.humanize(manga.userStatus) +
     "</span>";
   var chapter =
-    '<span class="float-right"> <strong class="black-text">Current Chapter: </strong>' +
-    '<a class="' +
+    '<span class="float-right"> <strong class="black-text">Current Chapter:' +
+    ' </strong> <a class="' +
     inputClass +
     '" href="' +
     manga.url +
@@ -55,7 +56,8 @@ function mangaInfo(manga) {
     window.s.humanize(manga.type) +
     "</span><br>";
   var direction =
-    '<span id="direction"><strong class="black-text">Reading Direction:</strong>' +
+    '<span id="direction"><strong class="black-text">Reading Direction:' +
+    "</strong>" +
     " " +
     window.s.titleize(manga.direction) +
     "</span><br/>";
@@ -72,16 +74,20 @@ function mangaInfo(manga) {
     window.s.humanize(manga.plot) +
     "</p><br/><br/>";
   var addOne =
-    '<a class="btn tooltipped color-Bp-light" data-position="bottom" data-delay="50" data-tooltip="Increase Chapter Number by One" onclick="oneUp(\'' +
+    '<a class="btn tooltipped color-Bp-light" data-position="bottom" ' +
+    'data-delay="50" data-tooltip="Increase Chapter Number by One" ' +
+    "onclick=\"oneUp('" +
     dataChapter +
     "')\">" +
     '<i class="material-icons">plus_one</i></a>';
   var del =
-    '<a class="btn tooltipped color-Bp-light" data-position="bottom" data-delay="50" data-tooltip="Delete Manga" onclick="delManga(\'' +
+    '<a class="btn tooltipped color-Bp-light" data-position="bottom" ' +
+    'data-delay="50" data-tooltip="Delete Manga" onclick="delManga(\'' +
     dataDel +
     '\')"><i class="material-icons">delete</i></a>';
   var upd =
-    '<a class="btn tooltipped color-Bp-light" data-position="bottom" data-delay="50" data-tooltip="Update Manga Information" href=\'/user/' +
+    '<a class="btn tooltipped color-Bp-light" data-position="bottom" ' +
+    'data-delay="50" data-tooltip="Update Manga Information" href=\'/user/' +
     user.toLowerCase() +
     "/" +
     encodeURIComponent(manga.title) +
@@ -96,9 +102,12 @@ function mangaInfo(manga) {
   var html =
     '<div class="col s12 m6 manga-panel ' +
     panelClass +
-    '"><div class="card large" style="overflow: hidden;"><div class="card-image waves-effect waves-block waves-light color-Bp-light hoverable activator">' +
+    '"><div class="card large" style="overflow: hidden;"><div ' +
+    'class="card-image waves-effect waves-block waves-light ' +
+    'color-Bp-light hoverable activator">' +
     photo +
-    '</div><div class="card-content"> <span class="card-title activator black-text">' +
+    '</div><div class="card-content"> <span class="card-title ' +
+    'activator black-text">' +
     title +
     '<i class="material-icons right">more_vert</i></span> <br>' +
     chapter +
@@ -120,7 +129,8 @@ function mangaInfo(manga) {
   return html;
 }
 
-/* Search Bar Functionality: Search for mangas on keypress. Search by author, title, alt name, and categories. */
+/* Search Bar Functionality: Search for mangas on keypress. Search by author, 
+title, alt name, and categories. */
 function search() {
   if ($("#search").val().length > 0) {
     $(".manga-panel").css("display", "none");
@@ -155,7 +165,8 @@ function displayResults() {
 /* Start Search when a key is released call the function. */
 $("#search").keyup(search);
 
-/* Live Thubnail Preview: When a key is release and the image input has text then use that text as the new src attribute for the image. */
+/* Live Thubnail Preview: When a key is release and the image input has text 
+then use that text as the new src attribute for the image. */
 function previewThumbnail() {
   var img = $("#img-input").val();
   if ($("#img-input").val().length > 4) {

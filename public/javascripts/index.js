@@ -7,7 +7,8 @@ var user = user;
 var token = token;
 var userObj = {};
 
-/* Manga object constructor: Used to create a curated manga without saving sensitive information like and user id. */
+/* Manga object constructor: Used to create a curated manga without saving 
+sensitive information like and user id. */
 function createManga(
   title,
   author,
@@ -38,7 +39,8 @@ function createManga(
     (this.id = id);
 }
 
-/* Get list of all user's mangas: Sends a GET request to the API and generates an oject directory with curated manga information, sensitive data is not kept. */
+/* Get list of all user's mangas: Sends a GET request to the API and generates 
+an oject directory with curated manga information, sensitive data is not kept.*/
 function getMangas() {
   var settings = {
     async: true,
@@ -86,7 +88,6 @@ function getMangas() {
 
 // Get User Information
 function getUserInfo() {
-  console.log("Running getUserInfo()")
   var settings = {
     async: true,
     crossDomain: true,
@@ -125,29 +126,36 @@ function getUserInfo() {
   });
 }
 function waitForSideNav() {
-    if (typeof $(".button-collapse").sideNav!=='undefined' && $.isFunction($(".button-collapse").sideNav)) {
-      $(".button-collapse").sideNav();
-    } else {
-      setTimeout(this.waitForSideNav, 100);
-    }
+  if (
+    typeof $(".button-collapse").sideNav !== "undefined" &&
+    $.isFunction($(".button-collapse").sideNav)
+  ) {
+    $(".button-collapse").sideNav();
+  } else {
+    setTimeout(this.waitForSideNav, 100);
+  }
 }
 
 function waitForModal() {
-    if (typeof $(".modal-trigger").modal!=='undefined' && $.isFunction($(".modal-trigger").modal)) {
-      $(".modal-trigger").modal({
-        dismissible: true, // Modal can be dismissed by clicking outside of it
-        opacity: 0.5, // Opacity of modal background
-        in_duration: 300, // Transition in duration
-        ready: getUserInfo, // Callback for Modal open
-        out_duration: 200 // Transition out duration
-      });
-    } else {
-      setTimeout(this.waitForModal, 100);
-    }
+  if (
+    typeof $(".modal-trigger").modal !== "undefined" &&
+    $.isFunction($(".modal-trigger").modal)
+  ) {
+    $(".modal-trigger").modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of it
+      opacity: 0.5, // Opacity of modal background
+      in_duration: 300, // Transition in duration
+      ready: getUserInfo, // Callback for Modal open
+      out_duration: 200 // Transition out duration
+    });
+  } else {
+    setTimeout(this.waitForModal, 100);
+  }
 }
 
-/* Load Manga info When Page Is Loaded: When the profile page is read it will call the function to get all mangas. */
-$(document).ready(function() {  
+/* Load Manga info When Page Is Loaded: When the profile page is read it will 
+call the function to get all mangas. */
+$(document).ready(function() {
   waitForSideNav();
   waitForModal();
 
