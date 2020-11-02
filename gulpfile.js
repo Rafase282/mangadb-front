@@ -6,25 +6,26 @@ var minify = require("gulp-minify");
 var browserSync = require("browser-sync").create();
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
-
-gulp.task("default", ["watch", "browser-sync-proxy"]);
+var reload = browserSync.reload;
 
 gulp.task("watch", function() {
-  gulp.watch(
-    ["./public/sass/*/*.sass", "./public/sass/*.sass"],
-    ["sass", "minify-css"],
-    browserSync.reload
-  );
-  gulp.watch(
-    [
-      "./public/javascripts/index.js",
-      "./public/javascripts/index2.js",
-      "./public/javascripts/index3.js"
-    ],
-    ["minify-js"],
-    browserSync.reload
-  );
-  gulp.watch(["./views/*.pug", "./views/**/*.pug"], browserSync.reload);
+  gulp
+    .watch(
+      ["./public/sass/*/*.sass", "./public/sass/*.sass"],
+      gulp.series("sass", "minify-css")
+    )
+    .on("change", reload);
+  gulp
+    .watch(
+      [
+        "./public/javascripts/index.js",
+        "./public/javascripts/index2.js",
+        "./public/javascripts/index3.js"
+      ],
+      gulp.series("minify-js")
+    )
+    .on("change", reload);
+  gulp.watch(["./views/*.pug", "./views/**/*.pug"]).on("change", reload);
 });
 
 gulp.task("autoprefixer", function() {
@@ -34,7 +35,7 @@ gulp.task("autoprefixer", function() {
     .pipe(gulp.dest("./public/stylesheets/"));
 });
 
-gulp.task("minify-css", ["autoprefixer"], function() {
+gulp.task("minify-css", gulp.series("autoprefixer"), function() {
   gulp
     .src("./public/stylesheets/main.css")
     .pipe(cleanCSS({ compatibility: "ie8", keepBreaks: false }))
@@ -78,3 +79,5 @@ gulp.task("browser-sync", function() {
     }
   });
 });
+
+gulp.task("default", gulp.series(gulp.parallel("watch", "browser-sync-proxy")));
