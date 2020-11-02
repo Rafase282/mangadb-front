@@ -6,24 +6,26 @@ var minify = require("gulp-minify");
 var browserSync = require("browser-sync").create();
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
+var reload = browserSync.reload;
 
 gulp.task("watch", function() {
-  gulp.watch(
-    ["./public/sass/*/*.sass", "./public/sass/*.sass"],
-    gulp.series("sass", "minify-css", browserSync.reload)
-  );
-  gulp.watch(
-    [
-      "./public/javascripts/index.js",
-      "./public/javascripts/index2.js",
-      "./public/javascripts/index3.js"
-    ],
-    gulp.series("minify-js", browserSync.reload)
-  );
-  gulp.watch(
-    ["./views/*.pug", "./views/**/*.pug"],
-    gulp.series(browserSync.reload)
-  );
+  gulp
+    .watch(
+      ["./public/sass/*/*.sass", "./public/sass/*.sass"],
+      gulp.series("sass", "minify-css")
+    )
+    .on("change", reload);
+  gulp
+    .watch(
+      [
+        "./public/javascripts/index.js",
+        "./public/javascripts/index2.js",
+        "./public/javascripts/index3.js"
+      ],
+      gulp.series("minify-js")
+    )
+    .on("change", reload);
+  gulp.watch(["./views/*.pug", "./views/**/*.pug"]).on("change", reload);
 });
 
 gulp.task("autoprefixer", function() {
